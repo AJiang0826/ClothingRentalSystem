@@ -138,7 +138,7 @@ public class MainActivity extends BaseActivity {
                             String channelId = createNotificationChannel("my_channel_ID", "my_channel_NAME", NotificationManager.IMPORTANCE_HIGH);
                             NotificationCompat.Builder notification = new NotificationCompat.Builder(MainActivity.this, channelId)
                                     .setContentTitle("通知")
-                                    .setContentText("hello，"+"欢迎"+username+"来到书屋~")
+                                    .setContentText("hello，"+"欢迎"+username+"来到服装租借系统~")
                                     .setContentIntent(pendingIntent)
                                     .setSmallIcon(R.mipmap.ic_launcher)
                                     .setPriority(NotificationCompat.PRIORITY_HIGH)
