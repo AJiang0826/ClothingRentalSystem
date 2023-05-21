@@ -13,7 +13,7 @@ public class MyService extends Service {
     MediaPlayer mp;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        mp=MediaPlayer.create(this, R.raw.music);
+        mp=MediaPlayer.create(this, R.raw.music2);
         mp.start();
         return super.onStartCommand(intent, flags, startId);
     }
