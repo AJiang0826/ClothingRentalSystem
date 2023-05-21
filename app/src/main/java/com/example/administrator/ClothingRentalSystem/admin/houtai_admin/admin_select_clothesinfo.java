@@ -23,7 +23,7 @@ import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
  * 管理员查询图书信息
  */
 
-public class admin_select_bookinfo extends AppCompatActivity {
+public class admin_select_clothesinfo extends AppCompatActivity {
     private ImageButton back_bt;
     private ListView listView;
 
@@ -41,7 +41,7 @@ public class admin_select_bookinfo extends AppCompatActivity {
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_select_bookinfo.this, admin_select_message.class);
+                Intent intent = new Intent(admin_select_clothesinfo.this, admin_select_message.class);
                 startActivity(intent);
             }
         });
@@ -77,7 +77,7 @@ public class admin_select_bookinfo extends AppCompatActivity {
                         Cursor cursor = help.querybookinfo();
                         String from[] = {"name", "type", "writer","publicer","rank","img"};
                         int to[] = {R.id.book_name, R.id.Clothes_Type, R.id.Clothes_Author, R.id.Clothes_Publish, R.id.Clothes_Rank, R.id.Clothes_Info_Img};
-                        SimpleCursorAdapter adapter = new SimpleCursorAdapter(admin_select_bookinfo.this, R.layout.admin_book_item, cursor, from, to);
+                        SimpleCursorAdapter adapter = new SimpleCursorAdapter(admin_select_clothesinfo.this, R.layout.admin_book_item, cursor, from, to);
                         adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
                             @Override
                             public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
@@ -111,7 +111,7 @@ public class admin_select_bookinfo extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 //传值到修改界面
                 int i = position;
-                Intent intent = new Intent(admin_select_bookinfo.this, admin_update_book.class);
+                Intent intent = new Intent(admin_select_clothesinfo.this, admin_update_clothes.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("id", i);
                 intent.putExtras(bundle);
