@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.administrator.ClothingRentalSystem.R;
 
 /**
- * 管理读者
+ * 管理读者分式界面【第二层】
  */
 
 public class admin_manager_reader extends AppCompatActivity {
-    private ImageButton back_tn, addreader, editreader, deletereader, selectReader;
+    private ImageButton back_tn, AddUser, EditUser, DeleteUser, SelectUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class admin_manager_reader extends AppCompatActivity {
 
     private void inti() {
         //返回按钮的事件监听
-        back_tn = (ImageButton) findViewById(R.id.manreader_back);
+        back_tn = (ImageButton) findViewById(R.id.ManUser_Back);
         back_tn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,8 +34,8 @@ public class admin_manager_reader extends AppCompatActivity {
             }
         });
         //查找读者按钮的事件监听
-        selectReader = (ImageButton) findViewById(R.id.ad_selctreader);
-        selectReader.setOnClickListener(new View.OnClickListener() {
+        SelectUser = (ImageButton) findViewById(R.id.ad_SelectUser);
+        SelectUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(admin_manager_reader.this, select_reader_admin.class);
@@ -43,8 +43,8 @@ public class admin_manager_reader extends AppCompatActivity {
             }
         });
         //添加读者按钮的事件监听
-        addreader = (ImageButton) findViewById(R.id.ad_addreader);
-        addreader.setOnClickListener(new View.OnClickListener() {
+        AddUser = (ImageButton) findViewById(R.id.ad_AddUser);
+        AddUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(admin_manager_reader.this, admin_add_reader.class);
@@ -52,8 +52,8 @@ public class admin_manager_reader extends AppCompatActivity {
             }
         });
         //编辑读者按钮的事件监听
-        editreader = (ImageButton) findViewById(R.id.ad_editReader);
-        editreader.setOnClickListener(new View.OnClickListener() {
+        EditUser = (ImageButton) findViewById(R.id.ad_EditUser);
+        EditUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(admin_manager_reader.this, admin_editer_reader.class);
@@ -61,8 +61,8 @@ public class admin_manager_reader extends AppCompatActivity {
             }
         });
         //删除读者按钮的事件监听
-        deletereader = (ImageButton) findViewById(R.id.ad_deleteReader);
-        deletereader.setOnClickListener(new View.OnClickListener() {
+        DeleteUser = (ImageButton) findViewById(R.id.ad_DeleteUser);
+        DeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(admin_manager_reader.this, admin_delete_reader.class);

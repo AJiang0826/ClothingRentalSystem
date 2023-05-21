@@ -21,7 +21,7 @@
             android:textSize="30sp" />
 
         <ImageButton
-            android:id="@+id/manreader_back"
+            android:id="@+id/ManUser_Back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -33,6 +33,7 @@
 
     </RelativeLayout>
 
+<!--  查找用户  -->
     <RelativeLayout
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
@@ -43,26 +44,26 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/selectreader"
+            android:id="@+id/SelectUser"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
             android:background="#fff"
-            android:src="@mipmap/select_reader" />
+            android:src="@mipmap/selectuser" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_alignBottom="@+id/selectreader"
-            android:layout_toEndOf="@+id/selectreader"
-            android:layout_toRightOf="@+id/selectreader"
+            android:layout_alignBottom="@+id/SelectUser"
+            android:layout_toEndOf="@+id/SelectUser"
+            android:layout_toRightOf="@+id/SelectUser"
             android:gravity="center_vertical"
-            android:text="查找读者"
+            android:text="查找用户"
             android:textSize="20sp" />
 
         <ImageButton
-            android:id="@+id/ad_selctreader"
+            android:id="@+id/ad_SelectUser"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
@@ -72,6 +73,7 @@
 
     </RelativeLayout>
 
+<!--  添加用户  -->
     <RelativeLayout
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
@@ -82,26 +84,26 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/addreader"
+            android:id="@+id/AddUser"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
             android:background="#fff"
-            android:src="@mipmap/add_reader" />
+            android:src="@mipmap/adduser" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_alignBottom="@+id/addreader"
-            android:layout_toEndOf="@+id/addreader"
-            android:layout_toRightOf="@+id/addreader"
+            android:layout_alignBottom="@+id/AddUser"
+            android:layout_toEndOf="@+id/AddUser"
+            android:layout_toRightOf="@+id/AddUser"
             android:gravity="center_vertical"
-            android:text="添加读者"
+            android:text="添加用户"
             android:textSize="20sp" />
 
         <ImageButton
-            android:id="@+id/ad_addreader"
+            android:id="@+id/ad_AddUser"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
@@ -111,6 +113,7 @@
 
     </RelativeLayout>
 
+<!--  编辑用户  -->
     <RelativeLayout
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
@@ -121,24 +124,24 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/editReader"
+            android:id="@+id/EditUser"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="#fff"
-            android:src="@mipmap/edit_reader" />
+            android:src="@mipmap/edituser" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_alignBottom="@id/editReader"
-            android:layout_toEndOf="@id/editReader"
-            android:layout_toRightOf="@id/editReader"
-            android:text="编辑读者"
+            android:layout_alignBottom="@id/EditUser"
+            android:layout_toEndOf="@id/EditUser"
+            android:layout_toRightOf="@id/EditUser"
+            android:text="编辑用户"
             android:textSize="20sp" />
 
         <ImageButton
-            android:id="@+id/ad_editReader"
+            android:id="@+id/ad_EditUser"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
@@ -147,6 +150,7 @@
             android:src="@mipmap/right_arrow" />
     </RelativeLayout>
 
+<!--  删除用户  -->
     <RelativeLayout
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
@@ -157,24 +161,24 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/deleteReader"
+            android:id="@+id/DeleteUser"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="#fff"
-            android:src="@mipmap/delete_reader" />
+            android:src="@mipmap/deleteuser" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_alignBottom="@id/deleteReader"
-            android:layout_toEndOf="@id/deleteReader"
-            android:layout_toRightOf="@id/deleteReader"
-            android:text="删除读者"
+            android:layout_alignBottom="@id/DeleteUser"
+            android:layout_toEndOf="@id/DeleteUser"
+            android:layout_toRightOf="@id/DeleteUser"
+            android:text="删除用户"
             android:textSize="20sp"  />
 
         <ImageButton
-            android:id="@+id/ad_deleteReader"
+            android:id="@+id/ad_DeleteUser"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"

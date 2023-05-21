@@ -31,7 +31,7 @@
             app:srcCompat="@mipmap/left_arrow" />-->
 
         <ImageButton
-            android:id="@+id/sel_book_back"
+            android:id="@+id/Sel_Clothes_Back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -115,7 +115,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/select_book_list"
+        android:id="@+id/Select_Clothes_List"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 </LinearLayout>

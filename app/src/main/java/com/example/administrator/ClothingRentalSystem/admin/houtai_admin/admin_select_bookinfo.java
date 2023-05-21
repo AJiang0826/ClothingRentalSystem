@@ -49,12 +49,12 @@ public class admin_select_bookinfo extends AppCompatActivity {
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Cursor cursor = help.querybookinfo();
         String from[] = {"name", "type", "writer","publicer","rank","img", "price"};
-        int to[] = {R.id.book_name, R.id.book_type, R.id.book_author, R.id.book_publish, R.id.book_rank, R.id.book_info_img, R.id.book_pice};
+        int to[] = {R.id.Clothes_Name, R.id.Clothes_Type, R.id.Clothes_Author, R.id.Clothes_Publish, R.id.Clothes_Rank, R.id.Clothes_Info_Img, R.id.Clothes_Price};
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.admin_book_item, cursor, from, to);
         adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
             @Override
             public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-                if (view.getId() == R.id.book_info_img) {
+                if (view.getId() == R.id.Clothes_Info_Img) {
                     ImageView imageView = (ImageView) view;
                     imageView.setImageURI(Uri.parse(cursor.getString(columnIndex)));
                     return true;
@@ -75,12 +75,12 @@ public class admin_select_bookinfo extends AppCompatActivity {
                         //删除后重新显示
                         Cursor cursor = help.querybookinfo();
                         String from[] = {"name", "type", "writer","publicer","rank","img"};
-                        int to[] = {R.id.book_name, R.id.book_type, R.id.book_author, R.id.book_publish, R.id.book_rank, R.id.book_info_img};
+                        int to[] = {R.id.book_name, R.id.Clothes_Type, R.id.Clothes_Author, R.id.Clothes_Publish, R.id.Clothes_Rank, R.id.Clothes_Info_Img};
                         SimpleCursorAdapter adapter = new SimpleCursorAdapter(admin_select_bookinfo.this, R.layout.admin_book_item, cursor, from, to);
                         adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
                             @Override
                             public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-                                if (view.getId() == R.id.book_info_img) {
+                                if (view.getId() == R.id.Clothes_Info_Img) {
                                     ImageView imageView = (ImageView) view;
                                     imageView.setImageURI(Uri.parse(cursor.getString(columnIndex)));
                                     return true;
@@ -118,7 +118,5 @@ public class admin_select_bookinfo extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 }

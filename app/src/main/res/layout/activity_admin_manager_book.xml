@@ -17,11 +17,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="管理图书"
+            android:text="衣物管理"
             android:textSize="30sp" />
 
         <ImageButton
-            android:id="@+id/manbook_back"
+            android:id="@+id/manClothes_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -48,7 +48,7 @@
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
             android:background="#fff"
-            android:src="@mipmap/add" />
+            android:src="@mipmap/add1" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
             android:layout_toEndOf="@+id/add"
             android:layout_toRightOf="@+id/add"
             android:gravity="center_vertical"
-            android:text="添加图书"
+            android:text="添购衣物"
             android:textSize="20sp" />
 
         <ImageButton
@@ -86,7 +86,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="#fff"
-            android:src="@mipmap/edit" />
+            android:src="@mipmap/edit1" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -95,7 +95,7 @@
             android:layout_alignBottom="@id/edit"
             android:layout_toEndOf="@id/edit"
             android:layout_toRightOf="@id/edit"
-            android:text="查询图书"
+            android:text="查找衣物"
             android:textSize="20sp" />
 
         <ImageButton

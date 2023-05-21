@@ -19,7 +19,7 @@
             android:text="商品图片 ："
             android:textSize="18sp" />
         <ImageView
-            android:id="@+id/bookimg"
+            android:id="@+id/ClothesImg"
             android:layout_width="130dp"
             android:layout_height="80dp"
             android:layout_marginRight="50dp"
@@ -42,7 +42,7 @@
 
         <EditText
             android:text="0123456789"
-            android:id="@+id/et_bookid"
+            android:id="@+id/et_ClothesId"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:inputType="number"
@@ -62,7 +62,7 @@
             android:textSize="18sp"/>
         <EditText
             android:text="城南旧事"
-            android:id="@+id/et_bookname"
+            android:id="@+id/et_ClothesName"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"/>
@@ -80,7 +80,7 @@
             android:textSize="18sp"/>
         <EditText
             android:text="叙事"
-            android:id="@+id/et_booktype"
+            android:id="@+id/et_ClothesType"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"/>
@@ -98,7 +98,7 @@
             android:textSize="18sp"/>
         <EditText
             android:text="林海音"
-            android:id="@+id/et_bookwriter"
+            android:id="@+id/et_ClothesWriter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"/>
@@ -133,7 +133,7 @@
             android:textSize="18sp"/>
         <EditText
             android:text="23"
-            android:id="@+id/et_bookprice"
+            android:id="@+id/et_ClothesPrice"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"/>
@@ -151,7 +151,7 @@
             android:textSize="18sp"/>
         <EditText
             android:text="9.8"
-            android:id="@+id/et_bookrank"
+            android:id="@+id/et_ClothesRank"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3" />
@@ -169,7 +169,7 @@
             android:textSize="18sp"/>
         <EditText
             android:text="讲述了一段关于英子童年时的故事"
-            android:id="@+id/et_bookcomment"
+            android:id="@+id/et_ClothesComment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3" />
@@ -181,7 +181,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp">
         <Button
-            android:id="@+id/btn_bookcommit"
+            android:id="@+id/btn_ClothesCommit"
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:layout_width="120dp"
@@ -190,7 +190,7 @@
             android:text="添加"/>
         <Button
             android:layout_marginLeft="20dp"
-            android:id="@+id/btn_bookback"
+            android:id="@+id/btn_ClothesBack"
             android:text="返回"
             android:textColor="@color/black"
             android:layout_gravity="center"
