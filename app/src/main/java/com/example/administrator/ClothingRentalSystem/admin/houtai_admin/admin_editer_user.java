@@ -36,7 +36,7 @@ public class admin_editer_user extends AppCompatActivity {
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_editer_user.this, admin_manager_reader.class);
+                Intent intent = new Intent(admin_editer_user.this, admin_manager_user.class);
                 startActivity(intent);
             }
         });

@@ -40,7 +40,7 @@ public class admin_delete_user extends AppCompatActivity {
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_delete_user.this, admin_manager_reader.class);
+                Intent intent = new Intent(admin_delete_user.this, admin_manager_user.class);
                 startActivity(intent);
             }
         });

@@ -26,7 +26,7 @@ public class admin_add_user extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_add_reader);
+        setContentView(R.layout.activity_admin_add_user);
         init();//出实话界面
     }
 
@@ -75,7 +75,7 @@ public class admin_add_user extends BaseActivity {
                 cursor.close();
                 help.insert(values);
                 Toast.makeText(admin_add_user.this, "用户添加成功", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(admin_add_user.this, admin_manager_reader.class);
+                Intent intent = new Intent(admin_add_user.this, admin_manager_user.class);
                 startActivity(intent);
                 ActivityCollector.finishAll();
             }
