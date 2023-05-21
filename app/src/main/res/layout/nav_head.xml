@@ -8,14 +8,15 @@
     android:layout_height="70dp"
    android:layout_centerInParent="true"
     android:src="@drawable/head1"/>
+
     <TextView
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:clickable="true"
         android:layout_centerHorizontal="true"
-        android:text="书屋"
+        android:clickable="true"
+        android:text="服装租借"
         android:textColor="#E0FFFF"
         android:textSize="16sp" />
 
