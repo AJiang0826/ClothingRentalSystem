@@ -18,6 +18,6 @@
         android:clickable="true"
         android:text="服装租借"
         android:textColor="#E0FFFF"
-        android:textSize="16sp" />
+        android:textSize="26sp" />
 
 </RelativeLayout>

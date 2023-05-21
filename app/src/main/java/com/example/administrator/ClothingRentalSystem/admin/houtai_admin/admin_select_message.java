@@ -34,7 +34,7 @@ private ImageButton back_bt,clothes_info,borrow_bt,pay_bt;
         clothes_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(admin_select_message.this,admin_select_bookinfo.class);
+                Intent intent=new Intent(admin_select_message.this, admin_select_clothesinfo.class);
                 startActivity(intent);
             }
         });

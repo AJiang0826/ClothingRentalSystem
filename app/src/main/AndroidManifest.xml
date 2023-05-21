@@ -57,8 +57,8 @@
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_update_reader" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_add_book" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_delete_book" />
-        <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_update_book" />
-        <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_select_bookinfo" />
+        <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_update_clothes" />
+        <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_select_clothesinfo" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.borrowActivity" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.person_borrow" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.jieyueInfo" />

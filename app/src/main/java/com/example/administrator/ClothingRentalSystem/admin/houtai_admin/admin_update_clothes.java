@@ -30,7 +30,7 @@ import java.io.InputStream;
  * 管理员添加图书的界面
  */
 
-public class admin_update_book extends BaseActivity implements View.OnClickListener {
+public class admin_update_clothes extends BaseActivity implements View.OnClickListener {
     private ImageButton back_bt;
     //    private EditText name_ed, author_Ed, page_ed, price_ed, publish_ed, intime_rd;
     private Button add_book_bt;
@@ -38,14 +38,14 @@ public class admin_update_book extends BaseActivity implements View.OnClickListe
     private int id;
     private databaseHelp helper;
     Uri uri;
-    private ImageView bookimg;
-    private EditText et_bookid,et_bookname,et_booktype,et_bookwriter,et_bookpublicer,et_bookprice,et_bookrank,et_bookcomment;
-    private Button btn_bookcommit,btn_bookback;
+    private ImageView clothesimg;
+    private EditText et_clothesid,et_clothesname,et_clothestype,et_clotheswriter,et_clothespublicer,et_clothesprice,et_clothesrank,et_clothescomment;
+    private Button btn_clothescommit,btn_clothesback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_upadte_book);
+        setContentView(R.layout.activity_admin_upadte_clothes);
 
         initdata();//界面初始化
         helper = new databaseHelp(getApplicationContext());
@@ -56,39 +56,39 @@ public class admin_update_book extends BaseActivity implements View.OnClickListe
         id = bundle.getInt("id")+1 ;
         Log.i("cursor", "initdata: " + id);
 
-        bookimg=findViewById(R.id.bookimg);
+        clothesimg=findViewById(R.id.clothesimg);
 
-        et_bookid=findViewById(R.id.et_bookid);
-        et_bookname=findViewById(R.id.et_bookname);
-        et_booktype=findViewById(R.id.et_booktype);
-        et_bookwriter=findViewById(R.id.et_bookwriter);
-        et_bookpublicer=findViewById(R.id.et_bookpublicer);
-        et_bookprice=findViewById(R.id.et_bookprice);
-        et_bookrank=findViewById(R.id.et_bookrank);
-        et_bookcomment=findViewById(R.id.et_bookcomment);
+        et_clothesid=findViewById(R.id.et_clothesid);
+        et_clothesname=findViewById(R.id.et_clothesname);
+        et_clothestype=findViewById(R.id.et_clothestype);
+        et_clotheswriter=findViewById(R.id.et_clotheswriter);
+        et_clothespublicer=findViewById(R.id.et_clothespublicer);
+        et_clothesprice=findViewById(R.id.et_clothesprice);
+        et_clothesrank=findViewById(R.id.et_clothesrank);
+        et_clothescomment=findViewById(R.id.et_clothescomment);
 
 
-        btn_bookcommit=findViewById(R.id.btn_bookcommit);
-        btn_bookback=findViewById(R.id.btn_bookback);
+        btn_clothescommit=findViewById(R.id.btn_clothescommit);
+        btn_clothesback=findViewById(R.id.btn_clothesback);
 
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Cursor cursor = help.querybookinfoid(id);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            bookimg.setImageURI(Uri.parse(cursor.getString(cursor.getColumnIndex("img"))));
-            et_bookid.setText(cursor.getString(cursor.getColumnIndex("bookid")));
-            et_bookname.setText(cursor.getString(cursor.getColumnIndex("name")));
-            et_bookwriter.setText(cursor.getString(cursor.getColumnIndex("writer")));
-            et_booktype.setText(cursor.getString(cursor.getColumnIndex("type")));
-            et_bookprice.setText(cursor.getString(cursor.getColumnIndex("price")));
-            et_bookpublicer.setText(cursor.getString(cursor.getColumnIndex("publicer")));
-            et_bookcomment.setText(cursor.getString(cursor.getColumnIndex("comment")));
-            et_bookrank.setText(cursor.getString(cursor.getColumnIndex("rank")));
+            clothesimg.setImageURI(Uri.parse(cursor.getString(cursor.getColumnIndex("img"))));
+            et_clothesid.setText(cursor.getString(cursor.getColumnIndex("bookid")));
+            et_clothesname.setText(cursor.getString(cursor.getColumnIndex("name")));
+            et_clotheswriter.setText(cursor.getString(cursor.getColumnIndex("writer")));
+            et_clothestype.setText(cursor.getString(cursor.getColumnIndex("type")));
+            et_clothesprice.setText(cursor.getString(cursor.getColumnIndex("price")));
+            et_clothespublicer.setText(cursor.getString(cursor.getColumnIndex("publicer")));
+            et_clothescomment.setText(cursor.getString(cursor.getColumnIndex("comment")));
+            et_clothesrank.setText(cursor.getString(cursor.getColumnIndex("rank")));
         }
 
-        btn_bookcommit.setOnClickListener(this);
-        bookimg.setOnClickListener(this);
-        btn_bookback.setOnClickListener(this);
+        btn_clothescommit.setOnClickListener(this);
+        clothesimg.setOnClickListener(this);
+        btn_clothesback.setOnClickListener(this);
 
     }
     //对管理员输入的图书信息进行验证，全部符合要求才能通过
@@ -98,30 +98,30 @@ public class admin_update_book extends BaseActivity implements View.OnClickListe
         switch(view.getId()){
             case R.id.btn_bookcommit:
                 //ISBN为十位，且不为空
-                if (et_bookid.getText().length()!=10) {
-                    Toast.makeText(admin_update_book.this,"请输入10位图书ISBN",Toast.LENGTH_SHORT).show();
+                if (et_clothesid.getText().length()!=10) {
+                    Toast.makeText(admin_update_clothes.this,"请输入10位图书ISBN",Toast.LENGTH_SHORT).show();
                     testid=false;
                     break;
                 }
 
-                if(et_bookname.getText().length()==0){
-                    Toast.makeText(admin_update_book.this,"请输入完整图书信息",Toast.LENGTH_SHORT).show();
+                if(et_clothesname.getText().length()==0){
+                    Toast.makeText(admin_update_clothes.this,"请输入完整图书信息",Toast.LENGTH_SHORT).show();
                     testother=false;
                     break;
                 }
                 if(testid==true&&testother==true){
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues values = new ContentValues();
-                    values.put("name", et_bookname.getText().toString());
-                    values.put("writer", et_bookwriter.getText().toString());
-                    values.put("bookid", et_bookid.getText().toString());
-                    values.put("price", et_bookprice.getText().toString());
-                    values.put("publicer", et_bookpublicer.getText().toString());
-                    values.put("comment", et_bookcomment.getText().toString());
-                    values.put("rank", et_bookrank.getText().toString());
-                    values.put("type", et_booktype.getText().toString());
+                    values.put("name", et_clothesname.getText().toString());
+                    values.put("writer", et_clotheswriter.getText().toString());
+                    values.put("bookid", et_clothesid.getText().toString());
+                    values.put("price", et_clothesprice.getText().toString());
+                    values.put("publicer", et_clothespublicer.getText().toString());
+                    values.put("comment", et_clothescomment.getText().toString());
+                    values.put("rank", et_clothesrank.getText().toString());
+                    values.put("type", et_clothestype.getText().toString());
                     db.update("bookinfo", values, "_id=?", new String[]{String.valueOf(id)});
-                    Toast.makeText(admin_update_book.this,"修改图书成功！",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(admin_update_clothes.this,"修改图书成功！",Toast.LENGTH_SHORT).show();
                     break;
                 }
 
@@ -133,7 +133,7 @@ public class admin_update_book extends BaseActivity implements View.OnClickListe
 
             case R.id.btn_bookback:
                 Intent intentback=new Intent();
-                intentback.setClass(admin_update_book.this,admin_select_bookinfo.class);
+                intentback.setClass(admin_update_clothes.this, admin_select_clothesinfo.class);
                 startActivity(intentback);
         }
     }
@@ -155,7 +155,7 @@ public class admin_update_book extends BaseActivity implements View.OnClickListe
         Bitmap bmp=null;
         if(uri.getAuthority()!=null){
             try {
-                is=admin_update_book.this.getContentResolver().openInputStream(uri);
+                is= admin_update_clothes.this.getContentResolver().openInputStream(uri);
                 bmp= BitmapFactory.decodeStream(is);
 
             } catch (FileNotFoundException e) {
@@ -168,7 +168,7 @@ public class admin_update_book extends BaseActivity implements View.OnClickListe
                 }
             }
         }
-        bookimg.setImageBitmap(bmp);
+       clothesimg.setImageBitmap(bmp);
     }
 
     //    private void init() {
