@@ -74,7 +74,7 @@ public class admin_update_reader extends BaseActivity {
                 values.put("phone", phonenum);
                 values.put("birthday", birth);
                 db.update("admin", values, "_id=?", new String[]{String.valueOf(id)});
-                Intent intent = new Intent(admin_update_reader.this, admin_editer_reader.class);
+                Intent intent = new Intent(admin_update_reader.this, admin_editer_user.class);
                 startActivity(intent);
                 ActivityCollector.finishAll();
             }

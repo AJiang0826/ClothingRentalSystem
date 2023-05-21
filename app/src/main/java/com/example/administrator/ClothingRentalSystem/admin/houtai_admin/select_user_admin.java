@@ -19,10 +19,12 @@ import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
  * 功能有：1.通过用户名查询用户
  *       2.显示所有用户
  *
- * 变量含义：1.
+ * 变量含义：1.listView
+ *         2.search_btn
+ *         3.search_name
  *
  */
-public class select_reader_admin extends AppCompatActivity {
+public class select_user_admin extends AppCompatActivity {
 private ListView listView;
 
     private Button search_btn;
@@ -35,8 +37,8 @@ private ListView listView;
         databaseHelp help=new databaseHelp(getApplicationContext());
         Cursor cursor=help.query();
         String from[]={"user","password","name", "sex", "birthday", "phone"};
-        int to[]={R.id.read_user,R.id.read_pwd,R.id.read_name, R.id.read_sex, R.id.read_birth, R.id.read_phone};
-        SimpleCursorAdapter adapter=new SimpleCursorAdapter(this,R.layout.select_reader_item,cursor,from,to);
+        int to[]={R.id.user_user,R.id.user_pwd,R.id.user_name, R.id.user_sex, R.id.user_birth, R.id.user_phone};
+        SimpleCursorAdapter adapter=new SimpleCursorAdapter(this,R.layout.select_user_item,cursor,from,to);
         listView.setAdapter(adapter);
 
 
@@ -44,7 +46,7 @@ private ListView listView;
         search_name = findViewById(R.id.search_name);
         search_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(select_reader_admin.this, select_reader_admininfo.class);
+                Intent intent = new Intent(select_user_admin.this, select_user_admininfo.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("name",search_name.getText().toString());
                 intent.putExtras(bundle);

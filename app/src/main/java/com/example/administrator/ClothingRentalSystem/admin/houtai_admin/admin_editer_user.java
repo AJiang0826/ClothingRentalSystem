@@ -16,35 +16,36 @@ import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 
 /**
  * 编辑读者页面
+ * 功能：
  */
 
-public class admin_editer_reader extends AppCompatActivity {
+public class admin_editer_user extends AppCompatActivity {
     private ListView listView;
     private ImageButton back_bt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_editer_reader);
+        setContentView(R.layout.activity_admin_editer_user);
         init();//初始化界面
 
     }
 
     private void init() {
-        back_bt = (ImageButton) findViewById(R.id.deletereader_back);
+        back_bt = (ImageButton) findViewById(R.id.deleteuser_back);
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_editer_reader.this, admin_manager_reader.class);
+                Intent intent = new Intent(admin_editer_user.this, admin_manager_reader.class);
                 startActivity(intent);
             }
         });
-        listView = (ListView) findViewById(R.id.delete_reader_list);
+        listView = (ListView) findViewById(R.id.delete_user_list);
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Cursor cursor = help.query();
         String from[]={"user","password","name", "sex", "birthday", "phone"};
-        int to[]={R.id.read_user,R.id.read_pwd,R.id.read_name, R.id.read_sex, R.id.read_birth, R.id.read_phone};
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.select_reader_item, cursor, from, to);
+        int to[]={R.id.user_user,R.id.user_pwd,R.id.user_name, R.id.user_sex, R.id.user_birth, R.id.user_phone};
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.select_user_item, cursor, from, to);
         listView.setAdapter(adapter);
         //listview的单击事件
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -52,7 +53,7 @@ public class admin_editer_reader extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 //传值到修改界面
                 int i = position + 1;
-                Intent intent = new Intent(admin_editer_reader.this, admin_update_reader.class);
+                Intent intent = new Intent(admin_editer_user.this, admin_update_reader.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("id", i);
                 intent.putExtras(bundle);

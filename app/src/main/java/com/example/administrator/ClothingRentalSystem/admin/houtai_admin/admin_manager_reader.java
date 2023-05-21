@@ -38,7 +38,7 @@ public class admin_manager_reader extends AppCompatActivity {
         selectReader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_manager_reader.this, select_reader_admin.class);
+                Intent intent = new Intent(admin_manager_reader.this, select_user_admin.class);
                 startActivity(intent);
             }
         });
@@ -56,7 +56,7 @@ public class admin_manager_reader extends AppCompatActivity {
         editreader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_manager_reader.this, admin_editer_reader.class);
+                Intent intent = new Intent(admin_manager_reader.this, admin_editer_user.class);
                 startActivity(intent);
             }
         });
@@ -65,7 +65,7 @@ public class admin_manager_reader extends AppCompatActivity {
         deletereader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_manager_reader.this, admin_delete_reader.class);
+                Intent intent = new Intent(admin_manager_reader.this, admin_delete_user.class);
                 startActivity(intent);
             }
         });

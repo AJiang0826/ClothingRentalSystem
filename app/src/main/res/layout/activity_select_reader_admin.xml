@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.select_reader_admin">
+    tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.select_user_admin">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

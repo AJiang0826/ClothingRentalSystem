@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_editer_reader">
+    tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_delete_user">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -14,11 +15,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="编辑读者"
+            android:text="删除用户"
             android:textSize="30sp" />
 
         <ImageButton
-            android:id="@+id/deletereader_back"
+            android:id="@+id/edituser_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -90,9 +91,8 @@
 
 
     </LinearLayout>
-
     <ListView
-        android:id="@+id/delete_reader_list"
+        android:id="@+id/edit_user_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 </LinearLayout>
