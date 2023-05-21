@@ -25,14 +25,14 @@ public class admin_manager_reader extends AppCompatActivity {
 
     private void inti() {
         //返回按钮的事件监听
-        back_tn = (ImageButton) findViewById(R.id.ManUser_Back);
+        /*back_tn = (ImageButton) findViewById(R.id.ManUser_Back);
         back_tn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(admin_manager_reader.this, admin_content.class);
                 startActivity(intent);
             }
-        });
+        });*/
         //查找读者按钮的事件监听
         SelectUser = (ImageButton) findViewById(R.id.ad_SelectUser);
         SelectUser.setOnClickListener(new View.OnClickListener() {
