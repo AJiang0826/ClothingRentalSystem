@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="书屋"
+            android:text="服装租借系统"
             android:textSize="30sp" />
     </LinearLayout>
 

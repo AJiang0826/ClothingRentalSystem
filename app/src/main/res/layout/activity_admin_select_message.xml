@@ -43,25 +43,25 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/book_info"
+            android:id="@+id/clothes_info"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
             android:background="#fff"
-            android:src="@mipmap/book_info" />
+            android:src="@mipmap/clothes_info" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/book_info"
-            android:layout_toRightOf="@+id/book_info"
+            android:layout_toEndOf="@+id/clothes_info"
+            android:layout_toRightOf="@+id/clothes_info"
             android:gravity="center_vertical"
-            android:text="图书信息"
+            android:text="衣服信息"
             android:textSize="20sp" />
 
         <ImageButton
-            android:id="@+id/ad_select_bookinfo"
+            android:id="@+id/ad_select_clothesinfo"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
@@ -94,7 +94,7 @@
             android:layout_alignBottom="@id/brrow_info"
             android:layout_toEndOf="@id/brrow_info"
             android:layout_toRightOf="@id/brrow_info"
-            android:text="借阅信息"
+            android:text="租借信息"
             android:textSize="20sp" />
 
         <ImageButton
@@ -130,13 +130,13 @@
             android:layout_alignBottom="@id/manager_pay"
             android:layout_toEndOf="@id/manager_pay"
             android:layout_toRightOf="@id/manager_pay"
-            android:text="还书信息"
+            android:text="还衣信息"
             android:textSize="20sp"
 
             />
 
         <ImageButton
-            android:id="@+id/ad_manager_reader"
+            android:id="@+id/ad_manager_people"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
