@@ -56,7 +56,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
         Log.i("cursor", "initdata: " + id);
 
         ClothesImg=findViewById(R.id.ClothesImg);
-        et_clothesid=findViewById(R.id.et_ClothesId;
+        et_clothesid=findViewById(R.id.et_ClothesId);
         et_clothesname=findViewById(R.id.et_ClothesName);
         et_clothestype=findViewById(R.id.et_ClotheStype);
         et_clotheswriter=findViewById(R.id.et_ClothesWriter);

@@ -1,7 +1,10 @@
 package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -15,11 +18,20 @@ import java.util.Map;
 
 public class admin_borrow_info extends AppCompatActivity {
 private ListView ad_borrow;
+private ImageButton back_bt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_borrow_info);
         ad_borrow=(ListView)findViewById(R.id.ad_show_borrow);
+        back_bt = (ImageButton) findViewById(R.id.sel_clothes_back);
+        back_bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(admin_borrow_info.this, admin_select_message.class);
+                startActivity(intent);
+            }
+        });
         databaseHelp help=new databaseHelp(getApplicationContext());
         List<Map<String, Object>> data = help.queryborrow();
         SimpleAdapter adapter = new SimpleAdapter(

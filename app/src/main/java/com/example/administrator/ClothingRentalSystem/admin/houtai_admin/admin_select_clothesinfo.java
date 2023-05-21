@@ -64,6 +64,7 @@ public class admin_select_clothesinfo extends AppCompatActivity {
             }
         });
         listView.setAdapter(adapter);
+        //长时间停留则跳出来是否删除
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
