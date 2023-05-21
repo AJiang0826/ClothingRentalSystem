@@ -1,87 +1,28 @@
-# BookManager
-这是一个android 图书管理系统
-
-
-目录结构
-
-一、登录部分
-登陆界面、注册界面：
-Activity_main.xml----MainActivity.java
-Activity_register.xml----RegisterActivity.java
-
-
-
-
-管理员登录：用户名：admin，密码：123456
-Activity-admin.xml-----AdminActivity.java
-点击右键头绿色的
-
-二、前台部分
-点击登录按钮，进入前台
-Activity-content.xml------ContentActivity.java
-                                         
-白色菜单按钮显示侧滑栏
-x显示书籍的用到cardView卡片式布局book.java,bookAdapter.java
-
-里面用到circleImageview，即加载了nav_heda.Xml,nav_menu.meun
-三、后台部分
-Admin_content.java---Activity-content.xml
-
-后台管理员管理三大板块，
-Activity_admin_select_mesage.xml
-Admin-select.-message.java
-
-查询信息：书籍信息，借书信息，还书信息；
-
-图书信息：admin-select-bookinfo.kjava,Activity_admin_select_bookinfo.xml
-
-
-管理图书：添加图书、删除图书、修改图书
-Admin_manager_book.java,Activity_admin_manager_book.xml
-
-添加图书：admin_add_book.java----Activity_add_book.xml
-
-删除图书：admin_delete_book.java----Activity_delete_book.xml
-
-修改图书：admin_edit_book.java----Activity_edit_book.xml
-
-点击item项，进入admin_updaate_book.java---Activity_update_book.xml
-
-管理读者：增删查改读者
-Admin_manager_reader.java---Activity_admin_manager_reader.xml
-
-增加读者：Admin_add_reader.java----Activity_admin_add_reader.xml
-
-删除读者：Admin_delete_reader.java----Activity_admin_delete_reader.xml
-
-
-查找读者：Admin_select_reader.java----Activity_admin_select_reader.xml
-
-修改读者：Admin_edit_reader.java----Activity_admin_edit_reader.xml
-
-
-点击itme项进入修改界面
-Admin_update_reader.java---Activity_admin_update_reader.xml
-
-
-借书功能：
-前台用户根据查询到的记录信息，点击listview查看详细信息
-Borrow_Activity.class
-
-点击借阅进行借书，有消息提示借书成功，并把借书记录添加到借书表borrow中，其中用shareperfence获取当前用户和系统时间，进入我的借阅里借阅信息查看借阅记录
-SimpleDateFormat formatter    =   new    SimpleDateFormat    ("yyyy年MM月dd日    HH:mm:ss     ");
-Date curDate    =   new    Date(System.currentTimeMillis());//获取当前时间
-String    str    =    formatter.format(curDate);
-SharedPreferences.Editor editor=getSharedPreferences("data",MODE_PRIVATE).edit();
-editor.putString("time",str);
-editor.apply();
-//借书日期
-SharedPreferences perf=getSharedPreferences("data",MODE_PRIVATE);
-String datetime=perf.getString("time","");//获得当前系统时间
-String username=perf.getString("users","");//获得当前用户名称
-
-还书功能
-点击还书，将借阅表中的数据删除，往还书表中添加记录pay
-payActivity.class
-
-在后台管理员中查询数据，
+# 按照功能分析代码模块11
+一、注册界面  activity_register.xml-----registerActivity.java------------------------------------------郑1
+二、登录界面  activity_main.xml----MainActivity.java---------------------------------------------------璇1
+1.普通用户登录：（目录：qiantai_main/）                                                              
+1）显示书本列表    activity-content.xml------contentActivity.java -----------------------------璇2
+2）显示侧边栏 menu/nav_menu.xml-------contentActivity.java(导入)--------------------------------璇3
+3）修改个人信息    activity_reader_update_info.xml-----ReaderUpdateInfo.java-------------------璇4
+4）我的收藏      activity_collect.xml-----collectActivity.java--------------------------------璇5
+5）借阅信息      activity_person_borrow.xml-----person_borrow.java----------------------------郑2
+6）图书详细信息界面      activity_borrow.xml-----borrowActivity.java----------------------------郑3
+2.管理员登录: （目录：houtai_admin)
+1）管理员登录界面       activity_admin.xml-----./AdminActivity.java-----------------------------郑4
+2）后台管理分式页面      activity_admin_content.xml-----admin_content.java----------------------郑5
+3）查询信息分式页面      activity_admin_select_message.xml-----admin_select_message.java -------祝1
+4）查看图书信息详细界面      activity_admin_select_bookinfo.xml-----admin_select_bookinfo.java---祝2
+5）点击修改图书信息      activity_admin_upadte_book.xml-----admin_update_book.java---------------祝3
+6）查看借阅信息详细界面        activity_admin_borrow_info.xml------admin_borrow_info.java--------祝4
+7）查看还书信息详细界面        activity_admin_pay_info.xml-----admin_pay_info.java---------------祝5
+8）管理图书分式页面      activity_admin_manager_book.xml-----admin_manager_book.java------------李1
+9）添加图书详细界面      activity_add_book.xml-----admin_add_book.java--------------------------李2
+10）查询图书搜索界面        activity_admin_search_book.xml-----admin_search_book.java-----------李3
+11）查询图书详细界面     activity_admin_search_bookinfo.xml-----admin_search_bookinfo.java------李4
+12）管理读者分式界面     activity_admin_manager_reader.xml-----admin_manager_reader.java--------李5
+13）查找读者详细界面     activity_select_reader_admin.xml-----select_reader_admin.java----------王1
+14）添加读者详细界面     activity_admin_add_reader.xml-----admin_add_reader.java----------------王2
+15）编辑读者列表界面     activity_admin_editer_reader.xml-----admin_editer_reader.java----------王3
+16）点击读者详细编辑界面       activity_admin_update_reader.xml-----admin_update_reader.java-----王4
+17）删除读者列表界面     activity_admin_delete_reader.xml-----admin_delete_reader.java----------王5
