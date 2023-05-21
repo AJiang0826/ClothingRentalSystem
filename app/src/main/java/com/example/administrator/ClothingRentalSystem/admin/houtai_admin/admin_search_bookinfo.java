@@ -1,5 +1,6 @@
 package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,10 +28,19 @@ public class admin_search_bookinfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_search_bookinfo);
         init();//界面初始化
-
     }
 
     private void init() {
+        //回退--初始后台管理
+        back_bt = (ImageButton) findViewById(R.id.sel_book_back);
+        back_bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(admin_search_bookinfo.this, admin_search_book.class);
+                startActivity(intent);
+            }
+        });
+
         listView = (ListView) findViewById(R.id.select_book_list);
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Bundle bundle=this.getIntent().getExtras();

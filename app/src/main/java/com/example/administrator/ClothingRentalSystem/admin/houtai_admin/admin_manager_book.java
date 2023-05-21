@@ -19,6 +19,7 @@ public class admin_manager_book extends BaseActivity {
     }
 
     private void init() {
+        //回退--初始后台管理
         back_bt = (ImageButton) findViewById(R.id.manbook_back);
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,6 +28,7 @@ public class admin_manager_book extends BaseActivity {
                 startActivity(intent);
             }
         });
+        //添加图书
         addbook = (ImageButton) findViewById(R.id.ad_add);
         addbook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +37,7 @@ public class admin_manager_book extends BaseActivity {
                 startActivity(intent);
             }
         });
+        //查询图书
         searchbook = (ImageButton) findViewById(R.id.ad_search);
         searchbook.setOnClickListener(new View.OnClickListener() {
             @Override
