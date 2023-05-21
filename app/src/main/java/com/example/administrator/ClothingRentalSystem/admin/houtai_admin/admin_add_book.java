@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 管理员添加图书的界面
+ * 管理员添加衣服的界面
  */
 
 public class admin_add_book extends BaseActivity implements View.OnClickListener {
@@ -92,9 +92,9 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
 
         Resources r = getResources();
         uri =  Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
-                + r.getResourcePackageName(R.drawable.book1) + "/"
-                + r.getResourceTypeName(R.drawable.book1) + "/"
-                + r.getResourceEntryName(R.drawable.book1));
+                + r.getResourcePackageName(R.drawable.clothes) + "/"
+                + r.getResourceTypeName(R.drawable.clothes) + "/"
+                + r.getResourceEntryName(R.drawable.clothes));
     }
 
     //对管理员输入的图书信息进行验证，全部符合要求才能通过

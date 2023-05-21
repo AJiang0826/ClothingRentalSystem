@@ -27,18 +27,17 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * 管理员添加图书的界面
+ * 管理员修改衣服的界面
  */
 
 public class admin_update_clothes extends BaseActivity implements View.OnClickListener {
     private ImageButton back_bt;
-    //    private EditText name_ed, author_Ed, page_ed, price_ed, publish_ed, intime_rd;
     private Button add_book_bt;
     private String str;
     private int id;
     private databaseHelp helper;
     Uri uri;
-    private ImageView clothesimg;
+    private ImageView ClothesImg;
     private EditText et_clothesid,et_clothesname,et_clothestype,et_clotheswriter,et_clothespublicer,et_clothesprice,et_clothesrank,et_clothescomment;
     private Button btn_clothescommit,btn_clothesback;
 
@@ -56,26 +55,25 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
         id = bundle.getInt("id")+1 ;
         Log.i("cursor", "initdata: " + id);
 
-        clothesimg=findViewById(R.id.clothesimg);
+        ClothesImg=findViewById(R.id.ClothesImg);
+        et_clothesid=findViewById(R.id.et_ClothesId;
+        et_clothesname=findViewById(R.id.et_ClothesName);
+        et_clothestype=findViewById(R.id.et_ClotheStype);
+        et_clotheswriter=findViewById(R.id.et_ClothesWriter);
+        et_clothespublicer=findViewById(R.id.et_ClothesPublicer);
+        et_clothesprice=findViewById(R.id.et_ClothesPrice);
+        et_clothesrank=findViewById(R.id.et_ClothesRank);
+        et_clothescomment=findViewById(R.id.et_ClothesComment);
 
-        et_clothesid=findViewById(R.id.et_clothesid);
-        et_clothesname=findViewById(R.id.et_clothesname);
-        et_clothestype=findViewById(R.id.et_clothestype);
-        et_clotheswriter=findViewById(R.id.et_clotheswriter);
-        et_clothespublicer=findViewById(R.id.et_clothespublicer);
-        et_clothesprice=findViewById(R.id.et_clothesprice);
-        et_clothesrank=findViewById(R.id.et_clothesrank);
-        et_clothescomment=findViewById(R.id.et_clothescomment);
 
-
-        btn_clothescommit=findViewById(R.id.btn_clothescommit);
-        btn_clothesback=findViewById(R.id.btn_clothesback);
+        btn_clothescommit=findViewById(R.id.Btn_ClothesCommit);
+        btn_clothesback=findViewById(R.id.Btn_ClothesBack);
 
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Cursor cursor = help.querybookinfoid(id);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            clothesimg.setImageURI(Uri.parse(cursor.getString(cursor.getColumnIndex("img"))));
+            ClothesImg.setImageURI(Uri.parse(cursor.getString(cursor.getColumnIndex("img"))));
             et_clothesid.setText(cursor.getString(cursor.getColumnIndex("bookid")));
             et_clothesname.setText(cursor.getString(cursor.getColumnIndex("name")));
             et_clotheswriter.setText(cursor.getString(cursor.getColumnIndex("writer")));
@@ -87,7 +85,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
         }
 
         btn_clothescommit.setOnClickListener(this);
-        clothesimg.setOnClickListener(this);
+        ClothesImg.setOnClickListener(this);
         btn_clothesback.setOnClickListener(this);
 
     }
@@ -96,16 +94,16 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         switch(view.getId()){
-            case R.id.btn_bookcommit:
+            case R.id.Btn_ClothesCommit:
                 //ISBN为十位，且不为空
                 if (et_clothesid.getText().length()!=10) {
-                    Toast.makeText(admin_update_clothes.this,"请输入10位图书ISBN",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(admin_update_clothes.this,"请输入10位衣服编码",Toast.LENGTH_SHORT).show();
                     testid=false;
                     break;
                 }
 
                 if(et_clothesname.getText().length()==0){
-                    Toast.makeText(admin_update_clothes.this,"请输入完整图书信息",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(admin_update_clothes.this,"请输入完整衣服信息",Toast.LENGTH_SHORT).show();
                     testother=false;
                     break;
                 }
@@ -125,13 +123,13 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                     break;
                 }
 
-            case R.id.bookimg:
+            case R.id.ClothesImg:
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 intent.setType("image/*");
                 startActivityForResult(intent,1);  // 第二个参数是请求码
                 break;
 
-            case R.id.btn_bookback:
+            case R.id.Btn_ClothesBack:
                 Intent intentback=new Intent();
                 intentback.setClass(admin_update_clothes.this, admin_select_clothesinfo.class);
                 startActivity(intentback);
@@ -168,7 +166,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                 }
             }
         }
-       clothesimg.setImageBitmap(bmp);
+        ClothesImg.setImageBitmap(bmp);
     }
 
     //    private void init() {
