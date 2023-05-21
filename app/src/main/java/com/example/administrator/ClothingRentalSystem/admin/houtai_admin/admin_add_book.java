@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 管理员添加图书的界面
+ * 管理员添加衣服的界面
  */
 
 public class admin_add_book extends BaseActivity implements View.OnClickListener {
@@ -41,9 +41,9 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
     private List<String> list = new ArrayList<String>();
     Uri uri;
     private String pub;
-    private ImageView bookimg;
-    private EditText et_bookid,et_bookname,et_booktype,et_bookwriter,et_bookpublicer,et_bookprice,et_bookrank,et_bookcomment;
-    private Button btn_bookcommit,btn_bookback;
+    private ImageView ClothesImg;
+    private EditText et_ClothesId,et_ClothesName,et_ClothesType,et_ClothesWriter,et_ClothesPublicer,et_ClothesPrice,et_ClothesRank,et_ClothesComment;
+    private Button btn_ClothesCommit,btn_ClothesBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,29 +72,29 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
     }
 
     private void initdata() {
-        bookimg=findViewById(R.id.bookimg);
+        ClothesImg=findViewById(R.id.ClothesImg);
 
-        et_bookid=findViewById(R.id.et_bookid);
-        et_bookname=findViewById(R.id.et_bookname);
-        et_booktype=findViewById(R.id.et_booktype);
-        et_bookwriter=findViewById(R.id.et_bookwriter);
-        et_bookprice=findViewById(R.id.et_bookprice);
-        et_bookrank=findViewById(R.id.et_bookrank);
-        et_bookcomment=findViewById(R.id.et_bookcomment);
+        et_ClothesId=findViewById(R.id.et_ClothesId);
+        et_ClothesName=findViewById(R.id.et_ClothesName);
+        et_ClothesType=findViewById(R.id.et_ClothesType);
+        et_ClothesWriter=findViewById(R.id.et_ClothesWriter);
+        et_ClothesPrice=findViewById(R.id.et_ClothesPrice);
+        et_ClothesRank=findViewById(R.id.et_ClothesRank);
+        et_ClothesComment=findViewById(R.id.et_ClothesComment);
 
         //按钮
-        btn_bookcommit=findViewById(R.id.btn_bookcommit);
-        btn_bookback=findViewById(R.id.btn_bookback);
+        btn_ClothesCommit=findViewById(R.id.btn_ClothesCommit);//添加
+        btn_ClothesBack=findViewById(R.id.btn_ClothesBack);//返回
 
-        btn_bookcommit.setOnClickListener(this);//添加按钮
-        bookimg.setOnClickListener(this);//选择图片
-        btn_bookback.setOnClickListener(this);//返回按钮
+        btn_ClothesCommit.setOnClickListener(this);//添加按钮
+        ClothesImg.setOnClickListener(this);//选择图片
+        btn_ClothesBack.setOnClickListener(this);//返回按钮
 
         Resources r = getResources();
         uri =  Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
-                + r.getResourcePackageName(R.drawable.book1) + "/"
-                + r.getResourceTypeName(R.drawable.book1) + "/"
-                + r.getResourceEntryName(R.drawable.book1));
+                + r.getResourcePackageName(R.drawable.clothes) + "/"
+                + r.getResourceTypeName(R.drawable.clothes) + "/"
+                + r.getResourceEntryName(R.drawable.clothes));
     }
 
     //对管理员输入的图书信息进行验证，全部符合要求才能通过
@@ -102,38 +102,38 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch(view.getId()){
-            case R.id.btn_bookcommit://点击选中添加按钮
+            case R.id.btn_ClothesCommit://点击选中添加按钮
                 //ISBN为十位，且不为空
-                if (et_bookid.getText().length()!=10) {
+                if (et_ClothesId.getText().length()!=10) {
                     Toast.makeText(admin_add_book.this,"请输入10位图书ISBN",Toast.LENGTH_SHORT).show();
                     testid=false;
                     break;
                 }
                 //书名不为空
-                if(et_bookname.getText().length()==0){
+                if(et_ClothesName.getText().length()==0){
                     Toast.makeText(admin_add_book.this,"请输入完整图书信息",Toast.LENGTH_SHORT).show();
                     testother=false;
                     break;
                 }
                 if(testid==true&&testother==true){
-                    helper.inserbooktdata(et_bookid.getText().toString(),et_bookname.getText().toString(),
-                            et_booktype.getText().toString(),et_bookwriter.getText().toString(),
-                            pub,et_bookprice.getText().toString(),
-                            et_bookrank.getText().toString(),et_bookcomment.getText().toString(),
+                    helper.inserbooktdata(et_ClothesId.getText().toString(),et_ClothesName.getText().toString(),
+                            et_ClothesType.getText().toString(),et_ClothesWriter.getText().toString(),
+                            pub,et_ClothesPrice.getText().toString(),
+                            et_ClothesRank.getText().toString(),et_ClothesComment.getText().toString(),
                             String.valueOf(uri));
                     Toast.makeText(admin_add_book.this,"添加图书成功！",Toast.LENGTH_SHORT).show();
                     break;
                 }
 
             //点击图片进行选择
-            case R.id.bookimg:
+            case R.id.ClothesImg:
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 intent.setType("image/*");
                 startActivityForResult(intent,1);  // 第二个参数是请求码
                 break;
 
             //回退按钮
-            case R.id.btn_bookback:
+            case R.id.btn_ClothesBack:
                 Intent intentback = new Intent();
                 intentback.setClass(admin_add_book.this,admin_manager_book.class);
                 startActivity(intentback);
@@ -170,7 +170,7 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
                 }
             }
         }
-        bookimg.setImageBitmap(bmp);
+        ClothesImg.setImageBitmap(bmp);
     }
 
 }

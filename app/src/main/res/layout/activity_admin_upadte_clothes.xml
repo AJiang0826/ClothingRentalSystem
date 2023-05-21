@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg5"
+    android:background="@drawable/bg"
     tools:context=".admin.houtai_admin.admin_update_clothes">
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,11 +16,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+
             android:text="商品图片 ："
             android:textSize="18sp" />
 
         <ImageView
-            android:id="@+id/clothesimg"
+            android:id="@+id/ClothesImg"
             android:layout_width="130dp"
             android:layout_height="80dp"
             android:layout_marginRight="50dp"
@@ -41,7 +42,7 @@
 
         <EditText
             android:text="0123456789"
-            android:id="@+id/et_clothesid"
+            android:id="@+id/et_ClothesId"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:inputType="number"
@@ -60,7 +61,7 @@
             android:textSize="18sp"/>
         <EditText
             android:text="花 嫁"
-            android:id="@+id/et_clothesname"
+            android:id="@+id/et_ClothesName"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"/>
@@ -78,7 +79,7 @@
             android:textSize="18sp"/>
         <EditText
             android:text="婚纱"
-            android:id="@+id/et_clothestype"
+            android:id="@+id/et_ClotheStype"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"/>
@@ -95,7 +96,7 @@
             android:textSize="18sp"/>
         <EditText
             android:text="匠心"
-            android:id="@+id/et_clotheswriter"
+            android:id="@+id/et_ClothesWriter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"/>
@@ -112,7 +113,7 @@
             android:textSize="18sp"/>
         <EditText
             android:text="S、M、L"
-            android:id="@+id/et_clothespublicer"
+            android:id="@+id/et_ClothesPublicer"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"/>
@@ -129,7 +130,7 @@
             android:textSize="18sp"/>
         <EditText
             android:text="30"
-            android:id="@+id/et_clothesprice"
+            android:id="@+id/et_ClothesPrice"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"/>
@@ -146,7 +147,7 @@
             android:textSize="18sp"/>
         <EditText
             android:text="9.8"
-            android:id="@+id/et_clothesrank"
+            android:id="@+id/et_ClothesRank"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3" />
@@ -163,7 +164,7 @@
             android:textSize="18sp"/>
         <EditText
             android:text="讲述了一段关于这件衣服的故事"
-            android:id="@+id/et_clothescomment"
+            android:id="@+id/et_ClothesComment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3" />
@@ -175,7 +176,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp">
         <Button
-            android:id="@+id/btn_clothescommit"
+            android:id="@+id/Btn_ClothesCommit"
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:layout_width="120dp"
@@ -184,7 +185,7 @@
             android:text="修改"/>
         <Button
             android:layout_marginLeft="20dp"
-            android:id="@+id/btn_clothesback"
+            android:id="@+id/Btn_ClothesBack"
             android:text="返回"
             android:textColor="@color/black"
             android:layout_gravity="center"

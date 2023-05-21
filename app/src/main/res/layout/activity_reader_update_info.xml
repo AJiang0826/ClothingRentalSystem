@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/bg5"
+    android:background="@drawable/bg"
     tools:context="com.example.administrator.ClothingRentalSystem.admin.registerActivity">
 
     <TextView
@@ -21,50 +21,58 @@
 
     <EditText
         android:id="@+id/u_name"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:background="@drawable/sharp"
+        android:ems="20"
+        android:hint="请输入用户名"
         android:inputType="textPersonName"
-        android:hint="请输入用户名" />
+        android:textSize="20sp" />
+
 
     <EditText
         android:id="@+id/u_password"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:background="@drawable/sharp"
+        android:ems="20"
         android:inputType="textPassword"
-        android:hint="请输入密码"/>
+        android:hint="请输入密码"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/user_name"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:background="@drawable/sharp"
         android:hint="姓名"/>
     <EditText
         android:id="@+id/u_sex"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:background="@drawable/sharp"
         android:hint="请输入性别" />
 
     <EditText
         android:id="@+id/u_birthday"
-        android:layout_width="wrap_content"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:background="@drawable/sharp"
         android:hint="请输入生日"/>
     <EditText
         android:id="@+id/u_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:background="@drawable/sharp"
         android:hint="请输入手机号" />
 
 
     <Button
         android:id="@+id/r_register"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="修改"
@@ -72,6 +80,6 @@
         android:layout_alignBottom="@+id/r_back"
         android:layout_alignRight="@+id/r_password"
         android:layout_alignEnd="@+id/r_password"
-        android:background="#D1EEEE"
+        android:background="#a5c3d4"
         android:textSize="18sp"/>
 </LinearLayout>

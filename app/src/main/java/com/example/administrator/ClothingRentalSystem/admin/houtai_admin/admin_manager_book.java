@@ -8,8 +8,11 @@ import android.widget.ImageButton;
 import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
 
+/*
+* 衣物管理分式界面【第二层】
+* */
 public class admin_manager_book extends BaseActivity {
-    private ImageButton back_bt, addbook, editbook, searchbook;
+    private ImageButton back_bt, addClothes, editClothes, searchClothes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +23,7 @@ public class admin_manager_book extends BaseActivity {
 
     private void init() {
         //回退--初始后台管理
-        back_bt = (ImageButton) findViewById(R.id.manbook_back);
+        back_bt = (ImageButton) findViewById(R.id.manClothes_back);
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -29,8 +32,8 @@ public class admin_manager_book extends BaseActivity {
             }
         });
         //添加图书
-        addbook = (ImageButton) findViewById(R.id.ad_add);
-        addbook.setOnClickListener(new View.OnClickListener() {
+        addClothes = (ImageButton) findViewById(R.id.ad_add);
+        addClothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(admin_manager_book.this, admin_add_book.class);
@@ -38,8 +41,8 @@ public class admin_manager_book extends BaseActivity {
             }
         });
         //查询图书
-        searchbook = (ImageButton) findViewById(R.id.ad_search);
-        searchbook.setOnClickListener(new View.OnClickListener() {
+        searchClothes = (ImageButton) findViewById(R.id.ad_search);
+        searchClothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(admin_manager_book.this, admin_search_book.class);

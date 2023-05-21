@@ -15,11 +15,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="图书信息"
+            android:text="衣服信息"
             android:textSize="30sp" />
 
         <ImageButton
-            android:id="@+id/sel_book_back"
+            android:id="@+id/sel_clothes_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -51,26 +51,26 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:singleLine="true"
-            android:text="书名"
+            android:text="衣服名"
             android:textSize="12sp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:singleLine="true"
-            android:text="作者"
-            android:textSize="12sp" />
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:singleLine="true"-->
+<!--            android:text="设计者"-->
+<!--            android:textSize="12sp" />-->
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:singleLine="true"
-            android:text="类型"
-            android:textSize="12sp" />
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:singleLine="true"-->
+<!--            android:text="种类"-->
+<!--            android:textSize="12sp" />-->
 
         <TextView
             android:layout_width="0dp"
@@ -81,14 +81,14 @@
             android:text="价格"
             android:textSize="12sp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:singleLine="true"
-            android:text="评分"
-            android:textSize="12sp" />
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:singleLine="true"-->
+<!--            android:text="评分"-->
+<!--            android:textSize="12sp" />-->
 
         <TextView
             android:layout_width="0dp"
@@ -96,14 +96,14 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:singleLine="true"
-            android:text="出版社"
+            android:text="衣服尺码"
             android:textSize="12sp" />
 
     </LinearLayout>
 
     <ListView
 
-        android:id="@+id/select_book_list"
+        android:id="@+id/select_clothes_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 

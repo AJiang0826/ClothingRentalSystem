@@ -16,7 +16,7 @@ import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 
 /**
- * 管理员查询图书信息
+ * 管理员查询衣物详细信息【搜索结果】
  */
 
 public class admin_search_bookinfo extends AppCompatActivity {
@@ -32,7 +32,7 @@ public class admin_search_bookinfo extends AppCompatActivity {
 
     private void init() {
         //回退--初始后台管理
-        back_bt = (ImageButton) findViewById(R.id.sel_book_back);
+        back_bt = (ImageButton) findViewById(R.id.Sel_Clothes_Back);
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,18 +41,19 @@ public class admin_search_bookinfo extends AppCompatActivity {
             }
         });
 
-        listView = (ListView) findViewById(R.id.select_book_list);
+        listView = (ListView) findViewById(R.id.Select_Clothes_List);
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Bundle bundle=this.getIntent().getExtras();
         name=bundle.getString("name");
         Cursor cursor = help.querybookinfoname(name);
         String from[] = {"name", "type", "writer","publicer","rank","img"};
-        int to[] = {R.id.book_name, R.id.book_type, R.id.book_author, R.id.book_publish, R.id.book_rank, R.id.book_info_img};
+        int to[] = {R.id.book_name, R.id.Clothes_Type, R.id.Clothes_Author, R.id.Clothes_Publish, R.id.Clothes_Rank, R.id.Clothes_Info_Img};
+        //调用admin_book_item.xml，上边一行id来自该xml
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.admin_book_item, cursor, from, to);
         adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
             @Override
             public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-                if (view.getId() == R.id.book_info_img) {
+                if (view.getId() == R.id.Clothes_Info_Img) {
                     ImageView imageView = (ImageView) view;
                     imageView.setImageURI(Uri.parse(cursor.getString(columnIndex)));
                     return true;
