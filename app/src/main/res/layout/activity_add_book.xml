@@ -24,8 +24,9 @@
             android:layout_height="80dp"
             android:layout_marginRight="50dp"
             android:src="@drawable/book1"/>
-       
+
     </LinearLayout>
+
     <LinearLayout
         android:layout_marginTop="5dp"
         android:orientation="horizontal"
@@ -48,6 +49,7 @@
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890*/@#$%^"
             android:layout_weight="3"/>
     </LinearLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -83,6 +85,7 @@
             android:layout_height="match_parent"
             android:layout_weight="3"/>
     </LinearLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -100,6 +103,7 @@
             android:layout_height="match_parent"
             android:layout_weight="3"/>
     </LinearLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -116,6 +120,7 @@
             android:id="@+id/spinner2"
             android:layout_weight="3" />
     </LinearLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -133,6 +138,7 @@
             android:layout_height="match_parent"
             android:layout_weight="3"/>
     </LinearLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -150,6 +156,7 @@
             android:layout_height="match_parent"
             android:layout_weight="3" />
     </LinearLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

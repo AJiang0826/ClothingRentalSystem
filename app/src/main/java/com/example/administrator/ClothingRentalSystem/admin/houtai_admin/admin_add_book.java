@@ -82,13 +82,13 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
         et_bookrank=findViewById(R.id.et_bookrank);
         et_bookcomment=findViewById(R.id.et_bookcomment);
 
-
+        //按钮
         btn_bookcommit=findViewById(R.id.btn_bookcommit);
         btn_bookback=findViewById(R.id.btn_bookback);
 
-        btn_bookcommit.setOnClickListener(this);
-        bookimg.setOnClickListener(this);
-        btn_bookback.setOnClickListener(this);
+        btn_bookcommit.setOnClickListener(this);//添加按钮
+        bookimg.setOnClickListener(this);//选择图片
+        btn_bookback.setOnClickListener(this);//返回按钮
 
         Resources r = getResources();
         uri =  Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
@@ -96,19 +96,20 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
                 + r.getResourceTypeName(R.drawable.book1) + "/"
                 + r.getResourceEntryName(R.drawable.book1));
     }
+
     //对管理员输入的图书信息进行验证，全部符合要求才能通过
     boolean testid=true,testother=true;
     @Override
     public void onClick(View view) {
         switch(view.getId()){
-            case R.id.btn_bookcommit:
+            case R.id.btn_bookcommit://点击选中添加按钮
                 //ISBN为十位，且不为空
                 if (et_bookid.getText().length()!=10) {
                     Toast.makeText(admin_add_book.this,"请输入10位图书ISBN",Toast.LENGTH_SHORT).show();
                     testid=false;
                     break;
                 }
-
+                //书名不为空
                 if(et_bookname.getText().length()==0){
                     Toast.makeText(admin_add_book.this,"请输入完整图书信息",Toast.LENGTH_SHORT).show();
                     testother=false;
@@ -124,15 +125,16 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
                     break;
                 }
 
-
+            //点击图片进行选择
             case R.id.bookimg:
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 intent.setType("image/*");
                 startActivityForResult(intent,1);  // 第二个参数是请求码
                 break;
 
+            //回退按钮
             case R.id.btn_bookback:
-                Intent intentback=new Intent();
+                Intent intentback = new Intent();
                 intentback.setClass(admin_add_book.this,admin_manager_book.class);
                 startActivity(intentback);
         }
