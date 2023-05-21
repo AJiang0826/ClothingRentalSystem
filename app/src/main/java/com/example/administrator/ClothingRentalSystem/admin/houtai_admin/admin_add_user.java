@@ -19,7 +19,7 @@ import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
 /**
  * 管理员添加读者
  */
-public class admin_add_reader extends BaseActivity {
+public class admin_add_user extends BaseActivity {
     private EditText user_ed, username ,pwd_ed,  birthday, phone, sex;
     private Button addreader;
 
@@ -64,7 +64,7 @@ public class admin_add_reader extends BaseActivity {
                     do {
                         String username = cursor.getString(cursor.getColumnIndex("user"));
                         if (username.equals(user_ed.getText().toString())) {
-                            Toast.makeText(admin_add_reader.this, "用户名已存在", Toast.LENGTH_LONG).show();
+                            Toast.makeText(admin_add_user.this, "用户名已存在", Toast.LENGTH_LONG).show();
                             ((EditText) findViewById(R.id.r_name)).setText("");
                             return;
                         }
@@ -74,8 +74,8 @@ public class admin_add_reader extends BaseActivity {
                 }
                 cursor.close();
                 help.insert(values);
-                Toast.makeText(admin_add_reader.this, "用户添加成功", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(admin_add_reader.this, admin_manager_reader.class);
+                Toast.makeText(admin_add_user.this, "用户添加成功", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(admin_add_user.this, admin_manager_reader.class);
                 startActivity(intent);
                 ActivityCollector.finishAll();
             }

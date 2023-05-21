@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.administrator.ClothingRentalSystem.R;
 
 /**
- * 管理读者
+ * 管理用户
  */
 
 public class admin_manager_reader extends AppCompatActivity {
@@ -47,7 +47,7 @@ public class admin_manager_reader extends AppCompatActivity {
         addreader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_manager_reader.this, admin_add_reader.class);
+                Intent intent = new Intent(admin_manager_reader.this, admin_add_user.class);
                 startActivity(intent);
             }
         });
