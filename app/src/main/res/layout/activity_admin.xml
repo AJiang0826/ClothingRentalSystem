@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg5"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.example.administrator.ClothingRentalSystem.admin.AdminActivity">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="管理员登录"
+        android:textColor="#37302F"
+        android:textSize="30sp"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/imageView"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:text="用户名：" />
+
+        <EditText
+            android:id="@+id/a_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text="admin"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:text="姓名："
+            app:srcCompat="@mipmap/pwd1" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_alignTop="@+id/imageview2"
+            android:layout_alignLeft="@+id/a_name"
+            android:layout_alignStart="@+id/a_name"
+            android:text="admin"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/imageview2"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:text="密码："
+            app:srcCompat="@mipmap/pwd1" />
+
+        <EditText
+            android:id="@+id/a_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:layout_alignTop="@+id/imageview2"
+            android:layout_alignLeft="@+id/a_name"
+            android:layout_alignStart="@+id/a_name"
+            android:text="123456"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:gravity="center">
+        <Button
+            android:id="@+id/a_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="登录"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#D1EEEE"
+            android:textColor="#37302F"
+            android:textSize="15sp"/>
+        <Button
+            android:id="@+id/a_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="返回"
+            android:layout_marginTop="20dp"
+            android:background="#D1EEEE"
+            android:textColor="#37302F"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+</LinearLayout>
+
