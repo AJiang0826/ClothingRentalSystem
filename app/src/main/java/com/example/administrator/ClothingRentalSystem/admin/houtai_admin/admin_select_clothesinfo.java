@@ -20,7 +20,7 @@ import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 
 /**
- * 管理员查询图书信息
+ * 管理员查衣服信息
  */
 
 public class admin_select_clothesinfo extends AppCompatActivity {
@@ -37,14 +37,6 @@ public class admin_select_clothesinfo extends AppCompatActivity {
 
     private void init() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        back_bt = (ImageButton) findViewById(R.id.sel_clothes_back);
-        back_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(admin_select_clothesinfo.this, admin_select_message.class);
-                startActivity(intent);
-            }
-        });
         listView = (ListView) findViewById(R.id.select_clothes_list);
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Cursor cursor = help.querybookinfo();

@@ -6,30 +6,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_select_clothesinfo">
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:text="衣服信息"
+            android:textColor="#000000"
             android:textSize="30sp" />
 
-        <ImageButton
-            android:id="@+id/sel_clothes_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:background="#fff"
-            app:srcCompat="@mipmap/left_arrow" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/sel_clothes_back"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentLeft="true"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:background="#fff"-->
+<!--            app:srcCompat="@mipmap/left_arrow" />-->
 
-    </RelativeLayout>
+    </LinearLayout>
     <LinearLayout
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
@@ -43,6 +44,7 @@
             android:gravity="center_horizontal"
             android:singleLine="true"
             android:text="图片"
+            android:textColor="#000000"
             android:textSize="12sp" />
 
         <TextView
@@ -52,6 +54,7 @@
             android:gravity="center_horizontal"
             android:singleLine="true"
             android:text="衣服名"
+            android:textColor="#000000"
             android:textSize="12sp" />
 
 <!--        <TextView-->
@@ -79,6 +82,7 @@
             android:gravity="center_horizontal"
             android:singleLine="true"
             android:text="价格"
+            android:textColor="#000000"
             android:textSize="12sp" />
 
 <!--        <TextView-->
@@ -97,6 +101,7 @@
             android:gravity="center_horizontal"
             android:singleLine="true"
             android:text="衣服尺码"
+            android:textColor="#000000"
             android:textSize="12sp" />
 
     </LinearLayout>

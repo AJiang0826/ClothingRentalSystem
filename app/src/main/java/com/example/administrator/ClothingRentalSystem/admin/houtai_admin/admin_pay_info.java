@@ -23,14 +23,6 @@ private ImageButton back_bt;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_pay_info);
         ad_pay=(ListView)findViewById(R.id.ad_show_pay);
-        back_bt = (ImageButton) findViewById(R.id.sel_clothes_back);
-        back_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(admin_pay_info.this, admin_select_message.class);
-                startActivity(intent);
-            }
-        });
         databaseHelp help=new databaseHelp(getApplicationContext());
         List<Map<String, Object>> data = help.querypay();
         SimpleAdapter adapter = new SimpleAdapter(
