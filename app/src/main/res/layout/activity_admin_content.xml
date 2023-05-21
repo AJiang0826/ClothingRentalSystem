@@ -122,9 +122,7 @@
                 android:layout_toEndOf="@id/manager_reader"
                 android:layout_toRightOf="@id/manager_reader"
                 android:text="管理读者"
-                android:textSize="20sp"
-
-                />
+                android:textSize="20sp"  />
 
             <ImageButton
                 android:id="@+id/ad_manager_reader"

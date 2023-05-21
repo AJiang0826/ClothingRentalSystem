@@ -12,7 +12,7 @@
         <item
             android:id="@+id/jieyue"
             android:icon="@mipmap/jieyue"
-            android:title="借阅信息" />
+            android:title="服装租借信息" />
         <item
             android:id="@+id/exit"
             android:icon="@mipmap/exit"

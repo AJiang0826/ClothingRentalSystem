@@ -32,6 +32,7 @@
             app:srcCompat="@mipmap/left_arrow" />
 
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
@@ -170,9 +171,7 @@
             android:layout_toEndOf="@id/deleteReader"
             android:layout_toRightOf="@id/deleteReader"
             android:text="删除读者"
-            android:textSize="20sp"
-
-            />
+            android:textSize="20sp"  />
 
         <ImageButton
             android:id="@+id/ad_deleteReader"
