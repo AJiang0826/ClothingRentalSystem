@@ -45,6 +45,7 @@
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.registerActivity" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.AdminActivity" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.contentActivity" />
+        <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.select_reader_admininfo" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_content" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_select_message" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_manager_book" />
