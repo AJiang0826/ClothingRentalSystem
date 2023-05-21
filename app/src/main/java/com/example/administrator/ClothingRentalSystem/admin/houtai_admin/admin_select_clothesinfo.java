@@ -37,7 +37,7 @@ public class admin_select_bookinfo extends AppCompatActivity {
 
     private void init() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        back_bt = (ImageButton) findViewById(R.id.sel_book_back);
+        back_bt = (ImageButton) findViewById(R.id.sel_clothes_back);
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,7 +45,7 @@ public class admin_select_bookinfo extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        listView = (ListView) findViewById(R.id.select_book_list);
+        listView = (ListView) findViewById(R.id.select_clothes_list);
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Cursor cursor = help.querybookinfo();
         String from[] = {"name", "type", "writer","publicer","rank","img", "price"};
@@ -64,6 +64,7 @@ public class admin_select_bookinfo extends AppCompatActivity {
             }
         });
         listView.setAdapter(adapter);
+        //长时间停留则跳出来是否删除
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {

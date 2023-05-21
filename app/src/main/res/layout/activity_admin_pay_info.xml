@@ -6,7 +6,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_pay_info">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:text="还衣信息"
+            android:textColor="#000000"
+            android:textSize="30sp" />
+
+        <ImageButton
+            android:id="@+id/sel_clothes_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:background="#fff"
+            app:srcCompat="@mipmap/left_arrow" />
+
+    </RelativeLayout>
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -19,22 +45,22 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="读者名称 "/>
+            android:text="客户名称"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="书籍编号 "/>
+            android:text="衣服编号 "/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="书籍名称 "/>
+            android:text="衣服尺码 "/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="还书日期 "/>
+            android:text="归还日期 "/>
 
     </LinearLayout>
     <ListView

@@ -5,20 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg5"
+    android:background="@drawable/bg"
     tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_select_message">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="370dp"
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:text="查询信息"
-            android:textSize="30sp"  />
+            android:textColor="#000000"
+            android:textSize="30sp" />
 
         <ImageButton
             android:id="@+id/sel_back"
@@ -27,7 +28,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="50dp"
             android:background="#fff"
             app:srcCompat="@mipmap/left_arrow" />
 
@@ -36,10 +37,10 @@
     <RelativeLayout
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
-        android:layout_width="match_parent"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-
+        android:background="@drawable/clothes_update_shape"
         android:orientation="horizontal">
 
         <ImageView
@@ -74,10 +75,10 @@
     <RelativeLayout
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
-        android:layout_width="match_parent"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-
+        android:background="@drawable/clothes_update_shape"
         android:orientation="horizontal">
 
         <ImageView
@@ -108,12 +109,12 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="match_parent"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/clothes_update_shape"
         android:orientation="horizontal">
 
         <ImageView
@@ -124,10 +125,10 @@
             android:src="@mipmap/bpay" />
 
         <TextView
-            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/manager_pay"
+            android:layout_marginLeft="10dp"
             android:layout_toEndOf="@id/manager_pay"
             android:layout_toRightOf="@id/manager_pay"
             android:text="还衣信息"
