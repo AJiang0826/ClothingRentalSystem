@@ -102,7 +102,7 @@
             android:text="登录"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
-            android:background="#D1EEEE"
+            android:background="#a5c3d4"
             android:textColor="#37302F"
             android:textSize="15sp"/>
         <Button
@@ -112,7 +112,7 @@
             android:layout_weight="1"
             android:text="返回"
             android:layout_marginTop="20dp"
-            android:background="#D1EEEE"
+            android:background="#a5c3d4"
             android:textColor="#37302F"
             android:textSize="15sp"/>
     </LinearLayout>
