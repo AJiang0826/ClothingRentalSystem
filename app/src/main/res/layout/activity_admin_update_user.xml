@@ -13,7 +13,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="修改信息"
+        android:text="修改用户信息"
         android:gravity="center"
         android:layout_marginBottom="20dp"
         android:textColor="#37302F"

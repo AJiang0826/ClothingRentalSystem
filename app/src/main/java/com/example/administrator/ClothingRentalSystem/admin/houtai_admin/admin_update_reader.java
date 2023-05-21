@@ -27,7 +27,7 @@ public class admin_update_reader extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_update_reader);
+        setContentView(R.layout.activity_admin_update_user);
         inut();//初始化界面
     }
 
@@ -74,7 +74,7 @@ public class admin_update_reader extends BaseActivity {
                 values.put("phone", phonenum);
                 values.put("birthday", birth);
                 db.update("admin", values, "_id=?", new String[]{String.valueOf(id)});
-                Intent intent = new Intent(admin_update_reader.this, admin_editer_reader.class);
+                Intent intent = new Intent(admin_update_reader.this, admin_editer_user.class);
                 startActivity(intent);
                 ActivityCollector.finishAll();
             }
