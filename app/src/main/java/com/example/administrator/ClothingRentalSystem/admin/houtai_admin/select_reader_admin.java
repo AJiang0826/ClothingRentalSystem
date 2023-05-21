@@ -16,12 +16,15 @@ import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 
 /**
  * 查找读者的界面
+ * 功能有：1.通过用户名查询用户
+ *       2.显示所有用户
+ *
+ * 变量含义：1.
  *
  */
 public class select_reader_admin extends AppCompatActivity {
 private ListView listView;
 
-    private String name;
     private Button search_btn;
     private EditText search_name;
     @Override
