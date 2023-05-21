@@ -27,7 +27,7 @@ public class admin_update_reader extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_update_reader);
+        setContentView(R.layout.activity_admin_update_user);
         inut();//初始化界面
     }
 
