@@ -67,7 +67,7 @@
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.person_pay" />
         <service android:name="com.example.administrator.ClothingRentalSystem.admin.MyService"></service>
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.AdapterActivity"></activity>
-        <receiver android:name="com.example.administrator.ClothingRentalSystem.admin.CloseCompleteReceiver">
+        <receiver android:name="com.example.administrator.ClothingRentalSystem.admin.BootCompleteReceiver">
             <intent-filter>
                 <!--注册开机广播地址-->
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

@@ -20,7 +20,7 @@ import java.util.List;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     private Context context;
-    private List<book> mBookList;
+    private List<book2> mBookList;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
@@ -36,7 +36,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     }
 
-    public BookAdapter(List<book> bookList) {
+    public BookAdapter(List<book2> bookList) {
         mBookList = bookList;
 
     }
@@ -53,7 +53,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        book book1 = mBookList.get(position);
+        book2 book1 = mBookList.get(position);
         holder.textView.setText(book1.getName());
 
         Glide.with(context).load(book1.getImageId()).into(holder.imageView);
