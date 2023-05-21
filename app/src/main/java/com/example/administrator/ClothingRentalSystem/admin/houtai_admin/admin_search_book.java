@@ -20,6 +20,7 @@ public class admin_search_book extends AppCompatActivity {
         setContentView(R.layout.activity_admin_search_book);
         search = findViewById(R.id.search_btn);
         search_name = findViewById(R.id.search_name);
+        //搜索按钮加监听
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

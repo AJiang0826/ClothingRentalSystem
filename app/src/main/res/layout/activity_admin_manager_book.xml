@@ -108,6 +108,7 @@
             android:src="@mipmap/right_arrow" />
     </RelativeLayout>
 
+<!--
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -144,4 +145,6 @@
             android:background="#fff"
             android:src="@mipmap/right_arrow" />
     </RelativeLayout>
+    -->
+
 </LinearLayout>

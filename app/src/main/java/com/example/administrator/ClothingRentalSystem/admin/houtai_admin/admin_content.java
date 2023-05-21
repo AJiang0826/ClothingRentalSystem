@@ -38,15 +38,6 @@ public class admin_content extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //管理读者
-        manReader_bt=(ImageButton)findViewById(R.id.ad_manager_reader);
-        manReader_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(admin_content.this,admin_manager_reader.class);
-                startActivity(intent);
-            }
-        });
         //管理图书
         manBook_bt=(ImageButton)findViewById(R.id.ad_manager_book);
         manBook_bt.setOnClickListener(new View.OnClickListener() {
@@ -56,8 +47,15 @@ public class admin_content extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
+        //管理读者
+        manReader_bt=(ImageButton)findViewById(R.id.ad_manager_reader);
+        manReader_bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(admin_content.this,admin_manager_reader.class);
+                startActivity(intent);
+            }
+        });
     }
     public void exit() {
         if ((System.currentTimeMillis() - mExitTime) > 2000) {
@@ -69,6 +67,4 @@ public class admin_content extends AppCompatActivity {
             System.exit(0);
         }
     }
-
-
 }
