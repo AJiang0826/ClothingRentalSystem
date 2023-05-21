@@ -5,33 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_select_clothesinfo">
+    tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_delete_user">
+
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="搜索结果"
+            android:text="删除用户"
             android:textSize="30sp" />
-<!--
-        <ImageButton
-            android:id="@+id/sel_book_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:background="#fff"
-            android:visibility="gone"
-            app:srcCompat="@mipmap/left_arrow" />-->
 
         <ImageButton
-            android:id="@+id/Sel_Clothes_Back"
+            android:id="@+id/edituser_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -44,78 +32,67 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="5dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:singleLine="true"
-            android:text="图片"
-            android:textSize="12sp" />
+            android:text="用户名"
+            android:textSize="14sp" />
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="5dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:singleLine="true"
-            android:text="书名"
-            android:textSize="12sp" />
+            android:text="密码"
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:gravity="center_horizontal"
             android:singleLine="true"
-            android:text="作者"
-            android:textSize="12sp" />
+            android:text="姓名"
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:gravity="center_horizontal"
             android:singleLine="true"
-            android:text="类型"
-            android:textSize="12sp" />
+            android:text="性别"
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:gravity="center_horizontal"
             android:singleLine="true"
-            android:text="价格"
-            android:textSize="12sp" />
+            android:text="生日"
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:gravity="center_horizontal"
             android:singleLine="true"
-            android:text="评分"
-            android:textSize="12sp" />
+            android:text="手机号"
+            android:textSize="14sp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:singleLine="true"
-            android:text="出版社"
-            android:textSize="12sp" />
 
     </LinearLayout>
-
     <ListView
-        android:id="@+id/Select_Clothes_List"
+        android:id="@+id/edit_user_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 </LinearLayout>

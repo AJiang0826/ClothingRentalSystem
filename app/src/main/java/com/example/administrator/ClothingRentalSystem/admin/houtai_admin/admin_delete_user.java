@@ -18,34 +18,38 @@ import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 
 /**
  * 管理员删除读者
+ * 功能：1.删除用户信息
+ *      2.点击删除会跳出弹窗询问是否删除
+ * 变量：1.listView
+ *      2.back_bt删除按钮
  */
-public class admin_delete_reader extends AppCompatActivity {
+public class admin_delete_user extends AppCompatActivity {
     private ListView listView;
     private ImageButton back_bt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_delete_reader);
+        setContentView(R.layout.activity_admin_delete_user);//删除界面
         init();//初始化界面
 
     }
 
     private void init() {
-        back_bt = (ImageButton) findViewById(R.id.editreader_back);
+        back_bt = (ImageButton) findViewById(R.id.edituser_back);
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_delete_reader.this, admin_manager_reader.class);
+                Intent intent = new Intent(admin_delete_user.this, admin_manager_reader.class);
                 startActivity(intent);
             }
         });
-        listView = (ListView) findViewById(R.id.edit_reader_list);
+        listView = (ListView) findViewById(R.id.edit_user_list);
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Cursor cursor = help.query();
         String from[]={"user","password","name", "sex", "birthday", "phone"};
-        int to[]={R.id.read_user,R.id.read_pwd,R.id.read_name, R.id.read_sex, R.id.read_birth, R.id.read_phone};
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.select_reader_item, cursor, from, to);
+        int to[]={R.id.user_user,R.id.user_pwd,R.id.user_name, R.id.user_sex, R.id.user_birth, R.id.user_phone};
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.select_user_item, cursor, from, to);
         listView.setAdapter(adapter);
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //listview的单击事件监听
@@ -60,8 +64,8 @@ public class admin_delete_reader extends AppCompatActivity {
                         //删除后重新显示
                         Cursor cursor = help.query();
                         String from[]={"user","password","name", "sex", "birthday", "phone"};
-                        int to[]={R.id.read_user,R.id.read_pwd,R.id.read_name, R.id.read_sex, R.id.read_birth, R.id.read_phone};
-                        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.select_reader_item, cursor, from, to);
+                        int to[]={R.id.user_user,R.id.user_pwd,R.id.user_name, R.id.user_sex, R.id.user_birth, R.id.user_phone};
+                        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.select_user_item, cursor, from, to);
                         listView.setAdapter(adapter);
 
                     }

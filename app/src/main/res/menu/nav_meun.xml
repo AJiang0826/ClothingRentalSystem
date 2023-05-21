@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+           android:width="120dp" android:height="32dp">
         <item
             android:id="@+id/updateInfo"
             android:icon="@mipmap/shoucang"
-            android:title="修改个人信息" />
+            android:title="修改个人信息"
+            />
         <item
             android:id="@+id/shoucang"
             android:icon="@mipmap/shoucang"
@@ -12,7 +14,7 @@
         <item
             android:id="@+id/jieyue"
             android:icon="@mipmap/jieyue"
-            android:title="借阅信息" />
+            android:title="服装租借信息" />
         <item
             android:id="@+id/exit"
             android:icon="@mipmap/exit"

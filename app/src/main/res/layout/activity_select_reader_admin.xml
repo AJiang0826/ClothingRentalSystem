@@ -5,14 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.select_reader_admin">
+    tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.select_user_admin">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/search_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入搜素的用户名"
+            android:layout_weight="0.3"/>
 
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:background="#B8D6DA"
+            android:shadowRadius="20"
+            android:text="搜索用户" />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="5dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
@@ -21,7 +40,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="5dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"

@@ -72,7 +72,7 @@
         android:layout_alignBottom="@+id/r_back"
         android:layout_alignRight="@+id/r_password"
         android:layout_alignEnd="@+id/r_password"
-        android:background="#D1EEEE"
+        android:background="#B8D6DA"
         android:textColor="#37302F"
         android:textSize="15sp"/>
 </LinearLayout>

@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_delete_reader">
-
+    tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_editer_user">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -15,11 +14,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="删除读者"
+            android:text="编辑用户"
             android:textSize="30sp" />
 
         <ImageButton
-            android:id="@+id/editreader_back"
+            android:id="@+id/deleteuser_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -35,18 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:singleLine="true"
-            android:text="编号"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="0dp"
+            android:layout_width="5dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
@@ -55,7 +44,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="5dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
@@ -69,14 +58,41 @@
             android:layout_weight="2"
             android:gravity="center_horizontal"
             android:singleLine="true"
-            android:text="邮箱"
+            android:text="姓名"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            android:singleLine="true"
+            android:text="性别"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            android:singleLine="true"
+            android:text="生日"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            android:singleLine="true"
+            android:text="手机号"
             android:textSize="14sp" />
 
 
     </LinearLayout>
 
     <ListView
-        android:id="@+id/edit_reader_list"
+        android:id="@+id/delete_user_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 </LinearLayout>
