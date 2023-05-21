@@ -1,7 +1,11 @@
 package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -16,6 +20,10 @@ import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
  */
 public class select_reader_admin extends AppCompatActivity {
 private ListView listView;
+
+    private String name;
+    private Button search_btn;
+    private EditText search_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,5 +35,18 @@ private ListView listView;
         int to[]={R.id.read_user,R.id.read_pwd,R.id.read_name, R.id.read_sex, R.id.read_birth, R.id.read_phone};
         SimpleCursorAdapter adapter=new SimpleCursorAdapter(this,R.layout.select_reader_item,cursor,from,to);
         listView.setAdapter(adapter);
+
+
+        search_btn=findViewById(R.id.search_btn);
+        search_name = findViewById(R.id.search_name);
+        search_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(select_reader_admin.this, select_reader_admininfo.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("name",search_name.getText().toString());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 }

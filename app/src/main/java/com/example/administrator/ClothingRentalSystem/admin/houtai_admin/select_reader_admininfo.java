@@ -25,7 +25,7 @@ public class select_reader_admininfo extends AppCompatActivity {
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Bundle bundle=this.getIntent().getExtras();
         name=bundle.getString("name");
-        Cursor cursor = help.querybookinfoname(name);
+        Cursor cursor = help.queryname(name);
         String from[]={"user","password","name", "sex", "birthday", "phone"};
         int to[]={R.id.read_user, R.id.read_pwd, R.id.read_name, R.id.read_sex, R.id.read_birth, R.id.read_phone};
         SimpleCursorAdapter adapter=new SimpleCursorAdapter(this, R.layout.select_reader_item,cursor,from,to);
