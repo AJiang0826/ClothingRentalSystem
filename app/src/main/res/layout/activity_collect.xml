@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@drawable/bg"
     tools:context="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.person_borrow">
     <LinearLayout
         android:layout_width="fill_parent"
@@ -15,7 +15,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:layout_gravity="center_vertical"
             android:text="用户名"
             />
@@ -23,7 +23,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:layout_gravity="center_vertical"
             android:text="服装编号"
             />
@@ -31,22 +31,23 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:layout_gravity="center_vertical"
             android:text="服装名称"
-            /> <TextView
+            />
+        <TextView
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:textSize="20sp"
         android:layout_gravity="center_vertical"
-        android:text="服装设计师"
+        android:text="设计师"
         />
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:layout_gravity="center_vertical"
             android:text="收藏日期"
             />
