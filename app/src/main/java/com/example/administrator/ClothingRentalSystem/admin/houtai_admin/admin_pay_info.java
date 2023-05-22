@@ -22,7 +22,7 @@ private ImageButton back_bt;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_pay_info);
-        ad_pay=(ListView)findViewById(R.id.ad_show_pay);
+        ad_pay=(ListView)findViewById(R.id.Add_Show_Pay);
         databaseHelp help=new databaseHelp(getApplicationContext());
         List<Map<String, Object>> data = help.querypay();
         SimpleAdapter adapter = new SimpleAdapter(

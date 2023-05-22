@@ -19,7 +19,7 @@ public class admin_manager_user extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_manager_reader);
+        setContentView(R.layout.activity_admin_manager_user);
         inti();//界面初始化
     }
 

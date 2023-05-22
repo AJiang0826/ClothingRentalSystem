@@ -11,13 +11,13 @@ import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseAc
 /*
 * 衣物管理分式界面【第二层】
 * */
-public class admin_manager_book extends BaseActivity {
+public class admin_manager_clothes extends BaseActivity {
     private ImageButton back_bt, addClothes, editClothes, searchClothes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_manager_book);
+        setContentView(R.layout.activity_admin_manager_clothes);
         init();//界面出售化
     }
 
@@ -36,7 +36,7 @@ public class admin_manager_book extends BaseActivity {
         addClothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_manager_book.this, admin_add_book.class);
+                Intent intent = new Intent(admin_manager_clothes.this, admin_add_clothes.class);
                 startActivity(intent);
             }
         });
@@ -45,7 +45,7 @@ public class admin_manager_book extends BaseActivity {
         searchClothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_manager_book.this, admin_search_book.class);
+                Intent intent = new Intent(admin_manager_clothes.this, admin_search_clothes.class);
                 startActivity(intent);
             }
         });

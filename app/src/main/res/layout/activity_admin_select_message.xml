@@ -37,21 +37,21 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
-            android:background="#fff"
+            android:background="#000000"
             android:src="@mipmap/clothes_info" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/clothes_info"
-            android:layout_toRightOf="@+id/clothes_info"
+            android:layout_marginLeft="50dp"
+            android:layout_toEndOf="@+id/Clothes_Info"
+            android:layout_toRightOf="@+id/Clothes_Info"
             android:gravity="center_vertical"
             android:text="衣服信息"
             android:textSize="25sp" />
 
         <ImageButton
-            android:id="@+id/ad_select_clothesinfo"
+            android:id="@+id/Add_Select_ClothesInfo"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
@@ -71,24 +71,24 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/brrow_info"
+            android:id="@+id/Brrow_Info"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="#fff"
+            android:background="#00000000"
             android:src="@mipmap/brow" />
 
         <TextView
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/brrow_info"
-            android:layout_toEndOf="@id/brrow_info"
-            android:layout_toRightOf="@id/brrow_info"
+            android:layout_alignBottom="@id/Brrow_Info"
+            android:layout_toEndOf="@id/Brrow_Info"
+            android:layout_toRightOf="@id/Brrow_Info"
             android:text="租借信息"
             android:textSize="25sp" />
 
         <ImageButton
-            android:id="@+id/ad_select_brrow"
+            android:id="@+id/Add_Select_Brrow"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
@@ -107,26 +107,26 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/manager_pay"
+            android:id="@+id/Manager_Pay"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="#fff"
+            android:background="#00000000"
             android:src="@mipmap/bpay" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/manager_pay"
+            android:layout_alignBottom="@id/Manager_Pay"
             android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@id/manager_pay"
-            android:layout_toRightOf="@id/manager_pay"
+            android:layout_toEndOf="@id/Manager_Pay"
+            android:layout_toRightOf="@id/Manager_Pay"
             android:text="还衣信息"
             android:textSize="25sp"
 
             />
 
         <ImageButton
-            android:id="@+id/ad_manager_people"
+            android:id="@+id/Add_Manager_User"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"

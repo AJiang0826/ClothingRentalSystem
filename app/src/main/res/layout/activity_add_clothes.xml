@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".admin.houtai_admin.admin_add_book">
+    tools:context=".admin.houtai_admin.admin_add_clothes">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:layout_height="wrap_content">
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -24,15 +26,15 @@
             android:layout_width="210dp"
             android:layout_height="80dp"
             android:layout_marginRight="50dp"
-            android:src="@drawable/bdr"/>
+            android:src="@drawable/bdr1"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="5dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:layout_width="0dp"
@@ -44,20 +46,22 @@
             android:textSize="20sp" />
 
         <EditText
-            android:text="0123456789"
+            android:text="20230522"
             android:id="@+id/et_ClothesId"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="25dp"
             android:inputType="number"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890*/@#$%^"
-            android:layout_weight="3"/>
+            android:layout_weight="3"
+            android:background="@drawable/register_edittext_sharp"/>
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -71,14 +75,16 @@
             android:id="@+id/et_ClothesName"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
-            android:layout_weight="3"/>
+            android:layout_marginRight="25dp"
+            android:layout_weight="3"
+            android:background="@drawable/register_edittext_sharp"/>
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -92,14 +98,16 @@
             android:id="@+id/et_ClothesType"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
-            android:layout_weight="3"/>
+            android:layout_marginRight="25dp"
+            android:layout_weight="3"
+            android:background="@drawable/register_edittext_sharp"/>
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -113,14 +121,16 @@
             android:id="@+id/et_ClothesWriter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
-            android:layout_weight="3"/>
+            android:layout_marginRight="25dp"
+            android:layout_weight="3"
+            android:background="@drawable/register_edittext_sharp"/>
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <TextView
             android:layout_width="0dp"
             android:layout_height="45dp"
@@ -133,14 +143,16 @@
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:id="@+id/spinner2"
-            android:layout_marginRight="20dp"
-            android:layout_weight="3" />
+            android:layout_marginRight="25dp"
+            android:layout_weight="3"
+            android:background="@drawable/register_edittext_sharp" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -154,14 +166,16 @@
             android:id="@+id/et_ClothesPrice"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
-            android:layout_weight="3"/>
+            android:layout_marginRight="25dp"
+            android:layout_weight="3"
+            android:background="@drawable/register_edittext_sharp"/>
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -175,14 +189,16 @@
             android:id="@+id/et_ClothesRank"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
-            android:layout_weight="3" />
+            android:layout_marginRight="25dp"
+            android:layout_weight="3"
+            android:background="@drawable/register_edittext_sharp"/>
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -192,36 +208,37 @@
             android:text="简     介 ："
             android:textSize="20sp"/>
         <EditText
-            android:text="法式缎面一字肩气质婚纱长拖尾修身显瘦高端"
+            android:text="法式缎面一字肩气质拖尾婚纱"
             android:id="@+id/et_ClothesComment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
-            android:layout_weight="3" />
+            android:layout_marginRight="25dp"
+            android:layout_weight="3"
+            android:background="@drawable/register_edittext_sharp" />
     </LinearLayout>
 
 
     <LinearLayout
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="120dp">
         <Button
             android:id="@+id/btn_ClothesCommit"
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:layout_width="120dp"
-            android:background="@drawable/register_edittext_sharp"
+            android:background="@drawable/register_button_sharp"
             android:textSize="25sp"
             android:layout_height="wrap_content"
             android:text="添加"/>
         <Button
             android:layout_marginLeft="20dp"
             android:id="@+id/btn_ClothesBack"
-            android:text="返回"
+            android:text="重置"
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:layout_width="120dp"
-            android:background="@drawable/register_edittext_sharp"
+            android:background="@drawable/register_button_sharp"
             android:textSize="25sp"
             android:layout_height="wrap_content">
         </Button>

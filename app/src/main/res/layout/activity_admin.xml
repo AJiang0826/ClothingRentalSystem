@@ -14,108 +14,87 @@
         android:layout_height="wrap_content"
         android:text="管理员登录"
         android:textColor="#37302F"
-        android:textSize="30sp"
-        android:layout_marginBottom="100dp"
+        android:textSize="40sp"
+        android:layout_marginBottom="60dp"
         android:gravity="center"/>
 
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-        <TextView
+        android:orientation="horizontal">
+
+        <ImageView
             android:id="@+id/imageView"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="15dp"
-            android:text="用户名：" />
+            android:layout_marginTop="10dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/user1" />
 
         <EditText
-            android:id="@+id/a_name"
+            android:id="@+id/AdminName"
+            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text="admin"
-            android:inputType="textPersonName" />
+            android:hint="请输入管理员账号"
+            android:inputType="textPersonName"
+            android:textSize="20dp"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="15dp"
-            android:text="姓名："
-            app:srcCompat="@mipmap/pwd1" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_alignTop="@+id/imageview2"
-            android:layout_alignLeft="@+id/a_name"
-            android:layout_alignStart="@+id/a_name"
-            android:text="admin"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <TextView
+        android:orientation="horizontal">
+        <ImageView
             android:id="@+id/imageview2"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="15dp"
-            android:text="密码："
+            android:layout_marginTop="10dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             app:srcCompat="@mipmap/pwd1" />
 
         <EditText
-            android:id="@+id/a_password"
+            android:id="@+id/AdminPassword"
+            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="请输入密码"
             android:inputType="textPassword"
-            android:layout_alignTop="@+id/imageview2"
-            android:layout_alignLeft="@+id/a_name"
-            android:layout_alignStart="@+id/a_name"
-            android:text="123456"/>
+            android:textSize="20dp"/>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="20dp"
-        android:gravity="center">
-        <Button
-            android:id="@+id/a_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="登录"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:background="#a5c3d4"
-            android:textColor="#37302F"
-            android:textSize="15sp"/>
-        <Button
-            android:id="@+id/a_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="返回"
-            android:layout_marginTop="20dp"
-            android:background="#a5c3d4"
-            android:textColor="#37302F"
-            android:textSize="15sp"/>
-    </LinearLayout>
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/AdminResetting"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/admin_button_sharp"
+            android:text="重置内容"
+            android:textColor="#37302F"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/AdminRegister"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/admin_button_sharp"
+            android:text="确认登录"
+            android:textColor="#37302F"
+            android:textSize="25sp" />
+
+    </LinearLayout>
 </LinearLayout>
 

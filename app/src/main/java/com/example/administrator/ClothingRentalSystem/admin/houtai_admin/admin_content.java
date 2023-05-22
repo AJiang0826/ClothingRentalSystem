@@ -14,10 +14,14 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.administrator.ClothingRentalSystem.R;
-
+/**
+ * 本类主要是跳转页面使用
+ * 通过选择不通内容，及点击不同 > 符号跳转页面
+ * 不做其他算法处理
+ **/
 public class admin_content extends AppCompatActivity {
     private long mExitTime;
-    private ImageButton selct_bt, manReader_bt, manBook_bt;
+    private ImageButton SelectClothes, ManagerClothes, ManagerUser;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -29,27 +33,27 @@ public class admin_content extends AppCompatActivity {
     }
 
     private void init() {
-        //查询信息
-        selct_bt=(ImageButton)findViewById(R.id.ad_select);
-        selct_bt.setOnClickListener(new View.OnClickListener() {
+        //查询服装信息
+        SelectClothes=(ImageButton)findViewById(R.id.SelectClothes);
+        SelectClothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(admin_content.this,admin_select_message.class);
                 startActivity(intent);
             }
         });
-        //管理图书
-        manBook_bt=(ImageButton)findViewById(R.id.ad_manager_book);
-        manBook_bt.setOnClickListener(new View.OnClickListener() {
+        //管理服装信息
+        ManagerClothes=(ImageButton)findViewById(R.id.ManagerClothes);
+        ManagerClothes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(admin_content.this,admin_manager_book.class);
+                Intent intent=new Intent(admin_content.this, admin_manager_clothes.class);
                 startActivity(intent);
             }
         });
-        //管理读者
-        manReader_bt=(ImageButton)findViewById(R.id.ad_manager_reader);
-        manReader_bt.setOnClickListener(new View.OnClickListener() {
+        //管理用户信息
+        ManagerUser=(ImageButton)findViewById(R.id.ManagerUser);
+        ManagerUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(admin_content.this, admin_manager_user.class);

@@ -33,7 +33,7 @@ import java.util.List;
  * 管理员添加衣服的界面
  */
 
-public class admin_add_book extends BaseActivity implements View.OnClickListener {
+public class admin_add_clothes extends BaseActivity implements View.OnClickListener {
     private ImageButton back_bt;
     private Spinner spinner;
     private databaseHelp helper;
@@ -48,7 +48,7 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_book);
+        setContentView(R.layout.activity_add_clothes);
         list.add("S");
         list.add("M");
         list.add("L");
@@ -106,13 +106,13 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
             case R.id.btn_ClothesCommit://点击选中添加按钮
                 //ISBN为十位，且不为空
                 if (et_ClothesId.getText().length()!=10) {
-                    Toast.makeText(admin_add_book.this,"请输入10位图书ISBN",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(admin_add_clothes.this,"请输入10位图书ISBN",Toast.LENGTH_SHORT).show();
                     testid=false;
                     break;
                 }
                 //书名不为空
                 if(et_ClothesName.getText().length()==0){
-                    Toast.makeText(admin_add_book.this,"请输入完整图书信息",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(admin_add_clothes.this,"请输入完整图书信息",Toast.LENGTH_SHORT).show();
                     testother=false;
                     break;
                 }
@@ -122,7 +122,7 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
                             pub,et_ClothesPrice.getText().toString(),
                             et_ClothesRank.getText().toString(),et_ClothesComment.getText().toString(),
                             String.valueOf(uri));
-                    Toast.makeText(admin_add_book.this,"添加图书成功！",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(admin_add_clothes.this,"添加图书成功！",Toast.LENGTH_SHORT).show();
                     break;
                 }
 
@@ -133,11 +133,19 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
                 startActivityForResult(intent,1);  // 第二个参数是请求码
                 break;
 
-            //回退按钮
+            //重置
             case R.id.btn_ClothesBack:
-                Intent intentback = new Intent();
-                intentback.setClass(admin_add_book.this,admin_manager_book.class);
-                startActivity(intentback);
+                /*Intent intentback = new Intent();
+                intentback.setClass(admin_add_clothes.this, admin_manager_clothes.class);
+                startActivity(intentback);*/
+                et_ClothesId.getText().clear();
+                et_ClothesName.getText().clear();
+                et_ClothesType.getText().clear();
+                et_ClothesWriter.getText().clear();
+                //spinner.setAdapter();
+                et_ClothesPrice.getText().clear();
+                et_ClothesRank.getText().clear();
+                et_ClothesComment.getText().clear();
         }
     }
 
@@ -158,9 +166,8 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
         Bitmap bmp=null;
         if(uri.getAuthority()!=null){
             try {
-                is=admin_add_book.this.getContentResolver().openInputStream(uri);
+                is= admin_add_clothes.this.getContentResolver().openInputStream(uri);
                 bmp= BitmapFactory.decodeStream(is);
-
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }finally {
@@ -173,5 +180,4 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
         }
         ClothesImg.setImageBitmap(bmp);
     }
-
 }
