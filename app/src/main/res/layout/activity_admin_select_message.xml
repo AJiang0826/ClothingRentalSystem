@@ -37,7 +37,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
-            android:background="#fff"
+            android:background="#000000"
             android:src="@mipmap/clothes_info" />
 
         <TextView
@@ -74,7 +74,7 @@
             android:id="@+id/Brrow_Info"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="#fff"
+            android:background="#00000000"
             android:src="@mipmap/brow" />
 
         <TextView
@@ -110,7 +110,7 @@
             android:id="@+id/Manager_Pay"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="#fff"
+            android:background="#00000000"
             android:src="@mipmap/bpay" />
 
         <TextView
