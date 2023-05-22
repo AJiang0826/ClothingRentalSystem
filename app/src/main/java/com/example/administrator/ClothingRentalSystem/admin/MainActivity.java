@@ -24,8 +24,13 @@ import androidx.core.app.NotificationManagerCompat;
 import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.contentActivity;
+import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
 
+/**
+ * 这是主类，打开初始页面
+ * 并且开启统一全局的数据库连接
+ **/
 public class MainActivity extends BaseActivity {
     private EditText user_ed, pwd_ed;
     private Button login_bt, register_bt;
@@ -33,7 +38,20 @@ public class MainActivity extends BaseActivity {
     private CheckBox rember, auto_login;
     private String md5Psw;
 
-
+    /**
+     * 以下方法是静态代码块，用来初始化数据库，并载入连接进入内存
+     * 调用的是DBUtils工具类
+     **/
+    static{
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                new DBUtils("192.168.43.149:3306","test","AJiang","QAQby!!!");
+                System.out.println("查看数据库连接是否成立："+ (DBUtils.conn!=null));
+            }
+        }
+        ).start();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
