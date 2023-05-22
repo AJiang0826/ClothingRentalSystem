@@ -16,14 +16,15 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="商品图片 ："
-            android:textSize="18sp" />
+            android:textSize="20sp" />
         <ImageView
             android:id="@+id/ClothesImg"
-            android:layout_width="130dp"
+            android:layout_width="210dp"
             android:layout_height="80dp"
             android:layout_marginRight="50dp"
-            android:src="@drawable/clothes"/>
+            android:src="@drawable/bdr"/>
 
     </LinearLayout>
 
@@ -37,14 +38,17 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text=" I S B N ："
-            android:textSize="18sp" />
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:text="编     号 ："
+            android:textSize="20sp" />
 
         <EditText
             android:text="0123456789"
             android:id="@+id/et_ClothesId"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
             android:inputType="number"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890*/@#$%^"
             android:layout_weight="3"/>
@@ -58,13 +62,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="书      名 ："
-            android:textSize="18sp"/>
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:text="衣 服 名："
+            android:textSize="20sp"/>
         <EditText
-            android:text="城南旧事"
+            android:text="婚纱"
             android:id="@+id/et_ClothesName"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
             android:layout_weight="3"/>
     </LinearLayout>
 
@@ -76,13 +83,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="类      别 ："
-            android:textSize="18sp"/>
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:text="种     类 ："
+            android:textSize="20sp"/>
         <EditText
-            android:text="叙事"
+            android:text="裙装"
             android:id="@+id/et_ClothesType"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
             android:layout_weight="3"/>
     </LinearLayout>
 
@@ -94,13 +104,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="作      者 ："
-            android:textSize="18sp"/>
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:text="设 计 者："
+            android:textSize="20sp"/>
         <EditText
-            android:text="林海音"
+            android:text="Lin"
             android:id="@+id/et_ClothesWriter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
             android:layout_weight="3"/>
     </LinearLayout>
 
@@ -110,14 +123,17 @@
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="45dp"
             android:layout_weight="1"
-            android:text="出 版 社 ："
-            android:textSize="18sp"/>
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:text="尺     码 ："
+            android:textSize="20sp"/>
         <Spinner
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:id="@+id/spinner2"
+            android:layout_marginRight="20dp"
             android:layout_weight="3" />
     </LinearLayout>
 
@@ -129,13 +145,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="价      格 ："
-            android:textSize="18sp"/>
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:text="价     格 ："
+            android:textSize="20sp"/>
         <EditText
-            android:text="23"
+            android:text="2300"
             android:id="@+id/et_ClothesPrice"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
             android:layout_weight="3"/>
     </LinearLayout>
 
@@ -147,13 +166,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="评      分 ："
-            android:textSize="18sp"/>
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:text="评     分 ："
+            android:textSize="20sp"/>
         <EditText
             android:text="9.8"
             android:id="@+id/et_ClothesRank"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
             android:layout_weight="3" />
     </LinearLayout>
 
@@ -165,13 +187,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="简      介 ："
-            android:textSize="18sp"/>
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:text="简     介 ："
+            android:textSize="20sp"/>
         <EditText
-            android:text="讲述了一段关于英子童年时的故事"
+            android:text="法式缎面一字肩气质婚纱长拖尾修身显瘦高端"
             android:id="@+id/et_ClothesComment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
             android:layout_weight="3" />
     </LinearLayout>
 
@@ -185,7 +210,8 @@
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:layout_width="120dp"
-            android:backgroundTint="#95BEF3D9"
+            android:background="@drawable/register_edittext_sharp"
+            android:textSize="25sp"
             android:layout_height="wrap_content"
             android:text="添加"/>
         <Button
@@ -195,7 +221,8 @@
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:layout_width="120dp"
-            android:backgroundTint="#95BEF3D9"
+            android:background="@drawable/register_edittext_sharp"
+            android:textSize="25sp"
             android:layout_height="wrap_content">
         </Button>
     </LinearLayout>

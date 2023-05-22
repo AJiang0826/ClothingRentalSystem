@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="管理读者"
+            android:text="管理用户"
             android:textColor="#37302F"
             android:textSize="40sp" />
 <!--
@@ -41,14 +41,14 @@
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/register_button_sharp"
+        android:background="@drawable/register_edittext_sharp"
 
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/SelectUser"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:background="#fff"
             android:src="@mipmap/selectuser" />
@@ -62,12 +62,12 @@
             android:layout_toRightOf="@+id/SelectUser"
             android:gravity="center_vertical"
             android:text="查找用户"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
         <ImageButton
             android:id="@+id/ad_SelectUser"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_gravity="right"
             android:background="#00000000"
@@ -81,15 +81,14 @@
         android:layout_marginLeft="20dp"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:background="@drawable/register_button_sharp"
+        android:background="@drawable/register_edittext_sharp"
 
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/AddUser"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:background="#fff"
             android:src="@mipmap/adduser" />
@@ -103,12 +102,12 @@
             android:layout_toRightOf="@+id/AddUser"
             android:gravity="center_vertical"
             android:text="添加用户"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
         <ImageButton
             android:id="@+id/ad_AddUser"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_gravity="right"
             android:background="#00000000"
@@ -123,14 +122,14 @@
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/register_button_sharp"
+        android:background="@drawable/register_edittext_sharp"
 
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/EditUser"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="#fff"
             android:src="@mipmap/edituser" />
 
@@ -142,12 +141,12 @@
             android:layout_toEndOf="@id/EditUser"
             android:layout_toRightOf="@id/EditUser"
             android:text="编辑用户"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
         <ImageButton
             android:id="@+id/ad_EditUser"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_gravity="right"
             android:background="#00000000"
@@ -161,14 +160,14 @@
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/register_button_sharp"
+        android:background="@drawable/register_edittext_sharp"
 
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/DeleteUser"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="#fff"
             android:src="@mipmap/deleteuser" />
 
@@ -180,12 +179,12 @@
             android:layout_toEndOf="@id/DeleteUser"
             android:layout_toRightOf="@id/DeleteUser"
             android:text="删除用户"
-            android:textSize="20sp"  />
+            android:textSize="25sp"  />
 
         <ImageButton
             android:id="@+id/ad_DeleteUser"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_gravity="right"
             android:background="#00000000"

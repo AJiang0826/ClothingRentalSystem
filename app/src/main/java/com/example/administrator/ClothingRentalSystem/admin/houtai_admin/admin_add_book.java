@@ -49,9 +49,10 @@ public class admin_add_book extends BaseActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
-        list.add("南京出版社");
-        list.add("西安出版社");
-        list.add("北京出版社");
+        list.add("S");
+        list.add("M");
+        list.add("L");
+        list.add("XL");
         spinner = (Spinner) findViewById(R.id.spinner2);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
