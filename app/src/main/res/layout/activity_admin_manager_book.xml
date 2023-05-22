@@ -40,14 +40,14 @@
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/register_button_sharp"
+        android:background="@drawable/register_edittext_sharp"
 
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/add"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:background="#fff"
             android:src="@mipmap/add1" />
@@ -61,12 +61,12 @@
             android:layout_toRightOf="@+id/add"
             android:gravity="center_vertical"
             android:text="添购衣物"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
         <ImageButton
             android:id="@+id/ad_add"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_gravity="right"
             android:background="#00000000"
@@ -80,14 +80,14 @@
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/register_button_sharp"
+        android:background="@drawable/register_edittext_sharp"
 
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/edit"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="#fff"
             android:src="@mipmap/edit1" />
 
@@ -99,12 +99,12 @@
             android:layout_toEndOf="@id/edit"
             android:layout_toRightOf="@id/edit"
             android:text="查找衣物"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
         <ImageButton
             android:id="@+id/ad_search"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_gravity="right"
             android:background="#00000000"

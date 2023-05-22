@@ -53,3 +53,15 @@
 16）点击读者详细编辑界面       activity_admin_update_reader.xml-----admin_update_reader.java-----王4
 
 17）删除读者列表界面     activity_admin_delete_reader.xml-----admin_delete_reader.java----------王5
+
+使用DBUtils工具类说明： （首先，因为连接数据库使用了一点网络编程，所以在AndroidManifest.xml文件中，插入了新的网络权限，所以一定要将虚拟机上的app卸载重装。）
+
+在主类MainActivity我已经使用静态代码块使得连接一直存在在内存中。所以之后每次调用都不需要重新初始化即调用构造方法。
+
+在使用DBUtils的时候，需要使用线程来控制。可直接复制以下代码，将相关内容写在run()方法中即可。也可查看utils文件夹下的DBtest类，模仿写法。
+
+new Thread(new Runnable(){
+@Override
+public void run() {
+//请求详情
+}).start();

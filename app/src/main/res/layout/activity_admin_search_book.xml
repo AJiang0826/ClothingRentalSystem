@@ -11,20 +11,27 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
 
         <EditText
             android:id="@+id/search_name"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:hint="请输入搜素的关键字"
-            android:layout_weight="0.3"/>
+            android:layout_weight="0.3"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/register_edittext_sharp"/>
         <Button
             android:id="@+id/search_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="搜索图书"
-            android:layout_weight="0.7"/>
+            android:text="搜索衣物"
+            android:background="@drawable/register_button_sharp"
+            android:layout_weight="0.7"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="20sp"/>
 
     </LinearLayout>
 

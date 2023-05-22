@@ -31,23 +31,13 @@ public class admin_search_bookinfo extends AppCompatActivity {
     }
 
     private void init() {
-        //回退--初始后台管理
-        back_bt = (ImageButton) findViewById(R.id.Sel_Clothes_Back);
-        back_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(admin_search_bookinfo.this, admin_search_book.class);
-                startActivity(intent);
-            }
-        });
-
         listView = (ListView) findViewById(R.id.Select_Clothes_List);
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Bundle bundle=this.getIntent().getExtras();
         name=bundle.getString("name");
         Cursor cursor = help.querybookinfoname(name);
-        String from[] = {"name", "type", "writer","publicer","rank","img"};
-        int to[] = {R.id.book_name, R.id.Clothes_Type, R.id.Clothes_Author, R.id.Clothes_Publish, R.id.Clothes_Rank, R.id.Clothes_Info_Img};
+        String from[] = {"img", "name", "writer", "type","price","rank","publicer"};
+        int to[] = {R.id.Clothes_Info_Img, R.id.Clothes_Name, R.id.Clothes_Author, R.id.Clothes_Type, R.id.Clothes_Price, R.id.Clothes_Rank, R.id.Clothes_Publish};
         //调用admin_book_item.xml，上边一行id来自该xml
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.admin_book_item, cursor, from, to);
         adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {

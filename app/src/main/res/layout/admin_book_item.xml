@@ -8,33 +8,34 @@
         android:id="@+id/Clothes_Info_Img"
         android:layout_weight="1"
         android:layout_width="20dp"
-        android:layout_height="100dp"/>
+        android:layout_height="100dp"
+        android:layout_gravity="center"/>
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:singleLine="true"
-        android:textSize="12sp"
-        android:gravity="center_horizontal"
-        android:text="图书名"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:text="衣名"
         android:id="@+id/Clothes_Name"/>
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:singleLine="true"
-        android:textSize="12sp"
-        android:gravity="center_horizontal"
-        android:text="作者"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:text="设计者"
         android:id="@+id/Clothes_Author"/>
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:singleLine="true"
-        android:textSize="12sp"
-        android:gravity="center_horizontal"
-        android:text="类型"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:text="种类"
         android:id="@+id/Clothes_Type"/>
 
     <TextView
@@ -42,29 +43,29 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:singleLine="true"
-        android:textSize="12sp"
-        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        android:layout_gravity="center"
         android:text="价格"
         android:id="@+id/Clothes_Price"/>
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="1.4"
         android:singleLine="true"
-        android:textSize="12sp"
-        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        android:layout_gravity="center"
         android:text="评分"
         android:id="@+id/Clothes_Rank"/>
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="0.6"
         android:singleLine="false"
-        android:textSize="12sp"
-        android:gravity="center_horizontal"
-        android:text="出版社"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:text="尺码"
         android:id="@+id/Clothes_Publish"/>
 
 </LinearLayout>
