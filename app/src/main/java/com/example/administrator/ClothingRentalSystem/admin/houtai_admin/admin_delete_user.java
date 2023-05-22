@@ -52,6 +52,7 @@ public class admin_delete_user extends AppCompatActivity {
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.select_user_item, cursor, from, to);
         listView.setAdapter(adapter);
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
         //listview的单击事件监听
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

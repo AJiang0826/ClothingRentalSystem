@@ -41,12 +41,14 @@ public class MainActivity extends BaseActivity {
     /**
      * 以下方法是静态代码块，用来初始化数据库，并载入连接进入内存
      * 调用的是DBUtils工具类
+     * 必须使用多线程才可使得网络通信
      **/
     static{
         new Thread(new Runnable() {
             @Override
             public void run() {
-                new DBUtils("192.168.43.149:3306","test","AJiang","QAQby!!!");
+                System.out.println("开始连接数据库……");
+                new DBUtils("192.168.137.122:3306","test","Android","123456");
                 System.out.println("查看数据库连接是否成立："+ (DBUtils.conn!=null));
             }
         }
