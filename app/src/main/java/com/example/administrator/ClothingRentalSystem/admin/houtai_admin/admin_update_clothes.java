@@ -38,8 +38,8 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
     private databaseHelp helper;
     Uri uri;
     private ImageView ClothesImg;
-    private EditText et_clothesid,et_clothesname,et_clothestype,et_clotheswriter,et_clothespublicer,et_clothesprice,et_clothesrank,et_clothescomment;
-    private Button btn_clothescommit,btn_clothesback;
+    private EditText Et_ClothesId,Et_ClothesName,Et_ClotheStype,Et_ClothesWriter,Et_ClothesPublicer,Et_ClothesPrice,Et_ClothesRank,Et_ClothesComment;
+    private Button Btn_ClothesCommit,Btn_ClothesBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,53 +56,52 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
         Log.i("cursor", "initdata: " + id);
 
         ClothesImg=findViewById(R.id.ClothesImg);
-        et_clothesid=findViewById(R.id.et_ClothesId);
-        et_clothesname=findViewById(R.id.et_ClothesName);
-        et_clothestype=findViewById(R.id.et_ClotheStype);
-        et_clotheswriter=findViewById(R.id.et_ClothesWriter);
-        et_clothespublicer=findViewById(R.id.et_ClothesPublicer);
-        et_clothesprice=findViewById(R.id.et_ClothesPrice);
-        et_clothesrank=findViewById(R.id.et_ClothesRank);
-        et_clothescomment=findViewById(R.id.et_ClothesComment);
+        Et_ClothesId=findViewById(R.id.et_ClothesId);
+        Et_ClothesName=findViewById(R.id.et_ClothesName);
+        Et_ClotheStype=findViewById(R.id.et_ClotheStype);
+        Et_ClothesWriter=findViewById(R.id.et_ClothesWriter);
+        Et_ClothesPublicer=findViewById(R.id.et_ClothesPublicer);
+        Et_ClothesPrice=findViewById(R.id.et_ClothesPrice);
+        Et_ClothesRank=findViewById(R.id.et_ClothesRank);
+        Et_ClothesComment=findViewById(R.id.et_ClothesComment);
 
 
-        btn_clothescommit=findViewById(R.id.Btn_ClothesCommit);
-//        btn_clothesback=findViewById(R.id.Btn_ClothesBack);
+        Btn_ClothesCommit=findViewById(R.id.Btn_ClothesCommit);
 
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Cursor cursor = help.querybookinfoid(id);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             ClothesImg.setImageURI(Uri.parse(cursor.getString(cursor.getColumnIndex("img"))));
-            et_clothesid.setText(cursor.getString(cursor.getColumnIndex("bookid")));
-            et_clothesname.setText(cursor.getString(cursor.getColumnIndex("name")));
-            et_clotheswriter.setText(cursor.getString(cursor.getColumnIndex("writer")));
-            et_clothestype.setText(cursor.getString(cursor.getColumnIndex("type")));
-            et_clothesprice.setText(cursor.getString(cursor.getColumnIndex("price")));
-            et_clothespublicer.setText(cursor.getString(cursor.getColumnIndex("publicer")));
-            et_clothescomment.setText(cursor.getString(cursor.getColumnIndex("comment")));
-            et_clothesrank.setText(cursor.getString(cursor.getColumnIndex("rank")));
+            Et_ClothesId.setText(cursor.getString(cursor.getColumnIndex("bookid")));
+            Et_ClothesName.setText(cursor.getString(cursor.getColumnIndex("name")));
+            Et_ClothesWriter.setText(cursor.getString(cursor.getColumnIndex("writer")));
+            Et_ClotheStype.setText(cursor.getString(cursor.getColumnIndex("type")));
+            Et_ClothesPrice.setText(cursor.getString(cursor.getColumnIndex("price")));
+            Et_ClothesPublicer.setText(cursor.getString(cursor.getColumnIndex("publicer")));
+            Et_ClothesComment.setText(cursor.getString(cursor.getColumnIndex("comment")));
+           Et_ClothesRank.setText(cursor.getString(cursor.getColumnIndex("rank")));
         }
 
-        btn_clothescommit.setOnClickListener(this);
+        Btn_ClothesCommit.setOnClickListener(this);
         ClothesImg.setOnClickListener(this);
 //        btn_clothesback.setOnClickListener(this);
 
     }
-    //对管理员输入的图书信息进行验证，全部符合要求才能通过
+    //对管理员输入的衣服信息进行验证，全部符合要求才能通过
     boolean testid=true,testother=true;
     @Override
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.Btn_ClothesCommit:
                 //ISBN为十位，且不为空
-                if (et_clothesid.getText().length()!=10) {
+                if ( Et_ClothesId.getText().length()!=10) {
                     Toast.makeText(admin_update_clothes.this,"请输入10位衣服编码",Toast.LENGTH_SHORT).show();
                     testid=false;
                     break;
                 }
 
-                if(et_clothesname.getText().length()==0){
+                if(Et_ClothesName.getText().length()==0){
                     Toast.makeText(admin_update_clothes.this,"请输入完整衣服信息",Toast.LENGTH_SHORT).show();
                     testother=false;
                     break;
@@ -110,16 +109,16 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                 if(testid==true&&testother==true){
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues values = new ContentValues();
-                    values.put("name", et_clothesname.getText().toString());
-                    values.put("writer", et_clotheswriter.getText().toString());
-                    values.put("bookid", et_clothesid.getText().toString());
-                    values.put("price", et_clothesprice.getText().toString());
-                    values.put("publicer", et_clothespublicer.getText().toString());
-                    values.put("comment", et_clothescomment.getText().toString());
-                    values.put("rank", et_clothesrank.getText().toString());
-                    values.put("type", et_clothestype.getText().toString());
+                    values.put("name", Et_ClothesName.getText().toString());
+                    values.put("writer", Et_ClothesWriter.getText().toString());
+                    values.put("bookid", Et_ClothesId.getText().toString());
+                    values.put("price", Et_ClothesPrice.getText().toString());
+                    values.put("publicer", Et_ClothesPublicer.getText().toString());
+                    values.put("comment", Et_ClothesComment.getText().toString());
+                    values.put("rank", Et_ClothesRank.getText().toString());
+                    values.put("type",Et_ClotheStype.getText().toString());
                     db.update("bookinfo", values, "_id=?", new String[]{String.valueOf(id)});
-                    Toast.makeText(admin_update_clothes.this,"修改图书成功！",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(admin_update_clothes.this,"修改衣服信息成功！",Toast.LENGTH_SHORT).show();
                     break;
                 }
 
@@ -129,10 +128,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                 startActivityForResult(intent,1);  // 第二个参数是请求码
                 break;
 
-//            case R.id.Btn_ClothesBack:
-//                Intent intentback=new Intent();
-//                intentback.setClass(admin_update_clothes.this, admin_select_clothesinfo.class);
-//                startActivity(intentback);
+
         }
     }
 
@@ -169,77 +165,5 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
         ClothesImg.setImageBitmap(bmp);
     }
 
-    //    private void init() {
-//        //返回按钮的事件监听
-//        back_bt = (ImageButton) findViewById(R.id.addbook_back);
-//        back_bt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(admin_add_book.this, admin_manager_book.class);
-//                startActivity(intent);
-//            }
-//        });
-////        name_ed = (EditText) findViewById(R.id.add_bokname);
-////        author_Ed = (EditText) findViewById(R.id.add_bokauthor);
-////        page_ed = (EditText) findViewById(R.id.add_bokpage);
-////        price_ed = (EditText) findViewById(R.id.add_bokprice);
-////        publish_ed = (EditText) findViewById(R.id.add_bokpublish);
-//
-//        SimpleDateFormat formatter    =   new    SimpleDateFormat    ("yyyy年MM月dd日    ");
-//        Date curDate    =   new    Date(System.currentTimeMillis());//获取当前时间
-//        str    =    formatter.format(curDate);
-//        //添加按钮的事件监听
-//        add_book_bt = (Button) findViewById(R.id.add_book);
-//        add_book_bt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                String strname = name_ed.getText().toString();
-////                String strauthor = author_Ed.getText().toString();
-////                String strpage = page_ed.getText().toString();
-////                String strprice = price_ed.getText().toString();
-////                String strpublish = publish_ed.getText().toString();
-//
-//                //将字符串型转换成double类型
-////                Double dprice = Double.parseDouble(strprice);
-////                if (strname.equals("")) {
-////                    Toast.makeText(admin_add_book.this, "名称不能为空，请重新输入",
-////                            Toast.LENGTH_LONG).show();
-////
-////                } else if (strauthor.equals("")) {
-////                    Toast.makeText(admin_add_book.this, "作者不能为空，请重新输入",
-////                            Toast.LENGTH_LONG).show();
-////
-////                } else if ("".equals(dprice)) {
-////                    Toast.makeText(admin_add_book.this, "价格不能为空，请重新输入",
-////                            Toast.LENGTH_LONG).show();
-////
-////                } else if (strpage.equals("")) {
-////                    Toast.makeText(admin_add_book.this, "页数不能为空，请重新输入",
-////                            Toast.LENGTH_LONG).show();
-////
-////                } else if (strpublish.equals("")) {
-////                    Toast.makeText(admin_add_book.this, "出版社不能为空，请重新输入",
-////                            Toast.LENGTH_LONG).show();
-////
-////                } else {
-////                    ContentValues values = new ContentValues();
-////                    values.put("bookname", strname);
-////                    values.put("author", strauthor);
-////                    values.put("page", strpage);
-////                    values.put("price", strprice);
-////                    values.put("publish", strpublish);
-////                    values.put("intime", str);
-////                    databaseHelp helper = new databaseHelp(
-////                            getApplicationContext());
-//                    helper.insertbookinfo(values);
-////                    Toast.makeText(admin_add_book.this, "图书添加成功",
-////                            Toast.LENGTH_LONG).show();
-////                    Intent intent = new Intent(admin_add_book.this,
-////                            admin_manager_book.class);
-////                    startActivity(intent);
-////                    ActivityCollector.finishAll();
-////                }
-//            }
-//        });
-//    }
+
 }
