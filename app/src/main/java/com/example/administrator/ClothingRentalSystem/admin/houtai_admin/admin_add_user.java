@@ -17,29 +17,34 @@ import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseAc
 import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
 
 /**
- * 管理员添加读者
+ * 管理员添加用户
+ * 功能：1.添加用户信息
+ *      2.验证用户名是否存在，若存在则提示用户名存在
+ * 变量：1. user_ed, username ,pwd_ed,  birthday, phone, sex分别对应表单信息
+ *      2. 确认添加按钮adduser
  */
 public class admin_add_user extends BaseActivity {
     private EditText user_ed, username ,pwd_ed,  birthday, phone, sex;
-    private Button addreader;
+    private Button adduser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_add_user);
-        init();//出实话界面
+        init();//初始化界面
     }
 
     private void init() {
+        //获取文本框信息
         user_ed = (EditText) findViewById(R.id.r_name);
         pwd_ed = (EditText) findViewById(R.id.r_password);
         username = findViewById(R.id.user_name);
         birthday = findViewById(R.id.r_birthday);
         phone = findViewById(R.id.r_phone);
         sex = findViewById(R.id.r_sex);
-        addreader = (Button) findViewById(R.id.r_register);
-        //添加读者按钮的事件监听
-        addreader.setOnClickListener(new View.OnClickListener() {
+        adduser = (Button) findViewById(R.id.r_register);
+        //添加用户--按钮的事件监听
+        adduser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String struser = user_ed.getText().toString();
@@ -48,7 +53,7 @@ public class admin_add_user extends BaseActivity {
                 String birth = birthday.getText().toString();
                 String phonenum = phone.getText().toString();
                 String usersex = sex.getText().toString();
-                String md5Psw = MD5Utils.md5(strpwd);//把密码用MD5加密
+                String md5Psw = MD5Utils.md5(strpwd);//把密码用MD5加密---MD5信息摘要算法（是不可逆的，只能加密，不能解密）
                 //验证用户名是否存在
                 databaseHelp help = new databaseHelp(getApplicationContext());
                 SQLiteDatabase db = help.getWritableDatabase();
