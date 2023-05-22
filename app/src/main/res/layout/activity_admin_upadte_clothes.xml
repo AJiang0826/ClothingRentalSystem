@@ -51,6 +51,7 @@
             android:inputType="number"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890*/@#$%^"
             android:layout_weight="1"/>
+             <!--        digits 属于限制输入的类型-->
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
