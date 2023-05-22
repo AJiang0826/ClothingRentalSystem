@@ -11,35 +11,36 @@ import java.sql.Statement;
  * 连接数据库工具是JDBC
  * 本类是工具类，目的是简化连接数据库、查询、插入、更新、删除数据的步骤
  * 继承本类后，调用构造器即可迅速完成数据库的连接，通过调用方法即可完成增删改数据操作
+ * 可直接访问本类中的对象，来完成操作
  */
 public class DBUtils{
-    private static Connection conn = null;
-    private static ResultSet rs= null;
-    private static Statement st= null;
+    public static Connection conn;
+    public static ResultSet rs;
+    public static Statement st;
 
     /**
      *本方法用于连接本地数据库，参数为本地数据库名，端口号，登陆的账号和密码
      */
-    public static Connection getConn(String LocalDBname,int port,String username,String password){
+    public DBUtils(int port,String LocalDBname,String username,String password){//static Connection getConn
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:"+port+"/"+LocalDBname+"?characterEncoding=UTF-8&&serverTimezone=GMT",username, password);		//获取数据库连接
+            conn = DriverManager.getConnection("jdbc:mysql://192.168.43.149:"+port+"/"+LocalDBname+"?characterEncoding=UTF-8&&serverTimezone=GMT",username, password);		//获取数据库连接
             st=conn.createStatement();
         }catch (ClassNotFoundException e) {
             System.out.println("未能成功加载驱动程序，请检查是否导入驱动程序！");
-            e.printStackTrace();
-            System.out.println("连接成功");
+            //e.printStackTrace();
+            //System.out.println("连接成功");
         }catch(SQLException e){
             e.printStackTrace(System.out);
             System.out.println("连接失败！");
         }
-        return conn;
+        //return conn;
     }
 
     /**
      *本方法用于连接远程数据库，参数为远程URL(包含了IP和端口号)，远程数据库名，登陆的账号和密码
      */
-    public static Connection getConnFromRemoteDB(String RemoteURL,String DBname,String username,String password) {
+    public DBUtils(String RemoteURL,String DBname,String username,String password) {//static Connection getConnFromRemoteDB
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://"+RemoteURL+"/"+DBname+"?characterEncoding=UTF-8&&serverTimezone=GMT",username, password);		//获取数据库连接
@@ -52,7 +53,7 @@ public class DBUtils{
             e.printStackTrace(System.out);
             System.out.println("连接失败！");
         }
-        return conn;
+        //return conn;
     }
 
     /**
@@ -63,6 +64,8 @@ public class DBUtils{
     public static ResultSet getSelectResultSet(String sql)
     {
         try{
+            if (st==null)
+                System.out.println("st是空！！！");
             rs=st.executeQuery(sql);
         } catch (SQLException e) {
             e.printStackTrace();

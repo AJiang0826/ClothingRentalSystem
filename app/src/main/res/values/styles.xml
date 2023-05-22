@@ -3,9 +3,12 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#63A6D1BC</item>
+        <item name="colorPrimary">#95a8a6</item>
         <item name="colorPrimaryDark">#63A6D1BC</item>
         <item name="colorAccent">#07D3BE</item>
     </style>
-
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/gray</item>
+        <item name="colorControlActivated">@color/switch_btn_colors</item>
+    </style>
 </resources>

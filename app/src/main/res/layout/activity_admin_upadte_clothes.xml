@@ -8,10 +8,12 @@
     android:background="@drawable/bg"
     tools:context=".admin.houtai_admin.admin_update_clothes">
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_width="360dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:layout_height="wrap_content">
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -30,7 +32,8 @@
     <LinearLayout
         android:layout_marginTop="5dp"
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content">
 
         <TextView
@@ -47,11 +50,13 @@
             android:layout_height="match_parent"
             android:inputType="number"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890*/@#$%^"
-            android:layout_weight="3"/>
+            android:layout_weight="1"/>
+             <!--        digits 属于限制输入的类型-->
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
@@ -64,12 +69,13 @@
             android:id="@+id/et_ClothesName"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"/>
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
@@ -82,11 +88,12 @@
             android:id="@+id/et_ClotheStype"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"/>
+            android:layout_weight="1"/>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
@@ -99,11 +106,12 @@
             android:id="@+id/et_ClothesWriter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"/>
+            android:layout_weight="1"/>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
@@ -116,11 +124,12 @@
             android:id="@+id/et_ClothesPublicer"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"/>
+            android:layout_weight="1"/>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
@@ -133,11 +142,12 @@
             android:id="@+id/et_ClothesPrice"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"/>
+            android:layout_weight="1"/>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
@@ -150,11 +160,12 @@
             android:id="@+id/et_ClothesRank"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3" />
+            android:layout_weight="1" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
@@ -167,32 +178,24 @@
             android:id="@+id/et_ClothesComment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3" />
+            android:layout_weight="1" />
     </LinearLayout>
 
 
     <LinearLayout
         android:gravity="center"
-        android:layout_width="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_width="360dp"
         android:layout_height="100dp">
         <Button
             android:id="@+id/Btn_ClothesCommit"
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:layout_width="120dp"
-            android:backgroundTint="#95BEF3D9"
+            android:background="@drawable/register_button_sharp"
             android:layout_height="wrap_content"
             android:text="修改"/>
-        <Button
-            android:layout_marginLeft="20dp"
-            android:id="@+id/Btn_ClothesBack"
-            android:text="返回"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:layout_width="120dp"
-            android:backgroundTint="#95BEF3D9"
-            android:layout_height="wrap_content">
-        </Button>
+
     </LinearLayout>
 
 </LinearLayout>

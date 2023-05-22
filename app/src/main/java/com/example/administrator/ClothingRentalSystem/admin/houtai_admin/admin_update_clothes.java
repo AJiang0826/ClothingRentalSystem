@@ -67,7 +67,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
 
 
         btn_clothescommit=findViewById(R.id.Btn_ClothesCommit);
-        btn_clothesback=findViewById(R.id.Btn_ClothesBack);
+//        btn_clothesback=findViewById(R.id.Btn_ClothesBack);
 
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Cursor cursor = help.querybookinfoid(id);
@@ -86,7 +86,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
 
         btn_clothescommit.setOnClickListener(this);
         ClothesImg.setOnClickListener(this);
-        btn_clothesback.setOnClickListener(this);
+//        btn_clothesback.setOnClickListener(this);
 
     }
     //对管理员输入的图书信息进行验证，全部符合要求才能通过
@@ -129,10 +129,10 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                 startActivityForResult(intent,1);  // 第二个参数是请求码
                 break;
 
-            case R.id.Btn_ClothesBack:
-                Intent intentback=new Intent();
-                intentback.setClass(admin_update_clothes.this, admin_select_clothesinfo.class);
-                startActivity(intentback);
+//            case R.id.Btn_ClothesBack:
+//                Intent intentback=new Intent();
+//                intentback.setClass(admin_update_clothes.this, admin_select_clothesinfo.class);
+//                startActivity(intentback);
         }
     }
 
