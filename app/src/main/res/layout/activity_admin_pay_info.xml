@@ -65,5 +65,5 @@
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/ad_show_pay"></ListView>
+        android:id="@+id/Add_Show_Pay"></ListView>
 </LinearLayout>

@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -24,20 +23,19 @@ import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
  */
 
 public class admin_select_clothesinfo extends AppCompatActivity {
-    private ImageButton back_bt;
     private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_select_bookinfo);
+        setContentView(R.layout.activity_admin_select_clotheskinfo);
         init();//界面初始化
 
     }
 
     private void init() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        listView = (ListView) findViewById(R.id.select_clothes_list);
+        listView = (ListView) findViewById(R.id.Select_Clothes_List);
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Cursor cursor = help.querybookinfo();
         String from[] = {"name", "type", "writer","publicer","rank","img", "price"};
@@ -68,7 +66,7 @@ public class admin_select_clothesinfo extends AppCompatActivity {
                         //删除后重新显示
                         Cursor cursor = help.querybookinfo();
                         String from[] = {"name", "type", "writer","publicer","rank","img"};
-                        int to[] = {R.id.book_name, R.id.Clothes_Type, R.id.Clothes_Author, R.id.Clothes_Publish, R.id.Clothes_Rank, R.id.Clothes_Info_Img};
+                        int to[] = {R.id.Clothes_Name, R.id.Clothes_Type, R.id.Clothes_Author, R.id.Clothes_Publish, R.id.Clothes_Rank, R.id.Clothes_Info_Img};
                         SimpleCursorAdapter adapter = new SimpleCursorAdapter(admin_select_clothesinfo.this, R.layout.admin_book_item, cursor, from, to);
                         adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
                             @Override
@@ -97,7 +95,7 @@ public class admin_select_clothesinfo extends AppCompatActivity {
         });
 
 
-        //listview的单击事件,修改图书信息
+        //listview的单击事件,修改衣服信息
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {

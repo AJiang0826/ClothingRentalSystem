@@ -21,7 +21,7 @@
         android:textSize="40sp"/>
 
     <EditText
-        android:id="@+id/RegisterName"
+        android:id="@+id/RegisterUserName"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:background="@drawable/register_edittext_sharp"
@@ -53,7 +53,7 @@
         android:textSize="20sp"/>
 
     <EditText
-        android:id="@+id/RegisterUserName"
+        android:id="@+id/RegisterName"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:background="@drawable/register_edittext_sharp"

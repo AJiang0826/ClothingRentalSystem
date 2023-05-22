@@ -13,7 +13,7 @@ import com.example.administrator.ClothingRentalSystem.R;
  * 查询信息页面
  */
 public class admin_select_message extends AppCompatActivity {
-private ImageButton back_bt,clothes_info,borrow_bt,pay_bt;
+private ImageButton Clothes_Info,Borrow_Bt,Pay_Bt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,34 +22,27 @@ private ImageButton back_bt,clothes_info,borrow_bt,pay_bt;
     }
 
     private void inti() {
-        /*back_bt=(ImageButton)findViewById(R.id.sel_back);
-        back_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(admin_select_message.this,admin_content.class);
-                startActivity(intent);
-            }
-        });*/
-        clothes_info=(ImageButton)findViewById(R.id.ad_select_clothesinfo);
-        clothes_info.setOnClickListener(new View.OnClickListener() {
+
+        Clothes_Info=(ImageButton)findViewById(R.id.Add_Select_ClothesInfo);
+        Clothes_Info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(admin_select_message.this, admin_select_clothesinfo.class);
                 startActivity(intent);
             }
         });
-        //查询借书信息
-        borrow_bt=(ImageButton)findViewById(R.id.ad_select_brrow);
-        borrow_bt.setOnClickListener(new View.OnClickListener() {
+        //查询租借衣服信息界面
+        Borrow_Bt=(ImageButton)findViewById(R.id.Add_Select_Brrow);
+        Borrow_Bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(admin_select_message.this,admin_borrow_info.class);
                 startActivity(intent);
             }
         });
-        //查询还书信息
-        pay_bt=(ImageButton)findViewById(R.id.ad_manager_people);
-        pay_bt.setOnClickListener(new View.OnClickListener() {
+        //查询还衣信息界面
+        Pay_Bt=(ImageButton)findViewById(R.id.Add_Manager_User);
+        Pay_Bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(admin_select_message.this,admin_pay_info.class);

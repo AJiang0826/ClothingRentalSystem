@@ -17,13 +17,12 @@ import java.util.List;
 import java.util.Map;
 
 public class admin_borrow_info extends AppCompatActivity {
-private ListView ad_borrow;
-private ImageButton back_bt;
+private ListView Add_Borrow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_borrow_info);
-        ad_borrow=(ListView)findViewById(R.id.ad_show_borrow);
+        Add_Borrow=(ListView)findViewById(R.id.Add_Show_Borrow);
         databaseHelp help=new databaseHelp(getApplicationContext());
         List<Map<String, Object>> data = help.queryborrow();
         SimpleAdapter adapter = new SimpleAdapter(
@@ -32,7 +31,7 @@ private ImageButton back_bt;
                 new int[] { R.id.ad_bid, R.id.ad_borname,
                         R.id.ad_bbid, R.id.ad_bname,
                         R.id.ad_btime });
-        ad_borrow.setAdapter(adapter);
+        Add_Borrow.setAdapter(adapter);
 
     }
 }

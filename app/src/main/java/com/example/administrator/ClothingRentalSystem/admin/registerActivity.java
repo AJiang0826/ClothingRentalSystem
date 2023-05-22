@@ -12,98 +12,146 @@ import android.widget.Toast;
 
 import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
+import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.concurrent.CountDownLatch;
+
+
 public class registerActivity extends BaseActivity {
-    private EditText user_ed, username ,pwd_ed,  birthday, phone, sex;
-    private Button back_bt, register_bt;
+    private EditText username, password,confirmPassword ,name, sex, phone, identity;
+    private Button resetting, confirm;
+    private String strUserName,strPwd,strConfirmPwd,strName,strPhone,strSex,sql;
+    //创建CountDownLatch并设置计数值，该count值可以根据线程数的需要设置
+    private CountDownLatch countDownLatch;
+    private ResultSet rs;
+    private int rows;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        countDownLatch = new CountDownLatch(1);
         init();//界面初始化
     }
 
     private void init() {
-        user_ed = (EditText) findViewById(R.id.r_name);
-        pwd_ed = (EditText) findViewById(R.id.r_password);
-        username = findViewById(R.id.user_name);
-        birthday = findViewById(R.id.r_birthday);
-        phone = findViewById(R.id.r_phone);
-        sex = findViewById(R.id.r_sex);
-        //返回按钮的事件监听
-        back_bt = (Button) findViewById(R.id.r_back);
-        back_bt.setOnClickListener(new View.OnClickListener() {
+        username = (EditText) findViewById(R.id.RegisterUserName);
+        password = (EditText) findViewById(R.id.RegisterPassword);
+        confirmPassword = (EditText) findViewById(R.id.RegisterPasswordConfirm);
+        name = (EditText)findViewById(R.id.RegisterName);
+        phone = (EditText)findViewById(R.id.RegisterPhone);
+        sex = (EditText)findViewById(R.id.RegisterSex);
+        //重置按钮的事件监听
+        resetting = (Button) findViewById(R.id.RegisterResetting);
+        resetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(registerActivity.this, MainActivity.class);
-                startActivity(intent);
+                ((EditText) findViewById(R.id.RegisterUserName)).setText("");
+                ((EditText) findViewById(R.id.RegisterPasswordConfirm)).setText("");
+                ((EditText) findViewById(R.id.RegisterPassword)).setText("");
+                ((EditText) findViewById(R.id.RegisterSex)).setText("");
+                ((EditText) findViewById(R.id.RegisterPhone)).setText("");
+                ((EditText) findViewById(R.id.RegisterName)).setText("");
             }
         });
         //注册按钮de事件监听
-        register_bt = (Button) findViewById(R.id.r_register);
-        register_bt.setOnClickListener(new View.OnClickListener() {
+        confirm = (Button) findViewById(R.id.RegisterConfirm);
+        confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String struser = user_ed.getText().toString();
-                String strpwd = pwd_ed.getText().toString();
-                String uname = username.getText().toString();
-                String birth = birthday.getText().toString();
-                String phonenum = phone.getText().toString();
-                String usersex = sex.getText().toString();
-                String md5Psw = MD5Utils.md5(strpwd);//把密码用MD5加密
-
-                databaseHelp help = new databaseHelp(getApplicationContext());
-                ContentValues values = new ContentValues();
-                values.put("user", struser);
-                values.put("name", uname);
-                values.put("password", md5Psw);
-                values.put("sex", usersex);
-                values.put("phone", phonenum);
-                values.put("birthday", birth);
-                SQLiteDatabase db = help.getWritableDatabase();
-                //查询用户是否已经存在
-                Cursor cusror = db.query("admin", null, null, null, null, null, null);
-                if (cusror.moveToFirst()) {
-                    do {
-                        String username = cusror.getString(cusror.getColumnIndex("user"));
-                        if (username.equals(user_ed.getText().toString())) {
-                            Toast.makeText(registerActivity.this, "用户名已存在", Toast.LENGTH_LONG).show();
-                            ((EditText) findViewById(R.id.r_name)).setText("");
-                            return;
+                strUserName = username.getText().toString();
+                strPwd = password.getText().toString();
+                strConfirmPwd = confirmPassword.getText().toString();
+                strName = name.getText().toString();
+                strPhone = phone.getText().toString();
+                strSex = sex.getText().toString();
+                //首先验证两次密码输入是否正确，若不正确则密码重新输入
+                if (!strPwd.equals(strConfirmPwd))
+                {
+                    Toast.makeText(registerActivity.this, "密码两次输入不相同！", Toast.LENGTH_LONG).show();
+                    ((EditText) findViewById(R.id.RegisterPassword)).setText("");
+                    ((EditText) findViewById(R.id.RegisterPasswordConfirm)).setText("");
+                    ((EditText) findViewById(R.id.RegisterPassword)).requestFocus();
+                    return;
+                }
+                sql="insert into user(username,password,name,phone,sex,identity) values('" +
+                        strUserName+"','"+strPwd+"','"+strName+"','"+strPhone+"','"+strSex+"',0);";
+                //以下开始数据库操作，使用线程，查询用户是否已经存在
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            rs = DBUtils.getSelectResultSet("Select * from user where username='"+strUserName+"'");
+                            rs.last();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }finally {
+                            //该线程执行完毕-1
+                            countDownLatch.countDown();
                         }
-
-                    } while (cusror.moveToNext());
-
+                    }
+                }).start();
+                //等待线程查询完结果
+                try {
+                    countDownLatch.await();
+                    if(rs.getRow()!=0){
+                        System.out.println("rs.getRow="+rs.getRow());
+                        Toast.makeText(registerActivity.this, "该用户名已存在！", Toast.LENGTH_LONG).show();
+                        ((EditText) findViewById(R.id.RegisterUserName)).setText("");
+                        ((EditText) findViewById(R.id.RegisterUserName)).requestFocus();
+                        return;
+                    }
+                    //对用户注册输入的信息进行验证，全部符合要求才能通过
+                    if (username.getText().length()!=6) {
+                        Toast.makeText(registerActivity.this,"请输入6位帐号",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if(phone.getText().length()!=11){
+                        Toast.makeText(registerActivity.this,"请输入11位手机号",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if(strSex.equals("")||strName.equals("")){
+                        Toast.makeText(registerActivity.this,"请输入完整内容",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
-                cusror.close();
-                //对用户注册输入的信息进行验证，全部符合要求才能通过
-                boolean testid=true,testnum=true;
-                if (user_ed.getText().length()!=6) {
-                    Toast.makeText(registerActivity.this,"请输入6位帐号",Toast.LENGTH_SHORT).show();
-                    testid=false;
-
+                countDownLatch = new CountDownLatch(1);
+                //以下开始数据库操作，使用线程，插入用户
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            //成功创建普通用户
+                            rows=DBUtils.getUpdateRows(sql);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }finally {
+                            //该线程执行完毕-1
+                            countDownLatch.countDown();
+                        }
+                    }
+                }).start();
+                //等待线程插入完结果
+                try {
+                    countDownLatch.await();
+                    if (rows>0){
+                        Toast.makeText(registerActivity.this,"用户："+strUserName+"注册成功！",Toast.LENGTH_SHORT).show();
+                        //用户注册成功，就跳转到登录页面
+                        Intent intent = new Intent(registerActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                    else
+                        Toast.makeText(registerActivity.this,"注册失败，请联系管理员！",Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
-                if(phone.getText().length()!=11){
-                    Toast.makeText(registerActivity.this,"请输入11位手机号",Toast.LENGTH_SHORT).show();
-                    testnum=false;
-                }
-                if(testid && testnum){
-                    help.insert(values);
-                    Toast.makeText(registerActivity.this, "用户注册成功", Toast.LENGTH_LONG).show();
-                    //用户注册成功，就跳转到登录页面
-                    Intent intent = new Intent(registerActivity.this, MainActivity.class);
-                    startActivity(intent);
-                }else{
-                    Toast.makeText(registerActivity.this, "请重新注册", Toast.LENGTH_LONG).show();
-                    //用户注册成功，就跳转到登录页面
-                    Intent intent = new Intent(registerActivity.this, registerActivity.class);
-                    startActivity(intent);
-                }
-
-
                 ActivityCollector.finishAll();
             }
         });

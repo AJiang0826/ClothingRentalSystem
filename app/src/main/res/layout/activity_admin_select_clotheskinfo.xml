@@ -19,17 +19,6 @@
             android:textColor="#000000"
             android:textSize="30sp" />
 
-<!--        <ImageButton-->
-<!--            android:id="@+id/sel_clothes_back"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentLeft="true"-->
-<!--            android:layout_alignParentStart="true"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:background="#fff"-->
-<!--            app:srcCompat="@mipmap/left_arrow" />-->
-
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="20dp"
@@ -57,23 +46,6 @@
             android:textColor="#000000"
             android:textSize="12sp" />
 
-<!--        <TextView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:gravity="center_horizontal"-->
-<!--            android:singleLine="true"-->
-<!--            android:text="设计者"-->
-<!--            android:textSize="12sp" />-->
-
-<!--        <TextView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:gravity="center_horizontal"-->
-<!--            android:singleLine="true"-->
-<!--            android:text="种类"-->
-<!--            android:textSize="12sp" />-->
 
         <TextView
             android:layout_width="0dp"
@@ -85,14 +57,7 @@
             android:textColor="#000000"
             android:textSize="12sp" />
 
-<!--        <TextView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:gravity="center_horizontal"-->
-<!--            android:singleLine="true"-->
-<!--            android:text="评分"-->
-<!--            android:textSize="12sp" />-->
+
 
         <TextView
             android:layout_width="0dp"
@@ -108,7 +73,7 @@
 
     <ListView
 
-        android:id="@+id/select_clothes_list"
+        android:id="@+id/Select_Clothes_List"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 
