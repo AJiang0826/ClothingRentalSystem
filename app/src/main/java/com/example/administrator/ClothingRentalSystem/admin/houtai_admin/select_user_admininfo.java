@@ -26,8 +26,8 @@ public class select_user_admininfo extends AppCompatActivity {
         Bundle bundle=this.getIntent().getExtras();
         name=bundle.getString("name");
         Cursor cursor = help.queryname(name);
-        String from[]={"user","password","name", "sex", "birthday", "phone"};
-        int to[]={R.id.user_user,R.id.user_pwd,R.id.user_name, R.id.user_sex, R.id.user_birth, R.id.user_phone};
+        String from[]={"user","password","name", "sex", "phone"};
+        int to[]={R.id.user_user,R.id.user_pwd,R.id.user_name, R.id.user_sex, R.id.user_phone};
         SimpleCursorAdapter adapter=new SimpleCursorAdapter(this, R.layout.select_user_item,cursor,from,to);
         listView.setAdapter(adapter);
     }

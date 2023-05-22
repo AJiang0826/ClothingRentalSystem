@@ -20,12 +20,13 @@ import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
  * 管理员添加用户
  * 功能：1.添加用户信息
  *      2.验证用户名是否存在，若存在则提示用户名存在
- * 变量：1. user_ed, username ,pwd_ed,  birthday, phone, sex分别对应表单信息
+ *      3.重置文本框内容
+ * 变量：1. user_ed, username ,pwd_ed, phone, sex分别对应表单信息
  *      2. 确认添加按钮adduser
  */
 public class admin_add_user extends BaseActivity {
-    private EditText user_ed, username ,pwd_ed,  birthday, phone, sex;
-    private Button adduser;
+    private EditText user_ed, username ,pwd_ed, phone, sex;
+    private Button adduser,cz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +39,9 @@ public class admin_add_user extends BaseActivity {
         //获取文本框信息
         user_ed = (EditText) findViewById(R.id.r_name);
         pwd_ed = (EditText) findViewById(R.id.r_password);
-        username = findViewById(R.id.user_name);
-        birthday = findViewById(R.id.r_birthday);
-        phone = findViewById(R.id.r_phone);
-        sex = findViewById(R.id.r_sex);
+        username = (EditText)findViewById(R.id.user_name);
+        phone = (EditText)findViewById(R.id.r_phone);
+        sex = (EditText)findViewById(R.id.r_sex);
         adduser = (Button) findViewById(R.id.r_register);
         //添加用户--按钮的事件监听
         adduser.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +50,6 @@ public class admin_add_user extends BaseActivity {
                 String struser = user_ed.getText().toString();
                 String strpwd = pwd_ed.getText().toString();
                 String uname = username.getText().toString();
-                String birth = birthday.getText().toString();
                 String phonenum = phone.getText().toString();
                 String usersex = sex.getText().toString();
                 String md5Psw = MD5Utils.md5(strpwd);//把密码用MD5加密---MD5信息摘要算法（是不可逆的，只能加密，不能解密）
@@ -63,8 +62,9 @@ public class admin_add_user extends BaseActivity {
                 values.put("password", md5Psw);
                 values.put("sex", usersex);
                 values.put("phone", phonenum);
-                values.put("birthday", birth);
                 Cursor cursor = db.query("admin", null, null, null, null, null, null);
+
+                //判断用户名是否存在
                 if (cursor.moveToFirst()) {
                     do {
                         String username = cursor.getString(cursor.getColumnIndex("user"));
@@ -85,5 +85,19 @@ public class admin_add_user extends BaseActivity {
                 ActivityCollector.finishAll();
             }
         });
+
+        // 获取重置按钮并且添加事件
+        cz=(Button) findViewById(R.id.r_register_resetting);
+        cz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                user_ed.setText("");
+                username.setText("");
+                pwd_ed.setText("");
+                sex.setText("");
+                phone.setText("");
+            }
+        });
+
     }
 }

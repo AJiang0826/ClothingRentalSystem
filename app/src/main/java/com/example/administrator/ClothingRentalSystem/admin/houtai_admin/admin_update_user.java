@@ -16,14 +16,14 @@ import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseAc
 import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
 
 /**
- * 修改读者信息的页面
- * 功能：
+ * 修改用户信息的页面
+ * 功能：修改用户信息
  * 变量：
  */
 
-public class admin_update_reader extends BaseActivity {
-    private EditText user_ed, username ,pwd_ed,  birthday, phone, sex;
-    private Button update_bt;
+public class admin_update_user extends BaseActivity {
+    private EditText user_ed, username ,pwd_ed, phone, sex;
+    private Button update_bt,cz;
     int id;
 
     @Override
@@ -38,7 +38,6 @@ public class admin_update_reader extends BaseActivity {
         user_ed = (EditText) findViewById(R.id.r_name);
         pwd_ed = (EditText) findViewById(R.id.r_password);
         username = findViewById(R.id.user_name);
-        birthday = findViewById(R.id.r_birthday);
         phone = findViewById(R.id.r_phone);
         sex = findViewById(R.id.r_sex);
         update_bt = (Button) findViewById(R.id.r_register);
@@ -51,7 +50,6 @@ public class admin_update_reader extends BaseActivity {
             user_ed.setText(cursor.getString(cursor.getColumnIndex("user")));
             pwd_ed.setText(cursor.getString(cursor.getColumnIndex("password")));
             username.setText(cursor.getString(cursor.getColumnIndex("name")));
-            birthday.setText(cursor.getString(cursor.getColumnIndex("birthday")));
             phone.setText(cursor.getString(cursor.getColumnIndex("phone")));
             sex.setText(cursor.getString(cursor.getColumnIndex("sex")));
 
@@ -63,7 +61,6 @@ public class admin_update_reader extends BaseActivity {
                 String struser = user_ed.getText().toString();
                 String strpwd = pwd_ed.getText().toString();
                 String uname = username.getText().toString();
-                String birth = birthday.getText().toString();
                 String phonenum = phone.getText().toString();
                 String usersex = sex.getText().toString();
                 String md5Psw = MD5Utils.md5(strpwd);//把密码用MD5加密
@@ -74,11 +71,23 @@ public class admin_update_reader extends BaseActivity {
                 values.put("password", md5Psw);
                 values.put("sex", usersex);
                 values.put("phone", phonenum);
-                values.put("birthday", birth);
                 db.update("admin", values, "_id=?", new String[]{String.valueOf(id)});
-                Intent intent = new Intent(admin_update_reader.this, admin_editer_user.class);
+                Intent intent = new Intent(admin_update_user.this, admin_editer_user.class);
                 startActivity(intent);
                 ActivityCollector.finishAll();
+            }
+        });
+
+        // 获取重置按钮并且添加事件
+        cz=(Button) findViewById(R.id.r_register_resetting);
+        cz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                user_ed.setText("");
+                username.setText("");
+                pwd_ed.setText("");
+                sex.setText("");
+                phone.setText("");
             }
         });
 

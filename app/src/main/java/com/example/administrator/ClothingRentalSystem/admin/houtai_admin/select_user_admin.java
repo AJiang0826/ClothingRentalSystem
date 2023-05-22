@@ -25,8 +25,7 @@ import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
  *
  */
 public class select_user_admin extends AppCompatActivity {
-private ListView listView;
-
+    private ListView listView;
     private Button search_btn;
     private EditText search_name;
     @Override
@@ -36,12 +35,12 @@ private ListView listView;
         listView=(ListView)findViewById(R.id.sel_reader_list);
         databaseHelp help=new databaseHelp(getApplicationContext());
         Cursor cursor=help.query();
-        String from[]={"user","password","name", "sex", "birthday", "phone"};
-        int to[]={R.id.user_user,R.id.user_pwd,R.id.user_name, R.id.user_sex, R.id.user_birth, R.id.user_phone};
+        String from[]={"user","password","name", "sex", "phone"};
+        int to[]={R.id.user_user,R.id.user_pwd,R.id.user_name, R.id.user_sex, R.id.user_phone};
         SimpleCursorAdapter adapter=new SimpleCursorAdapter(this,R.layout.select_user_item,cursor,from,to);
         listView.setAdapter(adapter);
 
-
+        //搜索按钮监听
         search_btn=findViewById(R.id.search_btn);
         search_name = findViewById(R.id.search_name);
         search_btn.setOnClickListener(new View.OnClickListener() {

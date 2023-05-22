@@ -47,8 +47,8 @@ public class admin_delete_user extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.edit_user_list);
         final databaseHelp help = new databaseHelp(getApplicationContext());
         Cursor cursor = help.query();
-        String from[]={"user","password","name", "sex", "birthday", "phone"};
-        int to[]={R.id.user_user,R.id.user_pwd,R.id.user_name, R.id.user_sex, R.id.user_birth, R.id.user_phone};
+        String from[]={"user","password","name", "sex", "phone"};
+        int to[]={R.id.user_user,R.id.user_pwd,R.id.user_name, R.id.user_sex, R.id.user_phone};
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.select_user_item, cursor, from, to);
         listView.setAdapter(adapter);
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -65,7 +65,7 @@ public class admin_delete_user extends AppCompatActivity {
                         //删除后重新显示
                         Cursor cursor = help.query();
                         String from[]={"user","password","name", "sex", "birthday", "phone"};
-                        int to[]={R.id.user_user,R.id.user_pwd,R.id.user_name, R.id.user_sex, R.id.user_birth, R.id.user_phone};
+                        int to[]={R.id.user_user,R.id.user_pwd,R.id.user_name, R.id.user_sex, R.id.user_phone};
                         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.select_user_item, cursor, from, to);
                         listView.setAdapter(adapter);
 

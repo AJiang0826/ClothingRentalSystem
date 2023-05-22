@@ -15,7 +15,7 @@ import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseAc
 import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
 
 public class registerActivity extends BaseActivity {
-    private EditText user_ed, username ,pwd_ed,  birthday, phone, sex;
+    private EditText user_ed, username ,pwd_ed, phone, sex;
     private Button back_bt, register_bt;
 
     @Override
@@ -29,7 +29,6 @@ public class registerActivity extends BaseActivity {
         user_ed = (EditText) findViewById(R.id.r_name);
         pwd_ed = (EditText) findViewById(R.id.r_password);
         username = findViewById(R.id.user_name);
-        birthday = findViewById(R.id.r_birthday);
         phone = findViewById(R.id.r_phone);
         sex = findViewById(R.id.r_sex);
         //返回按钮的事件监听
@@ -49,7 +48,6 @@ public class registerActivity extends BaseActivity {
                 String struser = user_ed.getText().toString();
                 String strpwd = pwd_ed.getText().toString();
                 String uname = username.getText().toString();
-                String birth = birthday.getText().toString();
                 String phonenum = phone.getText().toString();
                 String usersex = sex.getText().toString();
                 String md5Psw = MD5Utils.md5(strpwd);//把密码用MD5加密
@@ -61,7 +59,6 @@ public class registerActivity extends BaseActivity {
                 values.put("password", md5Psw);
                 values.put("sex", usersex);
                 values.put("phone", phonenum);
-                values.put("birthday", birth);
                 SQLiteDatabase db = help.getWritableDatabase();
                 //查询用户是否已经存在
                 Cursor cusror = db.query("admin", null, null, null, null, null, null);

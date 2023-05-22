@@ -57,7 +57,7 @@
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_add_user" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_delete_user" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_editer_user" />
-        <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_update_reader" />
+        <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_update_user" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_add_book" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_delete_book" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_update_clothes" />

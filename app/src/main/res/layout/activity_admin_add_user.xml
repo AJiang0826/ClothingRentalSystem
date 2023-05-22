@@ -28,14 +28,13 @@
         android:background="@drawable/admin_user"
         android:ems="20"
         android:hint="请输入用户名"
-        android:inputType="textPersonName"
-        android:textSize="20sp" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/r_password"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/admin_user"
         android:ems="20"
         android:inputType="textPassword"
@@ -45,36 +44,29 @@
         android:id="@+id/user_name"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/admin_user"
         android:ems="20"
-        android:hint="姓名"/>
+        android:hint="请输入姓名"/>
 
     <EditText
         android:id="@+id/r_sex"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/admin_user"
         android:ems="20"
         android:hint="请输入性别" />
 
     <EditText
-        android:id="@+id/r_birthday"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/admin_user"
-        android:ems="20"
-        android:hint="请输入生日"/>
-    <EditText
         android:id="@+id/r_phone"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/admin_user"
         android:ems="20"
-        android:hint="请输入手机号" />
+        android:hint="请输入手机号"/>
+
 
 
     <LinearLayout
@@ -88,10 +80,10 @@
         android:layout_height="40dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
-        android:background="#a5c3d4"
         android:text="重置内容"
         android:textColor="#37302F"
-        android:textSize="20sp" />
+        android:background="@drawable/admin_user_button"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/r_register"
@@ -104,9 +96,9 @@
         android:layout_alignBottom="@+id/r_back"
         android:layout_alignRight="@+id/r_password"
         android:layout_alignEnd="@+id/r_password"
-        android:background="#a5c3d4"
+        android:background="@drawable/admin_user_button"
         android:textColor="#37302F"
-        android:textSize="20sp"/>
+        android:textSize="16sp"/>
 
 </LinearLayout>
 </LinearLayout>

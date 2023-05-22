@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void run() {
                 System.out.println("开始连接数据库……");
-                new DBUtils("192.168.137.122:3306","test","Android","123456");
+                new DBUtils("192.168.56.1:3306","clothes_rental_system","root","123123");
                 System.out.println("查看数据库连接是否成立："+ (DBUtils.conn!=null));
             }
         }
