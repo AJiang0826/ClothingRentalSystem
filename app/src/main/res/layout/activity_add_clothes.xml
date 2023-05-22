@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".admin.houtai_admin.admin_add_book">
+    tools:context=".admin.houtai_admin.admin_add_clothes">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_marginTop="20dp"

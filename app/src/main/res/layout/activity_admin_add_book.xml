@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:orientation="vertical"
-    tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_add_book">
+    tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_add_clothes">
 
     <RelativeLayout
         android:layout_width="wrap_content"

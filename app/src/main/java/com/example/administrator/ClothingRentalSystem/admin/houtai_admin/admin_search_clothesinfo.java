@@ -1,6 +1,5 @@
 package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,14 +18,14 @@ import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
  * 管理员查询衣物详细信息【搜索结果】
  */
 
-public class admin_search_bookinfo extends AppCompatActivity {
+public class admin_search_clothesinfo extends AppCompatActivity {
     private ImageButton back_bt;
     private ListView listView;
     private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_search_bookinfo);
+        setContentView(R.layout.activity_admin_search_clothesinfo);
         init();//界面初始化
     }
 

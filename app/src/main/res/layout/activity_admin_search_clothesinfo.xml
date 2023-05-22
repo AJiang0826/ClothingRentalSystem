@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg"
     tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_select_clothesinfo">
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -120,5 +121,5 @@
     <ListView
         android:id="@+id/Select_Clothes_List"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent" ></ListView>
 </LinearLayout>

@@ -14,7 +14,7 @@
             android:id="@+id/search_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="请输入搜素的用户名"
+            android:hint="请输入搜索的用户名"
             android:layout_weight="0.3"/>
 
         <Button
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
-            android:background="#B8D6DA"
+            android:background="#a5c3d4"
             android:shadowRadius="20"
             android:text="搜索用户" />
     </LinearLayout>

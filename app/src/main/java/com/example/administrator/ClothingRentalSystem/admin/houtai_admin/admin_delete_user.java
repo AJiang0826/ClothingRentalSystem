@@ -40,7 +40,7 @@ public class admin_delete_user extends AppCompatActivity {
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_delete_user.this, admin_manager_reader.class);
+                Intent intent = new Intent(admin_delete_user.this, admin_manager_user.class);
                 startActivity(intent);
             }
         });
@@ -52,6 +52,7 @@ public class admin_delete_user extends AppCompatActivity {
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.select_user_item, cursor, from, to);
         listView.setAdapter(adapter);
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
         //listview的单击事件监听
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

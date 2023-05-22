@@ -34,15 +34,15 @@
 
 7）查看还书信息详细界面        activity_admin_pay_info.xml-----admin_pay_info.java---------------祝5
 
-8）管理图书分式页面      activity_admin_manager_book.xml-----admin_manager_book.java------------李1
+8）管理图书分式页面      activity_admin_manager_clothes.xml-----admin_manager_clothes.java------------李1
 
-9）添加图书详细界面      activity_add_book.xml-----admin_add_book.java--------------------------李2
+9）添加图书详细界面      activity_add_clothes.xml-----admin_add_clothes.java--------------------------李2
 
-10）查询图书搜索界面        activity_admin_search_book.xml-----admin_search_book.java-----------李3
+10）查询图书搜索界面        activity_admin_search_clothes.xml-----admin_search_clothes.java-----------李3
 
-11）查询图书详细界面     activity_admin_search_bookinfo.xml-----admin_search_bookinfo.java------李4
+11）查询图书详细界面     activity_admin_search_clothesinfo.xml-----admin_search_clothesinfo.java------李4
 
-12）管理读者分式界面     activity_admin_manager_reader.xml-----admin_manager_reader.java--------李5
+12）管理读者分式界面     activity_admin_manager_user.xml-----admin_manager_user.java--------李5
 
 13）查找读者详细界面     activity_select_reader_admin.xml-----select_reader_admin.java----------王1
 

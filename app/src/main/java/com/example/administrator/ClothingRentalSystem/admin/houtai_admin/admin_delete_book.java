@@ -36,7 +36,7 @@ private ListView listView;
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(admin_delete_book.this,admin_manager_book.class);
+                Intent intent=new Intent(admin_delete_book.this, admin_manager_clothes.class);
                 startActivity(intent);
             }
         });

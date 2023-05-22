@@ -17,6 +17,8 @@ import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
 
 /**
  * 修改读者信息的页面
+ * 功能：
+ * 变量：
  */
 
 public class admin_update_reader extends BaseActivity {
