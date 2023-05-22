@@ -133,11 +133,19 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
                 startActivityForResult(intent,1);  // 第二个参数是请求码
                 break;
 
-            //回退按钮
+            //重置
             case R.id.btn_ClothesBack:
-                Intent intentback = new Intent();
+                /*Intent intentback = new Intent();
                 intentback.setClass(admin_add_clothes.this, admin_manager_clothes.class);
-                startActivity(intentback);
+                startActivity(intentback);*/
+                et_ClothesId.getText().clear();
+                et_ClothesName.getText().clear();
+                et_ClothesType.getText().clear();
+                et_ClothesWriter.getText().clear();
+                //spinner.setAdapter();
+                et_ClothesPrice.getText().clear();
+                et_ClothesRank.getText().clear();
+                et_ClothesComment.getText().clear();
         }
     }
 
@@ -160,7 +168,6 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
             try {
                 is= admin_add_clothes.this.getContentResolver().openInputStream(uri);
                 bmp= BitmapFactory.decodeStream(is);
-
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }finally {
@@ -173,5 +180,4 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
         }
         ClothesImg.setImageBitmap(bmp);
     }
-
 }
