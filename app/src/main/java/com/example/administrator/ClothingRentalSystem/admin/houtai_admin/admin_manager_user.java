@@ -14,25 +14,25 @@ import com.example.administrator.ClothingRentalSystem.R;
  */
 
 public class admin_manager_user extends AppCompatActivity {
-    private ImageButton back_tn, addreader, editreader, deletereader, selectReader;
+    private ImageButton back_tn, adduser, editreader, deletereader, selectReader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_manager_reader);
-        inti();//界面初始化
+        //inti();//界面初始化
     }
 
     private void inti() {
         //返回按钮的事件监听
-        back_tn = (ImageButton) findViewById(R.id.manClothes_back);
+       /* back_tn = (ImageButton) findViewById(R.id.manClothes_bk);
         back_tn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(admin_manager_user.this, admin_content.class);
                 startActivity(intent);
             }
-        });
+        });*/
         //查找读者按钮的事件监听
         selectReader = (ImageButton) findViewById(R.id.ad_SelectUser);
         selectReader.setOnClickListener(new View.OnClickListener() {
@@ -43,8 +43,8 @@ public class admin_manager_user extends AppCompatActivity {
             }
         });
         //添加读者按钮的事件监听
-        addreader = (ImageButton) findViewById(R.id.ad_AddUser);
-        addreader.setOnClickListener(new View.OnClickListener() {
+        adduser = (ImageButton) findViewById(R.id.ad_AddUser);
+        adduser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(admin_manager_user.this, admin_add_user.class);

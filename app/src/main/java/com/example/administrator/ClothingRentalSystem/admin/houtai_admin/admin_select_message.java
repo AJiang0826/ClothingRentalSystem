@@ -22,14 +22,14 @@ private ImageButton back_bt,clothes_info,borrow_bt,pay_bt;
     }
 
     private void inti() {
-        back_bt=(ImageButton)findViewById(R.id.sel_back);
+        /*back_bt=(ImageButton)findViewById(R.id.sel_back);
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(admin_select_message.this,admin_content.class);
                 startActivity(intent);
             }
-        });
+        });*/
         clothes_info=(ImageButton)findViewById(R.id.ad_select_clothesinfo);
         clothes_info.setOnClickListener(new View.OnClickListener() {
             @Override

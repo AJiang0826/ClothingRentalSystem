@@ -15,12 +15,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
             android:text="查询信息"
             android:textColor="#000000"
-            android:textSize="30sp" />
-
+            android:textSize="40sp" />
+<!--
         <ImageButton
             android:id="@+id/sel_back"
             android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="50dp"
             android:background="#fff"
-            app:srcCompat="@mipmap/left_arrow" />
+            app:srcCompat="@mipmap/left_arrow" />-->
 
     </RelativeLayout>
 
@@ -40,7 +40,7 @@
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/clothes_update_shape"
+        android:background="@drawable/register_button_sharp"
         android:orientation="horizontal">
 
         <ImageView
@@ -67,7 +67,7 @@
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_gravity="right"
-            android:background="#fff"
+            android:background="#00000000"
             android:src="@mipmap/right_arrow" />
 
     </RelativeLayout>
@@ -78,7 +78,7 @@
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/clothes_update_shape"
+        android:background="@drawable/register_button_sharp"
         android:orientation="horizontal">
 
         <ImageView
@@ -104,7 +104,7 @@
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_gravity="right"
-            android:background="#fff"
+            android:background="#00000000"
             android:src="@mipmap/right_arrow" />
     </RelativeLayout>
 
@@ -114,7 +114,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
-        android:background="@drawable/clothes_update_shape"
+        android:background="@drawable/register_button_sharp"
         android:orientation="horizontal">
 
         <ImageView
@@ -142,7 +142,7 @@
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_gravity="right"
-            android:background="#fff"
+            android:background="#00000000"
             android:src="@mipmap/right_arrow" />
     </RelativeLayout>
 

@@ -23,14 +23,14 @@ public class admin_manager_book extends BaseActivity {
 
     private void init() {
         //回退--初始后台管理
-        back_bt = (ImageButton) findViewById(R.id.manClothes_back);
+        /*back_bt = (ImageButton) findViewById(R.id.manClothes_back);
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(admin_manager_book.this, admin_content.class);
                 startActivity(intent);
             }
-        });
+        });*/
         //添加图书
         addClothes = (ImageButton) findViewById(R.id.ad_add);
         addClothes.setOnClickListener(new View.OnClickListener() {
