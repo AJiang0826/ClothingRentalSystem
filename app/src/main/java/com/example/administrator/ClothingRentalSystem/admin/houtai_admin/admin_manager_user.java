@@ -13,13 +13,13 @@ import com.example.administrator.ClothingRentalSystem.R;
  * 管理读者分式界面【第二层】
  */
 
-public class admin_manager_reader extends AppCompatActivity {
+public class admin_manager_user extends AppCompatActivity {
     private ImageButton back_tn, AddUser, EditUser, DeleteUser, SelectUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_manager_reader);
+        setContentView(R.layout.activity_admin_manager_user);
         inti();//界面初始化
     }
 
@@ -38,7 +38,7 @@ public class admin_manager_reader extends AppCompatActivity {
         SelectUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_manager_reader.this, select_user_admin.class);
+                Intent intent = new Intent(admin_manager_user.this, select_user_admin.class);
                 startActivity(intent);
             }
         });
@@ -47,7 +47,7 @@ public class admin_manager_reader extends AppCompatActivity {
         AddUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_manager_reader.this, admin_add_user.class);
+                Intent intent = new Intent(admin_manager_user.this, admin_add_user.class);
                 startActivity(intent);
             }
         });
@@ -56,7 +56,7 @@ public class admin_manager_reader extends AppCompatActivity {
         EditUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_manager_reader.this, admin_editer_user.class);
+                Intent intent = new Intent(admin_manager_user.this, admin_editer_user.class);
                 startActivity(intent);
             }
         });
@@ -65,7 +65,7 @@ public class admin_manager_reader extends AppCompatActivity {
         DeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(admin_manager_reader.this, admin_delete_user.class);
+                Intent intent = new Intent(admin_manager_user.this, admin_delete_user.class);
                 startActivity(intent);
             }
         });

@@ -10,21 +10,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.administrator.ClothingRentalSystem.R;
 
-public class admin_search_book extends AppCompatActivity {
+public class admin_search_clothes extends AppCompatActivity {
     private Button search;
     private EditText search_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_search_book);
+        setContentView(R.layout.activity_admin_search_clothes);
         search = findViewById(R.id.search_btn);
         search_name = findViewById(R.id.search_name);
         //搜索按钮加监听
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent  intent = new Intent(admin_search_book.this, admin_search_bookinfo.class);
+                Intent  intent = new Intent(admin_search_clothes.this, admin_search_clothesinfo.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("name", search_name.getText().toString());
                 intent.putExtras(bundle);

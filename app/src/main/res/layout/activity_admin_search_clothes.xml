@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:orientation="vertical"
-    tools:context=".admin.houtai_admin.admin_search_book">
+    tools:context=".admin.houtai_admin.admin_search_clothes">
 
     <LinearLayout
         android:orientation="horizontal"
