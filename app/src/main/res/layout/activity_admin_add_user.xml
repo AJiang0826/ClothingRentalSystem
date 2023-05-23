@@ -58,6 +58,7 @@
         android:ems="20"
         android:hint="请输入性别" />
 
+
     <EditText
         android:id="@+id/r_phone"
         android:layout_width="280dp"

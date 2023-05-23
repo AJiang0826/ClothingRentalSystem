@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -57,7 +58,8 @@ public class MainActivity extends BaseActivity {
     private Button login_bt, register_bt;
     private Button im_bt;
     private CheckBox rember, auto_login;
-    private String strUserName,strPwd,strConfirmPwd,strName,strPhone,strSex,sql;
+    private static String strUserName;
+    private String sql;
     //创建CountDownLatch并设置计数值，该count值可以根据线程数的需要设置
     private CountDownLatch countDownLatch;
     private ResultSet rs;
@@ -77,6 +79,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void run() {
                 System.out.println("开始连接数据库……");
+               // new DBUtils("192.168.43.149:3306","clothes_rental_system","Android","123456");
                 new DBUtils("192.168.43.71:3306","clothes_rental_system","root","123456");
                 System.out.println("查看数据库连接是否成立："+ (DBUtils.conn!=null));
             }
@@ -159,6 +162,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String struser = user_ed.getText().toString();
+                strUserName=struser;
                 String strpwd = pwd_ed.getText().toString();
 
 
@@ -173,8 +177,8 @@ public class MainActivity extends BaseActivity {
 
 
 
-              //  sql="select * from user where  username='"+struser+"' and password="+strpwd;
-                sql="Select * from user where username='"+struser+"'";
+                sql="select * from user where  username='"+struser+"' and password="+strpwd;
+                //sql="Select * from user where username='"+struser+"'";
                 //以下开始数据库操作，使用线程，查询用户是否存在
                 new Thread(new Runnable() {
                     @Override
@@ -200,6 +204,19 @@ public class MainActivity extends BaseActivity {
                         //用户密码输入正确，就跳转到显示服装列表页面
                         Intent intent = new Intent(MainActivity.this, contentActivity.class);
                         startActivity(intent);
+                        //增加一个Notification通知信息。当用户名、密码正确时，不但做界面跳转，还要发出一条状态栏消息提
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, 0);
+                        String channelId = createNotificationChannel("my_channel_ID", "my_channel_NAME", NotificationManager.IMPORTANCE_HIGH);
+                        NotificationCompat.Builder notification = new NotificationCompat.Builder(MainActivity.this, channelId)
+                                .setContentTitle("通知")
+                                .setContentText("hello，"+"欢迎"+struser+"来到服装租借系统~")
+                                .setContentIntent(pendingIntent)
+                                .setSmallIcon(R.mipmap.ic_launcher)
+                                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                .setAutoCancel(true);
+                        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MainActivity.this);
+                        notificationManager.notify(100, notification.build());
 
 
                          /*
@@ -243,8 +260,11 @@ public class MainActivity extends BaseActivity {
         });//登录监听完毕
 
     }
-
-   /* private String createNotificationChannel(String channelID, String channelNAME, int level) {
+    public static String getStrUserName()
+    {
+        return strUserName;
+    }
+ private String createNotificationChannel(String channelID, String channelNAME, int level) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             NotificationChannel channel = new NotificationChannel(channelID, channelNAME, level);
@@ -253,6 +273,6 @@ public class MainActivity extends BaseActivity {
         } else {
             return null;
         }
-    }*/
+    }
 
 }

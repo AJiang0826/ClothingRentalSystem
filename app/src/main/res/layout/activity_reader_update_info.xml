@@ -19,6 +19,20 @@
         android:textColor="#37302F"
         android:textSize="30sp"/>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <EditText
         android:id="@+id/u_name"
         android:layout_width="280dp"
@@ -29,24 +43,24 @@
         android:inputType="textPersonName"
         android:textSize="20sp" />
 
-
     <EditText
         android:id="@+id/u_password"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:background="@drawable/sharp"
         android:ems="20"
-        android:inputType="textPassword"
         android:hint="请输入密码"
+        android:inputType="textPassword"
         android:textSize="20sp" />
 
     <EditText
         android:id="@+id/user_name"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:background="@drawable/sharp"
-        android:hint="姓名"/>
+        android:ems="10"
+        android:hint="姓名" />
+
     <EditText
         android:id="@+id/u_sex"
         android:layout_width="280dp"
@@ -56,22 +70,23 @@
         android:hint="请输入性别" />
 
     <EditText
-        android:id="@+id/u_birthday"
+        android:id="@+id/u_phone"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:background="@drawable/sharp"
-        android:hint="请输入生日"/>
+        android:hint="请输入手机号"/>
+
+
     <EditText
-        android:id="@+id/u_phone"
+        android:id="@+id/u_register_identify"
         android:layout_width="280dp"
         android:layout_height="40dp"
         android:background="@drawable/sharp"
-        android:hint="请输入手机号" />
-
+        android:hint="请输入注册身份[0/1]" />
 
     <Button
-        android:id="@+id/r_register"
+        android:id="@+id/r_modify"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"

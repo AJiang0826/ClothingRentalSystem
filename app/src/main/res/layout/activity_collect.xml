@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:layout_gravity="center_vertical"
-        android:text="设计师"
+        android:text="尺码"
         />
         <TextView
             android:layout_width="0dp"

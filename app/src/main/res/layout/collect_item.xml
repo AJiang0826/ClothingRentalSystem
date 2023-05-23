@@ -4,31 +4,31 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
     <TextView
-        android:id="@+id/Borname"
+        android:id="@+id/C_user_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
 
     <TextView
-        android:id="@+id/Bbookid"
+        android:id="@+id/C_clothes_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/Bbookname"
+        android:id="@+id/C_clothes_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/Bbookauthor"
+        android:id="@+id/C_clothes_size"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
     <TextView
-        android:id="@+id/Bnowtimae"
+        android:id="@+id/C_collect_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
