@@ -30,10 +30,15 @@ public class ItemUtils {
             {
                 while(rs.next())
                 {
-                    System.out.println("开始创建map");
                     Map<String, Object> map = new HashMap<String, Object>();
                     for(int i=0;i<names2.length;i++)
                     {
+                        //判断时段中是否还有时间字段，含有则强制截断
+                        if (names1[i].contains("time")||names1[i].contains("data")){
+                            String data=rs.getTimestamp(names1[i]).toString();
+                            map.put(names2[i],data.substring(0,data.length()-2));//强制截取时间.0前片段
+                            continue;
+                        }
                         map.put(names2[i],rs.getString(names1[i]));
                     }
                     list.add(map);

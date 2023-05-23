@@ -44,7 +44,6 @@ public class person_borrow extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.show_borrow);
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
         sql="select id,user_name,clothes_id,clothes_size,clothes_borrow_data from clothes_lease where user_name='"+MainActivity.getStrUserName()+"' and flage=0;";//查询整张租借表
-        System.out.println("sql="+sql);
         //以下开始数据库操作，使用线程，插入用户
         new Thread(new Runnable() {
             @Override
@@ -67,7 +66,6 @@ public class person_borrow extends AppCompatActivity {
             String[] names1={"id","user_name","clothes_id","clothes_size","clothes_borrow_data"};//建立字段名结果集
             String[] names2={"Id","CustomerName","ClothesId","ClothesSize","BorrowTime"};//建立字段名结果集2 这个要和SimpleAdapter中的string[]一样
             List<Map<String, Object>> data = ItemUtils.getList(names1,names2,rs);//调用ItemUtils获取结果集
-            System.out.println("list="+data.toString());
             SimpleAdapter adapter = new SimpleAdapter(
                     person_borrow.this, data, R.layout.borrow_item,
                         new String[]{"Id", "CustomerName", "ClothesId", "ClothesSize", "BorrowTime"},
@@ -111,7 +109,7 @@ public class person_borrow extends AppCompatActivity {
                 if(rows>0)
                     Toast.makeText(person_borrow.this, "归还衣服成功！欢迎下次再来！", Toast.LENGTH_SHORT).show();
                 else
-                    System.out.println("归还衣服失败！请通知管理员！");
+                    Toast.makeText(person_borrow.this, "归还衣服失败！请通知管理员！", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(person_borrow.this, person_borrow.class);
                 startActivity(intent);
                 finish();
