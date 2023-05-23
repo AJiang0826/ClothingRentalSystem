@@ -20,14 +20,21 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.administrator.ClothingRentalSystem.R;
+import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
+import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
 import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
+import com.example.administrator.ClothingRentalSystem.admin.registerActivity;
+import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * 管理员添加衣服的界面
@@ -42,14 +49,20 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
     Uri uri;
     private String pub;
     private ImageView ClothesImg;
-    private EditText et_ClothesId,et_ClothesName,et_ClothesType,et_ClothesWriter,et_ClothesPublicer,et_ClothesPrice,et_ClothesRank,et_ClothesComment;
+    private EditText et_ClothesId,et_ClothesName,et_ClothesType,et_ClothesDesigner,et_ClothesSize,et_ClothesPublicer,et_ClothesPrice,et_ClothesRank,et_ClothesComment;
     private Button btn_ClothesCommit,btn_ClothesBack;
+
+    private String strClothesImg,strClothesId,strClothesName,strClothesType,strClothesDesigner,strClothesSize,strClothesPrice,strClothesRank,strClothesComment,sql;
+    private CountDownLatch countDownLatch;
+    private ResultSet rs;
+    private int rows;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_clothes);
-        list.add("S");
+
+        /*list.add("S");
         list.add("M");
         list.add("L");
         list.add("XL");
@@ -67,9 +80,9 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
+        });*/
         initdata();//界面初始化
-        helper = new databaseHelp(getApplicationContext());
+        //helper = new databaseHelp(getApplicationContext());
     }
 
     private void initdata() {
@@ -78,7 +91,8 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
         et_ClothesId=findViewById(R.id.et_ClothesId);
         et_ClothesName=findViewById(R.id.et_ClothesName);
         et_ClothesType=findViewById(R.id.et_ClothesType);
-        et_ClothesWriter=findViewById(R.id.et_ClothesWriter);
+        et_ClothesDesigner=findViewById(R.id.et_ClothesDesigner);
+        et_ClothesSize=findViewById(R.id.et_ClothesSize);
         et_ClothesPrice=findViewById(R.id.et_ClothesPrice);
         et_ClothesRank=findViewById(R.id.et_ClothesRank);
         et_ClothesComment=findViewById(R.id.et_ClothesComment);
@@ -87,9 +101,9 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
         btn_ClothesCommit=findViewById(R.id.btn_ClothesCommit);//添加
         btn_ClothesBack=findViewById(R.id.btn_ClothesBack);//返回
 
-        btn_ClothesCommit.setOnClickListener(this);//添加按钮
         ClothesImg.setOnClickListener(this);//选择图片
-        btn_ClothesBack.setOnClickListener(this);//返回按钮
+        btn_ClothesCommit.setOnClickListener(this);//添加按钮
+        btn_ClothesBack.setOnClickListener(this);//重置按钮
 
         Resources r = getResources();
         uri =  Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
@@ -104,25 +118,70 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btn_ClothesCommit://点击选中添加按钮
-                //ISBN为十位，且不为空
+                //衣服编号为十位，且不为空
                 if (et_ClothesId.getText().length()!=10) {
-                    Toast.makeText(admin_add_clothes.this,"请输入10位图书ISBN",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(admin_add_clothes.this,"请输入10位衣物编号",Toast.LENGTH_SHORT).show();
                     testid=false;
                     break;
                 }
-                //书名不为空
+                //衣服名不为空
                 if(et_ClothesName.getText().length()==0){
-                    Toast.makeText(admin_add_clothes.this,"请输入完整图书信息",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(admin_add_clothes.this,"请输入完整衣服名",Toast.LENGTH_SHORT).show();
                     testother=false;
                     break;
                 }
+                //向数据库内添加衣服信息
                 if(testid==true&&testother==true){
-                    helper.inserbooktdata(et_ClothesId.getText().toString(),et_ClothesName.getText().toString(),
-                            et_ClothesType.getText().toString(),et_ClothesWriter.getText().toString(),
+                    strClothesImg = String.valueOf(uri);
+                    strClothesId = et_ClothesId.getText().toString();
+                    strClothesName = et_ClothesName.getText().toString();
+                    strClothesType = et_ClothesType.getText().toString();
+                    strClothesDesigner = et_ClothesDesigner.getText().toString();
+                    //spiner----------------------
+                    strClothesSize = et_ClothesSize.getText().toString();
+                    strClothesPrice = et_ClothesPrice.getText().toString();
+                    strClothesRank = et_ClothesRank.getText().toString();
+                    strClothesComment = et_ClothesComment.getText().toString();
+                    sql="insert into clothes_information(clothes_img,id,name,type,designer,size,price,rank,comment) values('" +
+                            strClothesImg+"','"+strClothesId+"','"+strClothesName+"','"+strClothesType+"','"+strClothesDesigner+"','"+
+                            strClothesSize+"','"+strClothesPrice+"','"+strClothesRank+"','"+strClothesComment+"');";
+
+                    countDownLatch = new CountDownLatch(1);
+                    //以下开始数据库操作，使用线程，插入衣服信息
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                //成功添加衣物信息
+                                rows=DBUtils.getUpdateRows(sql);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }finally {
+                                //该线程执行完毕-1
+                                countDownLatch.countDown();
+                            }
+                        }
+                    }).start();
+
+                    try {
+                        countDownLatch.await();
+                        if (rows>0){
+                            Toast.makeText(admin_add_clothes.this,"添加衣物信息成功！",Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                            Toast.makeText(admin_add_clothes.this,"添加衣物信息失败！",Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    /*helper.inserbooktdata(et_ClothesId.getText().toString(),et_ClothesName.getText().toString(),
+                            et_ClothesType.getText().toString(),et_ClothesDesigner.getText().toString(),
                             pub,et_ClothesPrice.getText().toString(),
                             et_ClothesRank.getText().toString(),et_ClothesComment.getText().toString(),
                             String.valueOf(uri));
-                    Toast.makeText(admin_add_clothes.this,"添加图书成功！",Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(admin_add_clothes.this,"添加衣物信息成功！",Toast.LENGTH_SHORT).show();*/
+
                     break;
                 }
 
@@ -133,7 +192,7 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
                 startActivityForResult(intent,1);  // 第二个参数是请求码
                 break;
 
-            //重置
+            //重置--清空所有EditText内容
             case R.id.btn_ClothesBack:
                 /*Intent intentback = new Intent();
                 intentback.setClass(admin_add_clothes.this, admin_manager_clothes.class);
@@ -141,8 +200,8 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
                 et_ClothesId.getText().clear();
                 et_ClothesName.getText().clear();
                 et_ClothesType.getText().clear();
-                et_ClothesWriter.getText().clear();
-                //spinner.setAdapter();
+                et_ClothesDesigner.getText().clear();
+                spinner.getChildAt(0).setVisibility(View.INVISIBLE);
                 et_ClothesPrice.getText().clear();
                 et_ClothesRank.getText().clear();
                 et_ClothesComment.getText().clear();

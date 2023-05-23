@@ -3,34 +3,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/ad_pid"
+        android:id="@+id/NumberId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/ad_puname"
+        android:id="@+id/UserName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/ad_ppid"
+        android:id="@+id/ClothesId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/ad_pnbame"
+        android:id="@+id/ClothesSize"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/ad_ptime"
+        android:id="@+id/BorrowDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
