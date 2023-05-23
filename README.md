@@ -44,15 +44,15 @@
 
 12）管理读者分式界面     activity_admin_manager_user.xml-----admin_manager_user.java--------李5
 
-13）查找读者详细界面     activity_select_reader_admin.xml-----select_reader_admin.java----------王1
+13）查找读者详细界面     activity_select_user_admin.xml-----select_user_admin.java----------王1
 
-14）添加读者详细界面     activity_admin_add_reader.xml-----admin_add_reader.java----------------王2
+14）添加读者详细界面     activity_admin_add_user.xml-----admin_add_user.java----------------王2
 
-15）编辑读者列表界面     activity_admin_editer_reader.xml-----admin_editer_reader.java----------王3
+15）编辑读者列表界面     activity_admin_editer_user.xml-----admin_editer_user.java----------王3
 
-16）点击读者详细编辑界面       activity_admin_update_reader.xml-----admin_update_reader.java-----王4
+16）点击读者详细编辑界面       activity_admin_update_user.xml-----admin_update_user.java-----王4
 
-17）删除读者列表界面     activity_admin_delete_reader.xml-----admin_delete_reader.java----------王5
+17）删除读者列表界面     activity_admin_delete_user.xml-----admin_delete_user.java----------王5
 
 使用DBUtils工具类说明： （首先，因为连接数据库使用了一点网络编程，所以在AndroidManifest.xml文件中，插入了新的网络权限，所以一定要将虚拟机上的app卸载重装。）
 

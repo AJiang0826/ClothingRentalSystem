@@ -36,6 +36,10 @@ public class MainActivity extends BaseActivity {
     private Button login_bt, register_bt;
     private Button im_bt;
     private CheckBox rember, auto_login;
+
+
+
+
     private String md5Psw;
 
     /**
