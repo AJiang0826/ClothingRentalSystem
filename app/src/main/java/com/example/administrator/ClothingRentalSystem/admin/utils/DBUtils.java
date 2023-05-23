@@ -24,7 +24,7 @@ public class DBUtils{
     public DBUtils(int port,String LocalDBname,String username,String password){//static Connection getConn
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://192.168.43.149:"+port+"/"+LocalDBname+"?characterEncoding=UTF-8&&serverTimezone=GMT",username, password);		//获取数据库连接
+            conn = DriverManager.getConnection("jdbc:mysql://192.168.56.1:"+port+"/"+LocalDBname+"?characterEncoding=UTF-8&&serverTimezone=GMT",username, password);		//获取数据库连接
             st=conn.createStatement();
         }catch (ClassNotFoundException e) {
             System.out.println("未能成功加载驱动程序，请检查是否导入驱动程序！");

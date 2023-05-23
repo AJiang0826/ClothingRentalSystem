@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--这是一个工具xml，不具有实体也是，
+只是提供一个借阅列表的结构。
+与之关联的所有 租借 列表都会用到它-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
     <TextView
-        android:id="@+id/Borname"
+        android:id="@+id/Id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_weight="1" />
 
 
     <TextView
-        android:id="@+id/Bbookid"
+        android:id="@+id/CustomerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/Bbookname"
+        android:id="@+id/ClothesId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/Bbookauthor"
+        android:id="@+id/ClothesSize"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_weight="1" />
     <TextView
-        android:id="@+id/Bnowtimae"
+        android:id="@+id/BorrowTime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_weight="1" />
 
 

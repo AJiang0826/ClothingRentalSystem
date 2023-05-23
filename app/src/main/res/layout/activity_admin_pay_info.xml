@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg"
     tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_pay_info">
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="归还编号 "
+            android:text="   编号 "
             android:textColor="#000000" />
 
         <TextView

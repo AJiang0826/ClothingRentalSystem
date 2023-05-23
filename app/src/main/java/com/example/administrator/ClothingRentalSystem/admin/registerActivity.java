@@ -19,7 +19,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.CountDownLatch;
 
-
+/**
+ * 本类是用注册普通用户算法类
+ * 通过调用DBUtils完成数据库的增删改查
+ **/
 public class registerActivity extends BaseActivity {
     private EditText username, password,confirmPassword ,name, sex, phone, identity;
     private Button resetting, confirm;
