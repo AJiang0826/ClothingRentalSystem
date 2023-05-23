@@ -57,7 +57,8 @@ public class MainActivity extends BaseActivity {
     private Button login_bt, register_bt;
     private Button im_bt;
     private CheckBox rember, auto_login;
-    private String strUserName,strPwd,strConfirmPwd,strName,strPhone,strSex,sql;
+    private static String strUserName;
+    private String sql;
     //创建CountDownLatch并设置计数值，该count值可以根据线程数的需要设置
     private CountDownLatch countDownLatch;
     private ResultSet rs;
@@ -77,7 +78,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void run() {
                 System.out.println("开始连接数据库……");
-                new DBUtils("192.168.43.71:3306","clothes_rental_system","root","123456");
+                new DBUtils("192.168.43.149:3306","clothes_rental_system","Android","123456");
                 System.out.println("查看数据库连接是否成立："+ (DBUtils.conn!=null));
             }
         }
@@ -159,6 +160,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String struser = user_ed.getText().toString();
+                strUserName=struser;
                 String strpwd = pwd_ed.getText().toString();
 
 
@@ -243,7 +245,10 @@ public class MainActivity extends BaseActivity {
         });//登录监听完毕
 
     }
-
+    public static String getStrUserName()
+    {
+        return strUserName;
+    }
    /* private String createNotificationChannel(String channelID, String channelNAME, int level) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
