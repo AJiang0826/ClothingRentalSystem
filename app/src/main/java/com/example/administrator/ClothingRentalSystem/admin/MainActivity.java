@@ -27,6 +27,26 @@ import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.conten
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
 
+import java.sql.ResultSet;
+import java.util.concurrent.CountDownLatch;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.administrator.ClothingRentalSystem.R;
+import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
+import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
+import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.concurrent.CountDownLatch;
 /**
  * 这是主类，打开初始页面
  * 并且开启统一全局的数据库连接
@@ -36,6 +56,15 @@ public class MainActivity extends BaseActivity {
     private Button login_bt, register_bt;
     private Button im_bt;
     private CheckBox rember, auto_login;
+    private static String strUserName;
+    private String sql;
+    //创建CountDownLatch并设置计数值，该count值可以根据线程数的需要设置
+    private CountDownLatch countDownLatch;
+    private ResultSet rs;
+    private int rows;
+
+//11
+
     private String md5Psw;
 
     /**
@@ -48,7 +77,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void run() {
                 System.out.println("开始连接数据库……");
-                new DBUtils("192.168.56.1:3306","clothes_rental_system","root","123123");
+                new DBUtils("192.168.43.149:3306","clothes_rental_system","Android","123456");
                 System.out.println("查看数据库连接是否成立："+ (DBUtils.conn!=null));
             }
         }
@@ -58,6 +87,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        countDownLatch = new CountDownLatch(1);
         init();//界面初始化
         final Switch aSwitch = (Switch) findViewById(R.id.musicswitch);
         aSwitch.setChecked(false);
@@ -126,93 +156,57 @@ public class MainActivity extends BaseActivity {
         //登录按钮的事件监听
         login_bt = (Button) findViewById(R.id.login);
         login_bt.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 String struser = user_ed.getText().toString();
+                strUserName=struser;
                 String strpwd = pwd_ed.getText().toString();
-                if ( choseRemember==false) {
-                    //如果没有勾选记住密码，对当前用户输入的密码进行MD5加密再进行比对判断, MD5Utils.md5( ) 进行加密
-                    md5Psw= MD5Utils.md5(strpwd);
-                }else {
-                    //勾选了记住密码
-                    md5Psw= strpwd;
-                }
-
-                databaseHelp help = new databaseHelp(getApplicationContext());
-                SQLiteDatabase db = help.getWritableDatabase();
-                boolean login_succ = false;
-                Cursor cursor = db.query("admin", null, null, null, null, null, null);
-                if (cursor.moveToFirst()) {
-                    do {
-                        String username = cursor.getString(cursor.getColumnIndex("user"));
-                        String password = cursor.getString(cursor.getColumnIndex("password"));
-
-                        if (username.equals(struser) && password.equals(md5Psw)) {
-                            login_succ=true;
-                            Intent intent = new Intent(MainActivity.this, contentActivity.class);
-                            startActivity(intent);
-                            //增加一个Notification通知信息。当用户名、密码正确时，不但做界面跳转，还要发出一条状态栏消息提
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, 0);
-                            String channelId = createNotificationChannel("my_channel_ID", "my_channel_NAME", NotificationManager.IMPORTANCE_HIGH);
-                            NotificationCompat.Builder notification = new NotificationCompat.Builder(MainActivity.this, channelId)
-                                    .setContentTitle("通知")
-                                    .setContentText("hello，"+"欢迎"+username+"来到服装租借系统~")
-                                    .setContentIntent(pendingIntent)
-                                    .setSmallIcon(R.mipmap.ic_launcher)
-                                    .setPriority(NotificationCompat.PRIORITY_HIGH)
-                                    .setAutoCancel(true);
-                            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MainActivity.this);
-                            notificationManager.notify(100, notification.build());
-
-                            /*
-                            将用户名存储到sharedpreferences中
-                            获取用户名和密码，方便在记住密码时使用
-                             */
-                            SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
-                            editor.putString("users", username);
-                            editor.putString("passwords", password);
-                            //是否记住密码
-                            if (rember.isChecked()) {
-                                editor.putBoolean("remember", true);
-                            } else {
-                                editor.putBoolean("remember", false);
-                            }
-
-
-                            //是否自动登录
-                            if (auto_login.isChecked()) {
-                                editor.putBoolean("autologin", true);
-                                Intent intent1 = new Intent(MainActivity.this, contentActivity.class);
-                                startActivity(intent1);
-                            } else {
-                                editor.putBoolean("autologin", false);
-                            }
-
-                            editor.apply();
-
+                sql="select * from user where password="+strpwd;
+                //以下开始数据库操作，使用线程，查询用户是否存在
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            rs = DBUtils.getSelectResultSet(sql);
+                            rs.last();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }finally {
+                            //该线程执行完毕-1
+                            countDownLatch.countDown();
                         }
+                    }
+                }).start();
+                //等待线程查询完结果
+                try {
+                    countDownLatch.await();
+                    if(rs.getRow()!=0){
+                        System.out.println("rs.getRow="+rs.getRow());
 
+                        Toast.makeText(MainActivity.this,"账号密码输入正确！",Toast.LENGTH_SHORT).show();
+                        //用户密码输入正确，就跳转到显示服装列表页面
+                        Intent intent = new Intent(MainActivity.this, contentActivity.class);
+                        startActivity(intent);
 
-                    } while (cursor.moveToNext());
-
+                        return;
+                    }
+                    else
+                        Toast.makeText(MainActivity.this,"账号密码输入不正确",Toast.LENGTH_SHORT).show();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
-                if(!login_succ){
-                    Toast.makeText(MainActivity.this, "用户名或密码不正确，请重新输入", Toast.LENGTH_SHORT).show();
-                }
-
-
-                cursor.close();
-
 
             }
-
-        });
+        });//登录监听完毕
 
     }
-
-    private String createNotificationChannel(String channelID, String channelNAME, int level) {
+    public static String getStrUserName()
+    {
+        return strUserName;
+    }
+   /* private String createNotificationChannel(String channelID, String channelNAME, int level) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             NotificationChannel channel = new NotificationChannel(channelID, channelNAME, level);
@@ -221,6 +215,6 @@ public class MainActivity extends BaseActivity {
         } else {
             return null;
         }
-    }
+    }*/
 
 }
