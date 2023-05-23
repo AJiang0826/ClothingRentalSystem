@@ -16,7 +16,7 @@ public class select_user_admininfo extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_reader_admininfo);
+        setContentView(R.layout.activity_select_user_admininfo);
         init();//界面初始化
 
     }

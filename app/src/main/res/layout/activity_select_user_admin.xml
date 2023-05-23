@@ -16,6 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="请输入搜索的用户名"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
             android:textColor="#37302F"
             android:layout_weight="0.3"/>
 
@@ -26,6 +28,8 @@
             android:layout_weight="0.5"
             android:background="@drawable/admin_user_button"
             android:textColor="#37302F"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
             android:text="搜索用户" />
     </LinearLayout>
     <LinearLayout

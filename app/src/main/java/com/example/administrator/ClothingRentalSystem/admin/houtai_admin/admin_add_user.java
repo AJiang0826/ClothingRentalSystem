@@ -52,14 +52,14 @@ public class admin_add_user extends BaseActivity {
                 String uname = username.getText().toString();
                 String phonenum = phone.getText().toString();
                 String usersex = sex.getText().toString();
-                String md5Psw = MD5Utils.md5(strpwd);//把密码用MD5加密---MD5信息摘要算法（是不可逆的，只能加密，不能解密）
+                //String md5Psw = MD5Utils.md5(strpwd);//把密码用MD5加密---MD5信息摘要算法（是不可逆的，只能加密，不能解密）
                 //验证用户名是否存在
                 databaseHelp help = new databaseHelp(getApplicationContext());
                 SQLiteDatabase db = help.getWritableDatabase();
                 ContentValues values = new ContentValues();
                 values.put("user", struser);
                 values.put("name", uname);
-                values.put("password", md5Psw);
+                values.put("password", strpwd);
                 values.put("sex", usersex);
                 values.put("phone", phonenum);
                 Cursor cursor = db.query("admin", null, null, null, null, null, null);

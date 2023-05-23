@@ -31,7 +31,7 @@ public class select_user_admin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_reader_admin);
+        setContentView(R.layout.activity_select_user_admin);
         listView=(ListView)findViewById(R.id.sel_reader_list);
         databaseHelp help=new databaseHelp(getApplicationContext());
         Cursor cursor=help.query();
