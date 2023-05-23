@@ -52,6 +52,7 @@ import java.util.concurrent.CountDownLatch;
  * 并且开启统一全局的数据库连接
  **/
 public class MainActivity extends BaseActivity {
+
     private EditText user_ed, pwd_ed;
     private Button login_bt, register_bt;
     private Button im_bt;
@@ -159,7 +160,21 @@ public class MainActivity extends BaseActivity {
             public void onClick(View view) {
                 String struser = user_ed.getText().toString();
                 String strpwd = pwd_ed.getText().toString();
-                sql="select * from user where password="+strpwd;
+
+
+                if ( choseRemember==false) {
+                    //如果没有勾选记住密码，对当前用户输入的密码进行MD5加密再进行比对判断, MD5Utils.md5( ) 进行加密
+                    md5Psw= MD5Utils.md5(strpwd);
+                }else {
+                    //勾选了记住密码
+                    md5Psw= strpwd;
+                }
+
+
+
+
+              //  sql="select * from user where  username='"+struser+"' and password="+strpwd;
+                sql="Select * from user where username='"+struser+"'";
                 //以下开始数据库操作，使用线程，查询用户是否存在
                 new Thread(new Runnable() {
                     @Override
@@ -185,6 +200,34 @@ public class MainActivity extends BaseActivity {
                         //用户密码输入正确，就跳转到显示服装列表页面
                         Intent intent = new Intent(MainActivity.this, contentActivity.class);
                         startActivity(intent);
+
+
+                         /*
+                            将用户名存储到sharedpreferences中
+                            获取用户名和密码，方便在记住密码时使用
+                             */
+                        SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
+                        editor.putString("users", struser);
+                        editor.putString("passwords", strpwd);
+                        //是否记住密码
+                        if (rember.isChecked()) {
+                            editor.putBoolean("remember", true);
+                        } else {
+                            editor.putBoolean("remember", false);
+                        }
+
+
+                        //是否自动登录
+                        if (auto_login.isChecked()) {
+                            editor.putBoolean("autologin", true);
+                            Intent intent1 = new Intent(MainActivity.this, contentActivity.class);
+                            startActivity(intent1);
+                        } else {
+                            editor.putBoolean("autologin", false);
+                        }
+
+                        editor.apply();
+
 
                         return;
                     }
