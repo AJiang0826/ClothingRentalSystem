@@ -52,13 +52,13 @@ private ListView ad_pay;
             countDownLatch.await();//阻塞等待线程执行完毕
             //根据用户查询自己的租借信息
             String[] names1={"id","user_name","clothes_id","clothes_size","clothes_borrow_data"};//建立字段名结果集
-            String[] names2={"NumberId", "UserName", "ClothesId", "ClothesSize", "BorrowDate"};//建立字段名结果集2 这个要和SimpleAdapter中的string[]一样
+            String[] names2={"NumberId", "UserName", "ClothesId", "ClothesSize", "PayDate"};//建立字段名结果集2 这个要和SimpleAdapter中的string[]一样
             List<Map<String, Object>> data = ItemUtils.getList(names1,names2,rs);//调用ItemUtils获取结果集
             System.out.println("list="+data.toString());
             SimpleAdapter adapter = new SimpleAdapter(
                     admin_pay_info.this, data, R.layout.ad_pay_item,
-                    new String[]{"NumberId", "UserName", "ClothesId", "ClothesSize", "BorrowDate"},
-                    new int[]{R.id.NumberId, R.id.UserName, R.id.ClothesId, R.id.ClothesSize, R.id.BorrowDate});//后两个String[] int[]数组都是borrow_item中的id
+                    new String[]{"NumberId", "UserName", "ClothesId", "ClothesSize", "PayDate"},
+                    new int[]{R.id.NumberId, R.id.UserName, R.id.ClothesId, R.id.ClothesSize, R.id.PayDate});//后两个String[] int[]数组都是borrow_item中的id
             ad_pay.setAdapter(adapter);
         } catch (Exception e) {
             e.printStackTrace();

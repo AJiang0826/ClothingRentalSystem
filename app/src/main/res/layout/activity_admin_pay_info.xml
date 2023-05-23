@@ -31,7 +31,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="   编号 "
+            android:text="  编号"
+            android:textSize="18sp"
             android:textColor="#000000" />
 
         <TextView
@@ -39,6 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="客户名称"
+            android:textSize="18sp"
             android:textColor="#000000" />
 
         <TextView
@@ -46,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="衣服编号 "
+            android:textSize="18sp"
             android:textColor="#000000" />
 
         <TextView
@@ -53,6 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="衣服尺码 "
+            android:textSize="18sp"
             android:textColor="#000000" />
 
         <TextView
@@ -60,6 +64,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="归还日期 "
+            android:textSize="18sp"
+            android:layout_marginRight="20dp"
             android:textColor="#000000" />
 
     </LinearLayout>
