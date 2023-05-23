@@ -40,7 +40,8 @@
             android:ems="10"
             android:hint="请输入管理员账号"
             android:inputType="textPersonName"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:text="root"/>
     </LinearLayout>
 
     <LinearLayout
@@ -63,7 +64,8 @@
             android:ems="10"
             android:hint="请输入密码"
             android:inputType="textPassword"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:text="123456"/>
 
     </LinearLayout>
 
