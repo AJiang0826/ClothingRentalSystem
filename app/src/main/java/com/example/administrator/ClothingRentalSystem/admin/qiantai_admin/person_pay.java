@@ -20,7 +20,7 @@ private ListView pay_view;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_person_pay);
+        setContentView(R.layout.activity_person_pay_nobody);
         pay_view=(ListView)findViewById(R.id.show_pay);
         final databaseHelp help = new databaseHelp(getApplicationContext());
         SharedPreferences perf = getSharedPreferences("data", MODE_PRIVATE);
