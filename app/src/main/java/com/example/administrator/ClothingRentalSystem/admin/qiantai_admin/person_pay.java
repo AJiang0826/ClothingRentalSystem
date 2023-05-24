@@ -24,7 +24,7 @@ private ListView pay_view;
         pay_view=(ListView)findViewById(R.id.show_pay);
         final databaseHelp help = new databaseHelp(getApplicationContext());
         SharedPreferences perf = getSharedPreferences("data", MODE_PRIVATE);
-
+//
         String username = perf.getString("users", "");//获得当前用户名称
         //根据用户查询自己的还书信息
         List<Map<String, Object>> data = help.querypayuser(username);
