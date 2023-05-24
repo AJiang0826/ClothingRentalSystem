@@ -47,7 +47,7 @@ private ListView listView;
         String from[] = {"_id","img", "bookid", "name"};
 //        int to[] = {R.id.book_id, R.id.book_name, R.id.book_author,R.id.book_page,R.id.book_price,R.id.book_publish,R.id.book_intime};
         int to[] = {R.id.Clothes_Info_Img, R.id.Clothes_Name};
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.admin_book_item, cursor, from, to);
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.admin_clothes_item1, cursor, from, to);
         listView.setAdapter(adapter);
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //删除listview
@@ -63,7 +63,7 @@ private ListView listView;
                         Cursor cursor = help.querybookinfo();
                         String from[] = {"_id","img", "bookid", "name"};
                         int to[] = {R.id.Clothes_Info_Img,R.id.Clothes_Name};
-                        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.admin_book_item, cursor, from, to);
+                        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), R.layout.admin_clothes_item1, cursor, from, to);
                         listView.setAdapter(adapter);
 
                     }

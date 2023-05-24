@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single"
-           android:width="80dp" android:height="32dp"
-        android:background="@drawable/bg">
-
+           android:width="180dp" android:height="132dp"
+        android:background="@drawable/bg"
+        android:minHeight="200dp">
         <item
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:id="@+id/updateInfo"
             android:icon="@mipmap/shoucang"
-
+            android:textSize="17sp"
             android:title="修改个人信息"
             />
         <item
             android:id="@+id/shoucang"
             android:icon="@mipmap/shoucang"
-            android:title="我的收藏" />
+
+            android:title="我的收藏"
+            android:textSize="47sp"/>
         <item
             android:id="@+id/jieyue"
             android:icon="@mipmap/jieyue"

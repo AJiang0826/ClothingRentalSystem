@@ -18,7 +18,7 @@
         android:singleLine="true"
         android:textSize="18sp"
         android:layout_gravity="center"
-        android:text="衣名"
+        android:text="衣名123456"
         android:id="@+id/Clothes_Name"/>
     <TextView
         android:layout_width="0dp"

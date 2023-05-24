@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -52,6 +53,7 @@ import java.util.concurrent.CountDownLatch;
  * 并且开启统一全局的数据库连接
  **/
 public class MainActivity extends BaseActivity {
+
     private EditText user_ed, pwd_ed;
     private Button login_bt, register_bt;
     private Button im_bt;
@@ -77,7 +79,8 @@ public class MainActivity extends BaseActivity {
             @Override
             public void run() {
                 System.out.println("开始连接数据库……");
-                new DBUtils("192.168.43.149:3306","clothes_rental_system","Android","123456");
+               // new DBUtils("192.168.43.149:3306","clothes_rental_system","Android","123456");
+                new DBUtils("192.168.43.71:3306","clothes_rental_system","root","123456");
                 System.out.println("查看数据库连接是否成立："+ (DBUtils.conn!=null));
             }
         }
@@ -161,7 +164,21 @@ public class MainActivity extends BaseActivity {
                 String struser = user_ed.getText().toString();
                 strUserName=struser;
                 String strpwd = pwd_ed.getText().toString();
-                sql="select * from user where password="+strpwd;
+
+
+                if ( choseRemember==false) {
+                    //如果没有勾选记住密码，对当前用户输入的密码进行MD5加密再进行比对判断, MD5Utils.md5( ) 进行加密
+                    md5Psw= MD5Utils.md5(strpwd);
+                }else {
+                    //勾选了记住密码
+                    md5Psw= strpwd;
+                }
+
+
+
+
+                sql="select * from user where  username='"+struser+"' and password="+strpwd;
+                //sql="Select * from user where username='"+struser+"'";
                 //以下开始数据库操作，使用线程，查询用户是否存在
                 new Thread(new Runnable() {
                     @Override
@@ -187,6 +204,47 @@ public class MainActivity extends BaseActivity {
                         //用户密码输入正确，就跳转到显示服装列表页面
                         Intent intent = new Intent(MainActivity.this, contentActivity.class);
                         startActivity(intent);
+                        //增加一个Notification通知信息。当用户名、密码正确时，不但做界面跳转，还要发出一条状态栏消息提
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, 0);
+                        String channelId = createNotificationChannel("my_channel_ID", "my_channel_NAME", NotificationManager.IMPORTANCE_HIGH);
+                        NotificationCompat.Builder notification = new NotificationCompat.Builder(MainActivity.this, channelId)
+                                .setContentTitle("通知")
+                                .setContentText("hello，"+"欢迎"+struser+"来到服装租借系统~")
+                                .setContentIntent(pendingIntent)
+                                .setSmallIcon(R.mipmap.ic_launcher)
+                                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                .setAutoCancel(true);
+                        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MainActivity.this);
+                        notificationManager.notify(100, notification.build());
+
+
+                         /*
+                            将用户名存储到sharedpreferences中
+                            获取用户名和密码，方便在记住密码时使用
+                             */
+                        SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
+                        editor.putString("users", struser);
+                        editor.putString("passwords", strpwd);
+                        //是否记住密码
+                        if (rember.isChecked()) {
+                            editor.putBoolean("remember", true);
+                        } else {
+                            editor.putBoolean("remember", false);
+                        }
+
+
+                        //是否自动登录
+                        if (auto_login.isChecked()) {
+                            editor.putBoolean("autologin", true);
+                            Intent intent1 = new Intent(MainActivity.this, contentActivity.class);
+                            startActivity(intent1);
+                        } else {
+                            editor.putBoolean("autologin", false);
+                        }
+
+                        editor.apply();
+
 
                         return;
                     }
@@ -206,7 +264,7 @@ public class MainActivity extends BaseActivity {
     {
         return strUserName;
     }
-   /* private String createNotificationChannel(String channelID, String channelNAME, int level) {
+ private String createNotificationChannel(String channelID, String channelNAME, int level) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             NotificationChannel channel = new NotificationChannel(channelID, channelNAME, level);
@@ -215,6 +273,6 @@ public class MainActivity extends BaseActivity {
         } else {
             return null;
         }
-    }*/
+    }
 
 }

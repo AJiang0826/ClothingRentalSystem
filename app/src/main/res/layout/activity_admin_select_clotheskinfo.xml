@@ -35,7 +35,7 @@
             android:singleLine="true"
             android:text="图片"
             android:textColor="#000000"
-            android:textSize="12sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -45,7 +45,18 @@
             android:singleLine="true"
             android:text="衣服名"
             android:textColor="#000000"
-            android:textSize="12sp" />
+            android:textSize="18sp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:singleLine="true"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:text="种类"
+            android:id="@+id/Clothes_Type"/>
 
 
         <TextView
@@ -56,7 +67,7 @@
             android:singleLine="true"
             android:text="价格"
             android:textColor="#000000"
-            android:textSize="12sp" />
+            android:textSize="18sp" />
 
 
 
@@ -68,7 +79,8 @@
             android:singleLine="true"
             android:text="衣服尺码"
             android:textColor="#000000"
-            android:textSize="12sp" />
+            android:layout_marginRight="20dp"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

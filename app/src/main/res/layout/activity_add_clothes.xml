@@ -26,7 +26,7 @@
             android:layout_width="210dp"
             android:layout_height="80dp"
             android:layout_marginRight="50dp"
-            android:src="@drawable/bdr1"/>
+            android:src="@drawable/click_white"/>
 
     </LinearLayout>
 
@@ -45,8 +45,8 @@
             android:text="编     号 ："
             android:textSize="20sp" />
 
+<!--        android:text="2023052201"-->
         <EditText
-            android:text="20230522"
             android:id="@+id/et_ClothesId"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -54,7 +54,8 @@
             android:inputType="number"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890*/@#$%^"
             android:layout_weight="3"
-            android:background="@drawable/register_edittext_sharp"/>
+            android:background="@drawable/register_edittext_sharp"
+            android:hint="请输入编号"/>
     </LinearLayout>
 
     <LinearLayout
@@ -70,14 +71,16 @@
             android:gravity="center"
             android:text="衣 服 名："
             android:textSize="20sp"/>
+
+<!--        android:text="婚纱"-->
         <EditText
-            android:text="婚纱"
             android:id="@+id/et_ClothesName"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="25dp"
             android:layout_weight="3"
-            android:background="@drawable/register_edittext_sharp"/>
+            android:background="@drawable/register_edittext_sharp"
+            android:hint="请输入衣服名称"/>
     </LinearLayout>
 
     <LinearLayout
@@ -93,14 +96,16 @@
             android:gravity="center"
             android:text="种     类 ："
             android:textSize="20sp"/>
+
+<!--        android:text="裙装"-->
         <EditText
-            android:text="裙装"
             android:id="@+id/et_ClothesType"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="25dp"
             android:layout_weight="3"
-            android:background="@drawable/register_edittext_sharp"/>
+            android:background="@drawable/register_edittext_sharp"
+            android:hint="请输入衣服种类"/>
     </LinearLayout>
 
     <LinearLayout
@@ -116,14 +121,16 @@
             android:gravity="center"
             android:text="设 计 者："
             android:textSize="20sp"/>
+
+<!--        android:text="Lin"-->
         <EditText
-            android:text="Lin"
-            android:id="@+id/et_ClothesWriter"
+            android:id="@+id/et_ClothesDesigner"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="25dp"
             android:layout_weight="3"
-            android:background="@drawable/register_edittext_sharp"/>
+            android:background="@drawable/register_edittext_sharp"
+            android:hint="请输入设计者姓名"/>
     </LinearLayout>
 
     <LinearLayout
@@ -139,13 +146,24 @@
             android:gravity="center"
             android:text="尺     码 ："
             android:textSize="20sp"/>
+
+<!--        android:text="S、M"-->
+        <EditText
+            android:id="@+id/et_ClothesSize"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="25dp"
+            android:layout_weight="3"
+            android:background="@drawable/register_edittext_sharp"
+            android:hint="请输入衣服尺码（用、隔开）"/>
+<!--
         <Spinner
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:id="@+id/spinner2"
             android:layout_marginRight="25dp"
             android:layout_weight="3"
-            android:background="@drawable/register_edittext_sharp" />
+            android:background="@drawable/spinner_drop_down_shape" />-->
     </LinearLayout>
 
     <LinearLayout
@@ -161,14 +179,16 @@
             android:gravity="center"
             android:text="价     格 ："
             android:textSize="20sp"/>
+
+<!--        android:text="2300.00"-->
         <EditText
-            android:text="2300"
             android:id="@+id/et_ClothesPrice"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="25dp"
             android:layout_weight="3"
-            android:background="@drawable/register_edittext_sharp"/>
+            android:background="@drawable/register_edittext_sharp"
+            android:hint="请输入价格"/>
     </LinearLayout>
 
     <LinearLayout
@@ -184,14 +204,16 @@
             android:gravity="center"
             android:text="评     分 ："
             android:textSize="20sp"/>
+
+<!--        android:text="9.8"-->
         <EditText
-            android:text="9.8"
             android:id="@+id/et_ClothesRank"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="25dp"
             android:layout_weight="3"
-            android:background="@drawable/register_edittext_sharp"/>
+            android:background="@drawable/register_edittext_sharp"
+            android:hint="请输入评分（十分制）"/>
     </LinearLayout>
 
     <LinearLayout
@@ -207,14 +229,16 @@
             android:gravity="center"
             android:text="简     介 ："
             android:textSize="20sp"/>
+
+<!--        android:text="法式缎面一字肩气质拖尾婚纱"-->
         <EditText
-            android:text="法式缎面一字肩气质拖尾婚纱"
             android:id="@+id/et_ClothesComment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="25dp"
             android:layout_weight="3"
-            android:background="@drawable/register_edittext_sharp" />
+            android:background="@drawable/register_edittext_sharp"
+            android:hint="请输入义务简介" />
     </LinearLayout>
 
 
