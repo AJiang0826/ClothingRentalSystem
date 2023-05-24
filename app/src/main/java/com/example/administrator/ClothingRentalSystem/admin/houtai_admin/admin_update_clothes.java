@@ -107,6 +107,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                     break;
                 }
                 if(testid==true&&testother==true){
+
                     SQLiteDatabase db = helper.getWritableDatabase();
                     ContentValues values = new ContentValues();
                     values.put("name", Et_ClothesName.getText().toString());
@@ -118,6 +119,8 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                     values.put("rank", Et_ClothesRank.getText().toString());
                     values.put("type",Et_ClotheStype.getText().toString());
                     db.update("bookinfo", values, "_id=?", new String[]{String.valueOf(id)});
+
+
                     Toast.makeText(admin_update_clothes.this,"修改衣服信息成功！",Toast.LENGTH_SHORT).show();
                     break;
                 }

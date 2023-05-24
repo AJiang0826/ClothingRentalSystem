@@ -33,26 +33,37 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="    编号 "/>
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:text="   编号 "/>
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textSize="18sp"
+        android:textColor="#000000"
         android:text="客户名称 "/>
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textSize="18sp"
+        android:textColor="#000000"
         android:text="衣服编号 "/>
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textSize="18sp"
+        android:textColor="#000000"
         android:text="衣服尺码 "/>
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:layout_marginRight="20dp"
         android:text="租借日期 "/>
 
 </LinearLayout>
