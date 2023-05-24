@@ -20,6 +20,7 @@ import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
 import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
 import com.example.administrator.ClothingRentalSystem.admin.registerActivity;
+import com.example.administrator.ClothingRentalSystem.admin.utils.ContentUriUtil;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 
 import java.io.FileNotFoundException;
@@ -104,7 +105,7 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
                 //向数据库内添加衣服信息
                 if(testid==true&&testother==true){
                     //获取对应字符串
-                    strClothesImg = String.valueOf(uri);
+                    strClothesImg = ContentUriUtil.getPath2uri(admin_add_clothes.this,uri);
                     strClothesId = et_ClothesId.getText().toString();
                     strClothesName = et_ClothesName.getText().toString();
                     strClothesType = et_ClothesType.getText().toString();
