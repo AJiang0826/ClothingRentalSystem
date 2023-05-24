@@ -17,7 +17,7 @@
         android:gravity="center"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
-        android:textColor="#37302F"
+        android:textColor="#00000F"
         android:textSize="35sp"/>
 
 
@@ -79,18 +79,18 @@
         <Button
             android:id="@+id/r_return"
             android:layout_width="150dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
             android:text="返       回"
-            android:textColor="#37302F"
+            android:textColor="#00000F"
             android:background="@drawable/admin_user_button"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/r_delete"
             android:layout_width="150dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_alignBaseline="@+id/r_back"
             android:layout_alignEnd="@+id/r_password"
             android:layout_alignRight="@+id/r_password"
@@ -99,8 +99,8 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/admin_user_button"
             android:text="确定删除"
-            android:textColor="#37302F"
-            android:textSize="16sp" />
+            android:textColor="#00000F"
+            android:textSize="18sp" />
 
     </LinearLayout>
 </LinearLayout>

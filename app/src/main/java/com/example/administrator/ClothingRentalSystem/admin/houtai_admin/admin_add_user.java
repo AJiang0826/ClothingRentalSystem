@@ -41,7 +41,7 @@ public class admin_add_user extends BaseActivity {
     private void init() {
 
         //返回--图片按钮监听
-        back_bt = (ImageButton) findViewById(R.id.edituser_back);
+        back_bt = (ImageButton) findViewById(R.id._back);
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
