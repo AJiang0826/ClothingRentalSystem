@@ -67,10 +67,11 @@
         android:text="租借日期 "/>
 
 </LinearLayout>
+
     <ListView
+        android:id="@+id/Add_Show_Borrow"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="593dp"
         android:layout_marginLeft="13dp"
-        android:layout_marginRight="18dp"
-        android:id="@+id/Add_Show_Borrow"></ListView>
+        android:layout_marginRight="18dp"></ListView>
 </LinearLayout>

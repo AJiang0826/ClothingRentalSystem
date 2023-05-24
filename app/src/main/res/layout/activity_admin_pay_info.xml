@@ -69,10 +69,11 @@
             android:textColor="#000000" />
 
     </LinearLayout>
+
     <ListView
+        android:id="@+id/Add_Show_Pay"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="597dp"
         android:layout_marginLeft="13dp"
-        android:layout_marginRight="18dp"
-        android:id="@+id/Add_Show_Pay"></ListView>
+        android:layout_marginRight="18dp"></ListView>
 </LinearLayout>
