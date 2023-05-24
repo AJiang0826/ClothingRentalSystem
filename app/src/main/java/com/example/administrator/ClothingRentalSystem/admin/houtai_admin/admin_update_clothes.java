@@ -49,6 +49,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
     private ResultSet rs;
     private int rows;
     String uriname;
+    int id;
 
     String sql;
     @Override
@@ -62,9 +63,10 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
 
     private void initdata() {
         Bundle bundle = getIntent().getExtras();
-        name = bundle.getString("name") ;
+        //name = bundle.getString("name") ;
+        id=bundle.getInt("Id");
        // Log.i("cursor", "initdata: " +name);
-        System.out.println("sname="+name);
+        System.out.println("sname="+id);
 
 
         ClothesImg=findViewById(R.id.ClothesImg);
@@ -82,7 +84,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
         Btn_ClothesCommit=findViewById(R.id.Btn_ClothesCommit);
 
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
-        sql="select * from clothes_information where name='"+name+"'";//查询整张租借表
+        sql="select * from clothes_information where id="+id;//查询整张租借表
         System.out.println("sql="+sql);
         //以下开始数据库操作，使用线程，插入用户
         new Thread(new Runnable() {
@@ -145,7 +147,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                             Et_ClothesName.getText().toString() + "',type='" + Et_ClotheStype.getText().toString()
                             + "',designer='" +  Et_ClothesWriter.getText().toString() + "',size='" + Et_ClothesPublicer.getText().toString()
                             + "',price='" + Et_ClothesPrice.getText().toString() + "',rank='" + Et_ClothesRank.getText().toString()
-                            + "',comment='" +Et_ClothesComment.getText().toString() + "'where name='" + name + "'";//查询整张租借表
+                            + "',comment='" +Et_ClothesComment.getText().toString() + "'where id='" + id + "'";//查询整张租借表
                     System.out.println("sql=" + sql);
 
                     new Thread(new Runnable() {

@@ -247,7 +247,7 @@
             android:layout_marginRight="25dp"
             android:layout_weight="3"
             android:background="@drawable/register_edittext_sharp"
-            android:hint="请输入义务简介" />
+            android:hint="请输入衣物简介" />
     </LinearLayout>
 
 

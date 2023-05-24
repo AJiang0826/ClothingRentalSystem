@@ -38,6 +38,8 @@ public class select_user_admin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN|
+                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//控制页面不随着软键盘上移
         setContentView(R.layout.activity_select_user_admin);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN|
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//控制页面不随着软键盘上移
