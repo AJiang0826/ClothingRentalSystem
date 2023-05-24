@@ -1,6 +1,5 @@
 package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
-import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -48,6 +47,7 @@ public class admin_add_user extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_add_user);
+        countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
         init();//初始化界面
     }
 
@@ -69,12 +69,6 @@ public class admin_add_user extends BaseActivity {
                 usersex = sex.getText().toString();
                 phonenum = phone.getText().toString();
 
-                //String md5Psw = MD5Utils.md5(strpwd);//把密码用MD5加密---MD5信息摘要算法（是不可逆的，只能加密，不能解密）
-                //验证用户名是否存在
-                //databaseHelp help = new databaseHelp(getApplicationContext());
-                //SQLiteDatabase db = help.getWritableDatabase();
-                //ContentValues values = new ContentValues();
-                //Cursor cursor = db.query("admin", null, null, null, null, null, null);
                 sql="insert into user(username,password,name,sex,phone,identity) values('" +
                         struser+"','"+strpwd+"','"+uname+"','"+usersex+"','"+phonenum+"',0);";
                 //以下开始数据库操作，使用线程，查询用户是否已经存在
@@ -103,7 +97,7 @@ public class admin_add_user extends BaseActivity {
                         return;
                     }
                     //对用户注册输入的信息进行验证，全部符合要求才能通过
-                    if (username.getText().length()!=6) {
+                    if (user_ed.getText().length()!=6) {
                         Toast.makeText(admin_add_user.this,"请输入6位帐号",Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -111,7 +105,7 @@ public class admin_add_user extends BaseActivity {
                         Toast.makeText(admin_add_user.this,"请输入11位手机号",Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    if(usersex.equals("")||uname.equals("")){
+                    if(usersex.equals("")||struser.equals("")){
                         Toast.makeText(admin_add_user.this,"请输入完整内容",Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -140,13 +134,11 @@ public class admin_add_user extends BaseActivity {
                 try {
                     countDownLatch.await();
                     if (rows>0){
-                        Toast.makeText(admin_add_user.this,"用户："+username+"注册成功！",Toast.LENGTH_SHORT).show();
-                        //用户注册成功，就跳转到登录页面
-                        Intent intent = new Intent(admin_add_user.this, MainActivity.class);
-                        startActivity(intent);
+                        Toast.makeText(admin_add_user.this,"用户："+struser+"添加成功！",Toast.LENGTH_SHORT).show();
+                        //用户添加成功，就跳转到选择页面
+                       // Intent intent = new Intent(admin_add_user.this, MainActivity.class);
+                        //startActivity(intent);
                     }
-                    else
-                        Toast.makeText(admin_add_user.this,"注册失败，请联系管理员！",Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
