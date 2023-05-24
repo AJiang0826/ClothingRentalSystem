@@ -5,15 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
 import java.sql.ResultSet;
@@ -22,7 +17,6 @@ import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 public class admin_delete_userinfo extends AppCompatActivity {
-    private ListView listView;
     private String name,sql;
     private CountDownLatch countDownLatch;
     private ResultSet rs;
@@ -41,6 +35,7 @@ public class admin_delete_userinfo extends AppCompatActivity {
         name=bundle.getString("name");
         System.out.println("strSearch_Name="+name);
 
+        //通过用户名查询信息
         sql="select username,password,name,sex,phone from user where username='"+name+"';";
         System.out.println("sql="+sql);
         new Thread(new Runnable() {
