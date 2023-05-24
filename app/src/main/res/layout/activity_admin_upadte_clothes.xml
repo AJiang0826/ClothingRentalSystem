@@ -52,8 +52,9 @@
             android:inputType="number"
             android:textColor="#000000"
             android:textSize="18sp"
+            android:background="@drawable/register_edittext_sharp"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890*/@#$%^"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
              <!--        digits 属于限制输入的类型-->
     </LinearLayout>
     <LinearLayout
@@ -71,11 +72,13 @@
         <EditText
             android:text="花 嫁"
             android:id="@+id/et_ClothesName"
+            android:background="@drawable/register_edittext_sharp"
             android:layout_width="0dp"
             android:textColor="#000000"
             android:textSize="18sp"
+            android:gravity="center"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
     </LinearLayout>
 
     <LinearLayout
@@ -92,12 +95,13 @@
             android:textSize="18sp"/>
         <EditText
             android:text="婚纱"
+            android:background="@drawable/register_edittext_sharp"
             android:id="@+id/et_ClotheStype"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -113,12 +117,13 @@
             android:textSize="18sp"/>
         <EditText
             android:text="匠心"
+            android:background="@drawable/register_edittext_sharp"
             android:id="@+id/et_ClothesWriter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -134,12 +139,13 @@
             android:textSize="18sp"/>
         <EditText
             android:text="S、M、L"
+            android:background="@drawable/register_edittext_sharp"
             android:id="@+id/et_ClothesPublicer"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -156,11 +162,12 @@
         <EditText
             android:text="30"
             android:id="@+id/et_ClothesPrice"
+            android:background="@drawable/register_edittext_sharp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -177,11 +184,13 @@
         <EditText
             android:text="9.8"
             android:id="@+id/et_ClothesRank"
+
+            android:background="@drawable/register_edittext_sharp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:layout_weight="1" />
+            android:layout_weight="2" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -197,12 +206,13 @@
             android:textSize="18sp"/>
         <EditText
             android:text="讲述了一段关于这件衣服的故事"
+            android:background="@drawable/register_edittext_sharp"
             android:id="@+id/et_ClothesComment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:layout_weight="1" />
+            android:layout_weight="2" />
     </LinearLayout>
 
 
