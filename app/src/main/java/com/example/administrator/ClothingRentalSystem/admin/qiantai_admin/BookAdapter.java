@@ -1,7 +1,10 @@
+/*
 package com.example.administrator.ClothingRentalSystem.admin.qiantai_admin;
 
+*/
 /**
- */
+ *//*
+
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -64,3 +67,4 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         return mBookList.size();
     }
 }
+*/
