@@ -51,7 +51,8 @@
             android:layout_toRightOf="@+id/SelectUser"
             android:gravity="center_vertical"
             android:text="查找用户"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textColor="#37302F"/>
 
         <ImageButton
             android:id="@+id/ad_SelectUser"
@@ -91,7 +92,8 @@
             android:layout_toRightOf="@+id/AddUser"
             android:gravity="center_vertical"
             android:text="添加用户"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textColor="#37302F"/>
 
         <ImageButton
             android:id="@+id/ad_AddUser"
@@ -130,7 +132,8 @@
             android:layout_toEndOf="@id/EditUser"
             android:layout_toRightOf="@id/EditUser"
             android:text="编辑用户"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textColor="#37302F"/>
 
         <ImageButton
             android:id="@+id/ad_EditUser"
@@ -168,7 +171,8 @@
             android:layout_toEndOf="@id/DeleteUser"
             android:layout_toRightOf="@id/DeleteUser"
             android:text="删除用户"
-            android:textSize="25sp"  />
+            android:textSize="25sp"
+            android:textColor="#37302F"/>
 
         <ImageButton
             android:id="@+id/ad_DeleteUser"

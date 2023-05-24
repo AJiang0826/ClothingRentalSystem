@@ -48,7 +48,8 @@
             android:layout_toRightOf="@+id/add"
             android:gravity="center_vertical"
             android:text="添购衣物"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textColor="#37302F"/>
 
         <ImageButton
             android:id="@+id/ad_add"
@@ -85,7 +86,8 @@
             android:layout_toEndOf="@id/edit"
             android:layout_toRightOf="@id/edit"
             android:text="查找衣物"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:textColor="#37302F"/>
 
         <ImageButton
             android:id="@+id/ad_search"
