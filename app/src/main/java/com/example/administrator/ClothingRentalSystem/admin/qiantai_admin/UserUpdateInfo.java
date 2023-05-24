@@ -48,11 +48,47 @@ public class UserUpdateInfo extends BaseActivity {
         //将id返回的记录查询在edittext
         user_ed = (EditText) findViewById(R.id.u_name);
         pwd_ed = (EditText) findViewById(R.id.u_password);
-        username = findViewById(R.id.user_name);
-        sex = findViewById(R.id.u_sex);
-        phone = findViewById(R.id.u_phone);
-
+        username = (EditText) findViewById(R.id.user_name);
+        sex = (EditText) findViewById(R.id.u_sex);
+        phone = (EditText) findViewById(R.id.u_phone);
         modify_bt = (Button) findViewById(R.id.r_modify);
+
+        sql="select username,password,name,sex,phone from user where username='"+MainActivity.getStrUserName()+"';";
+        System.out.println("sql="+sql);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //获得查询结果
+                    rs= DBUtils.getSelectResultSet(sql);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }finally {
+                    //该线程执行完毕-1
+                    countDownLatch.countDown();
+                }
+            }
+        }).start();
+        //等待线程插入完结果，把结果集转换成一定格式，并呈现在页面上
+        try {
+            countDownLatch.await();//阻塞等待线程执行完毕
+
+            while (rs.next()) {
+                ((EditText) findViewById(R.id.u_name)).setText(rs.getString("username"));
+                ((EditText) findViewById(R.id.u_password)).setText(rs.getString("password"));
+                ((EditText) findViewById(R.id.user_name)).setText(rs.getString("name"));
+                ((EditText) findViewById(R.id.u_sex)).setText(rs.getString("sex"));
+                ((EditText) findViewById(R.id.u_phone)).setText(rs.getString("phone"));
+
+            }
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 
         SharedPreferences perf = getSharedPreferences("data", MODE_PRIVATE);
         uname2 = perf.getString("users", "");//获得当前用户名称
@@ -85,7 +121,7 @@ public class UserUpdateInfo extends BaseActivity {
                 strPhone = phone.getText().toString();
                 //   strregister_identify= register_identify.getText().toString();
 
-
+/////
                 //  sql="Select * from user where username='"+struser+"'";
                 sql="UPDATE user SET name = '"+strName +"',password= '"+strPwd +"',sex= '"+strPwd +"',sex= '"+strPhone +"'where username='"+MainActivity.getStrUserName()+"'";
                 //以下开始数据库操作，使用线程，查询用户是否存在
