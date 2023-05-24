@@ -87,16 +87,6 @@ public class ReaderUpdateInfo extends BaseActivity {
     private void inut() {
 
 
-
-
-
-
-
-
-
-
-
-
         //将id返回的记录查询在edittext
         user_ed = (EditText) findViewById(R.id.u_name);
         pwd_ed = (EditText) findViewById(R.id.u_password);
@@ -163,8 +153,15 @@ public class ReaderUpdateInfo extends BaseActivity {
                         System.out.println("rs.getRow="+rs.getRow());
                         //return;
                     }
-                    else
+                    //对用户注册输入的信息进行验证，全部符合要求才能通过
+                    if (username.getText().length()<3) {
+                        Toast.makeText(ReaderUpdateInfo.this,"请输入超过3位帐号",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if(rs.getRow()==0)
+                    {
                         Toast.makeText(ReaderUpdateInfo.this,"用户不存在",Toast.LENGTH_SHORT).show();
+                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (SQLException e) {

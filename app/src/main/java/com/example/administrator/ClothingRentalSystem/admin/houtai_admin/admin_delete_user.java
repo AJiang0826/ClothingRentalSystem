@@ -28,6 +28,7 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
+import android.view.WindowManager;
 
 /**
  * 管理员删除读者

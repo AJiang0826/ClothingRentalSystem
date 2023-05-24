@@ -48,7 +48,7 @@
         android:layout_marginTop="18dp"
         android:background="@drawable/admin_user"
         android:ems="20"
-        android:focusable="false"
+
         />
 
     <EditText
@@ -58,7 +58,6 @@
         android:layout_marginTop="18dp"
         android:background="@drawable/admin_user"
         android:ems="20"
-        android:focusable="false"
          />
 
 

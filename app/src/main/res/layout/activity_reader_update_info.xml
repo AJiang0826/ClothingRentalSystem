@@ -32,7 +32,8 @@
         android:ems="20"
         android:hint="请输入用户名"
         android:inputType="textPersonName"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginTop="15dp"/>
 
     <EditText
         android:id="@+id/u_password"
@@ -42,7 +43,8 @@
         android:ems="20"
         android:hint="请输入密码"
         android:inputType="textPassword"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginTop="15dp"/>
 
     <EditText
         android:id="@+id/user_name"
@@ -50,7 +52,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/register_edittext_sharp"
         android:ems="10"
-        android:hint="姓名" />
+        android:hint="姓名"
+        android:layout_marginTop="15dp"/>
 
     <EditText
         android:id="@+id/u_sex"
@@ -58,7 +61,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:background="@drawable/register_edittext_sharp"
-        android:hint="请输入性别" />
+        android:hint="请输入性别"
+        android:layout_marginTop="15dp"/>
 
     <EditText
         android:id="@+id/u_phone"
@@ -66,7 +70,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:background="@drawable/register_edittext_sharp"
-        android:hint="请输入手机号"/>
+        android:hint="请输入手机号"
+        android:layout_marginTop="15dp"/>
 
 
 
