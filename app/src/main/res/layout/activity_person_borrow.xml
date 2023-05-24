@@ -64,10 +64,10 @@
             android:textSize="17sp"/>
 
     </LinearLayout>
+
     <ListView
+        android:id="@+id/show_borrow"
         android:layout_width="379dp"
-        android:layout_marginLeft="15dp"
-        android:layout_height="fill_parent"
-        android:id="@+id/show_borrow">
-    </ListView>
+        android:layout_height="585dp"
+        android:layout_marginLeft="15dp"></ListView>
 </LinearLayout>

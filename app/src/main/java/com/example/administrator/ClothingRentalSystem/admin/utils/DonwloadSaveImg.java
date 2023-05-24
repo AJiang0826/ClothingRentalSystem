@@ -30,13 +30,15 @@ import android.os.Handler;
 public class DonwloadSaveImg {
     private String filePath;
     private Bitmap mBitmap;
+    private int i;
 
     /**
      * 可直接在其它类中调用此方法，完成从网络上下载图片到本地
      * 参数：网络地址 利http://192.168.64.114/test
      **/
-    public void donwloadImg(String filePaths) {
+    public void donwloadImg(String filePaths,int i) {
         filePath = filePaths;
+        this.i=i;
         System.out.println("申请下载地址："+filePath);
         new Thread(saveFileRunnable).start();
     }
@@ -72,7 +74,7 @@ public class DonwloadSaveImg {
         if (!dirFile.exists()) {
             dirFile.mkdir();
         }
-        String fileName = UUID.randomUUID().toString() + ".png";
+        String fileName = i + ".png";
 //        System.out.println("filename="+fileName);
 //        System.out.println("dirFile="+Environment.getExternalStorageDirectory().getPath());
         File myCaptureFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath()+"/"+ fileName);

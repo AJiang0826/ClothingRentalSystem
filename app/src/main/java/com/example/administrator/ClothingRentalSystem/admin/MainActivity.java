@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("查看数据库连接是否成立："+ (DBUtils.conn!=null));
                 for (int i=1;i<=9;i++){
                     String Path="http://192.168.43.149/ClothesRentalSystem/"+i+".png";
-                    new DonwloadSaveImg().donwloadImg(Path);
+                    new DonwloadSaveImg().donwloadImg(Path,i);
                 }
             }
         }
