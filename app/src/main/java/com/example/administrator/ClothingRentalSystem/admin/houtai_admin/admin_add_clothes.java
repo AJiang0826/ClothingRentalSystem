@@ -16,12 +16,17 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.administrator.ClothingRentalSystem.R;
+import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
+import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
+import com.example.administrator.ClothingRentalSystem.admin.registerActivity;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -41,11 +46,13 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
     private String strClothesImg,strClothesId,strClothesName,strClothesType,strClothesDesigner,strClothesSize,strClothesPrice,strClothesRank,strClothesComment,sql;
     private CountDownLatch countDownLatch;
     private int rows;
+    private ResultSet rs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_clothes);
+        countDownLatch = new CountDownLatch(1);
         initdata();//界面初始化
     }
 
@@ -83,8 +90,8 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
         switch(view.getId()){
             case R.id.btn_ClothesCommit://点击选中添加按钮
                 //衣服编号为十位，且不为空
-                if (et_ClothesId.getText().length()!=10) {
-                    Toast.makeText(admin_add_clothes.this,"请输入10位衣物编号",Toast.LENGTH_SHORT).show();
+                if (et_ClothesId.getText().length()!=6) {
+                    Toast.makeText(admin_add_clothes.this,"请输入6位衣物编号",Toast.LENGTH_SHORT).show();
                     testid=false;
                     break;
                 }
@@ -107,10 +114,45 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
                     strClothesRank = et_ClothesRank.getText().toString();
                     strClothesComment = et_ClothesComment.getText().toString();
 
+                    //添加信息到数据库
                     sql="insert into clothes_information(clothes_img,id,name,type,designer,size,price,rank,comment) values('" +
                             strClothesImg+"','"+strClothesId+"','"+strClothesName+"','"+strClothesType+"','"+strClothesDesigner+"','"+
                             strClothesSize+"','"+strClothesPrice+"','"+strClothesRank+"','"+strClothesComment+"');";
 
+                    //使用线程，查询编号是否已经存在【编号唯一，不是衣服编号】
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                rs = DBUtils.getSelectResultSet("Select * from clothes_information where id='"+strClothesId+"'");
+                                rs.last();
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }finally {
+                                //该线程执行完毕-1
+                                countDownLatch.countDown();
+                            }
+                        }
+                    }).start();
+                    //等待线程查询完结果
+                    try {
+                        countDownLatch.await();
+                        if(rs.getRow()!=0){
+                            System.out.println("strClothesId="+strClothesId);
+                            System.out.println("rs="+rs);
+                            System.out.println("rs.getRow="+rs.getRow());
+                            Toast.makeText(admin_add_clothes.this, "该编号已存在！", Toast.LENGTH_LONG).show();
+                            ((EditText) findViewById(R.id.et_ClothesId)).setText("");
+                            ((EditText) findViewById(R.id.et_ClothesId)).requestFocus();
+                            return;
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                    //是上方select查询的
                     countDownLatch = new CountDownLatch(1);
                     //以下开始数据库操作，使用线程，插入衣服信息
                     new Thread(new Runnable() {
@@ -127,7 +169,6 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
                             }
                         }
                     }).start();
-
                     try {
                         countDownLatch.await();
                         if (rows>0){
@@ -138,8 +179,8 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-
                     break;
+                    //ActivityCollector.finishAll();
                 }
 
             //点击图片进行选择
