@@ -20,6 +20,8 @@ import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
 
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
@@ -84,7 +86,11 @@ public class person_borrow extends AppCompatActivity {
                 TextView id = curr.findViewById(R.id.Id);
                 //读取id
                 String strId=id.getText().toString();
-                sql="update clothes_lease set flage=1 where id="+strId;
+                //获取当前系统时间用作收藏日期time
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+                String payTime = formatter.format(curDate);
+                sql="update clothes_lease set flage=1,clothes_pay_data='"+payTime+"' where id="+strId;
                 countDownLatch = new CountDownLatch(1);//设定计时器
                 //以下开始数据库操作，使用线程，修改flage，表示已还书
                 new Thread(new Runnable() {

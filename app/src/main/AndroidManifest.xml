@@ -64,11 +64,11 @@
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_select_clothesinfo" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.borrowActivity" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.person_borrow" />
-        <activity android:name="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.jieyueInfo" />
+        <activity android:name="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.jieyueInfo_nobody" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_borrow_info" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_pay_info" />
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.PayActivity" />
-        <activity android:name="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.person_pay" />
+        <activity android:name="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.person_pay_nobody" />
         <service android:name="com.example.administrator.ClothingRentalSystem.admin.MyService"></service>
         <activity android:name="com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.AdapterActivity"></activity>
         <receiver android:name="com.example.administrator.ClothingRentalSystem.admin.BootCompleteReceiver">

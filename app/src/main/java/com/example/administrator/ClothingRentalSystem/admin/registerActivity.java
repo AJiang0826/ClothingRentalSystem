@@ -88,6 +88,7 @@ public class registerActivity extends BaseActivity {
                     public void run() {
                         try {
                             rs = DBUtils.getSelectResultSet("Select * from user where username='"+strUserName+"'");
+                            System.out.println("strUserName="+strUserName);
                             rs.last();
                         } catch (SQLException e) {
                             e.printStackTrace();
@@ -101,15 +102,15 @@ public class registerActivity extends BaseActivity {
                 try {
                     countDownLatch.await();
                     if(rs.getRow()!=0){
-                        System.out.println("rs.getRow="+rs.getRow());
+//                        System.out.println("rs.getRow="+rs.getRow());
                         Toast.makeText(registerActivity.this, "该用户名已存在！", Toast.LENGTH_LONG).show();
                         ((EditText) findViewById(R.id.RegisterUserName)).setText("");
                         ((EditText) findViewById(R.id.RegisterUserName)).requestFocus();
                         return;
                     }
                     //对用户注册输入的信息进行验证，全部符合要求才能通过
-                    if (username.getText().length()!=6) {
-                        Toast.makeText(registerActivity.this,"请输入6位帐号",Toast.LENGTH_SHORT).show();
+                    if (username.getText().length()<3) {
+                        Toast.makeText(registerActivity.this,"请输入超过3位帐号",Toast.LENGTH_SHORT).show();
                         return;
                     }
                     if(phone.getText().length()!=11){
