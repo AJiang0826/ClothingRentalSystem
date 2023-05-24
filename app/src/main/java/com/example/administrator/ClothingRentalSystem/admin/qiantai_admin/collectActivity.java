@@ -61,10 +61,8 @@ public class collectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collect);
         listView = (ListView) findViewById(R.id.show_collect);
-
-
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
-        sql="select user_name,clothes_id,clothes_name,clothes_size,collect_date from user_collect";//查询整张租借表
+        sql="select user_name,clothes_id,clothes_name,clothes_size,collect_date from user_collect where user_name='"+MainActivity.getStrUserName()+"' "; //查询整张衣服信息表
         System.out.println("sql="+sql);
         //以下开始数据库操作，使用线程，插入用户
         new Thread(new Runnable() {
@@ -84,14 +82,14 @@ public class collectActivity extends AppCompatActivity {
         //等待线程插入完结果，把结果集转换成一定格式，并呈现在页面上
         try {
             countDownLatch.await();//阻塞等待线程执行完毕
-            //根据用户查询自己的租借信息
+            //根据用户查询自己的收藏信息
             String[] names1={"user_name","clothes_id","clothes_name","clothes_size","collect_date"};//建立字段名结果集
             String[] names2={"C_user_name","C_clothes_id","C_clothes_name","C_clothes_size","C_collect_date"};//建立字段名结果集2 这个要和SimpleAdapter中的string[]一样
             List<Map<String, Object>> data = ItemUtils.getList(names1,names2,rs);//调用ItemUtils获取结果集
             System.out.println("list="+data.toString());
             SimpleAdapter adapter = new SimpleAdapter(
                     collectActivity.this, data, R.layout.collect_item,
-                    new String[]{"user_name", "clothes_id", "clothes_name", "clothes_size", "collect_date"},
+                    new String[]{"C_user_name","C_clothes_id","C_clothes_name","C_clothes_size","C_collect_date"},
                     new int[]{R.id.C_user_name, R.id.C_clothes_id, R.id.C_clothes_name, R.id.C_clothes_size, R.id.C_collect_date});//后两个String[] int[]数组都是borrow_item中的id
             System.out.println("读取到数据");
             listView.setAdapter(adapter);
@@ -101,44 +99,49 @@ public class collectActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //通过id查询图书表里的所有信息，用bundle进行数据交互
 
         //取消收藏
-       /* listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 View curr = adapterView.getChildAt((int)l);
-                TextView name = curr.findViewById(R.id.Bbookname);
-                help.delcollect(name.getText().toString());
-                Toast.makeText(collectActivity.this, "取消收藏成功", Toast.LENGTH_SHORT).show();
-                listView.setAdapter(adapter);
+                TextView id = curr.findViewById(R.id.C_clothes_id);
+                //读取id
+                String strId=id.getText().toString();
+                sql="DELETE FROM  user_collect where clothes_id="+strId;
+                countDownLatch = new CountDownLatch(1);//设定计时器
+                //以下开始数据库操作，使用线程，修改flage，表示已取消收藏
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            //成功创建普通用户
+                            rows=DBUtils.getUpdateRows(sql);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }finally {
+                            //该线程执行完毕-1
+                            countDownLatch.countDown();
+                        }
+                    }
+                }).start();
+                try {
+                    countDownLatch.await();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                if(rows>0)
+                    Toast.makeText(collectActivity.this, "取消收藏成功", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(collectActivity.this, "取消收藏失败", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(collectActivity.this, collectActivity.class);
                 startActivity(intent);
                 finish();
+
+
             }
-        }); */
+        });
 
 
     }

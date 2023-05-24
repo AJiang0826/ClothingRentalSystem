@@ -32,9 +32,9 @@ private ListView pay_view;
                 person_pay.this, data, R.layout.pay_item,
                 new String[]{"Borname", "Bookid", "bookname",
                         "bookauthor", "nowtime"},
-                new int[]{R.id.Borname, R.id.Bbookid,
-                        R.id.Bbookname, R.id.Bbookauthor,
-                        R.id.Bnowtimae});
+                new int[]{R.id.Id,R.id.CustomerName, R.id.ClothesId,
+                        R.id.ClothesSize, R.id.PayTime,
+                        });
         pay_view.setAdapter(adapter);
     }
 }

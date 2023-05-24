@@ -1,14 +1,8 @@
 package com.example.administrator.ClothingRentalSystem.admin.qiantai_admin;
 
-
-import android.content.ContentValues;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,7 +17,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
 
@@ -34,15 +27,14 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * 本类作用是首页点击服装，呈现具体的服装内容
- * 也是与后端数据库相连
+ * 也是与后端数据库相连，选择服装尺码后，选择是租借还是收藏衣服
  **/
 public class borrowActivity extends AppCompatActivity {
     private TextView id,clothesName,clothesType,clothesPrice;
     private ImageView clothesImg;
     private Spinner clothesSize;
     private Button colthesCollection,clothesBorrow;
-    private String borrowTime;
-    private ListView frien;
+    private String borrowTime,collectTime;//获取当前租借、收藏时间
     int rowId;
     //创建CountDownLatch并设置计数值，该count值可以根据线程数的需要设置
     private CountDownLatch countDownLatch;
@@ -51,8 +43,6 @@ public class borrowActivity extends AppCompatActivity {
     private String[] size;//尺码数组，从数据库中读取
     private String selectedSize;//获取下拉框尺码内容
     private int rows;//获取数据库影响数据行数
-
-    private static final int MY_PERMISSION_REQUEST_CODE = 10000;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +97,9 @@ public class borrowActivity extends AppCompatActivity {
             //设置默认选中项
             clothesSize.setSelection(0);
             clothesPrice.setText(rs.getString("price"));
+            //设置图片
+            Uri uri= Uri.parse(rs.getString("clothes_img"));
+            clothesImg.setImageURI(uri);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -165,78 +158,49 @@ public class borrowActivity extends AppCompatActivity {
                 }
             }
         });
-//        final databaseHelp help=new databaseHelp(getApplicationContext());
-//        Cursor cursor=help.querybookinfoid(id);
-//        Log.i("cursor", "onCreate: " +cursor.getCount());
-//        if (cursor.getCount() > 0) {
-//            cursor.moveToFirst();
-//            bid.setText(cursor.getString(cursor.getColumnIndex("bookid")));
-//            bname.setText(cursor.getString(cursor.getColumnIndex("name")));
-//            bauthor.setText(cursor.getString(cursor.getColumnIndex("writer")));
-//            bprice.setText(cursor.getString(cursor.getColumnIndex("price")));
-//        }
-//        borrow_bt=(Button)findViewById(R.id.borroe_bt);
-//        borrow_bt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //将书籍信息插入借阅表中
-//                //借书日期
-//                SharedPreferences perf=getSharedPreferences("data",MODE_PRIVATE);
-//               // String datetime=perf.getString("time","");//获得当前系统时间
-//                String username=perf.getString("users","");//获得当前用户名称
-//
-//                String strbid=bid.getText().toString();
-//                String strbname=bname.getText().toString();
-//                String strbauthor=bauthor.getText().toString();
-//                int intbid=Integer.parseInt(strbid);
-//                ContentValues values=new ContentValues();
-//                values.put("Bookid",intbid);
-//                values.put("bookname",strbname);
-//                values.put("bookauthor",strbauthor);
-//                values.put("Borname",username);
-//                values.put("nowtime",str);
-//                help.insertorrowo(values);
-//              //获取当前用户
-//                Toast.makeText(borrowActivity.this,"借书成功",Toast.LENGTH_LONG).show();
-//            }
-//        });
-//        collect_bt=(Button)findViewById(R.id.collect_bt);
-//        collect_bt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //将书籍信息插入借阅表中
-//                //借书日期
-//                SharedPreferences perf=getSharedPreferences("data",MODE_PRIVATE);
-//                // String datetime=perf.getString("time","");//获得当前系统时间
-//                String username=perf.getString("users","");//获得当前用户名称
-//
-//                String strbid=bid.getText().toString();
-//                String strbname=bname.getText().toString();
-//                String strbauthor=bauthor.getText().toString();
-//                int intbid=Integer.parseInt(strbid);
-//                ContentValues values=new ContentValues();
-//                values.put("Bookid",intbid);
-//                values.put("bookname",strbname);
-//                values.put("bookauthor",strbauthor);
-//                values.put("Borname",username);
-//                values.put("nowtime",str);
-//                help.insertocollect(values);
-//                //获取当前用户
-//                Toast.makeText(borrowActivity.this,"收藏成功",Toast.LENGTH_LONG).show();
-//            }
-//        });
-//        share_bt=(Button)findViewById(R.id.share_bt);
-//        share_bt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(borrowActivity.this,AdapterActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-
-
-
+        colthesCollection=(Button) findViewById(R.id.CollectClothes);
+        colthesCollection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (selectedSize.equals("")){
+                    Toast.makeText(borrowActivity.this,"还未选择尺码，请选择后再收藏！",Toast.LENGTH_LONG).show();
+                }
+                //获取当前系统时间用作收藏日期time
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+                collectTime = formatter.format(curDate);
+                sql="insert into user_collect(user_name,clothes_id,clothes_name,clothes_size,collect_date) values(" +
+                        "'"+MainActivity.getStrUserName()+"',"+id.getText().toString()+",'"+clothesName.getText().toString()+"','"+selectedSize+"','"+collectTime+"');";
+                countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
+                //以下开始数据库操作，使用线程，插入用户
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            //成功添加收藏信息
+                            rows=DBUtils.getUpdateRows(sql);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }finally {
+                            //该线程执行完毕-1
+                            countDownLatch.countDown();
+                        }
+                    }
+                }).start();
+                //等待线程插入完结果，弹窗提醒
+                try {
+                    countDownLatch.await();//阻塞等待线程执行完毕
+                    if (rows>0){
+                        //添加租借信息成功，弹出提示
+                        Toast.makeText(borrowActivity.this,"收藏成功！期待您的租借！",Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                        Toast.makeText(borrowActivity.this,"收藏失败！请联系管理员！",Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
 }

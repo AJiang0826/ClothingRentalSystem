@@ -6,19 +6,21 @@
 <!--    查找衣物详细信息的item项-->
     <ImageView
         android:id="@+id/Clothes_Info_Img"
-        android:layout_weight="0.9"
-        android:layout_width="20dp"
-        android:layout_height="100dp"
+        android:layout_weight="0.7"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="10dp"/>
+        />
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:singleLine="true"
+        android:gravity="center_horizontal"
         android:textSize="18sp"
         android:layout_gravity="center"
         android:text="衣名"
+        android:textColor="#000000"
         android:id="@+id/Clothes_Name"/>
 <!--    <TextView-->
 <!--        android:layout_width="0dp"-->
@@ -37,6 +39,7 @@
         android:textSize="18sp"
         android:layout_gravity="center"
         android:text="种类"
+        android:textColor="#000000"
         android:id="@+id/Clothes_Type"/>
 
     <TextView
@@ -47,6 +50,7 @@
         android:textSize="18sp"
         android:layout_gravity="center"
         android:text="价格"
+        android:textColor="#000000"
         android:id="@+id/Clothes_Price"/>
 
 <!--    <TextView-->
@@ -67,6 +71,7 @@
         android:textSize="18sp"
         android:layout_gravity="center"
         android:text="尺码"
+        android:textColor="#000000"
         android:id="@+id/Clothes_Publish"/>
 
 </LinearLayout>

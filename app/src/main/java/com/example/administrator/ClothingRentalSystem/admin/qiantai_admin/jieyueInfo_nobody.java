@@ -8,12 +8,12 @@ import android.widget.ImageButton;
 import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
 
-public class jieyueInfo extends BaseActivity {
+public class jieyueInfo_nobody extends BaseActivity {
 private ImageButton borrow,pay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jieyue_info);
+        setContentView(R.layout.activity_jieyue_info_nobody);
         borrow=(ImageButton)findViewById(R.id.imageborrow);
         borrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -21,7 +21,7 @@ private ImageButton borrow,pay;
                 /*
                 跳转到我的借书信息页面
                  */
-                Intent intent=new Intent(jieyueInfo.this,person_borrow.class);
+                Intent intent=new Intent(jieyueInfo_nobody.this,person_borrow.class);
                 startActivity(intent);
                 ActivityCollector.finishAll();
             }
@@ -34,7 +34,7 @@ private ImageButton borrow,pay;
                  /*
                 跳转到我的还书信息页面
                  */
-                Intent intent=new Intent(jieyueInfo.this,person_pay.class);
+                Intent intent=new Intent(jieyueInfo_nobody.this, person_pay_nobody.class);
                 startActivity(intent);
                 ActivityCollector.finishAll();
             }

@@ -31,13 +31,53 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="390dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="  图片"
+                    android:textColor="#000000"
+                    android:textSize="17sp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="尺码 "
+                    android:textColor="#000000"
+                    android:textSize="17sp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="介绍 "
+                    android:textColor="#000000"
+                    android:textSize="17sp"/>
+
+
+            </LinearLayout>
             <ListView
+                android:layout_width="379dp"
+                android:layout_marginLeft="15dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/list_view">
+            </ListView>
+
+        <!--    <ListView
                 android:id="@+id/list_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="379dp"
+                android:layout_marginLeft="15dp"
+                android:layout_height="fill_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            </ListView>
+            </ListView>  -->
+
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
