@@ -1,20 +1,15 @@
 package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
-import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.person_borrow;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
 
@@ -28,20 +23,15 @@ import java.util.concurrent.CountDownLatch;
  * 功能有：1.通过用户名查询用户
  *       2.显示所有用户
  *
- * 变量含义：1.listView
- *         2.search_btn
- *         3.search_name
- *
  */
 public class select_user_admin extends AppCompatActivity {
     private ListView listView;
     private Button search_btn;
     private EditText search_name;
-
     private CountDownLatch countDownLatch;
-    private String struser,strpwd,uname,usersex,phonenum,sql;
+    private String sql;
     private ResultSet rs;
-    private int rows;
+    private ImageButton back_bt;
 
 
     @Override
@@ -49,6 +39,16 @@ public class select_user_admin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_user_admin);
         listView=(ListView)findViewById(R.id.sel_reader_list);
+
+        //返回--图片按钮监听
+        back_bt = (ImageButton) findViewById(R.id._back);
+        back_bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(select_user_admin.this, admin_manager_user.class);
+                startActivity(intent);
+            }
+        });
 
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
         sql="select username,password,name,sex,phone from user where identity=0";
@@ -85,16 +85,14 @@ public class select_user_admin extends AppCompatActivity {
         }
 
 
-
-
-        //搜索按钮监听
+        //搜索按钮获取并监听
         search_btn=findViewById(R.id.search_btn);
         search_name = findViewById(R.id.search_name);
         search_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(select_user_admin.this, select_user_admininfo.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("name",search_name.getText().toString());
+                bundle.putString("name",search_name.getText().toString());//传值
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

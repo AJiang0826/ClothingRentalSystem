@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/bg"
+    android:orientation="vertical"
     tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_delete_user">
 
     <RelativeLayout
@@ -36,17 +36,18 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <EditText
-            android:id="@+id/search_name"
+            android:id="@+id/search_name1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="请输入搜索的用户名"
-            android:layout_marginTop="15dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
-            android:textColor="#37302F"
+            android:layout_weight="0.3"
             android:background="@drawable/admin_user"
-            android:layout_weight="0.3"/>
+            android:hint="请输入搜索的用户名"
+            android:textColor="#37302F" />
 
         <Button
             android:id="@+id/search_btn"

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
@@ -42,6 +43,7 @@ public class admin_add_user extends BaseActivity {
     private CountDownLatch countDownLatch;
     private ResultSet rs;
     private int rows;
+    private ImageButton back_bt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,15 @@ public class admin_add_user extends BaseActivity {
     }
 
     private void init() {
+        //返回--图片按钮监听
+        back_bt = (ImageButton) findViewById(R.id.edituser_back);
+        back_bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(admin_add_user.this, admin_manager_user.class);
+                startActivity(intent);
+            }
+        });
         //获取文本框信息
         user_ed = (EditText) findViewById(R.id.r_name);
         pwd_ed = (EditText) findViewById(R.id.r_password);
@@ -97,8 +108,8 @@ public class admin_add_user extends BaseActivity {
                         return;
                     }
                     //对用户注册输入的信息进行验证，全部符合要求才能通过
-                    if (user_ed.getText().length()!=6) {
-                        Toast.makeText(admin_add_user.this,"请输入6位帐号",Toast.LENGTH_SHORT).show();
+                    if (user_ed.getText().length()<3) {
+                        Toast.makeText(admin_add_user.this,"请输入账号不可小于3位",Toast.LENGTH_SHORT).show();
                         return;
                     }
                     if(phone.getText().length()!=11){
@@ -133,48 +144,13 @@ public class admin_add_user extends BaseActivity {
                 //等待线程插入完结果
                 try {
                     countDownLatch.await();
-                    if (rows>0){
                         Toast.makeText(admin_add_user.this,"用户："+struser+"添加成功！",Toast.LENGTH_SHORT).show();
-                        //用户添加成功，就跳转到选择页面
-                       // Intent intent = new Intent(admin_add_user.this, MainActivity.class);
-                        //startActivity(intent);
-                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 ActivityCollector.finishAll();
             }
 
-                /*//判断用户名是否存在
-                if (cursor.moveToFirst()) {
-                    do {
-                        String username = cursor.getString(cursor.getColumnIndex("user"));
-                        if (username.equals(user_ed.getText().toString())) {
-                            Toast.makeText(admin_add_user.this, "用户名已存在", Toast.LENGTH_LONG).show();
-                            ((EditText) findViewById(R.id.r_name)).setText("");
-                            return;
-                        }
-
-                    } while (cursor.moveToNext());
-
-                }
-                cursor.close();
-                help.insert(values);
-                Toast.makeText(admin_add_user.this, "用户添加成功", Toast.LENGTH_LONG).show();*/
-                //Intent intent = new Intent(admin_add_user.this, admin_manager_user.class);
-                //startActivity(intent);
-                //ActivityCollector.finishAll();
-
-                /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("确定要删除吗？").setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();*/
-            //}
         });
 
         // 获取重置按钮并且添加事件
