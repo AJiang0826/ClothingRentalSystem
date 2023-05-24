@@ -37,7 +37,6 @@
         android:layout_marginTop="18dp"
         android:background="@drawable/admin_user"
         android:ems="20"
-        android:inputType="textPassword"
         android:focusable="false"
         />
 

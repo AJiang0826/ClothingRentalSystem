@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/bg"
     tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_select_message">
-
+    <!--这是查询信息总的界面用了相对布局-->
     <RelativeLayout
         android:layout_width="370dp"
         android:layout_height="wrap_content">

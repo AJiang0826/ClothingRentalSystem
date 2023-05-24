@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--还书表item项-->
+<!--这是一个工具xml，不具有实体也是，
+只是提供一个借阅列表的结构。
+与之关联的所有 租借 列表都会用到它 查找详细的还衣item-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

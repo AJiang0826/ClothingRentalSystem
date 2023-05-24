@@ -22,27 +22,26 @@ import java.util.concurrent.CountDownLatch;
 /**
  * 查找读者的界面
  * 功能有：1.通过用户名查询用户
- *       2.显示所有用户
+ *       2.查询显示所有用户
  *
  */
 public class select_user_admin extends AppCompatActivity {
     private ListView listView;
     private Button search_btn;//查询按钮
-    private EditText search_name;
-    private CountDownLatch countDownLatch;
+    private EditText search_name;//搜索框
+    private CountDownLatch countDownLatch;//创建CountDownLatch并设置计数值，该count值可以根据线程数的需要设置
     private String sql;
     private ResultSet rs;
-    private ImageButton back_bt;
+    private ImageButton back_bt;//返回图片按钮
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN|
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//控制页面不随着软键盘上移
         setContentView(R.layout.activity_select_user_admin);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN|
-                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//控制页面不随着软键盘上移
         listView=(ListView)findViewById(R.id.sel_reader_list);
 
         //返回--图片按钮监听
@@ -51,12 +50,11 @@ public class select_user_admin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(select_user_admin.this, admin_manager_user.class);
-                startActivity(intent);
+                startActivity(intent);//界面跳转
             }
         });
 
-        countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
-        sql="select username,password,name,sex,phone from user where identity=0";
+        sql="select username,password,name,sex,phone from user where identity=0";//查询所有用户
         System.out.println("sql="+sql);
         new Thread(new Runnable() {
             @Override
@@ -83,7 +81,7 @@ public class select_user_admin extends AppCompatActivity {
             SimpleAdapter adapter = new SimpleAdapter(
                     select_user_admin.this, data, R.layout.select_user_item,
                     new String[]{"username","password","name", "sex", "phone"},//数据库中的字段
-                    new int[]{R.id.user_user, R.id.user_pwd, R.id.user_name, R.id.user_sex, R.id.user_phone});//后两个String[] int[]数组都是borrow_item中的id
+                    new int[]{R.id.user_user, R.id.user_pwd, R.id.user_name, R.id.user_sex, R.id.user_phone});//select_user_item中的id
             listView.setAdapter(adapter);
         } catch (Exception e) {
             e.printStackTrace();
