@@ -30,7 +30,7 @@
             android:src="@drawable/clothes"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:layout_marginLeft="25dp"
         android:layout_width="360dp"
@@ -41,6 +41,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="编      号："
+            android:gravity="center"
+
             android:textColor="#000000"
             android:textSize="18sp" />
 
@@ -61,12 +63,15 @@
         android:orientation="horizontal"
         android:layout_marginLeft="25dp"
         android:layout_width="360dp"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="衣  服  名 ："
+            android:gravity="center"
+
             android:textColor="#000000"
             android:textSize="18sp"/>
         <EditText
@@ -76,7 +81,6 @@
             android:layout_width="0dp"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:gravity="center"
             android:layout_height="match_parent"
             android:layout_weight="2"/>
     </LinearLayout>
@@ -85,12 +89,15 @@
         android:orientation="horizontal"
         android:layout_marginLeft="25dp"
         android:layout_width="360dp"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="种      类 ："
+            android:gravity="center"
+
             android:textColor="#000000"
             android:textSize="18sp"/>
         <EditText
@@ -107,12 +114,15 @@
         android:orientation="horizontal"
         android:layout_marginLeft="25dp"
         android:layout_width="360dp"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="设  计  者 ："
+            android:gravity="center"
+
             android:textColor="#000000"
             android:textSize="18sp"/>
         <EditText
@@ -129,12 +139,15 @@
         android:orientation="horizontal"
         android:layout_marginLeft="25dp"
         android:layout_width="360dp"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="衣服尺码："
+            android:gravity="center"
+
             android:textColor="#000000"
             android:textSize="18sp"/>
         <EditText
@@ -151,12 +164,16 @@
         android:orientation="horizontal"
         android:layout_marginLeft="25dp"
         android:layout_width="360dp"
+        android:layout_marginTop="10dp"
+
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="价      格 ："
+            android:gravity="center"
+
             android:textColor="#000000"
             android:textSize="18sp"/>
         <EditText
@@ -173,6 +190,8 @@
         android:orientation="horizontal"
         android:layout_marginLeft="25dp"
         android:layout_width="360dp"
+        android:layout_marginTop="10dp"
+
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
@@ -180,6 +199,8 @@
             android:layout_weight="1"
             android:text="评      分 ："
             android:textColor="#000000"
+            android:gravity="center"
+
             android:textSize="18sp"/>
         <EditText
             android:text="9.8"
@@ -196,6 +217,8 @@
         android:orientation="horizontal"
         android:layout_marginLeft="25dp"
         android:layout_width="360dp"
+        android:layout_marginTop="10dp"
+
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="0dp"
@@ -203,6 +226,8 @@
             android:layout_weight="1"
             android:textColor="#000000"
             android:text="简      介 ："
+            android:gravity="center"
+
             android:textSize="18sp"/>
         <EditText
             android:text="讲述了一段关于这件衣服的故事"
