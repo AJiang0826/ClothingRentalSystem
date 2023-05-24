@@ -2,38 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp">
 <!--    查找衣物详细信息的item项-->
     <ImageView
         android:id="@+id/Clothes_Info_Img"
-        android:layout_weight="0.9"
+        android:layout_weight="1"
         android:layout_width="20dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"/>
+
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:singleLine="true"
         android:textSize="18sp"
         android:layout_gravity="center"
-        android:text="衣名123456"
+        android:text="衣名"
         android:id="@+id/Clothes_Name"/>
+
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:singleLine="true"
         android:textSize="18sp"
         android:layout_gravity="center"
         android:text="设计者"
         android:id="@+id/Clothes_Author"/>
+
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:singleLine="true"
         android:textSize="18sp"
         android:layout_gravity="center"
         android:text="种类"
@@ -43,17 +44,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:singleLine="true"
         android:textSize="18sp"
         android:layout_gravity="center"
         android:text="价格"
-        android:id="@+id/Clothes_Price"/>
+        android:id="@+id/Clothes_Price"
+        android:layout_marginRight="15dp"/>
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1.4"
-        android:singleLine="true"
+        android:layout_weight="1"
         android:textSize="18sp"
         android:layout_gravity="center"
         android:text="评分"
@@ -62,8 +62,7 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.6"
-        android:singleLine="false"
+        android:layout_weight="1"
         android:textSize="18sp"
         android:layout_gravity="center"
         android:text="尺码"
