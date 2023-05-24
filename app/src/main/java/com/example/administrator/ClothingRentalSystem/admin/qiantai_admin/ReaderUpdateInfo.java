@@ -103,7 +103,7 @@ public class ReaderUpdateInfo extends BaseActivity {
         username = findViewById(R.id.user_name);
         sex = findViewById(R.id.u_sex);
         phone = findViewById(R.id.u_phone);
-        register_identify = findViewById(R.id.u_register_identify);
+
         modify_bt = (Button) findViewById(R.id.r_modify);
 
         SharedPreferences perf = getSharedPreferences("data", MODE_PRIVATE);
