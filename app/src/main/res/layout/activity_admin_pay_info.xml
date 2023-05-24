@@ -72,8 +72,9 @@
 
     <ListView
         android:id="@+id/Add_Show_Pay"
-        android:layout_width="fill_parent"
-        android:layout_height="597dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="13dp"
         android:layout_marginRight="18dp"></ListView>
 </LinearLayout>
