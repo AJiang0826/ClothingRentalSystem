@@ -26,13 +26,13 @@
 
 3）查询信息分式页面      activity_admin_select_message.xml-----admin_select_message.java -------祝1
 
-4）查看图书信息详细界面      activity_admin_select_bookinfo.xml-----admin_select_bookinfo.java---祝2
+4）查看衣服信息详细界面      activity_admin_select_clothesinfo.xml-----admin_select_clothesinfo.java---祝2
 
-5）点击修改图书信息      activity_admin_upadte_book.xml-----admin_update_book.java---------------祝3
+5）点击修改衣服信息      activity_admin_upadte_clothes.xml-----admin_update_clothes.java---------------祝3
 
-6）查看借阅信息详细界面        activity_admin_borrow_info.xml------admin_borrow_info.java--------祝4
+6）查看租借衣服信息详细界面        activity_admin_borrow_info.xml------admin_borrow_info.java--------祝4
 
-7）查看还书信息详细界面        activity_admin_pay_info.xml-----admin_pay_info.java---------------祝5
+7）查看归还衣服信息详细界面        activity_admin_pay_info.xml-----admin_pay_info.java---------------祝5
 
 8）管理图书分式页面      activity_admin_manager_clothes.xml-----admin_manager_clothes.java------------李1
 
