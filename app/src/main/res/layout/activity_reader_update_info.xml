@@ -20,10 +20,6 @@
         android:textSize="30sp"/>
 
 
-
-
-
-
     <EditText
         android:id="@+id/u_name"
         android:layout_width="280dp"
@@ -31,7 +27,6 @@
         android:background="@drawable/register_edittext_sharp"
         android:ems="20"
         android:hint="请输入用户名"
-        android:inputType="textPersonName"
         android:textSize="20sp" />
 
     <EditText
@@ -41,7 +36,6 @@
         android:background="@drawable/register_edittext_sharp"
         android:ems="20"
         android:hint="请输入密码"
-        android:inputType="textPassword"
         android:textSize="20sp" />
 
     <EditText
@@ -67,8 +61,6 @@
         android:ems="10"
         android:background="@drawable/register_edittext_sharp"
         android:hint="请输入手机号"/>
-
-
 
 
     <Button
