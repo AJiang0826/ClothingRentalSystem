@@ -24,20 +24,11 @@
 
 
 
-
-
-
-
-
-
-
-
-
     <EditText
         android:id="@+id/u_name"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/sharp"
+        android:background="@drawable/register_edittext_sharp"
         android:ems="20"
         android:hint="请输入用户名"
         android:inputType="textPersonName"
@@ -47,7 +38,7 @@
         android:id="@+id/u_password"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/sharp"
+        android:background="@drawable/register_edittext_sharp"
         android:ems="20"
         android:hint="请输入密码"
         android:inputType="textPassword"
@@ -57,7 +48,7 @@
         android:id="@+id/user_name"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/sharp"
+        android:background="@drawable/register_edittext_sharp"
         android:ems="10"
         android:hint="姓名" />
 
@@ -66,7 +57,7 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:background="@drawable/sharp"
+        android:background="@drawable/register_edittext_sharp"
         android:hint="请输入性别" />
 
     <EditText
@@ -74,7 +65,7 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:background="@drawable/sharp"
+        android:background="@drawable/register_edittext_sharp"
         android:hint="请输入手机号"/>
 
 
@@ -82,7 +73,7 @@
         android:id="@+id/u_register_identify"
         android:layout_width="280dp"
         android:layout_height="40dp"
-        android:background="@drawable/sharp"
+        android:background="@drawable/register_edittext_sharp"
         android:hint="请输入注册身份[0/1]" />
 
     <Button

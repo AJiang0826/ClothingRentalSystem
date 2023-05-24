@@ -86,6 +86,17 @@ public class ReaderUpdateInfo extends BaseActivity {
 
     private void inut() {
 
+
+
+
+
+
+
+
+
+
+
+
         //将id返回的记录查询在edittext
         user_ed = (EditText) findViewById(R.id.u_name);
         pwd_ed = (EditText) findViewById(R.id.u_password);
@@ -119,15 +130,16 @@ public class ReaderUpdateInfo extends BaseActivity {
             @Override
             public void onClick(View view) {
                 strUserName = user_ed.getText().toString();
-                strName = username.getText().toString();
+               // strName = username.getText().toString();
                 strPwd = pwd_ed.getText().toString();
+                strName = username.getText().toString();
                 strSex = sex.getText().toString();
                 strPhone = phone.getText().toString();
-                strregister_identify= register_identify.getText().toString();
+             //   strregister_identify= register_identify.getText().toString();
 
 
             //  sql="Select * from user where username='"+struser+"'";
-                sql="UPDATE user SET name = '"+strName +"' where username='"+MainActivity.getStrUserName()+"'";
+                sql="UPDATE user SET name = '"+strName +"',password= '"+strPwd +"',sex= '"+strPwd +"',sex= '"+strPhone +"'where username='"+MainActivity.getStrUserName()+"'";
                 //以下开始数据库操作，使用线程，查询用户是否存在
                 new Thread(new Runnable() {
                     @Override
