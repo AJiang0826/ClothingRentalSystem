@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <ImageButton
-        android:id="@+id/edituser_back"
+        android:id="@+id/_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -30,7 +30,7 @@
         android:gravity="center"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
-        android:textColor="#37302F"
+        android:textColor="#00000F"
         android:textSize="35sp"/>
 
 
@@ -91,18 +91,18 @@
     <Button
         android:id="@+id/r_register_resetting"
         android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         android:text="重置内容"
-        android:textColor="#37302F"
+        android:textColor="#00000F"
         android:background="@drawable/admin_user_button"
-        android:textSize="16sp" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/r_register"
         android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
         android:text="确定添加"
@@ -111,8 +111,8 @@
         android:layout_alignRight="@+id/r_password"
         android:layout_alignEnd="@+id/r_password"
         android:background="@drawable/admin_user_button"
-        android:textColor="#37302F"
-        android:textSize="16sp"/>
+        android:textColor="#00000F"
+        android:textSize="18sp"/>
 
 </LinearLayout>
 </LinearLayout>

@@ -17,7 +17,7 @@
             android:gravity="center_horizontal"
             android:text="查询用户"
             android:layout_marginTop="20dp"
-            android:textColor="#37302F"
+            android:textColor="#00000F"
             android:textSize="35sp" />
         <ImageButton
             android:id="@+id/_back"
@@ -47,6 +47,7 @@
             android:layout_marginRight="20dp"
             android:textColor="#37302F"
             android:background="@drawable/admin_user"
+            android:textSize="18sp"
             android:layout_weight="0.3"/>
 
         <Button
@@ -55,9 +56,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:background="@drawable/admin_user_button"
-            android:textColor="#37302F"
+            android:textColor="#00000F"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
+            android:textSize="18sp"
             android:text="搜索用户" />
     </LinearLayout>
     <LinearLayout
@@ -73,7 +75,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="用户名"
-            android:textColor="#37302F"
+            android:textColor="#00000F"
             android:textSize="18sp" />
         <TextView
             android:id="@+id/password"
@@ -82,7 +84,7 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="密码"
-            android:textColor="#37302F"
+            android:textColor="#00000F"
             android:textSize="18sp" />
 
         <TextView
@@ -92,7 +94,7 @@
             android:layout_weight="2"
             android:gravity="center_horizontal"
             android:text="姓名"
-            android:textColor="#37302F"
+            android:textColor="#00000F"
             android:textSize="18sp" />
 
         <TextView
@@ -102,7 +104,7 @@
             android:layout_weight="2"
             android:gravity="center_horizontal"
             android:text="性别"
-            android:textColor="#37302F"
+            android:textColor="#00000F"
             android:textSize="18sp" />
 
         <TextView
@@ -112,7 +114,7 @@
             android:layout_weight="2"
             android:gravity="center_horizontal"
             android:text="手机号"
-            android:textColor="#37302F"
+            android:textColor="#00000F"
             android:textSize="18sp" />
 
 
@@ -124,5 +126,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"></ListView>
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"></ListView>
 </LinearLayout>
