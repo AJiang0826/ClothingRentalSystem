@@ -35,7 +35,7 @@ public class admin_pay_info extends AppCompatActivity {
         setContentView(R.layout.activity_admin_pay_info);
         ad_pay = (ListView) findViewById(R.id.Add_Show_Pay);
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
-        sql = "SELECT * FROM  clothes_lease AS t WHERE date(t.clothes_pay_data) >= DATE_SUB(CURDATE(),INTERVAL 1 MONTH) and flage=0";//查询整张租借表，flage=1，表示衣服已经归还
+        sql = "SELECT * FROM  clothes_lease AS t WHERE date(t.clothes_pay_data) >= DATE_SUB(CURDATE(),INTERVAL 1 MONTH) and flage=1";//查询整张租借表，flage=1，表示衣服已经归还
         System.out.println("sql=" + sql);
         //以下开始数据库操作，使用线程，插入用户
         new Thread(new Runnable() {

@@ -38,7 +38,7 @@ public class admin_borrow_info extends AppCompatActivity {
         setContentView(R.layout.activity_admin_borrow_info);
         Add_Borrow = (ListView) findViewById(R.id.Add_Show_Borrow);
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
-        sql = "SELECT * FROM  clothes_lease AS t WHERE date(t.clothes_borrow_data) >= DATE_SUB(CURDATE(),INTERVAL 1 MONTH) and flage=0;";//查询flage=0，表示衣服已经借出去了
+        sql = "SELECT * FROM  clothes_lease AS t WHERE date(t.clothes_borrow_data) >= DATE_SUB(CURDATE(),INTERVAL 1 MONTH) and flage=0";//查询flage=0，表示衣服已经借出去了
         System.out.println("sql=" + sql);
         //以下开始数据库操作，使用线程，插入用户
         new Thread(new Runnable() {
