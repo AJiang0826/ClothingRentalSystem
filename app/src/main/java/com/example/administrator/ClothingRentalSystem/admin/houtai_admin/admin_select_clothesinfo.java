@@ -40,7 +40,7 @@ public class admin_select_clothesinfo extends AppCompatActivity {
         Cursor cursor = help.querybookinfo();
         String from[] = {"name", "type", "writer","publicer","rank","img", "price"};
         int to[] = {R.id.Clothes_Name, R.id.Clothes_Type, R.id.Clothes_Author, R.id.Clothes_Publish, R.id.Clothes_Rank, R.id.Clothes_Info_Img, R.id.Clothes_Price};
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.admin_book_item, cursor, from, to);
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.admin_clothes_item1, cursor, from, to);
         adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
             @Override
             public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
@@ -67,7 +67,7 @@ public class admin_select_clothesinfo extends AppCompatActivity {
                         Cursor cursor = help.querybookinfo();
                         String from[] = {"name", "type", "writer","publicer","rank","img"};
                         int to[] = {R.id.Clothes_Name, R.id.Clothes_Type, R.id.Clothes_Author, R.id.Clothes_Publish, R.id.Clothes_Rank, R.id.Clothes_Info_Img};
-                        SimpleCursorAdapter adapter = new SimpleCursorAdapter(admin_select_clothesinfo.this, R.layout.admin_book_item, cursor, from, to);
+                        SimpleCursorAdapter adapter = new SimpleCursorAdapter(admin_select_clothesinfo.this, R.layout.admin_clothes_item1, cursor, from, to);
                         adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
                             @Override
                             public boolean setViewValue(View view, Cursor cursor, int columnIndex) {

@@ -1,25 +1,20 @@
 package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
-import com.example.administrator.ClothingRentalSystem.admin.registerActivity;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
+import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -27,15 +22,11 @@ import java.util.concurrent.CountDownLatch;
  */
 
 public class admin_search_clothesinfo extends AppCompatActivity {
-    private ImageButton back_bt;
     private ListView listView;
-    private String name;
-
-    private String strUserName,strPwd,strConfirmPwd,strName,strPhone,strSex,sql;
+    private String sql,sql1,strSearch_Name;
     //创建CountDownLatch并设置计数值，该count值可以根据线程数的需要设置
     private CountDownLatch countDownLatch;
     private ResultSet rs;
-    private int rows;
     private SimpleCursorAdapter adapter;
 
     @Override
@@ -49,39 +40,29 @@ public class admin_search_clothesinfo extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.Select_Clothes_List);//列表
 
         Bundle bundle=this.getIntent().getExtras();
-        name=bundle.getString("name");
-        Cursor cursor = ps.query(Table_Name2, null, "name like ?", new String[]{"%"+name+"%"}, null, null, null, null);
+        strSearch_Name=bundle.getString("name");
+        System.out.println("strSearch_Name="+strSearch_Name);
 
-        //Cursor cursor = help.querybookinfoname(name);
-        String from[] = {"img", "name", "writer", "type","price","rank","publicer"};
-        int to[] = {R.id.Clothes_Info_Img, R.id.Clothes_Name, R.id.Clothes_Author,
-                    R.id.Clothes_Type, R.id.Clothes_Price, R.id.Clothes_Rank, R.id.Clothes_Publish};
-        //调用admin_book_item.xml，上边一行id来自该xml
-        adapter = new SimpleCursorAdapter(this, R.layout.admin_book_item, cursor, from, to);
-
-        //以下开始数据库操作，使用线程，查询用户是否已经存在
+        countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
+        //查询整张衣物信息表
+        sql="select clothes_img,name,designer,type,price,rank,size from clothes_information;";
+        sql1="select clothes_img,name,designer,type,price,rank,size from clothes_information where name='"+strSearch_Name+"';";
+        System.out.println("sql="+sql);
+        //以下开始数据库操作，使用线程,查找出的用户显示在listView中
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    rs = DBUtils.getSelectResultSet("Select clothes_img,name,designer,type,price,rank,size from clothes_information");
-
-                    adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
-                        @Override
-                        public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-                            if (view.getId() == R.id.Clothes_Info_Img) {
-                                ImageView imageView = (ImageView) view;
-                                imageView.setImageURI(Uri.parse(cursor.getString(columnIndex)));
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        }
-                    });
-                    listView.setAdapter(adapter);
-
-                    rs.last();
-                } catch (SQLException e) {
+                    //获得查询结果
+                    if (strSearch_Name.equals("")) {
+                        rs= DBUtils.getSelectResultSet(sql);
+                        return;
+                    }else{
+                        rs= DBUtils.getSelectResultSet(sql1);
+                        return;
+                    }
+                    //rs= DBUtils.getSelectResultSet(sql);
+                } catch (Exception e) {
                     e.printStackTrace();
                 }finally {
                     //该线程执行完毕-1
@@ -89,32 +70,22 @@ public class admin_search_clothesinfo extends AppCompatActivity {
                 }
             }
         }).start();
-        //等待线程查询完结果
+        //等待线程插入完结果，把结果集转换成一定格式，并呈现在页面上
         try {
-            countDownLatch.await();
-        } catch (InterruptedException e) {
+            countDownLatch.await();//阻塞等待线程执行完毕
+            //根据用户查询自己的衣物信息
+            String[] names1={"clothes_img","name","designer","type","price","rank","size"};//建立字段名结果集  //数据库中的
+            String[] names2={"Clothes_Info_Img", "Clothes_Name", "Clothes_Author", "Clothes_Type", "Clothes_Price", "Clothes_Rank", "Clothes_Publish"};//建立字段名结果集2 这个要和SimpleAdapter中的string[]一样
+            List<Map<String, Object>> data = ItemUtils.getList(names1,names2,rs);//调用ItemUtils获取结果集
+            System.out.println("list="+data.toString());
+            //后两个String[] int[]数组都是admin_book_item中的id
+            SimpleAdapter adapter = new SimpleAdapter(
+                    admin_search_clothesinfo.this, data, R.layout.admin_clothes_item1,
+                    new String[]{"Clothes_Info_Img", "Clothes_Name", "Clothes_Author", "Clothes_Type", "Clothes_Price", "Clothes_Rank", "Clothes_Publish"},
+                    new int[]{R.id.Clothes_Info_Img, R.id.Clothes_Name, R.id.Clothes_Author, R.id.Clothes_Type, R.id.Clothes_Price, R.id.Clothes_Rank, R.id.Clothes_Publish});
+            listView.setAdapter(adapter);
+        } catch (Exception e) {
             e.printStackTrace();
-
-        /*final databaseHelp help = new databaseHelp(getApplicationContext());
-        Bundle bundle=this.getIntent().getExtras();
-        name=bundle.getString("name");
-        Cursor cursor = help.querybookinfoname(name);
-        String from[] = {"img", "name", "writer", "type","price","rank","publicer"};
-        int to[] = {R.id.Clothes_Info_Img, R.id.Clothes_Name, R.id.Clothes_Author, R.id.Clothes_Type, R.id.Clothes_Price, R.id.Clothes_Rank, R.id.Clothes_Publish};
-        //调用admin_book_item.xml，上边一行id来自该xml
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.admin_book_item, cursor, from, to);
-        adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
-            @Override
-            public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-                if (view.getId() == R.id.Clothes_Info_Img) {
-                    ImageView imageView = (ImageView) view;
-                    imageView.setImageURI(Uri.parse(cursor.getString(columnIndex)));
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        });
-        listView.setAdapter(adapter);*/
+        }
     }
 }

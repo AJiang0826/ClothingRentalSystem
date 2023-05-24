@@ -26,7 +26,7 @@
             android:layout_width="210dp"
             android:layout_height="80dp"
             android:layout_marginRight="50dp"
-            android:src="@drawable/bdr1"/>
+            android:src="@drawable/click_white"/>
 
     </LinearLayout>
 
@@ -45,8 +45,8 @@
             android:text="编     号 ："
             android:textSize="20sp" />
 
+<!--        android:text="2023052201"-->
         <EditText
-            android:text="2023052201"
             android:id="@+id/et_ClothesId"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -71,8 +71,9 @@
             android:gravity="center"
             android:text="衣 服 名："
             android:textSize="20sp"/>
+
+<!--        android:text="婚纱"-->
         <EditText
-            android:text="婚纱"
             android:id="@+id/et_ClothesName"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -95,8 +96,9 @@
             android:gravity="center"
             android:text="种     类 ："
             android:textSize="20sp"/>
+
+<!--        android:text="裙装"-->
         <EditText
-            android:text="裙装"
             android:id="@+id/et_ClothesType"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -119,8 +121,9 @@
             android:gravity="center"
             android:text="设 计 者："
             android:textSize="20sp"/>
+
+<!--        android:text="Lin"-->
         <EditText
-            android:text="Lin"
             android:id="@+id/et_ClothesDesigner"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -143,8 +146,9 @@
             android:gravity="center"
             android:text="尺     码 ："
             android:textSize="20sp"/>
+
+<!--        android:text="S、M"-->
         <EditText
-            android:text="S、M"
             android:id="@+id/et_ClothesSize"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -175,9 +179,35 @@
             android:gravity="center"
             android:text="价     格 ："
             android:textSize="20sp"/>
+
+<!--        android:text="2300.00"-->
         <EditText
-            android:text="2300.00"
             android:id="@+id/et_ClothesPrice"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="25dp"
+            android:layout_weight="3"
+            android:background="@drawable/register_edittext_sharp"
+            android:hint="请输入价格"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:text="评     分 ："
+            android:textSize="20sp"/>
+
+<!--        android:text="9.8"-->
+        <EditText
+            android:id="@+id/et_ClothesRank"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="25dp"
@@ -197,33 +227,11 @@
             android:layout_weight="1"
             android:layout_marginLeft="20dp"
             android:gravity="center"
-            android:text="评     分 ："
-            android:textSize="20sp"/>
-        <EditText
-            android:text="9.8"
-            android:id="@+id/et_ClothesRank"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="25dp"
-            android:layout_weight="3"
-            android:background="@drawable/register_edittext_sharp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="20dp"
-            android:gravity="center"
             android:text="简     介 ："
             android:textSize="20sp"/>
+
+<!--        android:text="法式缎面一字肩气质拖尾婚纱"-->
         <EditText
-            android:text="法式缎面一字肩气质拖尾婚纱"
             android:id="@+id/et_ClothesComment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
