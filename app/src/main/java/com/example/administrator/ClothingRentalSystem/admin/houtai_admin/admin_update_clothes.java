@@ -39,18 +39,17 @@ import java.util.concurrent.CountDownLatch;
  */
 
 public class admin_update_clothes extends BaseActivity implements View.OnClickListener {
-    private ImageButton back_bt;
-    private Button add_book_bt;
-    private String str;
+
     private String name;
-    private databaseHelp helper;
     Uri uri;
     private ImageView ClothesImg;
     private EditText Et_ClothesId,Et_ClothesName,Et_ClotheStype,Et_ClothesWriter,Et_ClothesPublicer,Et_ClothesPrice,Et_ClothesRank,Et_ClothesComment;
-    private Button Btn_ClothesCommit,Btn_ClothesBack;
+    private Button Btn_ClothesCommit;
     private CountDownLatch countDownLatch;
     private ResultSet rs;
     private int rows;
+    String uriname;
+    int id;
 
     String sql;
     @Override
@@ -64,13 +63,15 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
 
     private void initdata() {
         Bundle bundle = getIntent().getExtras();
-        name = bundle.getString("name") ;
+        //name = bundle.getString("name") ;
+        id=bundle.getInt("Id");
        // Log.i("cursor", "initdata: " +name);
-        System.out.println("sname="+name);
+        System.out.println("sname="+id);
 
 
         ClothesImg=findViewById(R.id.ClothesImg);
         Et_ClothesId=findViewById(R.id.et_ClothesId);
+        Et_ClothesId.setFocusable(false);
         Et_ClothesName=findViewById(R.id.et_ClothesName);
         Et_ClotheStype=findViewById(R.id.et_ClotheStype);
         Et_ClothesWriter=findViewById(R.id.et_ClothesWriter);
@@ -83,7 +84,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
         Btn_ClothesCommit=findViewById(R.id.Btn_ClothesCommit);
 
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
-        sql="select * from clothes_information where name='"+name+"'";//查询整张租借表
+        sql="select * from clothes_information where id="+id;//查询整张租借表
         System.out.println("sql="+sql);
         //以下开始数据库操作，使用线程，插入用户
         new Thread(new Runnable() {
@@ -107,14 +108,15 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                 ClothesImg.setImageURI(Uri.parse(rs.getString("clothes_img")));
                 Et_ClothesId.setText(rs.getString("id"));
                 Et_ClothesName.setText(rs.getString("name"));
-                Et_ClothesWriter.setText(rs.getString("type"));
-                Et_ClotheStype.setText(rs.getString("designer"));
-                Et_ClothesPrice.setText(rs.getString("size"));
-                Et_ClothesPublicer.setText(rs.getString("price"));
-                Et_ClothesComment.setText(rs.getString("rank"));
-                Et_ClothesRank.setText(rs.getString("comment"));
+                Et_ClotheStype.setText(rs.getString("type"));
+                Et_ClothesWriter.setText(rs.getString("designer"));
+                Et_ClothesPrice.setText(rs.getString("price"));
+                Et_ClothesPublicer.setText(rs.getString("size"));
+                Et_ClothesComment.setText(rs.getString("comment"));
+                Et_ClothesRank.setText(rs.getString("rank"));
+                uriname=rs.getString("clothes_img");
             }
-            //Add_Borrow.setAdapter(adapter);
+            uri=Uri.parse(uriname);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -125,32 +127,27 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
 
     }
     //对管理员输入的衣服信息进行验证，全部符合要求才能通过
-    boolean testid=true,testother=true;
+    boolean testother=true;
+
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
             case R.id.Btn_ClothesCommit:
-                //ISBN为十位，且不为空
-                if (Et_ClothesId.getText().length() != 10) {
-                    Toast.makeText(admin_update_clothes.this, "请输入10位衣服编码", Toast.LENGTH_SHORT).show();
-                    testid = false;
-                    break;
-                }
-
                 if (Et_ClothesName.getText().length() == 0) {
                     Toast.makeText(admin_update_clothes.this, "请输入完整衣服信息", Toast.LENGTH_SHORT).show();
                     testother = false;
                     break;
                 }
-                if (testid == true&&testother == true) {
+                if (testother == true) {
                     System.out.println(ClothesImg.toString());
                     countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
                     System.out.println("进入更改数据库");
-                    sql = "update clothes_information set clothes_img='"+uri+"',id='" + Et_ClothesId.getText().toString() + "',name='" +
-                            Et_ClothesName.getText().toString() + "',type='" + Et_ClothesWriter.getText().toString()
-                            + "',designer='" + Et_ClotheStype.getText().toString() + "',size='" + Et_ClothesPrice.getText().toString()
-                            + "',price='" + Et_ClothesPublicer.getText().toString() + "',rank='" + Et_ClothesComment.getText().toString()
-                            + "',comment='" + Et_ClothesComment.getText().toString() + "'where name='" + name + "'";//查询整张租借表
+                    System.out.println("uri=+--------"+uri);
+                    sql = "update clothes_information set clothes_img='"+uri+ "',name='" +
+                            Et_ClothesName.getText().toString() + "',type='" + Et_ClotheStype.getText().toString()
+                            + "',designer='" +  Et_ClothesWriter.getText().toString() + "',size='" + Et_ClothesPublicer.getText().toString()
+                            + "',price='" + Et_ClothesPrice.getText().toString() + "',rank='" + Et_ClothesRank.getText().toString()
+                            + "',comment='" +Et_ClothesComment.getText().toString() + "'where id='" + id + "'";//查询整张租借表
                     System.out.println("sql=" + sql);
 
                     new Thread(new Runnable() {
@@ -186,16 +183,15 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
 
             case R.id.ClothesImg:
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-                intent.setType("image/*");
+                intent.setType("image/*");//选择image类型的资源
                 startActivityForResult(intent,1);  // 第二个参数是请求码
                 break;
 
 
         }
     }
-
     @Override
-    //用于显示图片
+ //   用于显示图片
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
@@ -205,7 +201,6 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
             default:
         }
     }
-
     public void parseUri(Intent data) {
         uri=data.getData();
         InputStream is=null;

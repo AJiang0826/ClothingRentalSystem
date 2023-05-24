@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/search_name"
+            android:id="@+id/search_name1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="请输入搜索的用户名"
@@ -122,7 +122,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/delete_user_list"
+        android:id="@+id/delete_user_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="20dp"

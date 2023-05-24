@@ -20,7 +20,7 @@
             android:textColor="#37302F"
             android:textSize="35sp" />
         <ImageButton
-            android:id="@+id/selectuser_back"
+            android:id="@+id/_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"

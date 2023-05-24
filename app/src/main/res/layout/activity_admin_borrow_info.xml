@@ -70,5 +70,7 @@
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="18dp"
         android:id="@+id/Add_Show_Borrow"></ListView>
 </LinearLayout>

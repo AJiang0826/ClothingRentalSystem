@@ -1,10 +1,11 @@
 package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -33,7 +34,10 @@ public class admin_editer_user extends AppCompatActivity {
     private CountDownLatch countDownLatch;
     private String sql;
     private ResultSet rs;
+    private EditText search_name;
     private int rows;
+
+    private Button search_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +56,7 @@ public class admin_editer_user extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        listView = (ListView) findViewById(R.id.delete_user_list);
+        listView = (ListView) findViewById(R.id.delete_user_item);
         final databaseHelp help = new databaseHelp(getApplicationContext());
 
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
@@ -84,7 +88,7 @@ public class admin_editer_user extends AppCompatActivity {
             SimpleAdapter adapter = new SimpleAdapter(
                     admin_editer_user.this, data, R.layout.select_user_item,
                     new String[]{"username","password","name", "sex", "phone"},//数据库中的字段
-                    new int[]{R.id.user_user, R.id.user_pwd, R.id.user_name, R.id.user_sex, R.id.user_phone});//后两个String[] int[]数组都是borrow_item中的id
+                    new int[]{R.id.user_user, R.id.user_pwd, R.id.user_name, R.id.user_sex, R.id.user_phone});//_item中的id
             listView.setAdapter(adapter);
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,7 +110,6 @@ public class admin_editer_user extends AppCompatActivity {
                         name=strs[j].substring(9,strs[j].length()-1);
                     }
                 }
-                System.out.println("1111111111111111111name="+name);
                 Intent intent = new Intent(admin_editer_user.this, admin_update_user.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("name", name);
@@ -114,5 +117,43 @@ public class admin_editer_user extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //查询按钮监听
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                //传值到修改界面
+                int i = position + 1;
+                System.out.println("i="+i);
+                String str=listView.getItemAtPosition(position).toString();
+                String[] strs=str.split(", ");
+                String name=null;
+                for (int j=0;j<strs.length;j++){
+                    if (strs[j].contains("username"))
+                    {
+                        name=strs[j].substring(9,strs[j].length()-1);
+                    }
+                }
+                Intent intent = new Intent(admin_editer_user.this, admin_update_user.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("name", name);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+        //搜索按钮监听
+        search_btn=findViewById(R.id.search_btn);
+        search_name = findViewById(R.id.search_name1);
+        search_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(admin_editer_user.this, admin_update_user.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("name",search_name.getText().toString());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
     }
 }

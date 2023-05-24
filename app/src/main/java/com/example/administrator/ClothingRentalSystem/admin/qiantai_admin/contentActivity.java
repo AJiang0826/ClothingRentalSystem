@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
@@ -23,18 +24,92 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.administrator.ClothingRentalSystem.R;
 
+import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
 import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
+import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
+import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
 import com.google.android.material.navigation.NavigationView;
+
+import java.sql.ResultSet;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 
 public class contentActivity extends AppCompatActivity implements View.OnClickListener {
     private DrawerLayout drawerLayout;
     private ListView listView;
     private long mExitTime;
-
+    private CountDownLatch countDownLatch;
+    private ResultSet rs;
+    String sql;
+    int rows;
+    static{
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("开始连接数据库……");
+                // new DBUtils("192.168.43.149:3306","clothes_rental_system","Android","123456");
+                new DBUtils("192.168.43.71:3306","clothes_rental_system","root","123456");
+                System.out.println("查看数据库连接是否成立："+ (DBUtils.conn!=null));
+            }
+        }
+        ).start();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
+        listView = (ListView) findViewById(R.id.list_view);
+
+
+        countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
+        sql="select img,size,intro from clothes2";//查询整张表
+        //以下开始数据库操作，使用线程，插入用户
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //获得查询结果
+                    rs= DBUtils.getSelectResultSet(sql);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }finally {
+                    //该线程执行完毕-1
+                    countDownLatch.countDown();
+                }
+            }
+        }).start();
+        //等待线程插入完结果，把结果集转换成一定格式，并呈现在页面上
+        try {
+            countDownLatch.await();//阻塞等待线程执行完毕
+            //根据用户查询自己的租借信息
+            String[] names1={"img","size","intro"};//建立字段名结果集
+            String[] names2={"clothes_img","clothes_size","clothes_comment"};//建立字段名结果集2 这个要和SimpleAdapter中的string[]一样
+            List<Map<String, Object>> data = ItemUtils.getList(names1,names2,rs);//调用ItemUtils获取结果集
+            SimpleAdapter adapter = new SimpleAdapter(
+                    contentActivity.this, data, R.layout.book_item,
+                    new String[]{"clothes_img","clothes_size","clothes_comment"},
+                    new int[]{R.id.clothes_img, R.id.clothes_size, R.id.clothes_comment});//后两个String[] int[]数组都是borrow_item中的id
+            listView.setAdapter(adapter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -83,12 +158,12 @@ public class contentActivity extends AppCompatActivity implements View.OnClickLi
 
         Cursor cursor = help.querybookinfo();
         String from[] = {"img","name", "writer"};
-        int to[] = {R.id.book_image,R.id.book_name, R.id.book_author};
+        int to[] = {R.id.clothes_img,R.id.clothes_size, R.id.clothes_comment};
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.book_item, cursor, from, to);
         adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
             @Override
             public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-                if (view.getId() == R.id.book_image) {
+                if (view.getId() == R.id.clothes_img) {
                     ImageView iconImageView = (ImageView) view;
                      iconImageView.setImageURI(Uri.parse(cursor.getString(columnIndex)));
                     return true;

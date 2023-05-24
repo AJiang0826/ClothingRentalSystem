@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -39,11 +42,16 @@ public class admin_delete_user extends AppCompatActivity {
     private CountDownLatch countDownLatch;
     private String sql1,sql2,sql3;
     private ResultSet rs,rs2;
+    private EditText search_name;
     private int rows;
+
+    private Button search_btn_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN|
+                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//控制页面不随着软键盘上移
         setContentView(R.layout.activity_admin_delete_user);//删除界面
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
         init();//初始化界面
@@ -51,6 +59,8 @@ public class admin_delete_user extends AppCompatActivity {
     }
 
     private void init() {
+
+        //返回--图片按钮监听
         back_bt = (ImageButton) findViewById(R.id.edituser_back);
         back_bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,6 +166,18 @@ public class admin_delete_user extends AppCompatActivity {
                 dialog.show();
             }
         });
-        help.close();
+        //搜索按钮监听
+        search_btn_=findViewById(R.id.search_btn);
+        search_name = findViewById(R.id.search_name1);
+        search_btn_.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(admin_delete_user.this, admin_delete_userinfo.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("name",search_name.getText().toString());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
     }
 }

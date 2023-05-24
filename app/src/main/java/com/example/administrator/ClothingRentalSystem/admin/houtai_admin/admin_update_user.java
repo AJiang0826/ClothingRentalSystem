@@ -2,18 +2,16 @@ package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
 import com.example.administrator.ClothingRentalSystem.admin.registerActivity;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
@@ -29,7 +27,6 @@ import java.util.concurrent.CountDownLatch;
 /**
  * 修改用户信息的页面
  * 功能：修改用户信息
- * 变量：
  */
 
 public class admin_update_user extends BaseActivity {
@@ -42,6 +39,7 @@ public class admin_update_user extends BaseActivity {
     private ResultSet rs;
     private int rows;
     private CountDownLatch countDownLatch;
+    private ImageButton back_bt;
 
 
     @Override
@@ -54,11 +52,24 @@ public class admin_update_user extends BaseActivity {
 
     private void inut() {
 
+        //返回--图片按钮监听
+        back_bt = (ImageButton) findViewById(R.id._back);
+        back_bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(admin_update_user.this, admin_editer_user.class);
+                startActivity(intent);
+            }
+        });
+
         username = (EditText) findViewById(R.id.r_name);
         password = (EditText) findViewById(R.id.r_password);
         name = (EditText) findViewById(R.id.user_name);
         sex = (EditText)findViewById(R.id.r_sex);
         phone = (EditText)findViewById(R.id.r_phone);
+
+        //设置名字不可修改不可编辑
+        //((EditText) findViewById(R.id.r_name)).setFocusable(false);
 
         Bundle bundle=this.getIntent().getExtras();
         names=bundle.getString("name");
@@ -110,9 +121,9 @@ public class admin_update_user extends BaseActivity {
                 strsex = sex.getText().toString();
                 strphone = phone.getText().toString();
 
-                //对用户注册输入的信息进行验证，全部符合要求才能通过
-                if (username.getText().length()!=6) {
-                    Toast.makeText(admin_update_user.this,"请输入6位帐号",Toast.LENGTH_SHORT).show();
+                //对用户的信息进行验证，全部符合要求才能通过
+                if (username.getText().length()<3) {
+                    Toast.makeText(admin_update_user.this,"请输入账号不可小于3位",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(phone.getText().length()!=11){
@@ -167,7 +178,7 @@ public class admin_update_user extends BaseActivity {
         cz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                username.setText("");
+                //username.setText("");
                 password.setText("");
                 name.setText("");
                 sex.setText("");

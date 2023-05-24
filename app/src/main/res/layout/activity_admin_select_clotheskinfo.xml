@@ -35,7 +35,17 @@
             android:singleLine="true"
             android:text="图片"
             android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:text="编号"
+            android:textColor="#000000"
+            android:id="@+id/Clothes_Id"/>
 
         <TextView
             android:layout_width="0dp"
@@ -45,14 +55,14 @@
             android:singleLine="true"
             android:text="衣服名"
             android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:singleLine="true"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:layout_gravity="center"
             android:textColor="#000000"
             android:text="种类"
@@ -67,7 +77,7 @@
             android:singleLine="true"
             android:text="价格"
             android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
 
 
@@ -80,7 +90,7 @@
             android:text="衣服尺码"
             android:textColor="#000000"
             android:layout_marginRight="20dp"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -88,6 +98,8 @@
 
         android:id="@+id/Select_Clothes_List"
         android:layout_width="match_parent"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="18dp"
         android:layout_height="match_parent"></ListView>
 
 
