@@ -1,11 +1,7 @@
 package com.example.administrator.ClothingRentalSystem.admin.qiantai_admin;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,38 +12,17 @@ import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
 import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
 import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
-import com.example.administrator.ClothingRentalSystem.admin.registerActivity;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.concurrent.CountDownLatch;
-import android.content.ContentValues;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-
-import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
-import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
-import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.concurrent.CountDownLatch;
 /**
  * 修改读者信息的页面
  */
 
-public class ReaderUpdateInfo extends BaseActivity {
+public class UserUpdateInfo extends BaseActivity {
     private EditText user_ed, pwd_ed, username , sex, phone, register_identify,birthday;
     private Button modify_bt;
     String uname2;
@@ -59,27 +34,10 @@ public class ReaderUpdateInfo extends BaseActivity {
 
     private String md5Psw;
 
-    /**
-     * 以下方法是静态代码块，用来初始化数据库，并载入连接进入内存
-     * 调用的是DBUtils工具类
-     * 必须使用多线程才可使得网络通信
-     **/
-    static{
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("开始连接数据库……");
-                // new DBUtils("192.168.43.149:3306","clothes_rental_system","Android","123456");
-                new DBUtils("192.168.43.71:3306","clothes_rental_system","root","123456");
-                System.out.println("查看数据库连接是否成立："+ (DBUtils.conn!=null));
-            }
-        }
-        ).start();
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reader_update_info);
+        setContentView(R.layout.activity_user_update_info);
         countDownLatch = new CountDownLatch(1);
         inut();//初始化界面
     }
@@ -120,15 +78,15 @@ public class ReaderUpdateInfo extends BaseActivity {
             @Override
             public void onClick(View view) {
                 strUserName = user_ed.getText().toString();
-               // strName = username.getText().toString();
+                // strName = username.getText().toString();
                 strPwd = pwd_ed.getText().toString();
                 strName = username.getText().toString();
                 strSex = sex.getText().toString();
                 strPhone = phone.getText().toString();
-             //   strregister_identify= register_identify.getText().toString();
+                //   strregister_identify= register_identify.getText().toString();
 
 
-            //  sql="Select * from user where username='"+struser+"'";
+                //  sql="Select * from user where username='"+struser+"'";
                 sql="UPDATE user SET name = '"+strName +"',password= '"+strPwd +"',sex= '"+strPwd +"',sex= '"+strPhone +"'where username='"+MainActivity.getStrUserName()+"'";
                 //以下开始数据库操作，使用线程，查询用户是否存在
                 new Thread(new Runnable() {
@@ -155,12 +113,12 @@ public class ReaderUpdateInfo extends BaseActivity {
                     }
                     //对用户注册输入的信息进行验证，全部符合要求才能通过
                     if (username.getText().length()<3) {
-                        Toast.makeText(ReaderUpdateInfo.this,"请输入超过3位帐号",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UserUpdateInfo.this,"请输入超过3位帐号",Toast.LENGTH_SHORT).show();
                         return;
                     }
                     if(rs.getRow()==0)
                     {
-                        Toast.makeText(ReaderUpdateInfo.this,"用户不存在",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UserUpdateInfo.this,"用户不存在",Toast.LENGTH_SHORT).show();
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -185,7 +143,7 @@ public class ReaderUpdateInfo extends BaseActivity {
                     }
                 }).start();
                 //等待线程修改完结果
-                Toast.makeText(ReaderUpdateInfo.this, "除用户名外信息修改成功", Toast.LENGTH_LONG).show();
+                Toast.makeText(UserUpdateInfo.this, "除用户名外信息修改成功", Toast.LENGTH_LONG).show();
                 ActivityCollector.finishAll();
             }
         });

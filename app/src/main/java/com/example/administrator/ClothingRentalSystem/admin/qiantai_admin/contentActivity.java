@@ -46,18 +46,6 @@ public class contentActivity extends AppCompatActivity implements View.OnClickLi
     private ResultSet rs;
     String sql;
     int rows;
-    static{
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("开始连接数据库……");
-                // new DBUtils("192.168.43.149:3306","clothes_rental_system","Android","123456");
-                new DBUtils("192.168.43.71:3306","clothes_rental_system","root","123456");
-                System.out.println("查看数据库连接是否成立："+ (DBUtils.conn!=null));
-            }
-        }
-        ).start();
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -158,7 +146,7 @@ public class contentActivity extends AppCompatActivity implements View.OnClickLi
                         break;
                     case R.id.updateInfo:
                         //跳转到个人借书的页面
-                        Intent intent3 = new Intent(contentActivity.this, ReaderUpdateInfo.class);
+                        Intent intent3 = new Intent(contentActivity.this, UserUpdateInfo.class);
 
                         startActivity(intent3);
                         break;
