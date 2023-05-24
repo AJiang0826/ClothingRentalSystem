@@ -17,7 +17,8 @@
         android:gravity="center"
         android:layout_marginBottom="20dp"
         android:textColor="#37302F"
-        android:textSize="30sp"/>
+        android:textSize="30sp"
+        />
 
 
 
@@ -33,7 +34,8 @@
         android:hint="请输入用户名"
         android:inputType="textPersonName"
         android:textSize="20sp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:focusable="false"/>
 
     <EditText
         android:id="@+id/u_password"
@@ -81,11 +83,17 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="修改"
+        android:background="@drawable/register_button_sharp"
+        android:text="修  改"
         android:layout_alignBaseline="@+id/r_back"
         android:layout_alignBottom="@+id/r_back"
         android:layout_alignRight="@+id/r_password"
         android:layout_alignEnd="@+id/r_password"
-        android:background="#a5c3d4"
+
         android:textSize="18sp"/>
+
+
+
+
+
 </LinearLayout>
