@@ -137,7 +137,7 @@ public class admin_select_clothesinfo extends AppCompatActivity {
                             throw new RuntimeException(e);
                         }
                         System.out.println("----------------------row="+row);
-                        if (row < 0)
+                        if (row > 0)
                             Toast.makeText( admin_select_clothesinfo.this, "删除衣服信息成功！", Toast.LENGTH_SHORT).show();
                         else
                             System.out.println("删除衣服失败！请重新尝试！");
