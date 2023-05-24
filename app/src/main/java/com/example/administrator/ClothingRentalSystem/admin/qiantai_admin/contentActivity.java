@@ -89,7 +89,7 @@ public class contentActivity extends AppCompatActivity implements View.OnClickLi
             //根据用户查询自己的租借信息
             String[] names1={"clothes_img","name","type","price"};//建立字段名结果集
             String[] names2={"clothes_img","clothes_name","clothes_type","clothes_price"};//建立字段名结果集2 这个要和SimpleAdapter中的string[]一样
-            List<Map<String, Object>> data = ItemUtils.getList(names1,names2,rs);//调用ItemUtils获取结果集
+            List<Map<String, Object>> data = ItemUtils.getList(names1,names2,rs,contentActivity.this);//调用ItemUtils获取结果集
             System.out.println("list="+data.toString());
             SimpleAdapter adapter = new SimpleAdapter(
                     contentActivity.this, data, R.layout.content_item,
