@@ -32,13 +32,42 @@
             app:srcCompat="@mipmap/left_arrow" />
 
     </RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/search_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入搜索的用户名"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="#37302F"
+            android:background="@drawable/admin_user"
+            android:layout_weight="0.3"/>
 
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@drawable/admin_user_button"
+            android:textColor="#37302F"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="30dp"
+            android:text="搜索用户" />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="5dp"
+            android:id="@+id/username"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
@@ -46,9 +75,9 @@
             android:text="用户名"
             android:textColor="#37302F"
             android:textSize="18sp" />
-
         <TextView
-            android:layout_width="5dp"
+            android:id="@+id/password"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
@@ -58,6 +87,7 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -68,6 +98,7 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/sex"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -78,6 +109,7 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/phone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -87,12 +119,12 @@
             android:textColor="#37302F"
             android:textSize="18sp" />
 
-
-
     </LinearLayout>
 
     <ListView
         android:id="@+id/delete_user_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"></ListView>
 </LinearLayout>

@@ -7,6 +7,32 @@
     android:orientation="vertical"
     android:background="@drawable/bg"
     tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.select_user_admin">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="查询用户"
+            android:layout_marginTop="20dp"
+            android:textColor="#37302F"
+            android:textSize="35sp" />
+        <ImageButton
+            android:id="@+id/selectuser_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:background="#fff"
+            app:srcCompat="@mipmap/left_arrow" />
+
+    </RelativeLayout>
+
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -18,7 +44,9 @@
             android:hint="请输入搜索的用户名"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:textColor="#37302F"
+            android:background="@drawable/admin_user"
             android:layout_weight="0.3"/>
 
         <Button
@@ -35,9 +63,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="5dp"
+            android:id="@+id/username"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
@@ -45,9 +76,9 @@
             android:text="用户名"
             android:textColor="#37302F"
             android:textSize="18sp" />
-
         <TextView
-            android:layout_width="5dp"
+            android:id="@+id/password"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
@@ -57,6 +88,7 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -67,6 +99,7 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/sex"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -77,6 +110,7 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/phone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -93,5 +127,7 @@
     <ListView
         android:id="@+id/sel_reader_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"></ListView>
 </LinearLayout>

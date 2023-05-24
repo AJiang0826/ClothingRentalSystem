@@ -2,10 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
 //查询用户信息的item项
     <TextView
-        android:layout_width="5dp"
+        android:layout_width="10dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:singleLine="true"
@@ -15,7 +17,7 @@
         android:textColor="#37302F"
         android:id="@+id/user_user"/>
     <TextView
-        android:layout_width="0dp"
+        android:layout_width="10dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:singleLine="true"

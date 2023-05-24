@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/bg"
-    tools:context="com.example.administrator.ClothingRentalSystem.admin.registerActivity">
+    tools:context="com.example.administrator.ClothingRentalSystem.admin.houtai_admin.admin_add_user">
 
     <TextView
         android:id="@+id/textView"
@@ -28,7 +28,8 @@
         android:background="@drawable/admin_user"
         android:ems="20"
         android:hint="请输入用户名"
-        android:inputType="textPersonName" />
+        android:focusable="false"
+ />
 
     <EditText
         android:id="@+id/r_password"
