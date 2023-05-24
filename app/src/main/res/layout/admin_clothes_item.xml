@@ -3,7 +3,9 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<!--    查找衣物详细信息的item项-->
+    <!--这是一个工具xml，不具有实体也是，
+    只是提供一个借阅列表的结构。
+    与之关联的所有 租借 列表都会用到它查找衣服的详细item-->
     <ImageView
         android:id="@+id/Clothes_Info_Img"
         android:layout_weight="0.7"

@@ -1,6 +1,8 @@
 package com.example.administrator.ClothingRentalSystem.admin.qiantai_admin;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,7 +26,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.administrator.ClothingRentalSystem.R;
 
-import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
 import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
@@ -36,6 +37,8 @@ import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 public class contentActivity extends AppCompatActivity implements View.OnClickListener {
+    Uri uri;//图片路径
+    private ImageView ClothesImg;
     private DrawerLayout drawerLayout;
     private ListView listView;
     private long mExitTime;
@@ -57,13 +60,26 @@ public class contentActivity extends AppCompatActivity implements View.OnClickLi
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Resources r = getResources();
+        uri =  Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
+                + r.getResourcePackageName(R.drawable.click_white) + "/"
+                + r.getResourceTypeName(R.drawable.click_white) + "/"
+                + r.getResourceEntryName(R.drawable.click_white));
+
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
         listView = (ListView) findViewById(R.id.list_view);
 
 
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
-        sql="select img,size,intro from clothes2";//查询整张表
+        sql="select clothes_img,name,type,price from clothes_information";//查询整张表
+        //String sql1="select clothes_img,name,designer,type,price,rank,size from clothes_information where name='"+strSearch_Name+"';";
+
         //以下开始数据库操作，使用线程，插入用户
         new Thread(new Runnable() {
             @Override
@@ -83,13 +99,14 @@ public class contentActivity extends AppCompatActivity implements View.OnClickLi
         try {
             countDownLatch.await();//阻塞等待线程执行完毕
             //根据用户查询自己的租借信息
-            String[] names1={"img","size","intro"};//建立字段名结果集
-            String[] names2={"clothes_img","clothes_size","clothes_comment"};//建立字段名结果集2 这个要和SimpleAdapter中的string[]一样
+            String[] names1={"clothes_img","name","type","price"};//建立字段名结果集
+            String[] names2={"clothes_img","clothes_name","clothes_type","clothes_price"};//建立字段名结果集2 这个要和SimpleAdapter中的string[]一样
             List<Map<String, Object>> data = ItemUtils.getList(names1,names2,rs);//调用ItemUtils获取结果集
+            System.out.println("list="+data.toString());
             SimpleAdapter adapter = new SimpleAdapter(
-                    contentActivity.this, data, R.layout.book_item,
-                    new String[]{"clothes_img","clothes_size","clothes_comment"},
-                    new int[]{R.id.clothes_img, R.id.clothes_size, R.id.clothes_comment});//后两个String[] int[]数组都是borrow_item中的id
+                    contentActivity.this, data, R.layout.content_item,
+                    new String[]{"clothes_img","clothes_name","clothes_type","clothes_price"},
+                    new int[]{R.id.clothes_img, R.id.clothes_name, R.id.clothes_type, R.id.clothes_price});//后两个String[] int[]数组都是borrow_item中的id
             listView.setAdapter(adapter);
         } catch (Exception e) {
             e.printStackTrace();
@@ -153,26 +170,26 @@ public class contentActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
         insert();//插入数据往借书表中
-        listView = (ListView) findViewById(R.id.list_view);
-        databaseHelp help = new databaseHelp(getApplicationContext());
-
-        Cursor cursor = help.querybookinfo();
-        String from[] = {"img","name", "writer"};
-        int to[] = {R.id.clothes_img,R.id.clothes_size, R.id.clothes_comment};
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.book_item, cursor, from, to);
-        adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
-            @Override
-            public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-                if (view.getId() == R.id.clothes_img) {
-                    ImageView iconImageView = (ImageView) view;
-                     iconImageView.setImageURI(Uri.parse(cursor.getString(columnIndex)));
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        });
-        listView.setAdapter(adapter);
+//        listView = (ListView) findViewById(R.id.list_view);
+//        databaseHelp help = new databaseHelp(getApplicationContext());
+//
+//        Cursor cursor = help.querybookinfo();
+//        String from[] = {"img","name", "writer"};
+//        int to[] = {R.id.clothes_img,R.id.clothes_size, R.id.clothes_comment};
+//        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.content_item, cursor, from, to);
+//        adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
+//            @Override
+//            public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
+//                if (view.getId() == R.id.clothes_img) {
+//                    ImageView iconImageView = (ImageView) view;
+//                     iconImageView.setImageURI(Uri.parse(cursor.getString(columnIndex)));
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//            }
+//        });
+//        listView.setAdapter(adapter);
     }
 
     private void insert() {

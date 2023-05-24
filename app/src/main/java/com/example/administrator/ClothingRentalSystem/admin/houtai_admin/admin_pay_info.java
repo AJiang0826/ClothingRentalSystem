@@ -2,8 +2,7 @@ package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
+
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -18,30 +17,36 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
-
+/**
+ * 该界面用于显示数据库中已经归还衣服的衣服信息
+ * 该界面所显示的衣服都是当天已经归还的衣服
+ * 查询当天还回来的衣服
+ *
+ */
 public class admin_pay_info extends AppCompatActivity {
-private ListView ad_pay;
+    private ListView ad_pay;
     private CountDownLatch countDownLatch;
     private ResultSet rs;
     String sql;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_pay_info);
-        ad_pay=(ListView)findViewById(R.id.Add_Show_Pay);
+        ad_pay = (ListView) findViewById(R.id.Add_Show_Pay);
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
-        sql="select * from clothes_lease where flage=1";//查询整张租借表，flage=1，表示衣服已经归还
-        System.out.println("sql="+sql);
+        sql = "SELECT * FROM clothes_lease AS t WHERE TO_DAYS(t.clothes_pay_data) = TO_DAYS(NOW()) and flage=1;";//查询整张租借表，flage=1，表示衣服已经归还
+        System.out.println("sql=" + sql);
         //以下开始数据库操作，使用线程，插入用户
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     //获得查询结果
-                    rs= DBUtils.getSelectResultSet(sql);
+                    rs = DBUtils.getSelectResultSet(sql);
                 } catch (Exception e) {
                     e.printStackTrace();
-                }finally {
+                } finally {
                     //该线程执行完毕-1
                     countDownLatch.countDown();
                 }
@@ -51,10 +56,10 @@ private ListView ad_pay;
         try {
             countDownLatch.await();//阻塞等待线程执行完毕
             //根据用户查询自己的租借信息
-            String[] names1={"id","user_name","clothes_id","clothes_size","clothes_borrow_data"};//建立字段名结果集
-            String[] names2={"NumberId", "UserName", "ClothesId", "ClothesSize", "PayDate"};//建立字段名结果集2 这个要和SimpleAdapter中的string[]一样
-            List<Map<String, Object>> data = ItemUtils.getList(names1,names2,rs);//调用ItemUtils获取结果集
-            System.out.println("list="+data.toString());
+            String[] names1 = {"id", "user_name", "clothes_id", "clothes_size", "clothes_borrow_data"};//建立字段名结果集
+            String[] names2 = {"NumberId", "UserName", "ClothesId", "ClothesSize", "PayDate"};//建立字段名结果集2 这个要和SimpleAdapter中的string[]一样
+            List<Map<String, Object>> data = ItemUtils.getList(names1, names2, rs);//调用ItemUtils获取结果集
+            System.out.println("list=" + data.toString());
             SimpleAdapter adapter = new SimpleAdapter(
                     admin_pay_info.this, data, R.layout.ad_pay_item,
                     new String[]{"NumberId", "UserName", "ClothesId", "ClothesSize", "PayDate"},
