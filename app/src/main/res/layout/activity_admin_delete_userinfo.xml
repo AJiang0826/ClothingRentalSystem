@@ -21,13 +21,15 @@
         android:textSize="35sp"/>
 
 
+
     <EditText
         android:id="@+id/username"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:background="@drawable/admin_user"
         android:ems="20"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:focusable="false"/>
 
     <EditText
         android:id="@+id/password"
@@ -37,6 +39,7 @@
         android:background="@drawable/admin_user"
         android:ems="20"
         android:inputType="textPassword"
+        android:focusable="false"
         />
 
     <EditText
@@ -46,6 +49,7 @@
         android:layout_marginTop="18dp"
         android:background="@drawable/admin_user"
         android:ems="20"
+        android:focusable="false"
         />
 
     <EditText
@@ -55,6 +59,7 @@
         android:layout_marginTop="18dp"
         android:background="@drawable/admin_user"
         android:ems="20"
+        android:focusable="false"
         />
 
 
@@ -65,6 +70,7 @@
         android:layout_marginTop="18dp"
         android:background="@drawable/admin_user"
         android:ems="20"
+        android:focusable="false"
         />
 
     <LinearLayout

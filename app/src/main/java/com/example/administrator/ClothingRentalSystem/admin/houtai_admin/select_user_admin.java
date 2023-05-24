@@ -3,6 +3,7 @@ package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -26,7 +27,7 @@ import java.util.concurrent.CountDownLatch;
  */
 public class select_user_admin extends AppCompatActivity {
     private ListView listView;
-    private Button search_btn;
+    private Button search_btn;//查询按钮
     private EditText search_name;
     private CountDownLatch countDownLatch;
     private String sql;
@@ -38,6 +39,8 @@ public class select_user_admin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_user_admin);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN|
+                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//控制页面不随着软键盘上移
         listView=(ListView)findViewById(R.id.sel_reader_list);
 
         //返回--图片按钮监听

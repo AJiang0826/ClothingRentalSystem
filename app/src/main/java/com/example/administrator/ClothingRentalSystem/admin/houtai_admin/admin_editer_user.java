@@ -3,6 +3,7 @@ package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
+
 /**
  * 编辑用户页面
  * 功能：1.编辑用户信息
@@ -42,6 +44,8 @@ public class admin_editer_user extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN|
+                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//控制页面不随着软键盘上移
         setContentView(R.layout.activity_admin_editer_user);
         init();//初始化界面
 

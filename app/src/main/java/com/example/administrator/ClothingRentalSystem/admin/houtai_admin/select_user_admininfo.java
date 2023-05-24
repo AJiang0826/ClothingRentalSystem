@@ -21,10 +21,8 @@ public class select_user_admininfo extends AppCompatActivity {
     private ListView listView;
     private String name;
     private CountDownLatch countDownLatch;
-    private String sql,nametxt;
+    private String sql;
     private ResultSet rs;
-    private int rows;
-    private EditText searchname;
     private Button return_;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,17 +33,18 @@ public class select_user_admininfo extends AppCompatActivity {
     }
     private void init() {
 
+        //获取上个界面搜索框中的值
         Bundle bundle=this.getIntent().getExtras();
         name=bundle.getString("name");
         System.out.println("strSearch_Name="+name);
 
+        //查询username为name的用户信息
         sql="select username,password,name,sex,phone from user where username='"+name+"';";
-        System.out.println("sql="+sql);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    //获得查询结
+                    //获得查询结果
                      rs= DBUtils.getSelectResultSet(sql);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -61,11 +60,11 @@ public class select_user_admininfo extends AppCompatActivity {
             countDownLatch.await();//阻塞等待线程执行完毕
 
             while (rs.next()) {
-                ((EditText) findViewById(R.id.username)).setText(rs.getString("username"));
-                ((EditText) findViewById(R.id.password)).setText(rs.getString("password"));
-                ((EditText) findViewById(R.id.name)).setText(rs.getString("name"));
-                ((EditText) findViewById(R.id.sex)).setText(rs.getString("sex"));
-                ((EditText) findViewById(R.id.phone)).setText(rs.getString("phone"));
+                ((EditText) findViewById(R.id.username)).setText("用户名： "+rs.getString("username"));
+                ((EditText) findViewById(R.id.password)).setText("密 码： "+rs.getString("password"));
+                ((EditText) findViewById(R.id.name)).setText("姓 名： "+rs.getString("name"));
+                ((EditText) findViewById(R.id.sex)).setText("性 别： "+rs.getString("sex"));
+                ((EditText) findViewById(R.id.phone)).setText("手机号： "+rs.getString("phone"));
 
             }
         } catch (Exception e) {
@@ -83,9 +82,7 @@ public class select_user_admininfo extends AppCompatActivity {
             }
         });
 
-
     }
-
 
 }
 

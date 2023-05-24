@@ -24,13 +24,11 @@ import java.util.concurrent.CountDownLatch;
 
 public class admin_delete_userinfo extends AppCompatActivity {
     private ListView listView;
-    private String name;
+    private String name,sql;
     private CountDownLatch countDownLatch;
-    private String sql,nametxt;
     private ResultSet rs;
-    private int rows;
-    private EditText searchname;
     private Button return_,r_delete_;
+    private  int rows;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_delete_userinfo);
@@ -66,19 +64,12 @@ public class admin_delete_userinfo extends AppCompatActivity {
             countDownLatch.await();//阻塞等待线程执行完毕
 
             while (rs.next()) {
-                ((EditText) findViewById(R.id.username)).setText(rs.getString("username"));
-                ((EditText) findViewById(R.id.password)).setText(rs.getString("password"));
-                ((EditText) findViewById(R.id.name)).setText(rs.getString("name"));
-                ((EditText) findViewById(R.id.sex)).setText(rs.getString("sex"));
-                ((EditText) findViewById(R.id.phone)).setText(rs.getString("phone"));
+                ((EditText) findViewById(R.id.username)).setText("用户名： "+rs.getString("username"));
+                ((EditText) findViewById(R.id.password)).setText("密 码： "+rs.getString("password"));
+                ((EditText) findViewById(R.id.name)).setText("姓 名： "+rs.getString("name"));
+                ((EditText) findViewById(R.id.sex)).setText("性 别： "+rs.getString("sex"));
+                ((EditText) findViewById(R.id.phone)).setText("手机号： "+rs.getString("phone"));
 
-
-                //设置不可编辑
-                ((EditText) findViewById(R.id.username)).setFocusable(false);
-                ((EditText) findViewById(R.id.password)).setFocusable(false);
-                ((EditText) findViewById(R.id.name)).setFocusable(false);
-                ((EditText) findViewById(R.id.sex)).setFocusable(false);
-                ((EditText) findViewById(R.id.phone)).setFocusable(false);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,7 +80,6 @@ public class admin_delete_userinfo extends AppCompatActivity {
         r_delete_.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("nnnnnnnn"+name);
                 sql="delete from user where username='"+name+"';";
                 System.out.println("sql2="+sql);
                 new Thread(new Runnable() {
@@ -131,10 +121,6 @@ public class admin_delete_userinfo extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
-
-
 }
 

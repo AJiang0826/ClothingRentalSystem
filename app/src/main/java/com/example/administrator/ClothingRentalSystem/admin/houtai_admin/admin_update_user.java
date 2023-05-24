@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -46,6 +47,8 @@ public class admin_update_user extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_update_user);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN|
+                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//控制页面不随着软键盘上移
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
         inut();//初始化界面
     }
@@ -67,9 +70,6 @@ public class admin_update_user extends BaseActivity {
         name = (EditText) findViewById(R.id.user_name);
         sex = (EditText)findViewById(R.id.r_sex);
         phone = (EditText)findViewById(R.id.r_phone);
-
-        //设置名字不可修改不可编辑
-        //((EditText) findViewById(R.id.r_name)).setFocusable(false);
 
         Bundle bundle=this.getIntent().getExtras();
         names=bundle.getString("name");
@@ -188,4 +188,5 @@ public class admin_update_user extends BaseActivity {
         });
 
     }
+
 }
