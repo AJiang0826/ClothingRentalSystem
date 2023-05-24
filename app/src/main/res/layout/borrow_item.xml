@@ -3,44 +3,54 @@
 只是提供一个借阅列表的结构。
 与之关联的所有 租借 列表都会用到它-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_width="379dp"
+    android:layout_marginLeft="15dp"
     android:orientation="horizontal">
     <TextView
         android:id="@+id/Id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:textSize="16sp"/>
 
 
     <TextView
         android:id="@+id/CustomerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:textSize="16sp"/>
 
     <TextView
         android:id="@+id/ClothesId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:textSize="16sp"/>
 
     <TextView
         android:id="@+id/ClothesSize"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:layout_weight="1" />
-
+        android:layout_weight="1"
+        android:textSize="16sp"/>
     <TextView
         android:id="@+id/BorrowTime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:textSize="15sp"/>
 
 
 </LinearLayout>
