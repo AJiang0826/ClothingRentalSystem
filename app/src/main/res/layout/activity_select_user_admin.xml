@@ -7,8 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/bg"
     tools:context=".admin.houtai_admin.select_user_admin">
-    <LinearLayout
-        android:orientation="horizontal"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -31,7 +30,7 @@
             android:background="#fff"
             app:srcCompat="@mipmap/left_arrow" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
     <LinearLayout

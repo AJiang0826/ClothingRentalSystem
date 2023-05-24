@@ -6,8 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
@@ -17,13 +15,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * 查找读者详情的界面
+ * 功能有：1.通过搜索界面输入的用户名进行用户信息的查询
+ *       2.显示所查用户信息到EditText，并设置不可修改
+ *       3.点击返回按钮回到select_user_admin搜素界面
+ *
+ */
 public class select_user_admininfo extends AppCompatActivity {
-    private ListView listView;
-    private String name;
-    private CountDownLatch countDownLatch;
+
+    private String name;//user_admin搜索框中的值
+    private CountDownLatch countDownLatch;//创建CountDownLatch并设置计数值，该count值可以根据线程数的需要设置
     private String sql;
     private ResultSet rs;
-    private Button return_;
+    private Button return_;//返回按钮
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_user_admininfo);
