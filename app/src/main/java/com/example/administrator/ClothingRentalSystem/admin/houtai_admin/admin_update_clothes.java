@@ -23,6 +23,7 @@ import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.person_borrow;
+import com.example.administrator.ClothingRentalSystem.admin.utils.ContentUriUtil;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
 
@@ -149,7 +150,8 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                     countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
                     System.out.println("进入更改数据库");
                     System.out.println("uri=+--------" + uri);
-                    sql = "update clothes_information set clothes_img='" + uri + "',name='" +
+                    String realPath= ContentUriUtil.getPath2uri(admin_update_clothes.this,uri);
+                    sql = "update clothes_information set clothes_img='" + realPath + "',name='" +
                             Et_ClothesName.getText().toString() + "',type='" + Et_ClotheStype.getText().toString()
                             + "',designer='" + Et_ClothesWriter.getText().toString() + "',size='" + Et_ClothesPublicer.getText().toString()
                             + "',price='" + Et_ClothesPrice.getText().toString() + "',rank='" + Et_ClothesRank.getText().toString()
