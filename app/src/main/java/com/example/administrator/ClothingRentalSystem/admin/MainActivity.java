@@ -19,6 +19,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -27,6 +28,7 @@ import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseAc
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.contentActivity;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
+import com.example.administrator.ClothingRentalSystem.admin.utils.DonwloadSaveImg;
 
 import java.sql.ResultSet;
 import java.util.concurrent.CountDownLatch;
@@ -52,7 +54,7 @@ import java.util.concurrent.CountDownLatch;
  * 这是主类，打开初始页面
  * 并且开启统一全局的数据库连接
  **/
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity {
 
     private EditText user_ed, pwd_ed;
     private Button login_bt, register_bt;
@@ -80,8 +82,12 @@ public class MainActivity extends BaseActivity {
             public void run() {
                 System.out.println("开始连接数据库……");
                // new DBUtils("192.168.43.149:3306","clothes_rental_system","Android","123456");
-                new DBUtils("192.168.43.71:3306","clothes_rental_system","root","123456");
+                new DBUtils("192.168.43.149:3306","clothes_rental_system","Android","123456");
                 System.out.println("查看数据库连接是否成立："+ (DBUtils.conn!=null));
+                for (int i=1;i<=9;i++){
+                    String Path="http://192.168.43.149/ClothesRentalSystem/"+i+".png";
+                    new DonwloadSaveImg().donwloadImg(Path);
+                }
             }
         }
         ).start();

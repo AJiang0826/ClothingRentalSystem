@@ -28,26 +28,23 @@ import android.os.Handler;
  * 在主类中进行调用
  **/
 public class DonwloadSaveImg {
-    private static Context context;
-    private static String filePath;
-    private static Bitmap mBitmap;
-    private static String mSaveMessage = "失败";
-    private final static String TAG = "PictureActivity";
-    private static ProgressDialog mSaveDialog = null;
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static String[] PERMISSIONS_STORAGE = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-    };
+    private String filePath;
+    private Bitmap mBitmap;
 
-    public static void donwloadImg(String filePaths) {
-        //context = contexts;
+    /**
+     * 可直接在其它类中调用此方法，完成从网络上下载图片到本地
+     * 参数：网络地址 利http://192.168.64.114/test
+     **/
+    public void donwloadImg(String filePaths) {
         filePath = filePaths;
-        //mSaveDialog = ProgressDialog.show(context, "保存图片", "图片正在保存中，请稍等...", true);
+        System.out.println("申请下载地址："+filePath);
         new Thread(saveFileRunnable).start();
     }
 
-    private static Runnable saveFileRunnable = new Runnable() {
+    /**
+     * 本方法是返回Runnable类，网络上下载图片使用线程处理
+     **/
+    private Runnable saveFileRunnable = new Runnable() {
         @Override
         public void run() {
             try {
@@ -61,45 +58,28 @@ public class DonwloadSaveImg {
                     inputStream.close();
                 }
                 saveFile(mBitmap);
-                mSaveMessage = "图片保存成功！";
-            } catch (IOException e) {
-                mSaveMessage = "图片保存失败！";
-                e.printStackTrace();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            //messageHandler.sendMessage(messageHandler.obtainMessage());
         }
     };
 
-    private static Handler messageHandler = new Handler(Looper.getMainLooper()) {
-        @Override
-        public void handleMessage(Message msg) {
-            mSaveDialog.dismiss();
-            Log.d(TAG, mSaveMessage);
-            Toast.makeText(context, mSaveMessage, Toast.LENGTH_SHORT).show();
-        }
-    };
     /**
-     * 保存图片
-     * @param bm
-     * @throws IOException
+     * 保存图片到/sdcard/Pictures/文件夹底下
      */
-    public static void saveFile(Bitmap bm ) throws IOException {
+    public void saveFile(Bitmap bm ) throws IOException {
         File dirFile = new File(Environment.getExternalStorageDirectory().getPath());
         if (!dirFile.exists()) {
             dirFile.mkdir();
         }
         String fileName = UUID.randomUUID().toString() + ".png";
-        File myCaptureFile = new File("/storage/1516-3D17/Download/" + fileName);
+//        System.out.println("filename="+fileName);
+//        System.out.println("dirFile="+Environment.getExternalStorageDirectory().getPath());
+        File myCaptureFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath()+"/"+ fileName);
+//        System.out.println("相册路径是："+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath()+"");
         BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(myCaptureFile));
-        bm.compress(Bitmap.CompressFormat.JPEG, 80, bos);
+        bm.compress(Bitmap.CompressFormat.PNG, 80, bos);
         bos.flush();
         bos.close();
-        //把图片保存后声明这个广播事件通知系统相册有新图片到来
-        Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        Uri uri = Uri.fromFile(myCaptureFile);
-        intent.setData(uri);
-        //context.sendBroadcast(intent);
     }
 }
