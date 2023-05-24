@@ -88,6 +88,8 @@
 
         android:id="@+id/Select_Clothes_List"
         android:layout_width="match_parent"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="18dp"
         android:layout_height="match_parent"></ListView>
 
 

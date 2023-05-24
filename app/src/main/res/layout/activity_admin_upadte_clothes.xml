@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-
+            android:textColor="#000000"
             android:text="商品图片 ："
             android:textSize="18sp" />
 
@@ -41,6 +41,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="编      号："
+            android:textColor="#000000"
             android:textSize="18sp" />
 
         <EditText
@@ -49,6 +50,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:inputType="number"
+            android:textColor="#000000"
+            android:textSize="18sp"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890*/@#$%^"
             android:layout_weight="1"/>
              <!--        digits 属于限制输入的类型-->
@@ -63,11 +66,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="衣  服  名 ："
+            android:textColor="#000000"
             android:textSize="18sp"/>
         <EditText
             android:text="花 嫁"
             android:id="@+id/et_ClothesName"
             android:layout_width="0dp"
+            android:textColor="#000000"
+            android:textSize="18sp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
     </LinearLayout>
@@ -82,12 +88,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="种      类 ："
+            android:textColor="#000000"
             android:textSize="18sp"/>
         <EditText
             android:text="婚纱"
             android:id="@+id/et_ClotheStype"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:textSize="18sp"
             android:layout_weight="1"/>
     </LinearLayout>
     <LinearLayout
@@ -100,12 +109,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="设  计  者 ："
+            android:textColor="#000000"
             android:textSize="18sp"/>
         <EditText
             android:text="匠心"
             android:id="@+id/et_ClothesWriter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:textSize="18sp"
             android:layout_weight="1"/>
     </LinearLayout>
     <LinearLayout
@@ -118,12 +130,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="衣服尺码："
+            android:textColor="#000000"
             android:textSize="18sp"/>
         <EditText
             android:text="S、M、L"
             android:id="@+id/et_ClothesPublicer"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:textSize="18sp"
             android:layout_weight="1"/>
     </LinearLayout>
     <LinearLayout
@@ -136,12 +151,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="价      格 ："
+            android:textColor="#000000"
             android:textSize="18sp"/>
         <EditText
             android:text="30"
             android:id="@+id/et_ClothesPrice"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:textSize="18sp"
             android:layout_weight="1"/>
     </LinearLayout>
     <LinearLayout
@@ -154,12 +172,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="评      分 ："
+            android:textColor="#000000"
             android:textSize="18sp"/>
         <EditText
             android:text="9.8"
             android:id="@+id/et_ClothesRank"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:textSize="18sp"
             android:layout_weight="1" />
     </LinearLayout>
     <LinearLayout
@@ -171,6 +192,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textColor="#000000"
             android:text="简      介 ："
             android:textSize="18sp"/>
         <EditText
@@ -178,6 +200,8 @@
             android:id="@+id/et_ClothesComment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:textSize="18sp"
             android:layout_weight="1" />
     </LinearLayout>
 
@@ -194,6 +218,7 @@
             android:layout_width="120dp"
             android:background="@drawable/register_button_sharp"
             android:layout_height="wrap_content"
+            android:textSize="18sp"
             android:text="修改"/>
 
     </LinearLayout>
