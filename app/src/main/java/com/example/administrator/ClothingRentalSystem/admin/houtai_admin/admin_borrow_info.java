@@ -1,19 +1,14 @@
 package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
 
-import android.content.Intent;
+
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
-import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.person_borrow;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
 
@@ -38,7 +33,7 @@ public class admin_borrow_info extends AppCompatActivity {
         Add_Borrow = (ListView) findViewById(R.id.Add_Show_Borrow);
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
         sql = "SELECT * FROM  clothes_lease AS t WHERE date(t.clothes_borrow_data) >= DATE_SUB(CURDATE(),INTERVAL 1 MONTH) and flage=0";//查询flage=0，表示衣服已经借出去了
-        System.out.println("sql=" + sql);
+      //  System.out.println("sql=" + sql);
         //以下开始数据库操作，使用线程，插入用户
         new Thread(new Runnable() {
             @Override

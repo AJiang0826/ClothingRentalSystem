@@ -1,33 +1,19 @@
 package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
 import android.app.AlertDialog;
-import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
@@ -64,7 +50,7 @@ public class admin_select_clothesinfo extends AppCompatActivity {
         clothesImg=(ImageView)findViewById(R.id.Clothes_Info_Img);
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
         sql = "Select clothes_img,id,name,type,price, size from clothes_information";//查询整张租借表
-        System.out.println("sql=" + sql);
+       // System.out.println("sql=" + sql);
         //以下开始数据库操作，使用线程，查询衣服信息
         new Thread(new Runnable() {
             @Override
@@ -87,7 +73,7 @@ public class admin_select_clothesinfo extends AppCompatActivity {
             String[] names1 = {"clothes_img", "id", "name", "type", "price", "size"};//建立数据库字段名结果集
             String[] names2 = {"Clothes_Info_Img", "Clothes_Id", "Clothes_Name", "Clothes_Type", "Clothes_Price", "Clothes_Publish"};//建立字段名结果集2 这个要和SimpleAdapter中的string[]一样
             data = ItemUtils.getList(names1, names2, rs);//调用ItemUtils获取结果集
-            System.out.println("list=" + data.toString());
+            //System.out.println("list=" + data.toString());
             SimpleAdapter adapter = new SimpleAdapter(
                     admin_select_clothesinfo.this, data, R.layout.admin_clothes_item,
                     new String[]{"Clothes_Info_Img", "Clothes_Id", "Clothes_Name", "Clothes_Type", "Clothes_Price", "Clothes_Publish"},
@@ -104,7 +90,7 @@ public class admin_select_clothesinfo extends AppCompatActivity {
                 int a = i + 1;
 
                 //该段代码用于通过获取点击listview那一列的所有数据内容，并且将该内容存入数组中，通过将数组中的数据进行拆分取出需要的衣服的id
-                System.out.println("i=" + a);
+               // System.out.println("i=" + a);
                 String str = listView.getItemAtPosition(i).toString();
                 String[] strs = str.split(", ");//通过，将字符串str进行拆分
                 clothesname = null;
@@ -121,7 +107,7 @@ public class admin_select_clothesinfo extends AppCompatActivity {
 
                         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
                         sql = "delete from clothes_information where id=" + clothesid;//查询整张租借表
-                        System.out.println("sql=" + sql);
+                     //   System.out.println("sql=" + sql);
                         //以下开始数据库操作，使用线程删除选中的衣服信息
                         new Thread(new Runnable() {
                             @Override
@@ -173,7 +159,7 @@ public class admin_select_clothesinfo extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 //传值到修改界面
                 int i = position + 1;
-                System.out.println("i=" + i);
+             //   System.out.println("i=" + i);
                 String str = listView.getItemAtPosition(position).toString();
                 String[] strs = str.split(", ");
                 String name = null;
@@ -184,7 +170,7 @@ public class admin_select_clothesinfo extends AppCompatActivity {
                     }
                 }
                 int id = Integer.parseInt(name);
-                System.out.println("1111111111111111111111111111111111name=" + id);
+            //    System.out.println("1111111111111111111111111111111111name=" + id);
                 Intent intent = new Intent(admin_select_clothesinfo.this, admin_update_clothes.class);//跳转界面
                 Bundle bundle = new Bundle();
                 // bundle.putString("name",name);
