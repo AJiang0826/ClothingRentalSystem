@@ -1,9 +1,6 @@
 package com.example.administrator.ClothingRentalSystem.admin;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +10,6 @@ import android.widget.Toast;
 import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
-import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -156,7 +152,6 @@ public class registerActivity extends BaseActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                ActivityCollector.finishAll();
             }
         });
 

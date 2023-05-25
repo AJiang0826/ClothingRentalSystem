@@ -1,19 +1,14 @@
 package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
 
-import android.content.Intent;
+
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
-import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.person_borrow;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
 
@@ -22,16 +17,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 /**
- * 该界面用于显示数据库中被借出衣服的衣服信息，
- *将客服已经借出的衣服进行查看
- * 该界面所显示的衣服都是近一个月借出去的衣服
+ * 该界面用于查看近一个月的被租出去的衣服
+ * 调用工具类将数据库中近一个月的数据查询出来
+ * 通过特定sql语句进行查询出来的，flage=0，表示衣服被租出去
  */
 public class admin_borrow_info extends AppCompatActivity {
     private ListView Add_Borrow;
     private CountDownLatch countDownLatch;
     private ResultSet rs;
     String sql;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +33,7 @@ public class admin_borrow_info extends AppCompatActivity {
         Add_Borrow = (ListView) findViewById(R.id.Add_Show_Borrow);
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
         sql = "SELECT * FROM  clothes_lease AS t WHERE date(t.clothes_borrow_data) >= DATE_SUB(CURDATE(),INTERVAL 1 MONTH) and flage=0";//查询flage=0，表示衣服已经借出去了
-        System.out.println("sql=" + sql);
+      //  System.out.println("sql=" + sql);
         //以下开始数据库操作，使用线程，插入用户
         new Thread(new Runnable() {
             @Override
@@ -74,4 +68,6 @@ public class admin_borrow_info extends AppCompatActivity {
 
 
     }
+
+
 }

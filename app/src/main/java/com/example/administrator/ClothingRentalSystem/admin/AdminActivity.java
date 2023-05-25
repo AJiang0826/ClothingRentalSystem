@@ -2,7 +2,6 @@ package com.example.administrator.ClothingRentalSystem.admin;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -110,7 +109,6 @@ public class AdminActivity extends BaseActivity {
         ((EditText) findViewById(R.id.AdminName)).setText("");
         ((EditText) findViewById(R.id.AdminPassword)).setText("");
         ((EditText) findViewById(R.id.AdminName)).requestFocus();
-
     }
 
 }

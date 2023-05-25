@@ -1,8 +1,6 @@
 package com.example.administrator.ClothingRentalSystem.admin.qiantai_admin;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,7 +12,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
@@ -33,7 +30,6 @@ import java.util.concurrent.CountDownLatch;
  **/
 public class person_borrow extends AppCompatActivity {
     private ListView listView;
-    private String id,borrowName,clothesNum,clothesSize,borrowTime;
     //创建CountDownLatch并设置计数值，该count值可以根据线程数的需要设置
     private CountDownLatch countDownLatch;
     private ResultSet rs;
