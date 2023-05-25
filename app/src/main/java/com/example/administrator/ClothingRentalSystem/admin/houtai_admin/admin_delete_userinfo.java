@@ -35,6 +35,7 @@ public class admin_delete_userinfo extends AppCompatActivity {
         name=bundle.getString("name");
         System.out.println("strSearch_Name="+name);
 
+
         //通过用户名查询信息
         sql="select username,password,name,sex,phone from user where username='"+name+"';";
         System.out.println("sql="+sql);

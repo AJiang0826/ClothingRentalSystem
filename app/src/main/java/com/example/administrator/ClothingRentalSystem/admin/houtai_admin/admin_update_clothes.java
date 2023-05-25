@@ -49,7 +49,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
     //定义界面各组件的名称
     private EditText Et_ClothesId, Et_ClothesName, Et_ClotheStype, Et_ClothesWriter, Et_ClothesPublicer, Et_ClothesPrice, Et_ClothesRank, Et_ClothesComment;
     private Button Btn_ClothesCommit;
-    private CountDownLatch countDownLatch;
+    private CountDownLatch countDownLatch;//定义一个计数器，和一个阻塞队列，当计数器的值递减为0之前，阻塞队里里面的线程处于挂起状态，当为0时唤醒
     private ResultSet rs;//数据库结果集
     private int rows;//用于记录返回结果
     String uriname;//定义字符串用于接受图片原本的地址
@@ -88,7 +88,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
 
         Btn_ClothesCommit = findViewById(R.id.Btn_ClothesCommit);
 
-        countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
+        countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1，表示当前线程任务为一个
         sql = "select * from clothes_information where id=" + id;//查询整张租借表
         System.out.println("sql=" + sql);
         //以下开始数据库操作，使用线程，搜素衣服信息，并且将 信息呈现在页面
@@ -96,13 +96,13 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
             @Override
             public void run() {
                 try {
-                    //获得查询结果
+                    //获得查询结果，返回结果集
                     rs = DBUtils.getSelectResultSet(sql);
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
                     //该线程执行完毕-1
-                    countDownLatch.countDown();
+                    countDownLatch.countDown();//对计数器减一，计数器值为0，会唤阻塞队列里面的所有线程
                 }
             }
         }).start();
@@ -110,7 +110,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
         try {
             countDownLatch.await();//阻塞等待线程执行完毕
             while (rs.next()) {
-                ClothesImg.setImageURI(Uri.parse(rs.getString("clothes_img")));
+                ClothesImg.setImageURI(Uri.parse(rs.getString("clothes_img")));//接受一个URL字符串，解析它，然后返回一个URL对象
                 Et_ClothesId.setText(rs.getString("id"));
                 Et_ClothesName.setText(rs.getString("name"));
                 Et_ClotheStype.setText(rs.getString("type"));
@@ -150,6 +150,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                     countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
                     System.out.println("进入更改数据库");
                     System.out.println("uri=+--------" + uri);
+                    //将uri地址转换成相对地址
                     String realPath= ContentUriUtil.getPath2uri(admin_update_clothes.this,uri);
                     sql = "update clothes_information set clothes_img='" + realPath + "',name='" +
                             Et_ClothesName.getText().toString() + "',type='" + Et_ClotheStype.getText().toString()
@@ -162,7 +163,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                         @Override
                         public void run() {
                             try {
-                                //获得查询结果
+                                //获得查询结果，查询结果row=1表示该数据库里面有该条数据，可以进行修改，并且修改成功
                                 rows = DBUtils.getUpdateRows(sql);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -178,11 +179,13 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                         throw new RuntimeException(e);
                     }
                     System.out.println("----------------------row=" + rows);
-                    if (rows > 0)
+                    if (rows > 0)//在数据库里面有该数据，并且修改成功
                         Toast.makeText(admin_update_clothes.this, "修改衣服信息成功！", Toast.LENGTH_SHORT).show();
                     else
                         System.out.println("修改衣服失败！请重新尝试！");
+                    //跳转界面
                     Intent intent = new Intent(admin_update_clothes.this, admin_select_clothesinfo.class);
+                    //启动该intent，实现跳转
                     startActivity(intent);
                     finish();
 
@@ -190,9 +193,11 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                 }
             //点击图片出现文件选择器
             case R.id.ClothesImg:
-                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);//打开虚拟机本地文件
+                //Intent intent = new Intent(Intent.ACTION_PICK);//打开文件，ACTION_PICK选择照片
                 intent.setType("image/*");//选择image类型的资源
-                startActivityForResult(intent, 1);  // 第二个参数是请求码
+                startActivityForResult(intent, 1);  // 第二个参数是请求码，用于之后回调判断数据来源，请求码要是唯一
+
                 break;
 
 
@@ -200,25 +205,27 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
     }
 
     @Override
-    //   用于显示图片
+    //   返回的onActivityResultra中接收选取的返回图片资源，data是页面的返回资源
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
+        switch (requestCode) {//对请求码进行判断，请求码不同返回的数据源不同
             case 1:  // 请求码
-                parseUri(data);
+                parseUri(data);//调用方法parseUri
                 break;
             default:
         }
     }
 //获取虚拟中所选中图片的路径，并且将该路径传递给uri，更新数据库
+    //将uri转成流的形式，再将流转成bmp的位图显示在界面上
     public void parseUri(Intent data) {
-        uri = data.getData();
-        InputStream is = null;
+        uri = data.getData();//获取文件夹中中图片的uri
+        InputStream is = null;//输入字节流
         Bitmap bmp = null;
         if (uri.getAuthority() != null) {
             try {
-                is = admin_update_clothes.this.getContentResolver().openInputStream(uri);
-                bmp = BitmapFactory.decodeStream(is);
+                //在Activity和SerVice中可以直接调用getContentResolver（）方法
+                is = admin_update_clothes.this.getContentResolver().openInputStream(uri);//将uri转换成流形式
+                bmp = BitmapFactory.decodeStream(is);//将流资源转换成位图
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -230,7 +237,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                 }
             }
         }
-        ClothesImg.setImageBitmap(bmp);
+        ClothesImg.setImageBitmap(bmp);//将图片显示在界面上
     }
 
 
