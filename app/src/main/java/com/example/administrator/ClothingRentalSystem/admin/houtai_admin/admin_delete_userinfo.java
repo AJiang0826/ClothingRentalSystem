@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import java.sql.ResultSet;
 import java.util.concurrent.CountDownLatch;
