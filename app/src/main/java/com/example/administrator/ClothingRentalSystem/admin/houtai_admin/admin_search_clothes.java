@@ -12,6 +12,7 @@ import com.example.administrator.ClothingRentalSystem.R;
 
 /*
 * 搜索衣物界面
+*
  * 功能：1.搜索框输入衣服名（name）,
  *      2.输入name时查询所有衣物信息
  *      3.输入值按name查询
