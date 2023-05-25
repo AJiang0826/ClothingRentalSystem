@@ -1,12 +1,6 @@
 package com.example.administrator.ClothingRentalSystem.admin.qiantai_admin;
-/*
-个人借书表
- */
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,33 +10,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
-
+/*
+个人收藏表
+功能：用于展示登录用户对服装信息收藏的界面以及数据展示
+     服装收藏信息展示如下信息：用户名，服装编号 服装名称 服装尺码 收藏日期
+     用户可单击收藏的服装进行取消收藏的操作。
+ */
 public class collectActivity extends AppCompatActivity {
     private ListView listView;
-    private String bookid, bookname, bookauthor, booktime,Rorname;
-    private String user_name, clothes_id, clothes_name,clothes_size,collect_date;
     private String sql;
     private CountDownLatch countDownLatch;
     private ResultSet rs;
     private int rows;
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,10 +74,7 @@ public class collectActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-
         //通过id查询图书表里的所有信息，用bundle进行数据交互
-
         //取消收藏
       listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -126,11 +112,7 @@ public class collectActivity extends AppCompatActivity {
                 Intent intent = new Intent(collectActivity.this, collectActivity.class);
                 startActivity(intent);
                 finish();
-
-
             }
         });
-
-
     }
 }

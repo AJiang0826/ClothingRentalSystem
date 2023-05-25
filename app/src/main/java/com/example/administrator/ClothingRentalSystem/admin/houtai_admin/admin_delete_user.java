@@ -3,7 +3,6 @@ package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -13,14 +12,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
 
@@ -28,7 +24,6 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
-import android.view.WindowManager;
 
 /**
  * 管理员删除读者
@@ -71,7 +66,6 @@ public class admin_delete_user extends AppCompatActivity {
             }
         });
         listView = (ListView) findViewById(R.id.edit_user_list);
-        final databaseHelp help = new databaseHelp(getApplicationContext());
 
 
         sql1="select username,password,name,sex,phone from user where identity=0";
@@ -154,7 +148,6 @@ public class admin_delete_user extends AppCompatActivity {
                         }
                         Intent intent = new Intent(admin_delete_user.this, admin_delete_user.class);
                         startActivity(intent);
-                        ActivityCollector.finishAll();
 
                     }
                 }).setNegativeButton("取消", new DialogInterface.OnClickListener() {

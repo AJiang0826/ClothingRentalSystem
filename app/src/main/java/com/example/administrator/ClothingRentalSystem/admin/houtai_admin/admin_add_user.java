@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import java.sql.ResultSet;
@@ -137,7 +136,6 @@ public class admin_add_user extends BaseActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                ActivityCollector.finishAll();
             }
 
         });

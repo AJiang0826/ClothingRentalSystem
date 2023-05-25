@@ -21,7 +21,7 @@ public class DBUtils{
     /**
      *本方法用于连接本地数据库，参数为本地数据库名，端口号，登陆的账号和密码
      */
-    public DBUtils(int port,String LocalDBname,String username,String password){//static Connection getConn
+    public DBUtils(int port,String LocalDBname,String username,String password){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://192.168.56.1:"+port+"/"+LocalDBname+"?characterEncoding=UTF-8&&serverTimezone=GMT",username, password);		//获取数据库连接
@@ -40,7 +40,7 @@ public class DBUtils{
     /**
      *本方法用于连接远程数据库，参数为远程URL(包含了IP和端口号)，远程数据库名，登陆的账号和密码
      */
-    public DBUtils(String RemoteURL,String DBname,String username,String password) {//static Connection getConnFromRemoteDB
+    public DBUtils(String RemoteURL,String DBname,String username,String password) {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://"+RemoteURL+"/"+DBname+"?characterEncoding=UTF-8&&serverTimezone=GMT",username, password);		//获取数据库连接

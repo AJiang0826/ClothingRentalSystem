@@ -79,12 +79,9 @@ public class ItemUtils {
                             continue;
                         }
                         if(names1[i].contains("img")){
-                            //Uri uri= Uri.parse(rs.getString(names1[i]));
                             String realPath=rs.getString(names1[i]);
                             File file=new File(realPath);
-//                            Uri uri=Uri.fromFile(file);
                             Uri uri=ContentUriUtil.getImageContentUri(content,file);
-                            System.out.println("---------------------------------------"+String.valueOf(uri));
                             map.put(names2[i],String.valueOf(uri));
                             continue;
                         }

@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,9 +55,7 @@ public class borrowActivity extends AppCompatActivity {
         clothesPrice=(TextView)findViewById(R.id.ClothesPrice);
         clothesImg=(ImageView)findViewById(R.id.ClothesImg);
         Bundle bundle=this.getIntent().getExtras();
-        System.out.println("bundle.getInt(\"id\")====="+bundle.getInt("id"));
         rowId=bundle.getInt("id") + 1;
-        System.out.println("rowId"+rowId);
         sql="select *from clothes_information";
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
         //以下开始数据库操作，使用线程，插入用户
@@ -100,7 +97,6 @@ public class borrowActivity extends AppCompatActivity {
             clothesPrice.setText(rs.getString("price"));
             //设置图片
             Uri uri= Uri.parse(rs.getString("clothes_img"));
-            System.out.println(ContentUriUtil.getPath2uri(borrowActivity.this,uri));
             clothesImg.setImageURI(uri);
         } catch (Exception e) {
             e.printStackTrace();

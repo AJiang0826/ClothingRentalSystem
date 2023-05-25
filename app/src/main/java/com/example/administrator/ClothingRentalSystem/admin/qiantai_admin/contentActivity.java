@@ -3,17 +3,14 @@ package com.example.administrator.ClothingRentalSystem.admin.qiantai_admin;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,7 +23,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.administrator.ClothingRentalSystem.R;
 
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
 import com.google.android.material.navigation.NavigationView;
@@ -36,9 +32,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
+/*
+服装信息展示界面
+功能：用于展示租借系统的服装信息
+     展示的服装包括服装图片 服装名称 服装类型 服装价格
+     顶部设置侧边栏菜单，滑动进入菜单选项，包括修改个人信息，个人用户收藏信息，个人服装租借信息 退出等选项
+     根据用户的选择跳转到相应的功能界面
+*/
 public class contentActivity extends AppCompatActivity implements View.OnClickListener {
     Uri uri;//图片路径
-    private ImageView ClothesImg;
     private DrawerLayout drawerLayout;
     private ListView listView;
     private long mExitTime;
@@ -55,18 +57,12 @@ public class contentActivity extends AppCompatActivity implements View.OnClickLi
                 + r.getResourceTypeName(R.drawable.click_white) + "/"
                 + r.getResourceEntryName(R.drawable.click_white));
 
-
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
         listView = (ListView) findViewById(R.id.list_view);
 
-
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
         sql="select clothes_img,name,type,price from clothes_information";//查询整张表
-        //String sql1="select clothes_img,name,designer,type,price,rank,size from clothes_information where name='"+strSearch_Name+"';";
 
         //以下开始数据库操作，使用线程，插入用户
         new Thread(new Runnable() {
@@ -99,22 +95,6 @@ public class contentActivity extends AppCompatActivity implements View.OnClickLi
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -158,26 +138,6 @@ public class contentActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
         insert();//插入数据往借书表中
-//        listView = (ListView) findViewById(R.id.list_view);
-//        databaseHelp help = new databaseHelp(getApplicationContext());
-//
-//        Cursor cursor = help.querybookinfo();
-//        String from[] = {"img","name", "writer"};
-//        int to[] = {R.id.clothes_img,R.id.clothes_size, R.id.clothes_comment};
-//        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.content_item, cursor, from, to);
-//        adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
-//            @Override
-//            public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-//                if (view.getId() == R.id.clothes_img) {
-//                    ImageView iconImageView = (ImageView) view;
-//                     iconImageView.setImageURI(Uri.parse(cursor.getString(columnIndex)));
-//                    return true;
-//                } else {
-//                    return false;
-//                }
-//            }
-//        });
-//        listView.setAdapter(adapter);
     }
 
     private void insert() {

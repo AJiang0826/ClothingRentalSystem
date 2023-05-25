@@ -5,9 +5,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,41 +15,26 @@ import android.widget.Switch;
 
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.contentActivity;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
-import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DonwloadSaveImg;
-
-import java.sql.ResultSet;
-import java.util.concurrent.CountDownLatch;
-import android.content.ContentValues;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
-import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.MD5Utils;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.concurrent.CountDownLatch;
+
+import java.sql.SQLException;
+
 /**
  * 这是主类，打开初始页面
  * 并且开启统一全局的数据库连接
+ * 初始界面功能：用户输入账户密码进行登录 可勾选记住密码 播放背景音乐等辅助功能
+ * 用户和管理员初次登录可进行用户信息的注册，向数据库存储个人信息
  **/
 public class MainActivity extends AppCompatActivity {
 
@@ -170,8 +152,6 @@ public class MainActivity extends AppCompatActivity {
                 String struser = user_ed.getText().toString();
                 strUserName=struser;
                 String strpwd = pwd_ed.getText().toString();
-
-
                 if ( choseRemember==false) {
                     //如果没有勾选记住密码，对当前用户输入的密码进行MD5加密再进行比对判断, MD5Utils.md5( ) 进行加密
                     md5Psw= MD5Utils.md5(strpwd);
@@ -179,9 +159,6 @@ public class MainActivity extends AppCompatActivity {
                     //勾选了记住密码
                     md5Psw= strpwd;
                 }
-
-
-
 
                 sql="select * from user where  username='"+struser+"' and password="+strpwd;
                 //sql="Select * from user where username='"+struser+"'";
@@ -224,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
                         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MainActivity.this);
                         notificationManager.notify(100, notification.build());
 
-
                          /*
                             将用户名存储到sharedpreferences中
                             获取用户名和密码，方便在记住密码时使用
@@ -239,7 +215,6 @@ public class MainActivity extends AppCompatActivity {
                             editor.putBoolean("remember", false);
                         }
 
-
                         //是否自动登录
                         if (auto_login.isChecked()) {
                             editor.putBoolean("autologin", true);
@@ -248,10 +223,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             editor.putBoolean("autologin", false);
                         }
-
                         editor.apply();
-
-
                         return;
                     }
                     else

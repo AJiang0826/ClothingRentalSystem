@@ -1,7 +1,6 @@
 package com.example.administrator.ClothingRentalSystem.admin.qiantai_admin;
 
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,9 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
 import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 
 import java.sql.SQLException;
@@ -20,19 +17,19 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * 修改读者信息的页面
+ * 功能：点击进入该界面 获取登录用户的注册信息
+ *      将登录用户的信息除用户名外修改
  */
 
 public class UserUpdateInfo extends BaseActivity {
-    private EditText user_ed, pwd_ed, username , sex, phone, register_identify,birthday;
+    private EditText user_ed, pwd_ed, username , sex, phone;
     private Button modify_bt;
     String uname2;
-    private String strUserName,strPwd,strConfirmPwd,strName,strPhone,strSex,sql,strregister_identify;
+    private String strUserName,strPwd,strName,strPhone,strSex,sql;
     //创建CountDownLatch并设置计数值，该count值可以根据线程数的需要设置
     private CountDownLatch countDownLatch;
     private ResultSet rs;
     private int rows;
-
-    private String md5Psw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,33 +78,11 @@ public class UserUpdateInfo extends BaseActivity {
                 ((EditText) findViewById(R.id.u_phone)).setText(rs.getString("phone"));
 
             }
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
         SharedPreferences perf = getSharedPreferences("data", MODE_PRIVATE);
         uname2 = perf.getString("users", "");//获得当前用户名称
-        final databaseHelp help = new databaseHelp(getApplicationContext());
-        Cursor cursor = help.queryname(uname2);
-       /* if (cursor.getCount() > 0) {
-            cursor.moveToFirst();
-//            不能修改用户名
-            user_ed.setText(cursor.getString(cursor.getColumnIndex("user")));
-            pwd_ed.setText(cursor.getString(cursor.getColumnIndex("password")));
-            username.setText(cursor.getString(cursor.getColumnIndex("name")));
-            birthday.setText(cursor.getString(cursor.getColumnIndex("birthday")));
-            phone.setText(cursor.getString(cursor.getColumnIndex("phone")));
-            sex.setText(cursor.getString(cursor.getColumnIndex("sex")));
-        }*/
-
-
-
-
 
         //修改按钮的事件监听
         modify_bt.setOnClickListener(new View.OnClickListener() {
@@ -119,10 +94,6 @@ public class UserUpdateInfo extends BaseActivity {
                 strName = username.getText().toString();
                 strSex = sex.getText().toString();
                 strPhone = phone.getText().toString();
-                //   strregister_identify= register_identify.getText().toString();
-
-/////
-                //  sql="Select * from user where username='"+struser+"'";
                 sql="UPDATE user SET name = '"+strName +"',password= '"+strPwd +"',sex= '"+strPwd +"',sex= '"+strPhone +"'where username='"+MainActivity.getStrUserName()+"'";
                 //以下开始数据库操作，使用线程，查询用户是否存在
                 new Thread(new Runnable() {
@@ -180,7 +151,6 @@ public class UserUpdateInfo extends BaseActivity {
                 }).start();
                 //等待线程修改完结果
                 Toast.makeText(UserUpdateInfo.this, "除用户名外信息修改成功", Toast.LENGTH_LONG).show();
-                ActivityCollector.finishAll();
             }
         });
 
