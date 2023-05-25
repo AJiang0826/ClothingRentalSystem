@@ -28,7 +28,7 @@ private TextView pid,pnname,pauthor,ptime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pay);
+        setContentView(R.layout.activity_pay_nobody);
         pid=(TextView)findViewById(R.id.paybid);
         pnname=(TextView)findViewById(R.id.payname);
         pauthor=(TextView)findViewById(R.id.payauthor);
