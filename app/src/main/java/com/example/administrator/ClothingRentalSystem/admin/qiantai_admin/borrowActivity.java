@@ -17,6 +17,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.administrator.ClothingRentalSystem.R;
+import com.example.administrator.ClothingRentalSystem.admin.utils.ContentUriUtil;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
 
@@ -99,6 +100,7 @@ public class borrowActivity extends AppCompatActivity {
             clothesPrice.setText(rs.getString("price"));
             //设置图片
             Uri uri= Uri.parse(rs.getString("clothes_img"));
+            System.out.println(ContentUriUtil.getPath2uri(borrowActivity.this,uri));
             clothesImg.setImageURI(uri);
         } catch (Exception e) {
             e.printStackTrace();

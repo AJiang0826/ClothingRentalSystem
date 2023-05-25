@@ -8,7 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
 
 /**
- * 随时随地退出程序
+ * 本类的作用：随时随地退出程序
+ * 有其他类继承此类
  */
 
 public class BaseActivity extends AppCompatActivity {
