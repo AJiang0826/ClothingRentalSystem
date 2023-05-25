@@ -19,6 +19,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * 管理员查询衣物详细信息【搜索结果】
+ *
  * 功能：1.显示搜索出的衣物详情信息
  * 变量：1.listView,
  */
