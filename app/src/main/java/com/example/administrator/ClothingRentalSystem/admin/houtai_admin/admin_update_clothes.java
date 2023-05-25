@@ -22,8 +22,8 @@ import java.io.InputStream;
 import java.sql.ResultSet;
 import java.util.concurrent.CountDownLatch;
 
-/**
- * 该界面用于修改服装信息，并且将其修改的信息存入到数据库
+/**    管理员：该界面用于修改服装信息
+ * 将其修改的信息存入到数据库
  * 同时通过上一个select_information 界面的传参到该界面，
  * 并且通过该参数，将信息展现在该界面
  */

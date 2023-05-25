@@ -18,9 +18,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 /**
- * 该界面用于显示数据库中已经归还衣服的衣服信息
- * 该界面所显示的衣服都是当天已经归还的衣服
- * 查询近一个月的衣服
+ * 该界面用于查看近一个月的归还回来的衣服
+ * 调用工具类将数据库中近一个月归还回来的衣服的数据查询出来
+ *  通过特定sql语句进行查询出来的，flage=1，表示已经归还
+ *
+ *
  *
  */
 public class admin_pay_info extends AppCompatActivity {

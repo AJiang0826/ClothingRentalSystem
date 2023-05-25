@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * 该界面用于查询数据库中关于衣服的部分信息，
+ * 该界面用于查询数据库中关于所有衣服的部分信息，
  * 通过单击李listview列表中的行可以实现页面的跳转，跳转到修改界面
  * 通过长时间点击列表中的行，可以实现对数据的删除
  */

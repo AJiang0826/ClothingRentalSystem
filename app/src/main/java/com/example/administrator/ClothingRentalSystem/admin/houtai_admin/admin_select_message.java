@@ -11,7 +11,9 @@ import com.example.administrator.ClothingRentalSystem.R;
 
 /**
  * 该界面能主要功能用于实现点击各个按钮跳转到所对应的功能模块界面
- * 该界面的变量有按钮Clothes_Info跳转到查询的界面,Borrow_Bt跳转到租借界面,Pay_Bt跳转到还衣界面
+ * 该界面的变量有按钮Clothes_Info跳转到查询的界面
+ * Borrow_Bt跳转到租借界面
+ * Pay_Bt跳转到还衣界面
  */
 public class admin_select_message extends AppCompatActivity {
     private ImageButton Clothes_Info, Borrow_Bt, Pay_Bt;//定义按钮

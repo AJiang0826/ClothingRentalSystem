@@ -17,9 +17,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 /**
- * 该界面用于显示数据库中被借出衣服的衣服信息，
- *将客服已经借出的衣服进行查看
- * 该界面所显示的衣服都是近一个月借出去的衣服
+ * 该界面用于查看近一个月的被租出去的衣服
+ * 调用工具类将数据库中近一个月的数据查询出来
+ * 通过特定sql语句进行查询出来的，flage=0，表示衣服被租出去
  */
 public class admin_borrow_info extends AppCompatActivity {
     private ListView Add_Borrow;
