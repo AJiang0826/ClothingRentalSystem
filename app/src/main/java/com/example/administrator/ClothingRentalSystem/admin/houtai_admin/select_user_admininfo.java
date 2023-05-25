@@ -5,18 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
-import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
 import java.sql.ResultSet;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * 查找读者详情的界面
+ * 查找用户详情的界面
  * 功能有：1.通过搜索界面输入的用户名进行用户信息的查询
  *       2.显示所查用户信息到EditText，并设置不可修改
  *       3.点击返回按钮回到select_user_admin搜素界面
@@ -63,8 +59,8 @@ public class select_user_admininfo extends AppCompatActivity {
        //等待线程插入完结果，把结果集转换成一定格式，并呈现在页面上
         try {
             countDownLatch.await();//阻塞等待线程执行完毕
-
             while (rs.next()) {
+                //搜索到的用户信息显示到文本框中
                 ((EditText) findViewById(R.id.username)).setText("用户名： "+rs.getString("username"));
                 ((EditText) findViewById(R.id.password)).setText("密 码： "+rs.getString("password"));
                 ((EditText) findViewById(R.id.name)).setText("姓 名： "+rs.getString("name"));

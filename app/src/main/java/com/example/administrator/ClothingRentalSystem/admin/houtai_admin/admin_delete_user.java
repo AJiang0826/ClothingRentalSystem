@@ -3,7 +3,6 @@ package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -13,40 +12,33 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
-
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
-import android.view.WindowManager;
+
 
 /**
- * 管理员删除读者
- * 功能：1.删除用户信息
+ * 管理员删除用户
+ * 功能：1.listview列表显示所有用户信息
  *      2.点击删除会跳出弹窗询问是否删除
- * 变量：1.listView
- *      2.back_bt删除按钮
+ *      3.通过用户名查询用户信息进行删除
  */
 public class admin_delete_user extends AppCompatActivity {
     private ListView listView;
-    private ImageButton back_bt;
-    private CountDownLatch countDownLatch;
-    private String sql1,sql2,sql3;
-    private ResultSet rs,rs2;
-    private EditText search_name;
+    private ImageButton back_bt;//返回按钮
+    private CountDownLatch countDownLatch;//创建CountDownLatch并设置计数值，该count值可以根据线程数的需要设置
+    private String sql1,sql2;
+    private ResultSet rs;
+    private EditText search_name;//搜索框
     private int rows;
 
-    private Button search_btn_;
+    private Button search_btn_;//搜索按钮
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,11 +63,11 @@ public class admin_delete_user extends AppCompatActivity {
             }
         });
         listView = (ListView) findViewById(R.id.edit_user_list);
-        final databaseHelp help = new databaseHelp(getApplicationContext());
 
 
+        //显示所有用户信息
         sql1="select username,password,name,sex,phone from user where identity=0";
-        System.out.println("sql1="+sql1);
+        //System.out.println("sql1="+sql1);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -108,10 +100,13 @@ public class admin_delete_user extends AppCompatActivity {
         }
 
 
-        //listView.setAdapter(adapter);
+        /*AlertDialog.Builder是AlertDialog封装的一个内部类，实现了构造器模式，
+        所有AlertDialog需要设置一些属性必须通过构造器去构造。
+        Builder设计模式可以很好地控制参数的个数以及灵活的组合多种参数。*/
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         //listview的单击事件监听
+        //确定按钮和取消按钮
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             String name=null;
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -119,18 +114,18 @@ public class admin_delete_user extends AppCompatActivity {
                 //获取该行值
                 String str=listView.getItemAtPosition(position).toString();
                 String[] strs=str.split(", ");
-                //String name=null;
+                //查找包含username字符串
                 for (int j=0;j<strs.length;j++){
                     if (strs[j].contains("username"))
                     {
                         name=strs[j].substring(9,strs[j].length()-1);
                     }
                 }
+
                 builder.setMessage("确定要删除吗？").setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         sql2="delete from user where username='"+name+"';";
-                        System.out.println("sql2="+sql2);
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
@@ -144,7 +139,6 @@ public class admin_delete_user extends AppCompatActivity {
                                 }
                             }
                         }).start();
-
                         //等待线程插入完结果
                         try {
                             countDownLatch.await();
@@ -154,7 +148,6 @@ public class admin_delete_user extends AppCompatActivity {
                         }
                         Intent intent = new Intent(admin_delete_user.this, admin_delete_user.class);
                         startActivity(intent);
-                        ActivityCollector.finishAll();
 
                     }
                 }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -172,6 +165,7 @@ public class admin_delete_user extends AppCompatActivity {
         search_name = findViewById(R.id.search_name1);
         search_btn_.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                //传值
                 Intent intent = new Intent(admin_delete_user.this, admin_delete_userinfo.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("name",search_name.getText().toString());

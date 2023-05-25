@@ -13,16 +13,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.administrator.ClothingRentalSystem.R;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
-
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * 查找读者的界面
+ * 查找用户界面
  * 功能有：1.通过用户名查询用户
- *       2.查询显示所有用户
+ *       2.listview列表显示所有用户信息
  *
  */
 public class select_user_admin extends AppCompatActivity {
@@ -54,7 +53,8 @@ public class select_user_admin extends AppCompatActivity {
             }
         });
 
-        sql="select username,password,name,sex,phone from user where identity=0";//查询所有用户
+        //查询所有用户
+        sql="select username,password,name,sex,phone from user where identity=0";
         System.out.println("sql="+sql);
         new Thread(new Runnable() {
             @Override

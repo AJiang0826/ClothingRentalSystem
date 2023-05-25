@@ -22,8 +22,8 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * 编辑用户页面
- * 功能：1.显示所有用户信息，单击某一行可对该行信息进行修改
- *      2.可通过用户名搜索用户进行编辑
+ * 功能：1.listview列表显示所有用户信息，单击某一行可实现页面的跳转，跳转到修改界面
+ *      2.可通过用户名搜索用户信息，并跳转到修改界面
  */
 
 public class admin_editer_user extends AppCompatActivity {
@@ -119,36 +119,14 @@ public class admin_editer_user extends AppCompatActivity {
             }
         });
 
-        //查询按钮监听
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                //传值到修改界面
-                int i = position + 1;
-                System.out.println("i="+i);
-                String str=listView.getItemAtPosition(position).toString();
-                String[] strs=str.split(", ");
-                String name=null;
-                for (int j=0;j<strs.length;j++){
-                    if (strs[j].contains("username"))
-                    {
-                        name=strs[j].substring(9,strs[j].length()-1);
-                    }
-                }
 
-                Intent intent = new Intent(admin_editer_user.this, admin_update_user.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("name", name);
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
 
         //搜索按钮监听
         search_btn=findViewById(R.id.search_btn);
         search_name = findViewById(R.id.search_name1);
         search_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                //获取搜索框中输入信息，传给修改界面
                 Intent intent = new Intent(admin_editer_user.this, admin_update_user.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("name",search_name.getText().toString());

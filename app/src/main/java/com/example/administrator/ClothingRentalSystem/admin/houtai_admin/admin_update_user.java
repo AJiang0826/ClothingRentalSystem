@@ -10,27 +10,22 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
-import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
 import java.sql.ResultSet;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 /**
  * 修改用户信息的页面
- * 功能：1.通过搜索界面输入的用户名进行用户信息的查询和修改（用户名不可修改、其余修改需满足条件）
- *      2.显示所查用户信息到EditText
- *      3.重置文本框内容
- *      4.修改成功后提示修改成功，返回上一界面
+ * 功能：1.显示所查用户信息到EditText
+ *      2.通过搜索界面输入的用户名进行用户信息的修改（用户名不可修改、其余修改需满足条件）
+ *      3.重置文本框内容（用户名不可置空）
+ *      4.修改成功后提示修改成功，并返回上一界面
  */
 
 public class admin_update_user extends BaseActivity {
 
     private EditText username, password ,name, sex, phone;
-
     private Button update_bt,cz;//确认修改、重置按钮
     int id;
     private String struser,strpwd,strname,strsex,strphone,sql,names;//names上一界面搜索框中的值
@@ -132,10 +127,10 @@ public class admin_update_user extends BaseActivity {
                     return;
                 }
 
-                //修改信息
+                //修改信息语句
                 sql="update user set username='"+struser+"',password='"+strpwd+"',name='"
                         +strname+"',sex='"+strsex+"',phone='"+strphone+"' where username='"+names+"'";
-                System.out.println("update_sql"+sql);
+                //System.out.println("update_sql"+sql);
                 //以下开始数据库操作，使用线程，插入用户
                 new Thread(new Runnable() {
                     @Override

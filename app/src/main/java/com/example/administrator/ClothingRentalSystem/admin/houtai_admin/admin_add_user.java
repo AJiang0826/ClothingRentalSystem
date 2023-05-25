@@ -137,7 +137,6 @@ public class admin_add_user extends BaseActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                ActivityCollector.finishAll();
             }
 
         });
