@@ -75,10 +75,7 @@ public class DonwloadSaveImg {
             dirFile.mkdir();
         }
         String fileName = i + ".png";
-//        System.out.println("filename="+fileName);
-//        System.out.println("dirFile="+Environment.getExternalStorageDirectory().getPath());
         File myCaptureFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath()+"/"+ fileName);
-//        System.out.println("相册路径是："+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath()+"");
         BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(myCaptureFile));
         bm.compress(Bitmap.CompressFormat.PNG, 80, bos);
         bos.flush();

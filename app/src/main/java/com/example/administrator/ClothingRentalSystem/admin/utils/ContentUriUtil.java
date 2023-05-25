@@ -3,24 +3,14 @@ package com.example.administrator.ClothingRentalSystem.admin.utils;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-
-import androidx.annotation.RequiresApi;
-import androidx.core.content.FileProvider;
-import androidx.loader.content.CursorLoader;
-
-import com.mysql.jdbc.log.LogUtils;
-
-import java.io.File;
 
 public class ContentUriUtil  {
 
@@ -139,21 +129,6 @@ public class ContentUriUtil  {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
     }
 
-
-//    public static Uri getImageStreamFromExternal(String imageName) {
-//        File externalPubPath = Environment.getExternalStoragePublicDirectory(
-//                Environment.DIRECTORY_PICTURES
-//        );
-//
-//        File picPath = new File(externalPubPath, imageName);
-//        Uri uri = null;
-//        if(picPath.exists()) {
-//            uri = Uri.fromFile(picPath);
-//        }
-//
-//        System.out.println("111111111111---------------------------------------"+String.valueOf(uri));
-//        return uri;
-//    }
     /**
      * Gets the content:// URI  from the given corresponding path to a file
      * @param context

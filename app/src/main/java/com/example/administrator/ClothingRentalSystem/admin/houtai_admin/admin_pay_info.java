@@ -1,6 +1,6 @@
 package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 
 import android.widget.ListView;
@@ -9,7 +9,7 @@ import android.widget.SimpleAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
+
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
 
@@ -36,7 +36,7 @@ public class admin_pay_info extends AppCompatActivity {
         ad_pay = (ListView) findViewById(R.id.Add_Show_Pay);
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
         sql = "SELECT * FROM  clothes_lease AS t WHERE date(t.clothes_pay_data) >= DATE_SUB(CURDATE(),INTERVAL 1 MONTH) and flage=1";//查询整张租借表，flage=1，表示衣服已经归还
-        System.out.println("sql=" + sql);
+      //  System.out.println("sql=" + sql);
         //以下开始数据库操作，使用线程，插入用户
         new Thread(new Runnable() {
             @Override
@@ -59,7 +59,7 @@ public class admin_pay_info extends AppCompatActivity {
             String[] names1 = {"id", "user_name", "clothes_id", "clothes_size", "clothes_borrow_data"};//建立字段名结果集
             String[] names2 = {"NumberId", "UserName", "ClothesId", "ClothesSize", "PayDate"};//建立字段名结果集2 这个要和SimpleAdapter中的string[]一样
             List<Map<String, Object>> data = ItemUtils.getList(names1, names2, rs);//调用ItemUtils获取结果集
-            System.out.println("list=" + data.toString());
+            //System.out.println("list=" + data.toString());
             SimpleAdapter adapter = new SimpleAdapter(
                     admin_pay_info.this, data, R.layout.ad_pay_item,
                     new String[]{"NumberId", "UserName", "ClothesId", "ClothesSize", "PayDate"},

@@ -1,38 +1,25 @@
 package com.example.administrator.ClothingRentalSystem.admin.houtai_admin;
 
-import android.content.ContentValues;
+
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.databaseHelp;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
-import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.person_borrow;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ContentUriUtil;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
-import com.example.administrator.ClothingRentalSystem.admin.utils.ItemUtils;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.ResultSet;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -43,7 +30,6 @@ import java.util.concurrent.CountDownLatch;
 
 public class admin_update_clothes extends BaseActivity implements View.OnClickListener {
 
-    private String name;
     Uri uri;
     private ImageView ClothesImg;//界面上的图片所在的位置
     //定义界面各组件的名称
@@ -61,7 +47,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_upadte_clothes);
-        System.out.println("3333333333333333333333333333333333333333333333");
+        //System.out.println("3333333333333333333333333333333333333333333333");
         initdata();//界面初始化
 
     }
@@ -70,8 +56,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
         Bundle bundle = getIntent().getExtras();
         //name = bundle.getString("name") ;
         id = bundle.getInt("Id");//接受另一个界面传递过来的参数
-        // Log.i("cursor", "initdata: " +name);
-        System.out.println("sname=" + id);
+       // System.out.println("sname=" + id);
 
 //初始化组件
         ClothesImg = findViewById(R.id.ClothesImg);
@@ -90,7 +75,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
 
         countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1，表示当前线程任务为一个
         sql = "select * from clothes_information where id=" + id;//查询整张租借表
-        System.out.println("sql=" + sql);
+      //  System.out.println("sql=" + sql);
         //以下开始数据库操作，使用线程，搜素衣服信息，并且将 信息呈现在页面
         new Thread(new Runnable() {
             @Override
@@ -157,7 +142,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                             + "',designer='" + Et_ClothesWriter.getText().toString() + "',size='" + Et_ClothesPublicer.getText().toString()
                             + "',price='" + Et_ClothesPrice.getText().toString() + "',rank='" + Et_ClothesRank.getText().toString()
                             + "',comment='" + Et_ClothesComment.getText().toString() + "'where id='" + id + "'";//查询整张租借表
-                    System.out.println("sql=" + sql);
+                //    System.out.println("sql=" + sql);
 
                     new Thread(new Runnable() {
                         @Override
