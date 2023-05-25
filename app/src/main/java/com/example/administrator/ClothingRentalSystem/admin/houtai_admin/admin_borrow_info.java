@@ -31,7 +31,6 @@ public class admin_borrow_info extends AppCompatActivity {
     private CountDownLatch countDownLatch;
     private ResultSet rs;
     String sql;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,4 +73,6 @@ public class admin_borrow_info extends AppCompatActivity {
 
 
     }
+
+
 }
