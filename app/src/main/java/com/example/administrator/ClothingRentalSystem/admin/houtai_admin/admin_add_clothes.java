@@ -16,10 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.administrator.ClothingRentalSystem.R;
-import com.example.administrator.ClothingRentalSystem.admin.ActivityCollector;
-import com.example.administrator.ClothingRentalSystem.admin.MainActivity;
 import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseActivity;
-import com.example.administrator.ClothingRentalSystem.admin.registerActivity;
 import com.example.administrator.ClothingRentalSystem.admin.utils.ContentUriUtil;
 import com.example.administrator.ClothingRentalSystem.admin.utils.DBUtils;
 
@@ -36,7 +33,7 @@ import java.util.concurrent.CountDownLatch;
 
 public class admin_add_clothes extends BaseActivity implements View.OnClickListener {
 ;
-    Uri uri;//图片路径
+    Uri uri;//通用资源标志符（Universal Resource Identifier）
     private ImageView ClothesImg;
 
     //对应的activity_add_clothes.xml中的文本框
@@ -77,7 +74,9 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
         btn_ClothesCommit.setOnClickListener(this);//添加按钮
         btn_ClothesBack.setOnClickListener(this);//重置按钮
 
-        Resources r = getResources();
+        Resources r = getResources();//获取存在系统的资源
+        //path转uri
+        //Uri一般由三部分组成：访问资源的命名机制。存放资源的主机名。资源自身的名称，由路径表示。
         uri =  Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
                 + r.getResourcePackageName(R.drawable.click_white) + "/"
                 + r.getResourceTypeName(R.drawable.click_white) + "/"
@@ -105,7 +104,7 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
                 //向数据库内添加衣服信息
                 if(testid==true&&testother==true){
                     //获取对应字符串
-                    strClothesImg = ContentUriUtil.getPath2uri(admin_add_clothes.this,uri);
+                    strClothesImg = ContentUriUtil.getPath2uri(admin_add_clothes.this,uri);//把uri转化为绝对路径
                     strClothesId = et_ClothesId.getText().toString();
                     strClothesName = et_ClothesName.getText().toString();
                     strClothesType = et_ClothesType.getText().toString();
@@ -131,17 +130,19 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
                                 e.printStackTrace();
                             }finally {
                                 //该线程执行完毕-1
+                                //countDown();//对计数器进行递减1操作，当计数器递减至0时，当前线程会去唤醒阻塞队列里的所有线程。
                                 countDownLatch.countDown();
                             }
                         }
                     }).start();
                     //等待线程查询完结果
                     try {
+                        //await();//阻塞当前线程，将当前线程加入阻塞队列。
                         countDownLatch.await();
-                        if(rs.getRow()!=0){
-                            System.out.println("strClothesId="+strClothesId);
+                        if(rs.getRow()!=0){//获取行数
+                            /*System.out.println("strClothesId="+strClothesId);
                             System.out.println("rs="+rs);
-                            System.out.println("rs.getRow="+rs.getRow());
+                            System.out.println("rs.getRow="+rs.getRow());*/
                             Toast.makeText(admin_add_clothes.this, "该编号已存在！", Toast.LENGTH_LONG).show();
                             ((EditText) findViewById(R.id.et_ClothesId)).setText("");
                             ((EditText) findViewById(R.id.et_ClothesId)).requestFocus();
@@ -154,6 +155,7 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
                     }
 
                     //是上方select查询的
+                    //CountDownLatch(int count); //构造方法，创建一个值为count的计数器。
                     countDownLatch = new CountDownLatch(1);
                     //以下开始数据库操作，使用线程，插入衣服信息
                     new Thread(new Runnable() {
@@ -171,6 +173,7 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
                         }
                     }).start();
                     try {
+                        //await();//阻塞当前线程，将当前线程加入阻塞队列。
                         countDownLatch.await();
                         if (rows>0){
                             Toast.makeText(admin_add_clothes.this,"添加衣物信息成功！",Toast.LENGTH_SHORT).show();
@@ -205,11 +208,16 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
         }
     }
 
+    /*
+    * requestCode:请求码，用于启动子Activity
+    * resultCode:子Activity设置的结果码，用于指示操作结果。可以是任何整数值，但通常是resultCode ==  RESULT_OK或resultCode==RESULT_CANCELED
+    * Data:用于打包返回数据的Intent,可以包括用于表示所选内容的URI。子Activity也可以在返回数据Intent时，添加一些附加消息
+    * */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case 1:  // 请求码
+            case 1:  //请求码----标志资源
                 parseUri(data);
                 break;
             default:
@@ -217,23 +225,26 @@ public class admin_add_clothes extends BaseActivity implements View.OnClickListe
     }
 
     public void parseUri(Intent data) {
-        uri=data.getData();
-        InputStream is=null;
-        Bitmap bmp=null;
+        uri=data.getData();//返回的Uri  //有三种形式：content://，file://，/document/
+        InputStream is=null;//字节输入流
+        Bitmap bmp=null;//位图 //获取图像文件信息
         if(uri.getAuthority()!=null){
             try {
-                is= admin_add_clothes.this.getContentResolver().openInputStream(uri);
+                /*使用输入流创建一张Bitmap图片
+                *得到图片(通过流的形式)*/
+                is= admin_add_clothes.this.getContentResolver().openInputStream(uri);//Uri转换成Inputstream
                 bmp= BitmapFactory.decodeStream(is);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }finally {
                 try {
-                    is.close();
+                    is.close();//关闭输入流
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
-        ClothesImg.setImageBitmap(bmp);
+        //给ImageView设置图片资源
+        ClothesImg.setImageBitmap(bmp);//setImageBitmap()方法其实是调用了setImageDrawable()方法进行重绘
     }
 }
