@@ -40,6 +40,7 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
     private int rows;//用于记录返回结果
     String uriname;//定义字符串用于接受图片原本的地址
     int id;//用于接收另一个界面传过来的衣服id的值
+    String realPath;
 
     String sql;
 
@@ -106,7 +107,9 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                 Et_ClothesRank.setText(rs.getString("rank"));
                 uriname = rs.getString("clothes_img");
             }
-            uri = Uri.parse(uriname);//用于将图片初始路径赋予给uri
+            //uri = Uri.parse(uriname);//用于将图片初始路径赋予给uri
+            realPath=uriname;
+            System.out.println("realPath=+--------" +realPath);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -133,10 +136,9 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                 if (testother == true) {
                     System.out.println(ClothesImg.toString());
                     countDownLatch = new CountDownLatch(1);//创建线程计时器个数是1
-                    System.out.println("进入更改数据库");
-                    System.out.println("uri=+--------" + uri);
-                    //将uri地址转换成相对地址
-                    String realPath= ContentUriUtil.getPath2uri(admin_update_clothes.this,uri);
+                    //将uri地址转换成绝对地址
+                   // realPath= ContentUriUtil.getPath2uri(admin_update_clothes.this,uri);
+                   // System.out.println("uri=+++--------" +realPath );
                     sql = "update clothes_information set clothes_img='" + realPath + "',name='" +
                             Et_ClothesName.getText().toString() + "',type='" + Et_ClotheStype.getText().toString()
                             + "',designer='" + Et_ClothesWriter.getText().toString() + "',size='" + Et_ClothesPublicer.getText().toString()
@@ -222,6 +224,8 @@ public class admin_update_clothes extends BaseActivity implements View.OnClickLi
                 }
             }
         }
+        //将uri地址转换成绝对地址
+        realPath= ContentUriUtil.getPath2uri(admin_update_clothes.this,uri);
         ClothesImg.setImageBitmap(bmp);//将图片显示在界面上
     }
 
