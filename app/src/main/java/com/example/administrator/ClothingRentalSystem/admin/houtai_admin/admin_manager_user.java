@@ -11,10 +11,11 @@ import com.example.administrator.ClothingRentalSystem.R;
 
 /**
  * 管理读者分式界面【第二层】
+ *
  * 功能：1.点击按钮进入添加用户信息界面
  *      2.点击按钮进入删除用户信息界面
  *      3.点击按钮进入修改用户信息界面
- *      3.点击按钮进入查询用户信息界面
+ *      4.点击按钮进入查询用户信息界面
  * 变量：1.AddUser, EditUser, DeleteUser, SelectUser查找、添加、编辑、删除用户
  */
 
