@@ -29,6 +29,11 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * 管理员添加衣服详情信息的界面
+ * 功能：1.添加衣服详情信息
+ *      2.点击重置会清空所有文本框
+ *      3.点击提交会验证name是否为空 and 验证id是否为六位 and 去数据库验证id是否重复
+ * 变量：1.listView
+ *      2.btn_ClothesCommit，btn_ClothesBack提交、重置按钮
  */
 
 public class admin_add_clothes extends BaseActivity implements View.OnClickListener {

@@ -11,6 +11,9 @@ import com.example.administrator.ClothingRentalSystem.admin.qiantai_admin.BaseAc
 /*
 * 衣物管理分式界面【第二层】
 * 包含采购衣物和查找衣物
+ * 功能：1.点击按钮进入添加衣物信息信息界面
+ *      2.点击按钮进入查找衣物信息界面
+ * 变量：1.addClothes, searchClothes采购衣物、查找衣物图像按钮
 * */
 public class admin_manager_clothes extends BaseActivity {
     private ImageButton addClothes, searchClothes;//采购衣物、查找衣物图像按钮

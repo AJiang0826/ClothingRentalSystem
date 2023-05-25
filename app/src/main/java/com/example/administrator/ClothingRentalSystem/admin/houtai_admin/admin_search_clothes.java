@@ -12,9 +12,10 @@ import com.example.administrator.ClothingRentalSystem.R;
 
 /*
 * 搜索衣物界面
-* 搜索框输入衣服名（name）,
-* 不输入name时查询所有衣物信息
-* 输入值按name查询
+ * 功能：1.搜索框输入衣服名（name）,
+ *      2.输入name时查询所有衣物信息
+ *      3.输入值按name查询
+ * 变量：1.search搜索按钮
 * */
 public class admin_search_clothes extends AppCompatActivity {
     private Button search;//搜索按钮
